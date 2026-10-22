@@ -1,0 +1,110 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Section Score",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 10:00:00.000000",
+ "modified": "2026-10-22 10:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "section_code",
+  "section_title",
+  "answered",
+  "applicable",
+  "points",
+  "max_points",
+  "weight",
+  "score_pct",
+  "maturity_level",
+  "reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "answered",
+   "fieldtype": "Int",
+   "label": "Answered",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "applicable",
+   "fieldtype": "Int",
+   "label": "Applicable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Float",
+   "label": "Points",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "max_points",
+   "fieldtype": "Float",
+   "label": "Max Points",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "score_pct",
+   "fieldtype": "Percent",
+   "label": "Score %",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "maturity_level",
+   "fieldtype": "Data",
+   "label": "Maturity",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Small Text",
+   "label": "Reference",
+   "read_only": 1
+  }
+ ],
+ "permissions": [],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

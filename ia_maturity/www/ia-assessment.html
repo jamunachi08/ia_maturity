@@ -1,0 +1,517 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("IA Maturity Assessment") }}{% endblock %}
+{% block header %}{% endblock %}
+{% block page_content %}
+<style>
+.iam{--bg:#F3F6F7;--surface:#FFFFFF;--ink:#13232F;--muted:#586976;--line:#D7E0E5;--accent:#0E6B66;--accent-ink:#FFFFFF;--accent-soft:#E0EFED;
+ --crit:#B42318;--low:#BF530B;--med:#9A6F00;--high:#2D7A33;--lead:#1C5CA3;--warn-bg:#FFF6E0;
+ color:var(--ink);font-size:15px;line-height:1.55;max-width:980px;margin:0 auto 56px;padding:8px 0}
+.iam *{box-sizing:border-box}
+.iam h1,.iam h2,.iam h3{margin:0;font-weight:600;color:var(--ink);text-wrap:balance}
+.iam h1{font-size:28px;line-height:1.15;letter-spacing:-.015em}
+.iam h2{font-size:21px;line-height:1.2}
+.iam h3{font-size:17px}
+.iam p{margin:0}
+.iam .muted{color:var(--muted)}
+.iam .small{font-size:13px}
+.iam .eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.iam .stack{display:flex;flex-direction:column;gap:16px}
+.iam .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.iam .between{justify-content:space-between}
+.iam .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.iam .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.iam label.f{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:500;min-width:0;margin:0}
+.iam input[type=text],.iam input[type=date],.iam select,.iam textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:9px 11px;width:100%;height:auto}
+.iam textarea{min-height:64px;resize:vertical;font-size:14px}
+.iam input:focus-visible,.iam textarea:focus-visible,.iam select:focus-visible,.iam button:focus-visible,.iam .opt:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.iam .btn-i{font:inherit;font-size:14px;font-weight:600;border-radius:7px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;line-height:1.3}
+.iam .btn-i:hover{text-decoration:none;filter:brightness(1.05);color:var(--accent-ink)}
+.iam .btn-i.plain{background:transparent;border-color:var(--line);color:var(--ink);font-weight:500}
+.iam .btn-i.ghost{background:transparent;color:var(--accent)}
+.iam .btn-i.danger{background:transparent;border-color:var(--crit);color:var(--crit)}
+.iam .btn-i:disabled{opacity:.45;cursor:not-allowed}
+.iam .btn-i.sm{padding:5px 10px;font-size:12.5px}
+.iam .notice{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.iam .notice.warn{border-left-color:var(--low);background:var(--warn-bg)}
+.iam .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.iam table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0}
+.iam th,.iam td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.iam th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--bg)}
+.iam tr:last-child td{border-bottom:0}
+.iam .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.iam .pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.iam .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.iam .stepper{display:grid;grid-template-columns:repeat(var(--n,6),1fr);gap:6px}
+.iam .step{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:8px;text-align:left;font-weight:500;font-size:12px;display:flex;flex-direction:column;gap:2px;min-width:0;cursor:pointer}
+.iam .step .n{font-size:11px}
+.iam .step .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iam .step[aria-current=step]{border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
+.iam .step.done .n::after{content:" ✓";color:var(--high)}
+@media (max-width:640px){.iam .step .t{display:none}.iam .panel{padding:16px}}
+.iam .progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:0}
+.iam .progress i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.iam fieldset.q{border:0;margin:0;padding:18px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-width:0}
+.iam fieldset.q:first-of-type{border-top:0;padding-top:0}
+.iam .qhead{display:flex;gap:12px;align-items:baseline;padding:0;margin:0;font-size:inherit;border:0;width:auto}
+.iam .qid{font-size:13px;color:var(--accent);font-weight:600;flex:none}
+.iam .qtext{font-weight:600;font-size:16px;line-height:1.4}
+.iam .guid{font-size:13px;color:var(--muted)}
+.iam .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.iam .opt{position:relative;display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;background:var(--bg);min-width:0;margin:0;font-weight:400}
+.iam .opt input{position:absolute;opacity:0;pointer-events:none}
+.iam .opt .lt{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.iam .opt .d{font-size:13.5px;line-height:1.4}
+.iam .opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.iam .opt:has(input:checked) .lt{color:var(--accent)}
+.iam .opt.na{background:transparent;border-style:dashed}
+.iam details.cm summary{font-size:13px;color:var(--muted);cursor:pointer}
+.iam details.cm .inner{margin-top:6px;display:flex;flex-direction:column;gap:8px}
+.iam .navbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.iam .saved{font-size:12.5px;color:var(--muted)}
+.iam .center{min-height:40vh;display:flex;align-items:center;justify-content:center}
+.iam .report{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:30px}
+.iam .rp-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:16px}
+.iam .rp-meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px;margin:0}
+.iam .rp-meta dt{color:var(--muted);font-weight:400}.iam .rp-meta dd{margin:0;font-weight:500}
+.iam .rp-score{display:grid;grid-template-columns:minmax(180px,240px) 1fr;gap:24px;align-items:center}
+@media (max-width:640px){.iam .rp-score{grid-template-columns:1fr}}
+.iam .big{font-size:60px;line-height:1;font-weight:600;letter-spacing:-.02em}
+.iam .big small{font-size:26px}
+.iam .scale{position:relative;margin-top:22px}
+.iam .scale .bands{display:flex;height:12px;border-radius:3px;overflow:hidden}
+.iam .scale .bands i{display:block;height:100%}
+.iam .scale .mk{position:absolute;top:-8px;width:2px;height:28px;background:var(--ink)}
+.iam .scale .lbl{position:relative;height:16px;font-size:10.5px;color:var(--muted);margin-top:6px}
+.iam .scale .lbl span{position:absolute;transform:translateX(-50%)}
+.iam .scale .lbl span:first-child{transform:none}.iam .scale .lbl span:last-child{transform:translateX(-100%)}
+.iam .rp-sec h2{font-size:19px;margin-bottom:12px;display:flex;gap:10px;align-items:baseline}
+.iam .rp-sec h2 .k{font-size:12px;color:var(--accent);font-weight:500}
+.iam .bars{display:flex;flex-direction:column;gap:8px}
+.iam .bar{display:grid;grid-template-columns:minmax(120px,260px) 1fr 56px;gap:12px;align-items:center;font-size:13px}
+.iam .bar .tr{height:14px;background:var(--bg);border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+.iam .bar .tr i{display:block;height:100%}
+@media (max-width:640px){.iam .bar{grid-template-columns:1fr 48px}.iam .bar .tr{grid-column:1/-1;grid-row:2}}
+.iam-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:#13232F;color:#fff;padding:9px 16px;border-radius:7px;font-size:13.5px;z-index:2000;max-width:90vw}
+@media print{.navbar,header,footer,.no-print,.iam-toast,.web-footer,nav{display:none!important}.iam .report{border:0;padding:0}}
+</style>
+
+<div class="iam" id="iam-app">
+ <div class="center"><p class="muted">{{ _("Loading the assessment…") }}</p></div>
+</div>
+<div class="iam-toast" id="iam-toast" hidden></div>
+
+<script>
+window.IAM_CSRF = "{{ csrf_token }}";
+window.IAM_HAS_ACCESS = {{ 1 if has_access else 0 }};
+</script>
+{% raw %}
+<script>
+(function () {
+"use strict";
+const app = document.getElementById("iam-app");
+const LETTERS = ["A", "B", "C", "D"];
+const LVNAME = { A: "Ad hoc", B: "Foundational", C: "Established", D: "Leading" };
+const S = { boot: null, doc: null, step: 0, pending: {}, timer: null, saving: null, confirmSubmit: false };
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtPct = (v) => (Math.round((Number(v) || 0) * 10) / 10).toString();
+const fmtDate = (d) => { if (!d) return ""; try { return new Date(d + "T00:00:00").toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }); } catch (e) { return d; } };
+const today = () => new Date().toISOString().slice(0, 10);
+const qs = (sel) => app.querySelector(sel);
+const qsa = (sel) => app.querySelectorAll(sel);
+
+function toast(msg) {
+	const t = document.getElementById("iam-toast");
+	t.textContent = msg; t.hidden = false;
+	clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), 3500);
+}
+
+function serverError(j, status) {
+	try {
+		if (j && j._server_messages) {
+			const msgs = JSON.parse(j._server_messages).map((m) => { try { return JSON.parse(m).message; } catch (e) { return m; } });
+			const div = document.createElement("div"); div.innerHTML = msgs.join(" "); return div.textContent;
+		}
+		if (j && j.exception) return String(j.exception).split(":").slice(1).join(":").trim() || j.exception;
+	} catch (e) { /* ignore */ }
+	return status === 403 ? "You are not permitted to do that." : "Something went wrong. Please try again.";
+}
+
+async function call(method, args) {
+	const r = await fetch("/api/method/" + method, {
+		method: "POST",
+		headers: { "Content-Type": "application/json", Accept: "application/json", "X-Frappe-CSRF-Token": window.IAM_CSRF },
+		body: JSON.stringify(args || {}),
+		credentials: "same-origin",
+	});
+	const j = await r.json().catch(() => ({}));
+	if (!r.ok) throw new Error(serverError(j, r.status));
+	return j.message;
+}
+
+function setUrl(name) {
+	const u = new URL(window.location.href);
+	if (name) u.searchParams.set("name", name); else u.searchParams.delete("name");
+	history.replaceState(null, "", u.toString());
+}
+
+function levelColor(level) {
+	const b = (S.boot && S.boot.bands || []).find((x) => x.level_name === level);
+	return b ? b.color : "#586976";
+}
+const pill = (level) => `<span class="pill" style="color:${esc(levelColor(level))}">${esc(level || "–")}</span>`;
+
+/* ------------------------------------------------------------------ boot */
+async function boot() {
+	if (!window.IAM_HAS_ACCESS) {
+		app.innerHTML = `<div class="panel stack"><h2>Access required</h2><p class="muted">Your account does not have access to the Internal Audit maturity assessment. Ask the administrator to grant you the <b>IA Assessment Respondent</b> role.</p></div>`;
+		return;
+	}
+	try {
+		S.boot = await call("ia_maturity.api.bootstrap");
+	} catch (e) {
+		app.innerHTML = `<div class="notice warn">${esc(e.message)}</div>`;
+		return;
+	}
+	const name = new URL(window.location.href).searchParams.get("name");
+	if (name) return openAssessment(name);
+	renderHome();
+}
+
+async function openAssessment(name) {
+	app.innerHTML = `<div class="center"><p class="muted">Loading…</p></div>`;
+	try {
+		S.doc = await call("ia_maturity.api.get_assessment", { name });
+	} catch (e) {
+		setUrl(null);
+		return renderHome(e.message);
+	}
+	setUrl(S.doc.name);
+	if (S.doc.docstatus === 1) return renderReport();
+	if (!S.doc.editable) return renderReport();
+	const firstOpen = S.doc.template_info.sections.findIndex((s) => sectionQs(s.code).some((q) => !q.selected));
+	S.step = firstOpen >= 0 ? firstOpen : 0;
+	renderQuestions();
+}
+
+/* ------------------------------------------------------------------ home */
+function renderHome(err) {
+	S.doc = null; setUrl(null);
+	const b = S.boot, t = b.template;
+	const list = b.assessments || [];
+	const roleOpts = ["", ...b.respondent_roles].map((r) => `<option value="${esc(r)}">${esc(r || "Select…")}</option>`).join("");
+	const entOpts = b.entities.map((e) => `<option value="${esc(e)}">${esc(e)}</option>`).join("");
+	const statusOf = (a) => a.docstatus === 0 ? `<span class="muted">${a.amended_from ? "Returned for correction" : "Draft"} · ${a.answered_count || 0}/${a.question_count || 0}</span>`
+		: a.docstatus === 2 ? `<span class="muted">Cancelled</span>` : `${esc(a.review_status || "Submitted")}`;
+	app.innerHTML = `<div class="stack">
+	 ${err ? `<div class="notice warn" role="alert">${esc(err)}</div>` : ""}
+	 <div class="panel stack">
+	  <p class="eyebrow">Internal Audit Function</p>
+	  <h1>Maturity Assessment</h1>
+	  ${t ? `<div class="muted" style="max-width:70ch">${esc(t.introduction)}</div>
+	   <div class="notice"><b>How to answer.</b> ${esc(t.answer_rule)}</div>` : `<div class="notice warn">No active questionnaire is configured. Contact the administrator.</div>`}
+	 </div>
+	 ${list.length ? `<div class="stack" style="gap:10px"><h3>Your assessments</h3>
+	  <div class="tablewrap"><table><thead><tr><th>Entity</th><th>Date</th><th>Status</th><th>Score</th><th></th></tr></thead><tbody>
+	  ${list.map((a) => `<tr><td>${esc(a.entity)}<div class="small muted">${esc(a.name)}</div></td><td class="num">${esc(fmtDate(a.assessment_date))}</td>
+	   <td>${statusOf(a)}</td><td>${a.docstatus === 1 ? `<span class="num">${fmtPct(a.overall_score)}%</span> ${pill(a.maturity_level)}` : "–"}</td>
+	   <td style="text-align:right;white-space:nowrap"><button class="btn-i sm ${a.docstatus === 0 ? "" : "plain"}" data-open="${esc(a.name)}">${a.docstatus === 0 ? "Continue" : "View report"}</button>
+	   ${a.docstatus === 0 ? `<button class="btn-i sm danger" data-del="${esc(a.name)}" title="Delete draft">Delete</button>` : ""}</td></tr>`).join("")}
+	  </tbody></table></div></div>` : ""}
+	 ${t ? `<div class="panel stack">
+	  <h3>Start a new assessment</h3>
+	  <form id="iam-new" class="stack" novalidate>
+	   <div class="grid2">
+	    <label class="f">Entity assessed *
+	     <select id="nEnt">${b.entities.length ? `<option value="">Select…</option>${entOpts}` : ""}${b.allow_new_entity ? `<option value="__new">${b.entities.length ? "Other (register a new entity)" : "Register a new entity"}</option>` : ""}</select></label>
+	    <label class="f" id="nNewWrap" hidden>New entity name *<input type="text" id="nNew" maxlength="140" placeholder="Legal name of the entity"></label>
+	    <label class="f">Your perspective<select id="nRole">${roleOpts}</select></label>
+	    <label class="f">Job title<input type="text" id="nTitle" maxlength="140" placeholder="e.g. Chief Audit Executive"></label>
+	    <label class="f">Assessment date<input type="date" id="nDate" value="${today()}"></label>
+	   </div>
+	   <div id="nErr"></div>
+	   <p class="small muted">Signed in as <b>${esc(b.user.full_name || b.user.email)}</b> (${esc(b.user.email)}). Your answers are saved to your account as you go and sent to the Internal Audit administrator when you submit.</p>
+	   <div class="row"><button type="submit" class="btn-i" id="nGo">Start assessment</button></div>
+	  </form></div>` : ""}
+	 <div class="panel stack"><h3>Scoring scale</h3>
+	  <div class="tablewrap"><table><thead><tr><th>Answer</th><th>Points</th><th>Meaning</th></tr></thead><tbody>
+	  <tr><td>A</td><td class="num">${b.points.A}</td><td>Ad hoc: informal, undocumented, reactive</td></tr>
+	  <tr><td>B</td><td class="num">${b.points.B}</td><td>Foundational: practices exist but are applied inconsistently</td></tr>
+	  <tr><td>C</td><td class="num">${b.points.C}</td><td>Established: well-defined and applied consistently</td></tr>
+	  <tr><td>D</td><td class="num">${b.points.D}</td><td>Leading: advanced, benchmarked and externally validated</td></tr></tbody></table></div>
+	  <div class="row small muted">${b.bands.map((x) => `<span>${pill(x.level_name)} ${x.min_score}%+</span>`).join(" ")}</div>
+	 </div></div>`;
+
+	qsa("[data-open]").forEach((el) => (el.onclick = () => openAssessment(el.dataset.open)));
+	qsa("[data-del]").forEach((el) => (el.onclick = async () => {
+		if (el.dataset.confirm !== "1") { el.dataset.confirm = "1"; el.textContent = "Confirm delete"; return; }
+		try { await call("ia_maturity.api.delete_draft", { name: el.dataset.del }); S.boot = await call("ia_maturity.api.bootstrap"); renderHome(); toast("Draft deleted"); }
+		catch (e) { toast(e.message); }
+	}));
+	const sel = qs("#nEnt");
+	if (sel) {
+		const sync = () => (qs("#nNewWrap").hidden = sel.value !== "__new");
+		if (!b.entities.length && b.allow_new_entity) sel.value = "__new";
+		sel.onchange = sync; sync();
+		qs("#iam-new").onsubmit = async (e) => {
+			e.preventDefault();
+			const isNew = sel.value === "__new";
+			const payload = {
+				template: t.name,
+				job_title: qs("#nTitle").value.trim(),
+				respondent_role: qs("#nRole").value,
+				assessment_date: qs("#nDate").value || today(),
+			};
+			if (isNew) payload.new_entity = qs("#nNew").value.trim(); else payload.entity = sel.value;
+			if (!payload.entity && !payload.new_entity) {
+				qs("#nErr").innerHTML = `<div class="notice warn" role="alert">Select or enter the entity being assessed.</div>`; return;
+			}
+			const btn = qs("#nGo"); btn.disabled = true; btn.textContent = "Starting…";
+			try {
+				S.doc = await call("ia_maturity.api.save_assessment", { data: JSON.stringify(payload) });
+				S.boot = await call("ia_maturity.api.bootstrap");
+				setUrl(S.doc.name); S.step = 0; renderQuestions(); window.scrollTo(0, 0);
+			} catch (err) {
+				qs("#nErr").innerHTML = `<div class="notice warn" role="alert">${esc(err.message)}</div>`;
+				btn.disabled = false; btn.textContent = "Start assessment";
+			}
+		};
+	}
+}
+
+/* ------------------------------------------------------------------ questionnaire */
+const sectionQs = (code) => S.doc.questions.filter((q) => q.section === code);
+const answeredCount = () => S.doc.questions.filter((q) => q.selected).length;
+
+function renderQuestions() {
+	const d = S.doc, secs = d.template_info.sections, s = secs[S.step], total = d.questions.length, n = answeredCount();
+	const last = S.step === secs.length - 1;
+	const secDone = (x) => sectionQs(x.code).every((q) => q.selected);
+	const evRule = S.boot.evidence_required_from;
+	const needsEv = (opt) => (evRule.startsWith("C") && (opt === "C" || opt === "D")) || (evRule.startsWith("D") && opt === "D");
+	S.confirmSubmit = false;
+	app.innerHTML = `<div class="stack">
+	 <div class="row between">
+	  <div><p class="eyebrow">${esc(d.entity)}</p><p class="small muted">${esc(d.name)} · ${esc(fmtDate(d.assessment_date))}${d.respondent_role ? " · " + esc(d.respondent_role) : ""}</p></div>
+	  <div class="row"><span class="saved" id="saved">All changes saved</span><button class="btn-i sm plain" id="home">My assessments</button></div>
+	 </div>
+	 ${d.returned_comments ? `<div class="notice warn" role="status"><b>Returned by the reviewer.</b> ${esc(d.returned_comments)}</div>` : ""}
+	 <div class="stepper" role="list" style="--n:${secs.length}">${secs.map((x, i) => `<button type="button" class="step ${secDone(x) ? "done" : ""}" data-i="${i}" ${i === S.step ? 'aria-current="step"' : ""}><span class="n">Section ${i + 1}</span><span class="t">${esc(x.title)}</span></button>`).join("")}</div>
+	 <div class="row"><span class="small muted"><span class="num" id="cnt">${n}</span> of ${total} answered</span></div>
+	 <div class="progress"><i style="width:${(n / total) * 100}%"></i></div>
+	 <div class="panel stack">
+	  <div class="stack" style="gap:6px"><p class="eyebrow">Section ${S.step + 1} of ${secs.length}</p><h2>${esc(s.title)}</h2>${s.reference ? `<p class="small muted">Reference: ${esc(s.reference)}</p>` : ""}</div>
+	  ${sectionQs(s.code).map((q) => `<fieldset class="q" data-q="${esc(q.code)}">
+	   <legend class="qhead"><span class="qid">${esc(q.code)}</span><span class="qtext">${esc(q.text)}</span></legend>
+	   ${q.guidance ? `<p class="guid">${esc(q.guidance)}</p>` : ""}
+	   <div class="opts">${q.options.map((o, i) => `<label class="opt"><input type="radio" name="${esc(q.code)}" value="${LETTERS[i]}" ${q.selected === LETTERS[i] ? "checked" : ""}>
+	     <span class="lt"><span>${LETTERS[i]} · ${LVNAME[LETTERS[i]]}</span><span class="num">${S.boot.points[LETTERS[i]]}</span></span><span class="d">${esc(o)}</span></label>`).join("")}
+	    ${q.allow_na ? `<label class="opt na"><input type="radio" name="${esc(q.code)}" value="N/A" ${q.selected === "N/A" ? "checked" : ""}><span class="lt"><span>Not applicable</span><span>–</span></span><span class="d">Excluded from the score.</span></label>` : ""}
+	   </div>
+	   <details class="cm" ${q.comment || q.evidence || needsEv(q.selected) ? "open" : ""}><summary>Evidence or comment${evRule ? ` (required for level ${esc(evRule)})` : " (optional)"}</summary>
+	    <div class="inner">
+	     <textarea data-c="${esc(q.code)}" maxlength="5000" placeholder="e.g. Audit Committee charter approved March 2026">${esc(q.comment)}</textarea>
+	     <div class="row small"><label class="btn-i sm plain" style="margin:0">Attach file<input type="file" data-f="${esc(q.code)}" hidden></label>
+	      <span data-ev="${esc(q.code)}">${q.evidence ? `<a href="${esc(q.evidence)}" target="_blank" rel="noopener">${esc(q.evidence.split("/").pop())}</a> <button type="button" class="btn-i sm ghost" data-rmev="${esc(q.code)}">Remove</button>` : `<span class="muted">No file attached</span>`}</span></div>
+	    </div></details>
+	  </fieldset>`).join("")}
+	 </div>
+	 <div class="navbar">
+	  <button type="button" class="btn-i plain" id="prev">${S.step === 0 ? "My assessments" : "Previous section"}</button>
+	  ${last ? `<button type="button" class="btn-i" id="sub" ${n < total ? "disabled" : ""}>Submit and generate report</button>` : `<button type="button" class="btn-i" id="next">Next section</button>`}
+	 </div>
+	 ${last ? `<p class="small muted" id="missing"></p>` : ""}
+	 <div id="subErr"></div>
+	</div>`;
+
+	refreshMissing();
+	qsa(".step").forEach((b) => (b.onclick = () => go(+b.dataset.i)));
+	qs("#home").onclick = () => leave();
+	qs("#prev").onclick = () => (S.step === 0 ? leave() : go(S.step - 1));
+	if (qs("#next")) qs("#next").onclick = () => go(S.step + 1);
+	if (qs("#sub")) qs("#sub").onclick = submit;
+	qsa("input[type=radio]").forEach((r) => (r.onchange = () => {
+		const q = S.doc.questions.find((x) => x.code === r.name);
+		q.selected = r.value; queue(q.code, { selected: r.value }); refreshCounts();
+		if (needsEv(r.value)) { const det = r.closest("fieldset").querySelector("details"); if (det) det.open = true; }
+	}));
+	qsa("textarea[data-c]").forEach((t) => (t.oninput = () => {
+		const q = S.doc.questions.find((x) => x.code === t.dataset.c);
+		q.comment = t.value; queue(q.code, { comment: t.value });
+	}));
+	qsa("input[type=file][data-f]").forEach((f) => (f.onchange = () => upload(f)));
+	qsa("[data-rmev]").forEach((b) => (b.onclick = () => {
+		const q = S.doc.questions.find((x) => x.code === b.dataset.rmev);
+		q.evidence = ""; queue(q.code, { evidence: "" }); renderEvidence(q);
+	}));
+}
+
+function renderEvidence(q) {
+	const el = app.querySelector(`[data-ev="${CSS.escape(q.code)}"]`);
+	if (!el) return;
+	el.innerHTML = q.evidence ? `<a href="${esc(q.evidence)}" target="_blank" rel="noopener">${esc(q.evidence.split("/").pop())}</a> <button type="button" class="btn-i sm ghost" data-rmev="${esc(q.code)}">Remove</button>` : `<span class="muted">No file attached</span>`;
+	const rm = el.querySelector("[data-rmev]");
+	if (rm) rm.onclick = () => { q.evidence = ""; queue(q.code, { evidence: "" }); renderEvidence(q); };
+}
+
+async function upload(input) {
+	const file = input.files && input.files[0];
+	if (!file) return;
+	if (file.size > 10 * 1024 * 1024) { toast("Files must be 10 MB or smaller."); input.value = ""; return; }
+	const q = S.doc.questions.find((x) => x.code === input.dataset.f);
+	const el = app.querySelector(`[data-ev="${CSS.escape(q.code)}"]`);
+	if (el) el.innerHTML = `<span class="muted">Uploading…</span>`;
+	await flush();
+	const fd = new FormData();
+	fd.append("file", file, file.name);
+	fd.append("is_private", "1");
+	fd.append("doctype", "IA Maturity Assessment");
+	fd.append("docname", S.doc.name);
+	try {
+		const r = await fetch("/api/method/upload_file", { method: "POST", body: fd, headers: { "X-Frappe-CSRF-Token": window.IAM_CSRF, Accept: "application/json" }, credentials: "same-origin" });
+		const j = await r.json().catch(() => ({}));
+		if (!r.ok) throw new Error(serverError(j, r.status));
+		q.evidence = j.message.file_url;
+		queue(q.code, { evidence: q.evidence });
+		renderEvidence(q);
+	} catch (e) { toast(e.message); renderEvidence(q); }
+	input.value = "";
+}
+
+function refreshCounts() {
+	const total = S.doc.questions.length, n = answeredCount();
+	const c = qs("#cnt"); if (c) c.textContent = n;
+	const p = qs(".progress i"); if (p) p.style.width = (n / total) * 100 + "%";
+	const sub = qs("#sub"); if (sub) sub.disabled = n < total;
+	S.doc.template_info.sections.forEach((x, i) => {
+		const b = app.querySelector(`.step[data-i="${i}"]`);
+		if (b) b.classList.toggle("done", sectionQs(x.code).every((q) => q.selected));
+	});
+	refreshMissing();
+}
+function refreshMissing() {
+	const m = qs("#missing"); if (!m) return;
+	const left = S.doc.questions.filter((q) => !q.selected).map((q) => q.code);
+	m.textContent = left.length ? "Unanswered: " + left.join(", ") : "";
+}
+
+function setSaved(txt) { const el = qs("#saved"); if (el) el.textContent = txt; }
+
+function queue(code, patch) {
+	S.pending[code] = Object.assign(S.pending[code] || {}, patch);
+	setSaved("Saving…");
+	clearTimeout(S.timer);
+	S.timer = setTimeout(flush, 700);
+}
+
+async function flush() {
+	clearTimeout(S.timer);
+	if (S.saving) { await S.saving; }
+	const answers = S.pending; S.pending = {};
+	if (!Object.keys(answers).length) return;
+	S.saving = (async () => {
+		try {
+			const res = await call("ia_maturity.api.save_assessment", { data: JSON.stringify({ name: S.doc.name, answers }) });
+			S.doc.section_scores = res.section_scores; S.doc.modified = res.modified;
+			setSaved("All changes saved");
+		} catch (e) {
+			for (const [k, v] of Object.entries(answers)) S.pending[k] = Object.assign({}, v, S.pending[k] || {});
+			setSaved("Not saved – retrying");
+			toast(e.message);
+			clearTimeout(S.timer); S.timer = setTimeout(flush, 4000);
+		}
+	})();
+	await S.saving; S.saving = null;
+}
+
+async function go(i) { await flush(); S.step = i; renderQuestions(); window.scrollTo(0, 0); }
+async function leave() { await flush(); S.boot = await call("ia_maturity.api.bootstrap"); renderHome(); window.scrollTo(0, 0); }
+
+window.addEventListener("beforeunload", (e) => {
+	if (Object.keys(S.pending).length) { flush(); e.preventDefault(); e.returnValue = ""; }
+});
+
+async function submit() {
+	const b = qs("#sub");
+	if (!S.confirmSubmit) {
+		S.confirmSubmit = true;
+		b.textContent = "Confirm: submit final answers";
+		qs("#subErr").innerHTML = `<div class="notice">After submitting, answers can no longer be changed. Click again to confirm.</div>`;
+		return;
+	}
+	b.disabled = true; b.textContent = "Submitting…";
+	try {
+		await flush();
+		S.doc = await call("ia_maturity.api.submit_assessment", { name: S.doc.name });
+		S.boot = await call("ia_maturity.api.bootstrap");
+		renderReport(true);
+	} catch (e) {
+		qs("#subErr").innerHTML = `<div class="notice warn" role="alert">${esc(e.message)}</div>`;
+		b.disabled = false; b.textContent = "Submit and generate report"; S.confirmSubmit = false;
+	}
+}
+
+/* ------------------------------------------------------------------ report */
+function renderReport(justSubmitted) {
+	const d = S.doc;
+	if (d.docstatus !== 1) {
+		app.innerHTML = `<div class="stack"><div class="notice">This assessment is still a draft and is read-only for you.</div><div><button class="btn-i plain" id="home">My assessments</button></div></div>`;
+		qs("#home").onclick = () => renderHome();
+		return;
+	}
+	const r = d.report;
+	const prio = { Immediate: "var(--crit)", High: "var(--low)", Medium: "var(--med)" };
+	app.innerHTML = `<div class="stack">
+	 ${justSubmitted ? `<div class="notice no-print" role="status">Submitted. Your results have been sent to the Internal Audit administrator. Download the PDF report below.</div>` : ""}
+	 <div class="navbar no-print"><button class="btn-i plain" id="home">My assessments</button>
+	  <div class="row"><button class="btn-i plain" id="print">Print</button><a class="btn-i" href="${esc(d.pdf_url)}" target="_blank" rel="noopener">Download PDF report</a></div></div>
+	 <article class="report">
+	  <div class="rp-head"><div class="stack" style="gap:6px"><p class="eyebrow">Results report</p><h1>Internal Audit Function Maturity Assessment</h1><p class="muted">${esc(r.entity)}</p></div>
+	   <dl class="rp-meta"><dt>Reference</dt><dd>${esc(r.name)}</dd><dt>Assessment date</dt><dd>${esc(r.date)}</dd><dt>Assessed by</dt><dd>${esc(r.respondent)}${r.job_title ? ", " + esc(r.job_title) : ""}</dd>
+	   ${r.respondent_role ? `<dt>Perspective</dt><dd>${esc(r.respondent_role)}</dd>` : ""}<dt>Review</dt><dd>${esc(r.review_status || "–")}</dd></dl></div>
+
+	  <section class="rp-sec"><h2><span class="k">01</span>Executive summary</h2>
+	   <div class="rp-score"><div><div class="big num">${fmtPct(r.overall)}<small>%</small></div><div style="margin-top:8px">${pill(r.level)}</div>
+	    <p class="small muted" style="margin-top:8px">${r.points} of ${r.max_points} points</p></div>
+	    <div class="stack" style="gap:10px"><p>${esc(r.interpretation)}</p>
+	     ${r.strongest ? `<p class="small muted">Strongest section: <b style="color:var(--ink)">${esc(r.strongest.title)}</b> (${fmtPct(r.strongest.pct)}%). Weakest section: <b style="color:var(--ink)">${esc(r.weakest.title)}</b> (${fmtPct(r.weakest.pct)}%). ${r.findings_count} findings raised, ${r.immediate_count} requiring immediate action.${r.na_count ? ` ${r.na_count} question(s) marked not applicable.` : ""}</p>` : ""}
+	     ${r.gating_note ? `<div class="notice warn">${esc(r.gating_note)}</div>` : ""}
+	     <div class="scale"><div class="bands">${r.scale.map((b) => `<i style="width:${b.width}%;background:${esc(b.color)}" title="${esc(b.level)}"></i>`).join("")}</div>
+	      <span class="mk" style="left:calc(${Math.min(100, r.overall)}% - 1px)"></span>
+	      <div class="lbl">${r.scale.map((b) => `<span style="left:${b.from}%">${b.from}</span>`).join("")}<span style="left:100%">100</span></div></div>
+	    </div></div></section>
+
+	  <section class="rp-sec"><h2><span class="k">02</span>Results by section</h2>
+	   <div class="bars">${r.sections.map((s) => `<div class="bar"><span>${esc(s.title)}</span><div class="tr"><i style="width:${Math.max(1, s.pct)}%;background:${esc(s.color)}"></i></div><span class="num">${fmtPct(s.pct)}%</span></div>`).join("")}</div>
+	   <div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>#</th><th>Section</th><th>Points</th><th>Score</th><th>Maturity</th></tr></thead><tbody>
+	   ${r.sections.map((s, i) => `<tr><td class="num">${i + 1}</td><td>${esc(s.title)}</td><td class="num">${s.points} / ${s.max_points}</td><td class="num">${fmtPct(s.pct)}%</td><td>${pill(s.level)}</td></tr>`).join("")}
+	   <tr><td></td><td><b>Overall</b></td><td class="num"><b>${r.points} / ${r.max_points}</b></td><td class="num"><b>${fmtPct(r.overall)}%</b></td><td>${pill(r.level)}</td></tr></tbody></table></div></section>
+
+	  <section class="rp-sec"><h2><span class="k">03</span>Key findings</h2>
+	   ${r.findings.length ? `<div class="tablewrap"><table><thead><tr><th>Q#</th><th>Area</th><th>Current practice</th><th>Priority</th></tr></thead><tbody>
+	   ${r.findings.map((f) => `<tr><td>${esc(f.code)}</td><td><b>${esc(f.label)}</b><div class="small muted">${esc(f.section_title)}</div></td><td>${esc(f.answer)} · ${esc(f.answer_level)}<div class="small muted">${esc(f.statement)}</div></td><td style="color:${prio[f.priority]};font-weight:600">${esc(f.priority)}</td></tr>`).join("")}
+	   </tbody></table></div>` : `<p class="muted">No findings: every question was answered at level C or above.</p>`}</section>
+
+	  <section class="rp-sec"><h2><span class="k">04</span>Improvement roadmap</h2>
+	   ${r.actions.length ? `<div class="tablewrap"><table><thead><tr><th>Q#</th><th>Area</th><th>Target practice (next level)</th><th>Owner</th><th>Timeframe</th></tr></thead><tbody>
+	   ${r.actions.map((a) => `<tr><td>${esc(a.code)}</td><td><b>${esc(a.label)}</b><div class="small muted">${esc(a.answer)} → ${esc(a.target)} (${esc(a.target_level)})</div></td><td>${esc(a.next_statement)}</td><td>${esc(a.owner)}</td><td><span style="color:${prio[a.priority]};font-weight:600">${esc(a.priority)}</span><div class="small muted">${esc(a.timeframe)}</div></td></tr>`).join("")}
+	   </tbody></table></div>` : `<p class="muted">No improvement actions required.</p>`}</section>
+
+	  <section class="rp-sec"><h2><span class="k">05</span>Detailed responses</h2>
+	   <details><summary class="small muted" style="cursor:pointer">Show all ${r.answers.length} answers</summary>
+	   <div class="tablewrap" style="margin-top:10px"><table><thead><tr><th>Q#</th><th>Question</th><th>Answer</th><th>Points</th></tr></thead><tbody>
+	   ${r.answers.map((a) => `<tr><td>${esc(a.code)}</td><td>${esc(a.question)}<div class="small muted">${esc(a.statement)}</div>${a.comment ? `<div class="small"><i>Comment:</i> ${esc(a.comment)}</div>` : ""}</td><td>${esc(a.answer)}${a.answer_level ? " · " + esc(a.answer_level) : ""}</td><td class="num">${a.answer === "N/A" ? "–" : a.points}</td></tr>`).join("")}
+	   </tbody></table></div></details></section>
+	  ${r.reviewer_comments ? `<section class="rp-sec"><h2><span class="k">06</span>Reviewer comments</h2><p>${esc(r.reviewer_comments)}</p></section>` : ""}
+	 </article></div>`;
+	qs("#home").onclick = () => renderHome();
+	qs("#print").onclick = () => window.print();
+	window.scrollTo(0, 0);
+}
+
+boot();
+})();
+</script>
+{% endraw %}
+{% endblock %}

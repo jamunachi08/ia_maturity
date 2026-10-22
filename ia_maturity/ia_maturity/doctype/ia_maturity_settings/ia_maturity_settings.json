@@ -1,0 +1,198 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Settings",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 10:00:00.000000",
+ "modified": "2026-10-22 10:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "sb_scoring",
+  "points_a",
+  "points_b",
+  "cb_points",
+  "points_c",
+  "points_d",
+  "sb_rules",
+  "default_template",
+  "create_actions_for",
+  "cb_rules",
+  "evidence_required_from",
+  "allow_new_entity",
+  "sb_bands",
+  "bands",
+  "sb_portal",
+  "notify_email",
+  "notify_respondent",
+  "attach_pdf",
+  "cb_portal",
+  "auto_assign_respondent_role",
+  "allowed_domains"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_scoring",
+   "fieldtype": "Section Break",
+   "label": "Scoring"
+  },
+  {
+   "fieldname": "points_a",
+   "fieldtype": "Float",
+   "label": "Points for A (Ad hoc)",
+   "default": "25"
+  },
+  {
+   "fieldname": "points_b",
+   "fieldtype": "Float",
+   "label": "Points for B (Foundational)",
+   "default": "50"
+  },
+  {
+   "fieldname": "cb_points",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "points_c",
+   "fieldtype": "Float",
+   "label": "Points for C (Established)",
+   "default": "75"
+  },
+  {
+   "fieldname": "points_d",
+   "fieldtype": "Float",
+   "label": "Points for D (Leading) – maximum",
+   "default": "100"
+  },
+  {
+   "fieldname": "sb_rules",
+   "fieldtype": "Section Break",
+   "label": "Assessment Rules"
+  },
+  {
+   "fieldname": "default_template",
+   "fieldtype": "Link",
+   "label": "Default Template",
+   "options": "IA Maturity Template"
+  },
+  {
+   "fieldname": "create_actions_for",
+   "fieldtype": "Select",
+   "label": "Create Improvement Actions For",
+   "options": "A and B\nA, B and C",
+   "default": "A and B"
+  },
+  {
+   "fieldname": "cb_rules",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evidence_required_from",
+   "fieldtype": "Select",
+   "label": "Require Evidence For Answers At",
+   "options": "\nC and D\nD only",
+   "default": "",
+   "description": "Blank = evidence optional. Otherwise the respondent must attach a file or write a comment."
+  },
+  {
+   "fieldname": "allow_new_entity",
+   "fieldtype": "Check",
+   "label": "Respondents Can Register a New Entity",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_bands",
+   "fieldtype": "Section Break",
+   "label": "Maturity Bands"
+  },
+  {
+   "fieldname": "bands",
+   "fieldtype": "Table",
+   "label": "Bands",
+   "options": "IA Maturity Band"
+  },
+  {
+   "fieldname": "sb_portal",
+   "fieldtype": "Section Break",
+   "label": "Portal & Notifications"
+  },
+  {
+   "fieldname": "notify_email",
+   "fieldtype": "Data",
+   "label": "Notify on Submission",
+   "options": "Email",
+   "description": "Administrator mailbox that receives every submission."
+  },
+  {
+   "fieldname": "notify_respondent",
+   "fieldtype": "Check",
+   "label": "Send Copy to Respondent",
+   "default": "1"
+  },
+  {
+   "fieldname": "attach_pdf",
+   "fieldtype": "Check",
+   "label": "Attach PDF Report",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_portal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_assign_respondent_role",
+   "fieldtype": "Check",
+   "label": "Auto-assign Respondent Role on Sign-up",
+   "default": "1",
+   "description": "New website users get the 'IA Assessment Respondent' role."
+  },
+  {
+   "fieldname": "allowed_domains",
+   "fieldtype": "Small Text",
+   "label": "Allowed Email Domains",
+   "description": "One per line, e.g. client.com. Blank = any domain."
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 1,
+ "issingle": 1
+}

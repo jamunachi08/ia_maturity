@@ -1,0 +1,8 @@
+.iam-desk{border:1px solid var(--border-color);border-radius:8px;padding:14px 16px;margin-bottom:8px}
+.iam-desk-head{display:flex;gap:16px;align-items:center;margin-bottom:10px}
+.iam-desk-big{font-size:36px;font-weight:600;line-height:1}
+.iam-desk-big small{font-size:18px}
+.iam-desk-table{width:100%;font-size:13px}
+.iam-desk-table td{padding:4px 6px;vertical-align:middle}
+.iam-desk-track{height:10px;background:var(--gray-100);border-radius:3px;overflow:hidden}
+.iam-desk-bar{height:100%;border-radius:3px}
