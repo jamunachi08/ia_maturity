@@ -1,0 +1,93 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Template Section",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 17:00:00.000000",
+ "modified": "2026-10-22 17:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "section_code",
+  "section_title",
+  "weight",
+  "owner_role",
+  "reference",
+  "sb_ar",
+  "section_title_ar",
+  "owner_role_ar",
+  "reference_ar"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_code",
+   "fieldtype": "Data",
+   "label": "Section Code",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section Title",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Used only when the template's weighting method is 'Section Weights'."
+  },
+  {
+   "fieldname": "owner_role",
+   "fieldtype": "Data",
+   "label": "Default Action Owner",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Small Text",
+   "label": "Framework Reference",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "sb_ar",
+   "fieldtype": "Section Break",
+   "label": "Arabic"
+  },
+  {
+   "fieldname": "section_title_ar",
+   "fieldtype": "Data",
+   "label": "Section Title (Arabic)"
+  },
+  {
+   "fieldname": "owner_role_ar",
+   "fieldtype": "Data",
+   "label": "Default Action Owner (Arabic)"
+  },
+  {
+   "fieldname": "reference_ar",
+   "fieldtype": "Small Text",
+   "label": "Framework Reference (Arabic)"
+  }
+ ],
+ "permissions": [],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}
