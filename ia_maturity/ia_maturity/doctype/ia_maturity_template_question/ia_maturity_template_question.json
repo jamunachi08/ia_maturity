@@ -1,0 +1,157 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Template Question",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 10:00:00.000000",
+ "modified": "2026-10-22 10:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "question_code",
+  "section_code",
+  "short_label",
+  "question_text",
+  "guidance",
+  "sb_options",
+  "option_a",
+  "option_b",
+  "cb_options",
+  "option_c",
+  "option_d",
+  "sb_rules",
+  "allow_na",
+  "source_ref",
+  "cb_rules",
+  "is_gating",
+  "gate_trigger",
+  "gate_cap_level"
+ ],
+ "fields": [
+  {
+   "fieldname": "question_code",
+   "fieldtype": "Data",
+   "label": "Question Code",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "section_code",
+   "fieldtype": "Data",
+   "label": "Section Code",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "short_label",
+   "fieldtype": "Data",
+   "label": "Short Label",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "question_text",
+   "fieldtype": "Small Text",
+   "label": "Question",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "guidance",
+   "fieldtype": "Small Text",
+   "label": "Guidance for Respondent"
+  },
+  {
+   "fieldname": "sb_options",
+   "fieldtype": "Section Break",
+   "label": "Answer Options"
+  },
+  {
+   "fieldname": "option_a",
+   "fieldtype": "Small Text",
+   "label": "A – Ad hoc",
+   "reqd": 1
+  },
+  {
+   "fieldname": "option_b",
+   "fieldtype": "Small Text",
+   "label": "B – Foundational",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_options",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "option_c",
+   "fieldtype": "Small Text",
+   "label": "C – Established",
+   "reqd": 1
+  },
+  {
+   "fieldname": "option_d",
+   "fieldtype": "Small Text",
+   "label": "D – Leading",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_rules",
+   "fieldtype": "Section Break",
+   "label": "Rules"
+  },
+  {
+   "fieldname": "allow_na",
+   "fieldtype": "Check",
+   "label": "Allow 'Not Applicable'",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "N/A answers are excluded from the denominator."
+  },
+  {
+   "fieldname": "source_ref",
+   "fieldtype": "Data",
+   "label": "Original Question Ref"
+  },
+  {
+   "fieldname": "cb_rules",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_gating",
+   "fieldtype": "Check",
+   "label": "Gating Question",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "A weak answer caps the overall maturity level, whatever the score."
+  },
+  {
+   "fieldname": "gate_trigger",
+   "fieldtype": "Select",
+   "label": "Gate Triggers On",
+   "options": "A\nA or B",
+   "default": "A",
+   "depends_on": "is_gating"
+  },
+  {
+   "fieldname": "gate_cap_level",
+   "fieldtype": "Data",
+   "label": "Cap Overall Level At",
+   "depends_on": "is_gating",
+   "description": "Must match a level name in IA Maturity Settings > Maturity Bands, e.g. Low."
+  }
+ ],
+ "permissions": [],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}
