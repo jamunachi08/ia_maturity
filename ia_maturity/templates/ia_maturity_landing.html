@@ -1,0 +1,450 @@
+<style>
+@font-face{font-family:"IAM Arabic";font-weight:400;font-display:swap;src:url(/assets/ia_maturity/fonts/NotoSansArabic-Regular.ttf) format("truetype")}
+@font-face{font-family:"IAM Arabic";font-weight:700;font-display:swap;src:url(/assets/ia_maturity/fonts/NotoSansArabic-Bold.ttf) format("truetype")}
+.iaml{--ink:{{ brand.ink }};--blue:{{ brand.primary }};--blue-d:{{ brand.primary_dark }};--soft:{{ brand.primary_soft }};--muted:#5A6562;--line:#DCE3E8;--bg:#F4F6F8;
+ --crit:#B42318;--low:#BF530B;--med:#9A6F00;--high:#2D7A33;--lead:#1C5CA3;
+ color:var(--ink);font-size:16px;line-height:1.6;margin:0 auto 0;max-width:1180px}
+.iaml *{box-sizing:border-box}
+.iaml[dir=rtl]{font-family:"IAM Arabic",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.8}
+.iaml h1,.iaml h2,.iaml h3{margin:0;color:inherit;font-weight:700;text-wrap:balance}
+.iaml p{margin:0}
+.iaml a{color:var(--blue)}
+.iaml .wrap{padding:0 20px}
+/* hero */
+.iaml .hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 85% -10%,rgba(18,80,110,.55),transparent 60%),linear-gradient(160deg,#141414 0%,#1d2a33 55%,#12384d 100%);color:#fff;border-radius:22px;margin:16px 0 0;padding:28px 32px 40px}
+.iaml .hero::after{content:"";position:absolute;inset-inline-end:-80px;bottom:-120px;width:520px;height:520px;background:url({{ brand_assets.mark_white }}) no-repeat center/contain;opacity:.05;pointer-events:none}
+.iaml .topbar{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:38px}
+.iaml .lock{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.iaml .lock img.m{height:34px}.iaml .lock img.w{height:15px}
+.iaml .lock .by{font-size:12px;color:rgba(255,255,255,.65);border-inline-start:1px solid rgba(255,255,255,.25);padding-inline-start:12px}
+.iaml .langbtn{font:inherit;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;cursor:pointer}
+.iaml .langbtn:hover{background:rgba(255,255,255,.16)}
+.iaml .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+.iaml .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9FD0E6;background:rgba(18,80,110,.35);border:1px solid rgba(159,208,230,.3);padding:5px 12px;border-radius:999px}
+.iaml[dir=rtl] .kicker{letter-spacing:0;text-transform:none}
+.iaml .hero h1{font-size:clamp(30px,4.2vw,48px);line-height:1.1;letter-spacing:-.02em;margin:18px 0 16px}
+.iaml[dir=rtl] .hero h1{letter-spacing:0;line-height:1.35}
+.iaml .hero .lead{font-size:18px;color:rgba(255,255,255,.82);max-width:56ch}
+.iaml .facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.iaml .facts li{display:flex;align-items:center;gap:8px;font-size:14px;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:8px 12px}
+.iaml .facts b{font-size:18px}
+.iaml .trustline{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:13px;color:rgba(255,255,255,.72)}
+.iaml .trustline span{display:inline-flex;align-items:center;gap:7px}
+.iaml .trustline svg{flex:none}
+/* form card */
+.iaml .card{background:#fff;color:var(--ink);border-radius:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.04);padding:26px}
+.iaml .tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:20px}
+.iaml .tabs button{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;border-radius:9px;padding:9px 10px;color:var(--muted);cursor:pointer}
+.iaml .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.iaml .card h2{font-size:21px;margin-bottom:4px}
+.iaml .card .sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+.iaml .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.iaml .full{grid-column:1/-1}
+.iaml label.f{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600;margin:0;color:var(--ink)}
+.iaml label.f .opt{font-weight:400;color:var(--muted)}
+.iaml input[type=text],.iaml input[type=email],.iaml input[type=date],.iaml select{font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;height:auto;transition:border-color .15s,box-shadow .15s}
+.iaml input:focus,.iaml select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(18,80,110,.15)}
+.iaml input[aria-invalid=true]{border-color:var(--crit)}
+.iaml .seg{display:inline-flex;background:var(--bg);border-radius:10px;padding:3px}
+.iaml .seg label{margin:0;cursor:pointer}.iaml .seg input{position:absolute;opacity:0}
+.iaml .seg span{display:block;font-size:14px;font-weight:600;padding:7px 14px;border-radius:8px;color:var(--muted)}
+.iaml .seg input:checked+span{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.iaml .consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5;margin:4px 0 0;font-weight:400}
+.iaml .consent input{margin-top:3px;width:16px;height:16px;accent-color:var(--blue);flex:none}
+.iaml .btn{font:inherit;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-radius:12px;padding:13px 18px;background:var(--blue);color:#fff;cursor:pointer;transition:background .15s,transform .05s}
+.iaml .btn:hover{background:var(--blue-d)}.iaml .btn:active{transform:translateY(1px)}
+.iaml .btn:disabled{opacity:.55;cursor:not-allowed}
+.iaml .link{font:inherit;font-size:13.5px;font-weight:600;background:none;border:0;color:var(--blue);cursor:pointer;padding:0}
+.iaml .link:disabled{color:var(--muted);cursor:default}
+.iaml .alert{border-radius:10px;padding:10px 12px;font-size:13.5px;margin-top:12px;background:#FDECEA;color:var(--crit);border:1px solid #F5C2BD}
+.iaml .alert.ok{background:var(--soft);color:var(--blue-d);border-color:#BFD8E4}
+.iaml .codebox{display:flex;justify-content:center;margin:18px 0 12px}
+.iaml .codebox input{font:inherit;font-size:30px;font-weight:700;letter-spacing:.45em;text-align:center;width:100%;max-width:300px;padding:12px 10px 12px calc(10px + .45em);border:1.5px solid var(--line);border-radius:12px;direction:ltr;font-variant-numeric:tabular-nums}
+.iaml .sentto{font-size:14px;color:var(--muted)}.iaml .sentto b{color:var(--ink);direction:ltr;unicode-bidi:isolate}
+.iaml .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.iaml .small{font-size:12.5px;color:var(--muted)}
+.iaml .spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.5);border-top-color:#fff;border-radius:50%;animation:iamlspin .7s linear infinite}
+@keyframes iamlspin{to{transform:rotate(360deg)}}
+/* sections */
+.iaml section.band{padding:64px 0 0}
+.iaml .eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.iaml[dir=rtl] .eyebrow{letter-spacing:0;text-transform:none}
+.iaml .band h2{font-size:clamp(24px,3vw,32px);margin:8px 0 10px;line-height:1.2}
+.iaml .band .intro{color:var(--muted);max-width:64ch;margin-bottom:26px}
+.iaml .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.iaml .feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.iaml .feat .ic{width:44px;height:44px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--blue)}
+.iaml .feat h3{font-size:18px;margin-bottom:6px}
+.iaml .feat p{font-size:14.5px;color:var(--muted)}
+.iaml .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:st}
+.iaml .step{position:relative;padding:22px;border-radius:16px;background:linear-gradient(180deg,#fff,#F7FAFB);border:1px solid var(--line)}
+.iaml .step .n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:12px}
+.iaml .step h3{font-size:17px;margin-bottom:4px}.iaml .step p{font-size:14.5px;color:var(--muted)}
+.iaml .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.iaml .area{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.iaml .area .code{flex:none;font-weight:700;font-size:13px;color:var(--blue);background:var(--soft);border-radius:8px;padding:4px 8px}
+.iaml .area b{display:block;font-size:15px;line-height:1.35}.iaml .area span.q{font-size:13px;color:var(--muted)}
+.iaml .scale{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.iaml .lvl{border-radius:14px;padding:16px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--c)}
+.iaml .lvl .l{font-size:12px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.08em}
+.iaml[dir=rtl] .lvl .l{letter-spacing:0}
+.iaml .lvl b{display:block;font-size:17px;margin:2px 0}.iaml .lvl p{font-size:13.5px;color:var(--muted)}
+.iaml .cta{margin:64px 0 0;border-radius:22px;padding:34px;background:linear-gradient(120deg,var(--blue) 0%,var(--blue-d) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.iaml .cta h2{font-size:26px}.iaml .cta p{color:rgba(255,255,255,.85)}
+.iaml .cta .btn{width:auto;background:#fff;color:var(--blue-d)}
+.iaml .cta .btn:hover{background:#EAF2F6}
+.iaml details.faq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.iaml details.faq summary{font-weight:600;cursor:pointer;list-style:none}
+.iaml details.faq summary::-webkit-details-marker{display:none}
+.iaml details.faq summary::after{content:"+";float:inline-end;color:var(--blue);font-weight:700}
+.iaml details.faq[open] summary::after{content:"–"}
+.iaml details.faq p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.iaml .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:56px 0 30px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.iaml .foot img{height:30px;vertical-align:middle;margin-inline-end:10px}
+.iaml [hidden]{display:none!important}
+@media (max-width:960px){.iaml .hero-grid{grid-template-columns:1fr}.iaml .cards3,.iaml .steps,.iaml .areas{grid-template-columns:1fr 1fr}.iaml .scale{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.iaml .hero{padding:20px 16px 26px;border-radius:0;margin:0 -15px}.iaml .grid2,.iaml .cards3,.iaml .steps,.iaml .areas{grid-template-columns:1fr}.iaml .lock .by{display:none}.iaml .card{padding:20px}.iaml .cta{padding:24px}}
+@media (prefers-reduced-motion:reduce){.iaml *{transition:none!important;animation:none!important}}
+</style>
+
+<div class="iaml" id="iaml" dir="ltr" lang="en">
+ <div class="hero">
+  <div class="topbar">
+   <a class="lock" href="/ia-assessment" aria-label="{{ brand.product }}">
+    <img class="m" src="{{ brand_assets.mark_white }}" alt=""><img class="w" src="{{ brand_assets.wordmark_white }}" alt="{{ brand.product }}">
+    <span class="by" data-t="by">by {{ brand.company }}</span>
+   </a>
+   <button type="button" class="langbtn" id="iaml-lang" lang="ar">العربية</button>
+  </div>
+  <div class="hero-grid">
+   <div>
+    <span class="kicker" data-t="kicker">Internal Audit Maturity Assessment</span>
+    <h1 id="iaml-h1">How mature is your Internal Audit function?</h1>
+    <p class="lead" data-t="lead">Benchmark your function against the IIA Global Internal Audit Standards and Saudi regulatory expectations. Answer 20 questions and receive your maturity score, section results and an anonymous peer comparison.</p>
+    <ul class="facts">
+     <li><b id="iaml-qcount">20</b><span data-t="f_questions">questions</span></li>
+     <li><b id="iaml-scount">6</b><span data-t="f_areas">areas</span></li>
+     <li><b>~20</b><span data-t="f_minutes">minutes</span></li>
+     <li><span data-t="f_std">IIA GIAS · CMA · SAMA · NCA</span></li>
+    </ul>
+    <div class="trustline">
+     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span data-t="t_conf">Confidential</span></span>
+     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span data-t="t_pdpl">PDPL-aligned</span></span>
+     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg><span data-t="t_lang">English &amp; Arabic</span></span>
+     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span data-t="t_save">Progress saved automatically</span></span>
+    </div>
+   </div>
+
+   <div class="card" id="iaml-card">
+    <div class="tabs" role="tablist">
+     <button type="button" role="tab" aria-selected="true" id="tab-start" data-t="tab_start">Start new assessment</button>
+     <button type="button" role="tab" aria-selected="false" id="tab-resume" data-t="tab_resume">Continue / view results</button>
+    </div>
+
+    <!-- step 1: details -->
+    <form id="f-start" novalidate>
+     <h2 data-t="start_h">Before you start</h2>
+     <p class="sub" data-t="start_sub">Tell us who you are. We'll e-mail you a 6-digit code to verify your work address and open your assessment.</p>
+     <div class="grid2">
+      <label class="f full"><span><span data-t="l_email">Work e-mail</span> *</span><input type="email" name="email" autocomplete="email" required placeholder="name@company.com" dir="ltr"></label>
+      <label class="f"><span><span data-t="l_name">Full name</span> *</span><input type="text" name="full_name" autocomplete="name" maxlength="140" required></label>
+      <label class="f"><span><span data-t="l_title">Job title</span> <span class="opt" data-t="optional">(optional)</span></span><input type="text" name="job_title" autocomplete="organization-title" maxlength="140" data-ph="ph_title" placeholder="e.g. Chief Audit Executive"></label>
+      <label class="f full"><span><span data-t="l_entity">Organisation being assessed</span> *</span><input type="text" name="entity_name" autocomplete="organization" maxlength="140" required data-ph="ph_entity" placeholder="Legal name of the entity"></label>
+      <label class="f"><span data-t="l_role">Your perspective</span><select name="respondent_role" id="iaml-roles"></select></label>
+      <label class="f"><span data-t="l_date">Assessment date</span><input type="date" name="assessment_date"></label>
+      <div class="f full"><span class="small" data-t="l_lang">Report language</span>
+       <div class="seg" role="radiogroup" style="margin-top:5px">
+        <label><input type="radio" name="language" value="en" checked><span>English</span></label>
+        <label><input type="radio" name="language" value="ar"><span>العربية</span></label>
+       </div>
+      </div>
+      <label class="consent full"><input type="checkbox" name="consent" value="1" required><span id="iaml-privacy"></span></label>
+     </div>
+     <div id="err-start" class="alert" role="alert" hidden></div>
+     <div style="margin-top:16px"><button type="submit" class="btn" id="b-start"><span data-t="b_send">Send my verification code</span></button></div>
+     <p class="small" style="margin-top:10px;text-align:center"><span data-t="staff_q">IRSAA staff?</span> <a href="/login?redirect-to=/ia-assessment" data-t="staff_a">Sign in here</a></p>
+    </form>
+
+    <!-- resume -->
+    <form id="f-resume" novalidate hidden>
+     <h2 data-t="resume_h">Welcome back</h2>
+     <p class="sub" data-t="resume_sub">Enter the work e-mail you used. We'll send you a code to continue your assessment or view your results.</p>
+     <label class="f"><span><span data-t="l_email">Work e-mail</span> *</span><input type="email" name="email" autocomplete="email" required placeholder="name@company.com" dir="ltr"></label>
+     <div id="err-resume" class="alert" role="alert" hidden></div>
+     <div style="margin-top:16px"><button type="submit" class="btn" id="b-resume"><span data-t="b_send">Send my verification code</span></button></div>
+    </form>
+
+    <!-- step 2: code -->
+    <form id="f-code" novalidate hidden>
+     <h2 data-t="code_h">Check your inbox</h2>
+     <p class="sentto"><span data-t="code_sent">We sent a 6-digit code to</span> <b id="iaml-sentto"></b></p>
+     <div class="codebox"><input type="text" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-label="Verification code" placeholder="••••••"></div>
+     <p class="small" style="text-align:center" id="iaml-validity"></p>
+     <div id="err-code" class="alert" role="alert" hidden></div>
+     <div style="margin-top:14px"><button type="submit" class="btn" id="b-code"><span data-t="b_verify">Verify and continue</span></button></div>
+     <div class="row"><button type="button" class="link" id="b-change" data-t="b_change">Use a different e-mail</button><button type="button" class="link" id="b-resend"></button></div>
+    </form>
+    {% if link_invalid %}<div class="alert" id="iaml-linkerr" data-t="link_invalid">This link has expired or was already used. Enter your e-mail to receive a new code.</div>{% endif %}
+   </div>
+  </div>
+ </div>
+
+ <div class="wrap">
+  <section class="band">
+   <p class="eyebrow" data-t="get_eyebrow">What you get</p>
+   <h2 data-t="get_h">A clear, evidence-based view of your function</h2>
+   <p class="intro" data-t="get_intro">Your results report is available as soon as you submit, on screen and as a PDF.</p>
+   <div class="cards3">
+    <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12 19 5"/><circle cx="12" cy="12" r="2"/></svg></div><h3 data-t="g1_h">Overall maturity score</h3><p data-t="g1_p">A score out of 100% and a maturity level – from Critical to Leading – with what it means for your function.</p></div>
+    <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3 data-t="g2_h">Results by area</h3><p data-t="g2_p">See your strongest and weakest areas across governance, planning, execution, reporting, resources and technology.</p></div>
+    <div class="feat"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 20c0-2.5 1.5-4.5 4-4.5s3 1.5 3 4.5"/></svg></div><h3 data-t="g3_h">Anonymous peer benchmark</h3><p data-t="g3_p">How you compare with other organisations – median and middle range – without any organisation ever being named.</p></div>
+   </div>
+  </section>
+
+  <section class="band">
+   <p class="eyebrow" data-t="how_eyebrow">How it works</p>
+   <h2 data-t="how_h">Three steps, about twenty minutes</h2>
+   <div class="steps">
+    <div class="step"><div class="n">1</div><h3 data-t="s1_h">Enter your details</h3><p data-t="s1_p">Your name, organisation and work e-mail. We send a one-time code – no password needed.</p></div>
+    <div class="step"><div class="n">2</div><h3 data-t="s2_h">Answer 20 questions</h3><p data-t="s2_p">Pick the statement that best describes current practice. Add evidence if you wish. Your answers save as you go.</p></div>
+    <div class="step"><div class="n">3</div><h3 data-t="s3_h">Get your report</h3><p data-t="s3_p">Submit to see your maturity score, section results and peer benchmark – and download the PDF.</p></div>
+   </div>
+  </section>
+
+  <section class="band">
+   <p class="eyebrow" data-t="areas_eyebrow">What we assess</p>
+   <h2 data-t="areas_h">Six areas of the Internal Audit function</h2>
+   <div class="areas" id="iaml-areas"></div>
+  </section>
+
+  <section class="band">
+   <p class="eyebrow" data-t="scale_eyebrow">How answers are scored</p>
+   <h2 data-t="scale_h">Four levels of practice</h2>
+   <p class="intro" data-t="scale_intro">For every question, choose the highest level that is fully in place today.</p>
+   <div class="scale">
+    <div class="lvl" style="--c:var(--crit)"><span class="l" data-t="lvA_l">Level A</span><b data-t="lvA_h">Ad hoc</b><p data-t="lvA_p">Informal, undocumented and reactive.</p></div>
+    <div class="lvl" style="--c:var(--low)"><span class="l" data-t="lvB_l">Level B</span><b data-t="lvB_h">Foundational</b><p data-t="lvB_p">Practices exist but are applied inconsistently.</p></div>
+    <div class="lvl" style="--c:var(--high)"><span class="l" data-t="lvC_l">Level C</span><b data-t="lvC_h">Established</b><p data-t="lvC_p">Well defined and applied consistently.</p></div>
+    <div class="lvl" style="--c:var(--lead)"><span class="l" data-t="lvD_l">Level D</span><b data-t="lvD_h">Leading</b><p data-t="lvD_p">Advanced, benchmarked and independently validated.</p></div>
+   </div>
+  </section>
+
+  <section class="band">
+   <p class="eyebrow" data-t="faq_eyebrow">Questions</p>
+   <h2 data-t="faq_h">Frequently asked</h2>
+   <details class="faq"><summary data-t="q1">Who should complete the assessment?</summary><p data-t="a1">Usually the Chief Audit Executive. Audit Committee members and executives can also respond – each gets their own assessment, so perspectives can be compared.</p></details>
+   <details class="faq"><summary data-t="q2">Can I stop and come back later?</summary><p data-t="a2">Yes. Answers are saved as you go. Use “Continue / view results” with the same work e-mail to pick up where you left off.</p></details>
+   <details class="faq"><summary data-t="q3">Who sees our answers?</summary><p data-t="a3">Your answers are confidential to you and IRSAA Business Solutions. Other organisations only ever see anonymous, aggregated benchmarks.</p></details>
+   <details class="faq"><summary data-t="q4">Why do you need my work e-mail?</summary><p data-t="a4">To confirm you represent the organisation being assessed and to keep your results private to you. We send a one-time code – there is no password to remember.</p></details>
+  </section>
+
+  <div class="cta">
+   <div><h2 data-t="cta_h">Ready to see where you stand?</h2><p data-t="cta_p">It takes about twenty minutes.</p></div>
+   <button type="button" class="btn" id="b-cta" data-t="cta_b">Start the assessment</button>
+  </div>
+
+  <div class="foot">
+   <div><img src="{{ brand_assets.company_logo }}" alt="{{ brand.company }}"><span>{{ brand.product_title }} · <span data-t="product_of">a product of</span> {{ brand.company }}</span></div>
+   <div><span data-t="support">Support</span>: <a href="mailto:{{ brand.support_email }}">{{ brand.support_email }}</a></div>
+  </div>
+ </div>
+</div>
+
+<script>window.IAML = {{ landing_json }}; window.IAM_CSRF = "{{ csrf_token }}";</script>
+{% raw %}
+<script>
+(function () {
+"use strict";
+const D = window.IAML, root = document.getElementById("iaml");
+const TX = {
+ en: {
+  by: "by IRSAA Business Solutions", kicker: "Internal Audit Maturity Assessment", h1: "How mature is your Internal Audit function?",
+  lead: "Benchmark your function against the IIA Global Internal Audit Standards and Saudi regulatory expectations. Answer 20 questions and receive your maturity score, section results and an anonymous peer comparison.",
+  f_questions: "questions", f_areas: "areas", f_minutes: "minutes", f_std: "IIA GIAS · CMA · SAMA · NCA",
+  t_conf: "Confidential", t_pdpl: "PDPL-aligned", t_lang: "English & Arabic", t_save: "Progress saved automatically",
+  tab_start: "Start new assessment", tab_resume: "Continue / view results",
+  start_h: "Before you start", start_sub: "Tell us who you are. We'll e-mail you a 6-digit code to verify your work address and open your assessment.",
+  l_email: "Work e-mail", l_name: "Full name", l_title: "Job title", optional: "(optional)", l_entity: "Organisation being assessed",
+  l_role: "Your perspective", l_date: "Assessment date", l_lang: "Report language", ph_title: "e.g. Chief Audit Executive", ph_entity: "Legal name of the entity",
+  select: "Select…", b_send: "Send my verification code", sending: "Sending…", staff_q: "IRSAA staff?", staff_a: "Sign in here",
+  resume_h: "Welcome back", resume_sub: "Enter the work e-mail you used. We'll send you a code to continue your assessment or view your results.",
+  code_h: "Check your inbox", code_sent: "We sent a 6-digit code to", validity: "The code is valid for {0} minutes. Check your spam folder if it hasn't arrived.",
+  b_verify: "Verify and continue", verifying: "Verifying…", b_change: "Use a different e-mail", b_resend: "Resend code", resend_in: "Resend in {0}s", resent: "A new code is on its way.",
+  link_invalid: "This link has expired or was already used. Enter your e-mail to receive a new code.",
+  v_email: "Enter a valid work e-mail address.", v_req: "Please complete the required fields.", v_consent: "Please accept the privacy notice to continue.", v_code: "Enter the 6-digit code from the e-mail.",
+  consent_pre: "I agree to the privacy notice: ", generic: "Something went wrong. Please try again.",
+  get_eyebrow: "What you get", get_h: "A clear, evidence-based view of your function", get_intro: "Your results report is available as soon as you submit, on screen and as a PDF.",
+  g1_h: "Overall maturity score", g1_p: "A score out of 100% and a maturity level – from Critical to Leading – with what it means for your function.",
+  g2_h: "Results by area", g2_p: "See your strongest and weakest areas across governance, planning, execution, reporting, resources and technology.",
+  g3_h: "Anonymous peer benchmark", g3_p: "How you compare with other organisations – median and middle range – without any organisation ever being named.",
+  how_eyebrow: "How it works", how_h: "Three steps, about twenty minutes",
+  s1_h: "Enter your details", s1_p: "Your name, organisation and work e-mail. We send a one-time code – no password needed.",
+  s2_h: "Answer 20 questions", s2_p: "Pick the statement that best describes current practice. Add evidence if you wish. Your answers save as you go.",
+  s3_h: "Get your report", s3_p: "Submit to see your maturity score, section results and peer benchmark – and download the PDF.",
+  areas_eyebrow: "What we assess", areas_h: "Six areas of the Internal Audit function", qn: "{0} questions",
+  scale_eyebrow: "How answers are scored", scale_h: "Four levels of practice", scale_intro: "For every question, choose the highest level that is fully in place today.",
+  lvA_l: "Level A", lvA_h: "Ad hoc", lvA_p: "Informal, undocumented and reactive.", lvB_l: "Level B", lvB_h: "Foundational", lvB_p: "Practices exist but are applied inconsistently.",
+  lvC_l: "Level C", lvC_h: "Established", lvC_p: "Well defined and applied consistently.", lvD_l: "Level D", lvD_h: "Leading", lvD_p: "Advanced, benchmarked and independently validated.",
+  faq_eyebrow: "Questions", faq_h: "Frequently asked",
+  q1: "Who should complete the assessment?", a1: "Usually the Chief Audit Executive. Audit Committee members and executives can also respond – each gets their own assessment, so perspectives can be compared.",
+  q2: "Can I stop and come back later?", a2: "Yes. Answers are saved as you go. Use “Continue / view results” with the same work e-mail to pick up where you left off.",
+  q3: "Who sees our answers?", a3: "Your answers are confidential to you and IRSAA Business Solutions. Other organisations only ever see anonymous, aggregated benchmarks.",
+  q4: "Why do you need my work e-mail?", a4: "To confirm you represent the organisation being assessed and to keep your results private to you. We send a one-time code – there is no password to remember.",
+  cta_h: "Ready to see where you stand?", cta_p: "It takes about twenty minutes.", cta_b: "Start the assessment",
+  product_of: "a product of", support: "Support", switch_to: "العربية",
+  disabled: "Online sign-up is currently not available. Please contact IRSAA.",
+  roles: {},
+ },
+ ar: {
+  by: "من IRSAA Business Solutions", kicker: "تقييم نضج التدقيق الداخلي", h1: "ما مدى نضج وظيفة التدقيق الداخلي لديكم؟",
+  lead: "قارنوا وظيفتكم بمعايير التدقيق الداخلي العالمية الصادرة عن معهد المدققين الداخليين (IIA) وبمتطلبات الجهات التنظيمية في المملكة. أجيبوا عن 20 سؤالاً واحصلوا على نتيجة النضج ونتائج الأقسام ومقارنة غير معرِّفة مع النظراء.",
+  f_questions: "سؤالاً", f_areas: "مجالات", f_minutes: "دقيقة", f_std: "IIA GIAS · هيئة السوق المالية · ساما · الهيئة الوطنية للأمن السيبراني",
+  t_conf: "سري", t_pdpl: "متوافق مع نظام حماية البيانات الشخصية", t_lang: "بالعربية والإنجليزية", t_save: "حفظ تلقائي للتقدم",
+  tab_start: "بدء تقييم جديد", tab_resume: "متابعة / عرض النتائج",
+  start_h: "قبل أن تبدأ", start_sub: "عرّفنا بنفسك، وسنرسل إلى بريد عملك رمزاً من 6 أرقام للتحقق وفتح التقييم.",
+  l_email: "بريد العمل الإلكتروني", l_name: "الاسم الكامل", l_title: "المسمى الوظيفي", optional: "(اختياري)", l_entity: "الجهة محل التقييم",
+  l_role: "صفتك", l_date: "تاريخ التقييم", l_lang: "لغة التقرير", ph_title: "مثال: الرئيس التنفيذي للتدقيق", ph_entity: "الاسم النظامي للجهة",
+  select: "اختر…", b_send: "أرسل رمز التحقق", sending: "جارٍ الإرسال…", staff_q: "من موظفي IRSAA؟", staff_a: "سجّل الدخول من هنا",
+  resume_h: "مرحباً بعودتك", resume_sub: "أدخل بريد العمل الذي استخدمته، وسنرسل إليك رمزاً لمتابعة التقييم أو عرض النتائج.",
+  code_h: "تحقّق من بريدك", code_sent: "أرسلنا رمزاً من 6 أرقام إلى", validity: "الرمز صالح لمدة {0} دقيقة. تحقّق من مجلد الرسائل غير المرغوب فيها إذا لم يصل.",
+  b_verify: "تحقّق ومتابعة", verifying: "جارٍ التحقق…", b_change: "استخدام بريد آخر", b_resend: "إعادة إرسال الرمز", resend_in: "إعادة الإرسال بعد {0} ث", resent: "تم إرسال رمز جديد.",
+  link_invalid: "انتهت صلاحية هذا الرابط أو سبق استخدامه. أدخل بريدك لاستلام رمز جديد.",
+  v_email: "أدخل بريد عمل إلكترونياً صحيحاً.", v_req: "يُرجى تعبئة الحقول المطلوبة.", v_consent: "يُرجى الموافقة على إشعار الخصوصية للمتابعة.", v_code: "أدخل الرمز المكوّن من 6 أرقام الوارد في البريد.",
+  consent_pre: "أوافق على إشعار الخصوصية: ", generic: "حدث خطأ ما. يُرجى المحاولة مرة أخرى.",
+  get_eyebrow: "ماذا ستحصل عليه", get_h: "رؤية واضحة ومبنية على الأدلة لوظيفتكم", get_intro: "يتوفر تقرير النتائج فور التقديم، على الشاشة وبصيغة PDF.",
+  g1_h: "نتيجة النضج العامة", g1_p: "نتيجة من 100% ومستوى نضج – من «حرج» إلى «رائد» – مع دلالته بالنسبة لوظيفتكم.",
+  g2_h: "النتائج حسب المجال", g2_p: "تعرّفوا على أقوى المجالات وأضعفها في الحوكمة والتخطيط والتنفيذ والتقارير والموارد والتقنية.",
+  g3_h: "مقارنة غير معرِّفة مع النظراء", g3_p: "موقعكم مقارنة بالجهات الأخرى – الوسيط والنطاق الأوسط – دون الإفصاح عن اسم أي جهة.",
+  how_eyebrow: "آلية العمل", how_h: "ثلاث خطوات في نحو عشرين دقيقة",
+  s1_h: "أدخل بياناتك", s1_p: "الاسم والجهة وبريد العمل. نرسل رمزاً لمرة واحدة – دون الحاجة إلى كلمة مرور.",
+  s2_h: "أجب عن 20 سؤالاً", s2_p: "اختر العبارة التي تصف الممارسة الحالية، وأضف الأدلة إن رغبت. تُحفظ إجاباتك تلقائياً.",
+  s3_h: "احصل على تقريرك", s3_p: "قدّم التقييم لعرض نتيجة النضج ونتائج الأقسام والمقارنة مع النظراء، ونزّل التقرير بصيغة PDF.",
+  areas_eyebrow: "ما الذي نقيّمه", areas_h: "ستة مجالات لوظيفة التدقيق الداخلي", qn: "{0} أسئلة",
+  scale_eyebrow: "كيف تُقيَّم الإجابات", scale_h: "أربعة مستويات للممارسة", scale_intro: "اختر لكل سؤال أعلى مستوى مطبّق بالكامل حالياً.",
+  lvA_l: "المستوى أ", lvA_h: "ارتجالي", lvA_p: "غير رسمي وغير موثق وتفاعلي.", lvB_l: "المستوى ب", lvB_h: "تأسيسي", lvB_p: "الممارسات قائمة لكنها تُطبَّق بشكل غير متسق.",
+  lvC_l: "المستوى ج", lvC_h: "راسخ", lvC_p: "ممارسات محددة بوضوح وتُطبَّق باتساق.", lvD_l: "المستوى د", lvD_h: "رائد", lvD_p: "ممارسات متقدمة ومقارنة ومُتحقَّق منها بشكل مستقل.",
+  faq_eyebrow: "أسئلة", faq_h: "الأسئلة الشائعة",
+  q1: "من الذي ينبغي أن يُكمل التقييم؟", a1: "عادةً الرئيس التنفيذي للتدقيق. ويمكن لأعضاء لجنة المراجعة والتنفيذيين المشاركة أيضاً – ولكلٍّ منهم تقييمه الخاص لمقارنة وجهات النظر.",
+  q2: "هل يمكنني التوقف والعودة لاحقاً؟", a2: "نعم، تُحفظ الإجابات تلقائياً. استخدم «متابعة / عرض النتائج» ببريد العمل نفسه للمتابعة من حيث توقفت.",
+  q3: "من يطّلع على إجاباتنا؟", a3: "إجاباتكم سرية بينكم وبين IRSAA Business Solutions، ولا تطّلع الجهات الأخرى إلا على مقارنات مجمّعة وغير معرِّفة.",
+  q4: "لماذا تحتاجون إلى بريد العمل؟", a4: "للتأكد من أنك تمثّل الجهة محل التقييم وللحفاظ على خصوصية نتائجك. نرسل رمزاً لمرة واحدة دون كلمة مرور.",
+  cta_h: "هل أنتم مستعدون لمعرفة موقعكم؟", cta_p: "يستغرق التقييم نحو عشرين دقيقة.", cta_b: "ابدأ التقييم",
+  product_of: "أحد منتجات", support: "الدعم", switch_to: "English", disabled: "التسجيل الإلكتروني غير متاح حالياً. يُرجى التواصل مع IRSAA.",
+  roles: { "Chief Audit Executive": "الرئيس التنفيذي للتدقيق", "Audit Committee Member": "عضو لجنة المراجعة", "Board Member": "عضو مجلس الإدارة",
+   "Executive Management": "الإدارة التنفيذية", "Internal Audit Staff": "موظفو التدقيق الداخلي", "Second Line (Risk / Compliance)": "الخط الثاني (المخاطر / الالتزام)",
+   "External Consultant": "مستشار خارجي", "Other": "أخرى" },
+ },
+};
+let lang = "en";
+try { lang = localStorage.getItem("iam-lang") || ((navigator.language || "").toLowerCase().startsWith("ar") ? "ar" : "en"); } catch (e) { /* no storage */ }
+const T = (k) => (TX[lang][k] !== undefined ? TX[lang][k] : TX.en[k]);
+const fmt = (s, ...a) => String(s).replace(/\{(\d)\}/g, (_, i) => a[+i]);
+const $ = (s) => root.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const state = { email: "", purpose: "Start", payload: null, cooldown: 0, timer: null };
+
+function render() {
+	root.setAttribute("dir", lang === "ar" ? "rtl" : "ltr"); root.setAttribute("lang", lang);
+	root.querySelectorAll("[data-t]").forEach((el) => (el.textContent = T(el.dataset.t)));
+	root.querySelectorAll("[data-ph]").forEach((el) => (el.placeholder = T(el.dataset.ph)));
+	$("#iaml-h1").textContent = (lang === "ar" ? D.headline_ar : D.headline) || T("h1");
+	$("#iaml-lang").textContent = T("switch_to"); $("#iaml-lang").setAttribute("lang", lang === "ar" ? "en" : "ar");
+	$("#iaml-qcount").textContent = D.question_count || 20; $("#iaml-scount").textContent = D.sections.length || 6;
+	const sel = $("#iaml-roles"), cur = sel.value;
+	sel.innerHTML = `<option value="">${esc(T("select"))}</option>` + D.roles.map((r) => `<option value="${esc(r)}">${esc((lang === "ar" && TX.ar.roles[r]) || r)}</option>`).join("");
+	sel.value = cur;
+	$("#iaml-privacy").textContent = T("consent_pre") + ((lang === "ar" ? D.privacy_ar : D.privacy) || D.privacy);
+	$("#iaml-areas").innerHTML = D.sections.map((s) => `<div class="area"><span class="code">${esc(s.code)}</span><div><b>${esc(lang === "ar" && s.title_ar ? s.title_ar : s.title)}</b><span class="q">${esc(fmt(T("qn"), s.count))}</span></div></div>`).join("");
+	$("#iaml-validity").textContent = fmt(T("validity"), D.code_minutes);
+	const radio = root.querySelector(`#f-start input[name=language][value=${lang}]`); if (radio && !state.langTouched) radio.checked = true;
+	updateResend();
+}
+
+$("#iaml-lang").onclick = () => { lang = lang === "ar" ? "en" : "ar"; try { localStorage.setItem("iam-lang", lang); } catch (e) { /* ignore */ } render(); };
+root.querySelectorAll("#f-start input[name=language]").forEach((r) => (r.onchange = () => (state.langTouched = true)));
+const today = new Date(); $("#f-start input[name=assessment_date]").value = today.toISOString().slice(0, 10);
+
+function tab(which) {
+	$("#tab-start").setAttribute("aria-selected", which === "start"); $("#tab-resume").setAttribute("aria-selected", which === "resume");
+	$("#f-start").hidden = which !== "start"; $("#f-resume").hidden = which !== "resume"; $("#f-code").hidden = true;
+	document.querySelector(".iaml .tabs").hidden = false;
+}
+$("#tab-start").onclick = () => tab("start");
+$("#tab-resume").onclick = () => tab("resume");
+$("#b-cta").onclick = () => { tab("start"); $("#iaml-card").scrollIntoView({ behavior: "smooth", block: "center" }); setTimeout(() => $("#f-start input[name=email]").focus(), 400); };
+
+function showErr(id, msg) { const el = $(id); el.textContent = msg || ""; el.hidden = !msg; el.classList.remove("ok"); }
+function showOk(id, msg) { const el = $(id); el.textContent = msg; el.hidden = false; el.classList.add("ok"); }
+function busy(btn, on, label) { btn.disabled = on; btn.innerHTML = on ? `<span class="spin"></span><span>${esc(T(label))}</span>` : `<span>${esc(T(btn.dataset.idle))}</span>`; }
+
+async function post(method, args) {
+	const body = new URLSearchParams(args);
+	const r = await fetch("/api/method/" + method, { method: "POST", headers: { Accept: "application/json", "X-Frappe-CSRF-Token": window.IAM_CSRF }, body, credentials: "same-origin" });
+	const j = await r.json().catch(() => ({}));
+	if (!r.ok) {
+		let msg = T("generic");
+		try { if (j._server_messages) { const m = JSON.parse(JSON.parse(j._server_messages)[0]); const div = document.createElement("div"); div.innerHTML = m.message || m; msg = div.textContent; } } catch (e) { /* keep generic */ }
+		throw new Error(msg);
+	}
+	return j.message;
+}
+const validEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+
+async function sendCode(form, errId, btn) {
+	const fd = new FormData(form);
+	const email = String(fd.get("email") || "").trim();
+	form.querySelectorAll("input").forEach((i) => i.removeAttribute("aria-invalid"));
+	if (!validEmail(email)) { form.querySelector("input[name=email]").setAttribute("aria-invalid", "true"); return showErr(errId, T("v_email")); }
+	const args = { email, language: lang, purpose: state.purpose };
+	if (state.purpose === "Start") {
+		for (const n of ["full_name", "entity_name"]) if (!String(fd.get(n) || "").trim()) { form.querySelector(`[name=${n}]`).setAttribute("aria-invalid", "true"); return showErr(errId, T("v_req")); }
+		if (!fd.get("consent")) return showErr(errId, T("v_consent"));
+		Object.assign(args, { full_name: fd.get("full_name"), job_title: fd.get("job_title") || "", entity_name: fd.get("entity_name"), respondent_role: fd.get("respondent_role") || "", assessment_date: fd.get("assessment_date") || "", language: fd.get("language") || lang, consent: 1 });
+	}
+	showErr(errId, "");
+	btn.dataset.idle = "b_send"; busy(btn, true, "sending");
+	try {
+		await post("ia_maturity.registration.request_code", args);
+		state.email = email; state.payload = args;
+		$("#iaml-sentto").textContent = email;
+		$("#f-start").hidden = true; $("#f-resume").hidden = true; $("#f-code").hidden = false;
+		document.querySelector(".iaml .tabs").hidden = true;
+		const li = document.getElementById("iaml-linkerr"); if (li) li.hidden = true;
+		showErr("#err-code", ""); startCooldown(); setTimeout(() => $("#f-code input[name=code]").focus(), 50);
+	} catch (e) { showErr(errId, e.message); }
+	busy(btn, false);
+}
+$("#f-start").onsubmit = (e) => { e.preventDefault(); state.purpose = "Start"; sendCode(e.target, "#err-start", $("#b-start")); };
+$("#f-resume").onsubmit = (e) => { e.preventDefault(); state.purpose = "Resume"; sendCode(e.target, "#err-resume", $("#b-resume")); };
+
+const codeInput = $("#f-code input[name=code]");
+codeInput.addEventListener("input", () => { codeInput.value = codeInput.value.replace(/\D/g, "").slice(0, 6); if (codeInput.value.length === 6) $("#f-code").requestSubmit(); });
+$("#f-code").onsubmit = async (e) => {
+	e.preventDefault();
+	const code = codeInput.value.trim(), btn = $("#b-code");
+	if (!/^\d{6}$/.test(code)) return showErr("#err-code", T("v_code"));
+	btn.dataset.idle = "b_verify"; busy(btn, true, "verifying"); showErr("#err-code", "");
+	try {
+		const res = await post("ia_maturity.registration.verify_code", { email: state.email, code, language: lang });
+		window.location.href = res.redirect || "/ia-assessment";
+		return;
+	} catch (err) { showErr("#err-code", err.message); codeInput.select(); }
+	busy(btn, false);
+};
+$("#b-change").onclick = () => { tab(state.purpose === "Resume" ? "resume" : "start"); };
+function startCooldown() { state.cooldown = 30; clearInterval(state.timer); state.timer = setInterval(() => { state.cooldown -= 1; if (state.cooldown <= 0) clearInterval(state.timer); updateResend(); }, 1000); updateResend(); }
+function updateResend() { const b = $("#b-resend"); if (!b) return; b.disabled = state.cooldown > 0; b.textContent = state.cooldown > 0 ? fmt(T("resend_in"), state.cooldown) : T("b_resend"); }
+$("#b-resend").onclick = async () => {
+	if (state.cooldown > 0 || !state.payload) return;
+	try { await post("ia_maturity.registration.request_code", state.payload); showOk("#err-code", T("resent")); startCooldown(); } catch (e) { showErr("#err-code", e.message); }
+};
+["#b-start", "#b-resume"].forEach((id) => ($(id).dataset.idle = "b_send"));
+// clear a stale error as soon as the user starts correcting the form
+[["#f-start", "#err-start"], ["#f-resume", "#err-resume"], ["#f-code", "#err-code"]].forEach(([f, e]) =>
+	$(f).addEventListener("input", (ev) => { if (!$(e).classList.contains("ok")) showErr(e, ""); ev.target.removeAttribute("aria-invalid"); }));
+$("#b-code").dataset.idle = "b_verify";
+if (!D.enabled) { $("#f-start").innerHTML = `<div class="alert" data-t="disabled">${esc(T("disabled"))}</div>`; }
+render();
+})();
+</script>
+{% endraw %}

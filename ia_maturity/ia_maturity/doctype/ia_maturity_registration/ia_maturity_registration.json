@@ -1,0 +1,214 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Registration",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "email",
+  "full_name",
+  "job_title",
+  "respondent_role",
+  "cb1",
+  "entity_name",
+  "assessment_date",
+  "language",
+  "purpose",
+  "status",
+  "sb_result",
+  "user",
+  "assessment",
+  "cb2",
+  "verified_on",
+  "consent",
+  "sb_security",
+  "code_hash",
+  "link_key_hash",
+  "expires_on",
+  "attempts",
+  "cb3",
+  "ip_address"
+ ],
+ "fields": [
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Work E-mail",
+   "options": "Email",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "respondent_role",
+   "fieldtype": "Data",
+   "label": "Perspective"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "entity_name",
+   "fieldtype": "Data",
+   "label": "Entity",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "assessment_date",
+   "fieldtype": "Date",
+   "label": "Assessment Date"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "en\nar",
+   "default": "en"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Start\nResume",
+   "default": "Start"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nVerified\nExpired\nBlocked",
+   "default": "Pending",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_result",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment",
+   "fieldtype": "Link",
+   "label": "Assessment",
+   "options": "IA Maturity Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verified_on",
+   "fieldtype": "Datetime",
+   "label": "Verified On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "consent",
+   "fieldtype": "Check",
+   "label": "Accepted Privacy Notice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_security",
+   "fieldtype": "Section Break",
+   "label": "Security",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "code_hash",
+   "fieldtype": "Data",
+   "label": "Code Hash",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "link_key_hash",
+   "fieldtype": "Data",
+   "label": "Link Key Hash",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "expires_on",
+   "fieldtype": "Datetime",
+   "label": "Expires On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attempts",
+   "fieldtype": "Int",
+   "label": "Failed Attempts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "read": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 0,
+ "autoname": "hash",
+ "title_field": "email"
+}

@@ -1,0 +1,289 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Assessment Answer",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "section_code",
+  "question_code",
+  "question_text",
+  "selected_option",
+  "points",
+  "comment",
+  "evidence",
+  "selected_description",
+  "sb_snapshot",
+  "section_title",
+  "short_label",
+  "guidance",
+  "option_a",
+  "option_b",
+  "cb_snapshot",
+  "option_c",
+  "option_d",
+  "allow_na",
+  "is_gating",
+  "gate_trigger",
+  "gate_cap_level",
+  "sb_auto",
+  "auto_source",
+  "auto_calculated",
+  "cb_auto",
+  "auto_note",
+  "auto_note_ar",
+  "sb_snapshot_ar",
+  "section_title_ar",
+  "short_label_ar",
+  "question_text_ar",
+  "guidance_ar",
+  "option_a_ar",
+  "option_b_ar",
+  "cb_snapshot_ar",
+  "option_c_ar",
+  "option_d_ar"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_code",
+   "fieldtype": "Data",
+   "label": "Section",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "question_code",
+   "fieldtype": "Data",
+   "label": "Q#",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "question_text",
+   "fieldtype": "Small Text",
+   "label": "Question",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "selected_option",
+   "fieldtype": "Select",
+   "label": "Answer",
+   "options": "\nA\nB\nC\nD\nN/A",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Float",
+   "label": "Points",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Evidence / Comment",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Evidence File"
+  },
+  {
+   "fieldname": "selected_description",
+   "fieldtype": "Small Text",
+   "label": "Selected Statement",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_snapshot",
+   "fieldtype": "Section Break",
+   "label": "Question Snapshot",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "short_label",
+   "fieldtype": "Data",
+   "label": "Short Label",
+   "read_only": 1
+  },
+  {
+   "fieldname": "guidance",
+   "fieldtype": "Small Text",
+   "label": "Guidance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_a",
+   "fieldtype": "Small Text",
+   "label": "A – Ad hoc",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_b",
+   "fieldtype": "Small Text",
+   "label": "B – Foundational",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_snapshot",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "option_c",
+   "fieldtype": "Small Text",
+   "label": "C – Established",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_d",
+   "fieldtype": "Small Text",
+   "label": "D – Leading",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allow_na",
+   "fieldtype": "Check",
+   "label": "Allow N/A",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_gating",
+   "fieldtype": "Check",
+   "label": "Gating Question",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gate_trigger",
+   "fieldtype": "Data",
+   "label": "Gate Trigger",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gate_cap_level",
+   "fieldtype": "Data",
+   "label": "Gate Cap Level",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_auto",
+   "fieldtype": "Section Break",
+   "label": "Auto-calculation",
+   "collapsible": 1,
+   "depends_on": "auto_source"
+  },
+  {
+   "fieldname": "auto_source",
+   "fieldtype": "Data",
+   "label": "Auto-calculate From",
+   "read_only": 1
+  },
+  {
+   "fieldname": "auto_calculated",
+   "fieldtype": "Check",
+   "label": "Answer Calculated Automatically",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_auto",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_note",
+   "fieldtype": "Small Text",
+   "label": "Calculation Basis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "auto_note_ar",
+   "fieldtype": "Small Text",
+   "label": "Calculation Basis (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_snapshot_ar",
+   "fieldtype": "Section Break",
+   "label": "Arabic Snapshot",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "section_title_ar",
+   "fieldtype": "Data",
+   "label": "Section Title (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "short_label_ar",
+   "fieldtype": "Data",
+   "label": "Short Label (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "question_text_ar",
+   "fieldtype": "Small Text",
+   "label": "Question (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "guidance_ar",
+   "fieldtype": "Small Text",
+   "label": "Guidance (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_a_ar",
+   "fieldtype": "Small Text",
+   "label": "A (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_b_ar",
+   "fieldtype": "Small Text",
+   "label": "B (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_snapshot_ar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "option_c_ar",
+   "fieldtype": "Small Text",
+   "label": "C (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "option_d_ar",
+   "fieldtype": "Small Text",
+   "label": "D (Arabic)",
+   "read_only": 1
+  }
+ ],
+ "permissions": [],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

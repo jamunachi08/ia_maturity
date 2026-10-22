@@ -1,0 +1,412 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Assessment",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "naming_series",
+  "entity",
+  "template",
+  "assessment_date",
+  "fiscal_year",
+  "cb_head",
+  "respondent",
+  "respondent_name",
+  "respondent_email",
+  "job_title",
+  "respondent_role",
+  "language",
+  "sb_results",
+  "overall_score",
+  "maturity_level",
+  "score_level",
+  "overall_points",
+  "max_points",
+  "cb_results",
+  "answered_count",
+  "question_count",
+  "na_count",
+  "findings_count",
+  "immediate_count",
+  "sb_results2",
+  "interpretation",
+  "gating_note",
+  "interpretation_ar",
+  "gating_note_ar",
+  "results_html",
+  "sb_answers",
+  "answers",
+  "sb_sections",
+  "section_scores",
+  "sb_review",
+  "review_status",
+  "reviewer",
+  "cb_review",
+  "reviewed_on",
+  "reviewer_comments",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "IAMA-.YYYY.-.#####",
+   "default": "IAMA-.YYYY.-.#####",
+   "hidden": 1
+  },
+  {
+   "fieldname": "entity",
+   "fieldtype": "Link",
+   "label": "Entity Assessed",
+   "options": "IA Maturity Entity",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Questionnaire Template",
+   "options": "IA Maturity Template",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assessment_date",
+   "fieldtype": "Date",
+   "label": "Assessment Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year"
+  },
+  {
+   "fieldname": "cb_head",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "respondent",
+   "fieldtype": "Link",
+   "label": "Respondent",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "respondent_name",
+   "fieldtype": "Data",
+   "label": "Respondent Name"
+  },
+  {
+   "fieldname": "respondent_email",
+   "fieldtype": "Data",
+   "label": "Respondent Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "respondent_role",
+   "fieldtype": "Select",
+   "label": "Respondent Perspective",
+   "options": "\nChief Audit Executive\nAudit Committee Member\nBoard Member\nExecutive Management\nInternal Audit Staff\nSecond Line (Risk / Compliance)\nExternal Consultant\nOther",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Report Language",
+   "options": "en\nar",
+   "default": "en",
+   "description": "en = English, ar = Arabic (right-to-left)."
+  },
+  {
+   "fieldname": "sb_results",
+   "fieldtype": "Section Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "overall_score",
+   "fieldtype": "Percent",
+   "label": "Overall Score",
+   "read_only": 1,
+   "in_list_view": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "maturity_level",
+   "fieldtype": "Data",
+   "label": "Maturity Level",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "score_level",
+   "fieldtype": "Data",
+   "label": "Level by Score (before gating)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overall_points",
+   "fieldtype": "Float",
+   "label": "Points",
+   "read_only": 1
+  },
+  {
+   "fieldname": "max_points",
+   "fieldtype": "Float",
+   "label": "Max Points",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_results",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "answered_count",
+   "fieldtype": "Int",
+   "label": "Answered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "question_count",
+   "fieldtype": "Int",
+   "label": "Questions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "na_count",
+   "fieldtype": "Int",
+   "label": "Not Applicable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "findings_count",
+   "fieldtype": "Int",
+   "label": "Findings (A/B answers)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "immediate_count",
+   "fieldtype": "Int",
+   "label": "Immediate (A answers)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_results2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "interpretation",
+   "fieldtype": "Small Text",
+   "label": "Interpretation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gating_note",
+   "fieldtype": "Small Text",
+   "label": "Gating Note",
+   "read_only": 1,
+   "depends_on": "gating_note"
+  },
+  {
+   "fieldname": "interpretation_ar",
+   "fieldtype": "Small Text",
+   "label": "Interpretation (Arabic)",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "gating_note_ar",
+   "fieldtype": "Small Text",
+   "label": "Gating Note (Arabic)",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "results_html",
+   "fieldtype": "HTML",
+   "label": "Results Chart"
+  },
+  {
+   "fieldname": "sb_answers",
+   "fieldtype": "Section Break",
+   "label": "Answers"
+  },
+  {
+   "fieldname": "answers",
+   "fieldtype": "Table",
+   "label": "Answers",
+   "options": "IA Maturity Assessment Answer"
+  },
+  {
+   "fieldname": "sb_sections",
+   "fieldtype": "Section Break",
+   "label": "Section Scores",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "section_scores",
+   "fieldtype": "Table",
+   "label": "Section Scores",
+   "options": "IA Maturity Section Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_review",
+   "fieldtype": "Section Break",
+   "label": "Review",
+   "depends_on": "eval:doc.docstatus==1"
+  },
+  {
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "label": "Review Status",
+   "options": "\nPending Review\nReviewed\nApproved\nReturned",
+   "allow_on_submit": 1,
+   "permlevel": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "Reviewer",
+   "options": "User",
+   "allow_on_submit": 1,
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_review",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Datetime",
+   "label": "Reviewed On",
+   "allow_on_submit": 1,
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewer_comments",
+   "fieldtype": "Small Text",
+   "label": "Reviewer Comments",
+   "allow_on_submit": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "IA Maturity Assessment",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Assessment Respondent",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "print": 1,
+   "email": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "IA Assessment Respondent",
+   "permlevel": 1,
+   "read": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "entity",
+ "show_title_field_in_link": 0,
+ "default_print_format": "IA Maturity Internal Report"
+}

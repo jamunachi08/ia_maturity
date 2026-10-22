@@ -1,0 +1,231 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Action",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "naming_series",
+  "finding_title",
+  "assessment",
+  "entity",
+  "question_code",
+  "section_title",
+  "cb1",
+  "priority",
+  "timeframe",
+  "status",
+  "action_owner",
+  "assigned_to",
+  "due_date",
+  "completed_on",
+  "sb_detail",
+  "current_level",
+  "current_state",
+  "cb2",
+  "target_level",
+  "recommended_action",
+  "sb_close",
+  "completion_notes",
+  "evidence"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "IAMA-ACT-.YYYY.-.#####",
+   "default": "IAMA-ACT-.YYYY.-.#####",
+   "hidden": 1
+  },
+  {
+   "fieldname": "finding_title",
+   "fieldtype": "Data",
+   "label": "Finding",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assessment",
+   "fieldtype": "Link",
+   "label": "Assessment",
+   "options": "IA Maturity Assessment",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "entity",
+   "fieldtype": "Link",
+   "label": "Entity",
+   "options": "IA Maturity Entity",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "question_code",
+   "fieldtype": "Data",
+   "label": "Question"
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Immediate\nHigh\nMedium",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "timeframe",
+   "fieldtype": "Data",
+   "label": "Target Timeframe"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nIn Progress\nCompleted\nCancelled",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "action_owner",
+   "fieldtype": "Data",
+   "label": "Owner (Role)"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Date",
+   "label": "Completed On",
+   "depends_on": "eval:doc.status=='Completed'"
+  },
+  {
+   "fieldname": "sb_detail",
+   "fieldtype": "Section Break",
+   "label": "Gap and Action"
+  },
+  {
+   "fieldname": "current_level",
+   "fieldtype": "Data",
+   "label": "Current Level",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_state",
+   "fieldtype": "Small Text",
+   "label": "Current Practice (selected statement)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_level",
+   "fieldtype": "Data",
+   "label": "Target Level",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommended_action",
+   "fieldtype": "Small Text",
+   "label": "Recommended Action (next-level practice)"
+  },
+  {
+   "fieldname": "sb_close",
+   "fieldtype": "Section Break",
+   "label": "Closure"
+  },
+  {
+   "fieldname": "completion_notes",
+   "fieldtype": "Small Text",
+   "label": "Completion Notes"
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Closure Evidence"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "IA Assessment Respondent",
+   "permlevel": 0,
+   "read": 1,
+   "report": 1,
+   "print": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "finding_title"
+}

@@ -1,0 +1,168 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Template",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "template_name",
+  "version",
+  "is_active",
+  "cb_head",
+  "framework",
+  "weighting_method",
+  "sb_intro",
+  "introduction",
+  "answer_rule",
+  "introduction_ar",
+  "answer_rule_ar",
+  "sb_sections",
+  "sections",
+  "sb_questions",
+  "questions"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version",
+   "default": "1.0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_head",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "framework",
+   "fieldtype": "Data",
+   "label": "Framework",
+   "default": "IIA Global Internal Audit Standards"
+  },
+  {
+   "fieldname": "weighting_method",
+   "fieldtype": "Select",
+   "label": "Weighting Method",
+   "options": "Points (each question equal)\nSection Weights",
+   "default": "Points (each question equal)"
+  },
+  {
+   "fieldname": "sb_intro",
+   "fieldtype": "Section Break",
+   "label": "Respondent Instructions"
+  },
+  {
+   "fieldname": "introduction",
+   "fieldtype": "Small Text",
+   "label": "Introduction"
+  },
+  {
+   "fieldname": "answer_rule",
+   "fieldtype": "Small Text",
+   "label": "Answering Rule",
+   "default": "Select the highest level whose statement is fully met today. If a level is only partly met, select the level below it. Describe current practice, not planned practice."
+  },
+  {
+   "fieldname": "introduction_ar",
+   "fieldtype": "Small Text",
+   "label": "Introduction (Arabic)"
+  },
+  {
+   "fieldname": "answer_rule_ar",
+   "fieldtype": "Small Text",
+   "label": "Answering Rule (Arabic)"
+  },
+  {
+   "fieldname": "sb_sections",
+   "fieldtype": "Section Break",
+   "label": "Sections"
+  },
+  {
+   "fieldname": "sections",
+   "fieldtype": "Table",
+   "label": "Sections",
+   "options": "IA Maturity Template Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_questions",
+   "fieldtype": "Section Break",
+   "label": "Questions"
+  },
+  {
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "IA Maturity Template Question",
+   "reqd": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1,
+   "print": 1
+  },
+  {
+   "role": "IA Assessment Respondent",
+   "permlevel": 0,
+   "read": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 1,
+ "autoname": "field:template_name",
+ "naming_rule": "By fieldname",
+ "title_field": "template_name",
+ "show_title_field_in_link": 0
+}

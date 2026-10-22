@@ -1,0 +1,464 @@
+{
+ "doctype": "DocType",
+ "name": "IA Maturity Settings",
+ "module": "IA Maturity",
+ "custom": 0,
+ "creation": "2026-10-22 20:30:00.000000",
+ "modified": "2026-10-22 20:30:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "sb_scoring",
+  "points_a",
+  "points_b",
+  "cb_points",
+  "points_c",
+  "points_d",
+  "sb_rules",
+  "default_template",
+  "create_actions_for",
+  "cb_rules",
+  "evidence_required_from",
+  "allow_new_entity",
+  "sb_bands",
+  "bands",
+  "sb_portal",
+  "notify_email",
+  "notify_respondent",
+  "attach_pdf",
+  "cb_portal",
+  "auto_assign_respondent_role",
+  "allowed_domains",
+  "sb_issues",
+  "issue_doctype",
+  "issue_entity_field",
+  "issue_opened_field",
+  "issue_closed_field",
+  "cb_issues",
+  "issue_lookback_months",
+  "issue_min_sample",
+  "lock_auto_answers",
+  "sb_issue_thresholds",
+  "closure_a_above",
+  "closure_b_above",
+  "cb_thr",
+  "closure_c_above",
+  "sb_bench",
+  "enable_benchmarking",
+  "cb_bench",
+  "benchmark_min_peers",
+  "benchmark_peer_group",
+  "sb_client_report",
+  "client_show_summary",
+  "client_show_sections",
+  "show_benchmark_to_respondents",
+  "client_show_findings",
+  "cb_client_report",
+  "client_show_roadmap",
+  "client_show_responses",
+  "client_show_reviewer_comments",
+  "client_show_scoring_method",
+  "sb_landing",
+  "enable_landing_signup",
+  "block_free_email_domains",
+  "free_email_domains",
+  "cb_landing",
+  "verification_code_minutes",
+  "landing_headline",
+  "landing_headline_ar",
+  "privacy_notice",
+  "privacy_notice_ar"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_scoring",
+   "fieldtype": "Section Break",
+   "label": "Scoring"
+  },
+  {
+   "fieldname": "points_a",
+   "fieldtype": "Float",
+   "label": "Points for A (Ad hoc)",
+   "default": "25"
+  },
+  {
+   "fieldname": "points_b",
+   "fieldtype": "Float",
+   "label": "Points for B (Foundational)",
+   "default": "50"
+  },
+  {
+   "fieldname": "cb_points",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "points_c",
+   "fieldtype": "Float",
+   "label": "Points for C (Established)",
+   "default": "75"
+  },
+  {
+   "fieldname": "points_d",
+   "fieldtype": "Float",
+   "label": "Points for D (Leading) – maximum",
+   "default": "100"
+  },
+  {
+   "fieldname": "sb_rules",
+   "fieldtype": "Section Break",
+   "label": "Assessment Rules"
+  },
+  {
+   "fieldname": "default_template",
+   "fieldtype": "Link",
+   "label": "Default Template",
+   "options": "IA Maturity Template"
+  },
+  {
+   "fieldname": "create_actions_for",
+   "fieldtype": "Select",
+   "label": "Create Improvement Actions For",
+   "options": "A and B\nA, B and C",
+   "default": "A and B"
+  },
+  {
+   "fieldname": "cb_rules",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evidence_required_from",
+   "fieldtype": "Select",
+   "label": "Require Evidence For Answers At",
+   "options": "\nC and D\nD only",
+   "default": "",
+   "description": "Blank = evidence optional. Otherwise the respondent must attach a file or write a comment."
+  },
+  {
+   "fieldname": "allow_new_entity",
+   "fieldtype": "Check",
+   "label": "Respondents Can Register a New Entity",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_bands",
+   "fieldtype": "Section Break",
+   "label": "Maturity Bands"
+  },
+  {
+   "fieldname": "bands",
+   "fieldtype": "Table",
+   "label": "Bands",
+   "options": "IA Maturity Band"
+  },
+  {
+   "fieldname": "sb_portal",
+   "fieldtype": "Section Break",
+   "label": "Portal & Notifications"
+  },
+  {
+   "fieldname": "notify_email",
+   "fieldtype": "Data",
+   "label": "Notify on Submission",
+   "options": "Email",
+   "description": "Administrator mailbox that receives every submission."
+  },
+  {
+   "fieldname": "notify_respondent",
+   "fieldtype": "Check",
+   "label": "Send Copy to Respondent",
+   "default": "1"
+  },
+  {
+   "fieldname": "attach_pdf",
+   "fieldtype": "Check",
+   "label": "Attach PDF Report",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_portal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_assign_respondent_role",
+   "fieldtype": "Check",
+   "label": "Auto-assign Respondent Role on Sign-up",
+   "default": "1",
+   "description": "New website users get the 'IA Assessment Respondent' role."
+  },
+  {
+   "fieldname": "allowed_domains",
+   "fieldtype": "Small Text",
+   "label": "Allowed Email Domains",
+   "description": "One per line, e.g. client.com. Blank = any domain."
+  },
+  {
+   "fieldname": "sb_issues",
+   "fieldtype": "Section Break",
+   "label": "Issue Register (auto-calculated questions)",
+   "description": "Questions whose 'Auto-calculate From' is 'Issue Closure Time' (Q13 in the seed) are answered from this register: the average number of months between raising and closing issues for the entity."
+  },
+  {
+   "fieldname": "issue_doctype",
+   "fieldtype": "Link",
+   "label": "Issue Register DocType",
+   "options": "DocType",
+   "default": "IA Audit Issue"
+  },
+  {
+   "fieldname": "issue_entity_field",
+   "fieldtype": "Data",
+   "label": "Entity Field",
+   "default": "entity",
+   "description": "Field holding the IA Maturity Entity name."
+  },
+  {
+   "fieldname": "issue_opened_field",
+   "fieldtype": "Data",
+   "label": "Raised-on Date Field",
+   "default": "raised_on"
+  },
+  {
+   "fieldname": "issue_closed_field",
+   "fieldtype": "Data",
+   "label": "Closed-on Date Field",
+   "default": "closed_on"
+  },
+  {
+   "fieldname": "cb_issues",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issue_lookback_months",
+   "fieldtype": "Int",
+   "label": "Look Back (months)",
+   "default": "24",
+   "description": "Only issues closed in this period are counted."
+  },
+  {
+   "fieldname": "issue_min_sample",
+   "fieldtype": "Int",
+   "label": "Minimum Closed Issues",
+   "default": "5",
+   "description": "With fewer closed issues the respondent answers the question manually."
+  },
+  {
+   "fieldname": "lock_auto_answers",
+   "fieldtype": "Check",
+   "label": "Respondents Cannot Change Calculated Answers",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_issue_thresholds",
+   "fieldtype": "Section Break",
+   "label": "Closure-time Thresholds (average months)"
+  },
+  {
+   "fieldname": "closure_a_above",
+   "fieldtype": "Float",
+   "label": "A if Average Above",
+   "default": "12"
+  },
+  {
+   "fieldname": "closure_b_above",
+   "fieldtype": "Float",
+   "label": "B if Average Above",
+   "default": "9"
+  },
+  {
+   "fieldname": "cb_thr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "closure_c_above",
+   "fieldtype": "Float",
+   "label": "C if Average Above",
+   "default": "6",
+   "description": "Otherwise D."
+  },
+  {
+   "fieldname": "sb_bench",
+   "fieldtype": "Section Break",
+   "label": "Peer Benchmarking"
+  },
+  {
+   "fieldname": "enable_benchmarking",
+   "fieldtype": "Check",
+   "label": "Enable Peer Benchmarking",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_bench",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "benchmark_min_peers",
+   "fieldtype": "Int",
+   "label": "Minimum Peer Entities",
+   "default": "5",
+   "description": "Benchmarks are hidden until at least this many other entities have a submitted assessment, so no individual entity can be identified."
+  },
+  {
+   "fieldname": "benchmark_peer_group",
+   "fieldtype": "Select",
+   "label": "Peer Group",
+   "options": "All entities\nSame sector",
+   "default": "All entities"
+  },
+  {
+   "fieldname": "sb_client_report",
+   "fieldtype": "Section Break",
+   "label": "Client Report Content",
+   "description": "Choose what the client sees in the portal and in the client PDF ('IA Maturity Report'). Everything is always included in the internal report ('IA Maturity Internal Report'), which only IA Maturity staff can open."
+  },
+  {
+   "fieldname": "client_show_summary",
+   "fieldtype": "Check",
+   "label": "Executive Summary",
+   "default": "1"
+  },
+  {
+   "fieldname": "client_show_sections",
+   "fieldtype": "Check",
+   "label": "Results by Section",
+   "default": "1"
+  },
+  {
+   "fieldname": "show_benchmark_to_respondents",
+   "fieldtype": "Check",
+   "label": "Peer Benchmark",
+   "default": "1"
+  },
+  {
+   "fieldname": "client_show_findings",
+   "fieldtype": "Check",
+   "label": "Key Findings",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_client_report",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_show_roadmap",
+   "fieldtype": "Check",
+   "label": "Improvement Roadmap",
+   "default": "0"
+  },
+  {
+   "fieldname": "client_show_responses",
+   "fieldtype": "Check",
+   "label": "Detailed Responses",
+   "default": "0"
+  },
+  {
+   "fieldname": "client_show_reviewer_comments",
+   "fieldtype": "Check",
+   "label": "Reviewer Comments",
+   "default": "0"
+  },
+  {
+   "fieldname": "client_show_scoring_method",
+   "fieldtype": "Check",
+   "label": "Scoring Method",
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_landing",
+   "fieldtype": "Section Break",
+   "label": "Landing Page & Sign-up",
+   "description": "Visitors to /ia-assessment who are not signed in see the landing page. They enter their details, receive a 6-digit code by e-mail, and are signed in straight into their assessment."
+  },
+  {
+   "fieldname": "enable_landing_signup",
+   "fieldtype": "Check",
+   "label": "Allow Sign-up from the Landing Page",
+   "default": "1"
+  },
+  {
+   "fieldname": "block_free_email_domains",
+   "fieldtype": "Check",
+   "label": "Require a Work E-mail (block free e-mail providers)",
+   "default": "1"
+  },
+  {
+   "fieldname": "free_email_domains",
+   "fieldtype": "Small Text",
+   "label": "Free E-mail Providers",
+   "default": "gmail.com\nyahoo.com\nhotmail.com\noutlook.com\nlive.com\nicloud.com\naol.com\nproton.me\nprotonmail.com\nyandex.com\nmail.com\ngmx.com"
+  },
+  {
+   "fieldname": "cb_landing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verification_code_minutes",
+   "fieldtype": "Int",
+   "label": "Code Valid For (minutes)",
+   "default": "30"
+  },
+  {
+   "fieldname": "landing_headline",
+   "fieldtype": "Data",
+   "label": "Headline (optional override)"
+  },
+  {
+   "fieldname": "landing_headline_ar",
+   "fieldtype": "Data",
+   "label": "Headline in Arabic (optional override)"
+  },
+  {
+   "fieldname": "privacy_notice",
+   "fieldtype": "Small Text",
+   "label": "Privacy Notice",
+   "default": "Your details and answers are processed by IRSAA Business Solutions only to deliver this assessment and its results, in line with the Saudi Personal Data Protection Law (PDPL). Results are shared with other organisations only as anonymous, aggregated benchmarks."
+  },
+  {
+   "fieldname": "privacy_notice_ar",
+   "fieldtype": "Small Text",
+   "label": "Privacy Notice (Arabic)",
+   "default": "تُعالج بياناتك وإجاباتك من قِبل IRSAA Business Solutions لغرض تقديم هذا التقييم ونتائجه فقط، وفقاً لنظام حماية البيانات الشخصية في المملكة العربية السعودية. ولا تُشارك النتائج مع جهات أخرى إلا في صورة مقارنات مجمّعة وغير معرِّفة."
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "IA Maturity Reviewer",
+   "permlevel": 0,
+   "read": 1
+  }
+ ],
+ "states": [],
+ "links": [],
+ "actions": [],
+ "row_format": "Dynamic",
+ "track_changes": 1,
+ "issingle": 1
+}
