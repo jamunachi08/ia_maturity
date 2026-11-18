@@ -1,7 +1,7 @@
 {
   "name": "ia_maturity",
   "private": true,
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "AlphaX GRC portal and internal audit maturity assessment",
   "license": "MIT",
   "scripts": {

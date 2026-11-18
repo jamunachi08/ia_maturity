@@ -1,3 +1,16 @@
+## [3.2.1] — 2026-11-18
+
+Build fix for Frappe Cloud benches running Node 18.
+
+### Fixed
+
+- **`bench build --app ia_maturity` failed on Node 18** (Frappe Cloud v15 benches ship Node 18.16) with `The requested module 'node:util' does not provide an export named 'styleText'`. The portal used Vite 8, whose bundler needs Node 20.19 or later. The build now uses Vite 6.4 with the React plugin 4.7, which support Node 18, 20, 22 and 24. The Vite config no longer uses `import.meta.dirname` (Node 20.11+). The failure dated from 3.1.0 and was not caused by 3.2.0. The built portal is unchanged.
+
+### Changed
+
+- `grc/package.json` declares `engines.node >= 18.16`.
+- CI builds the portal exactly as bench does on Node 18.16, 20, 22 and 24.
+
 ## [3.2.0] — 2026-11-17
 
 Configuration release: colour themes, configurable assessment types, an admin screen-layout tool, role-based report access for managers and a shorter start flow.

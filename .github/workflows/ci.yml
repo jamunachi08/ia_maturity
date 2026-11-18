@@ -39,6 +39,26 @@ jobs:
           npm run lint
           npm run build
 
+  bench-node:
+    # Frappe Cloud runs `bench build` with the bench's own Node (18.16 on v15
+    # benches). Build the portal on the oldest supported Node and on the newest.
+    name: Portal build on Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["18.16.0", "20", "22", "24"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Build exactly as bench does
+        run: |
+          npm --prefix grc ci
+          npm --prefix grc run build
+          test -f ia_maturity/public/grc/index.html
+
   tests:
     name: Frappe ${{ matrix.frappe }} tests
     needs: lint
