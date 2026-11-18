@@ -1,0 +1,89 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Operations Request",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 0,
+  "field_order": [
+    "kind",
+    "entity",
+    "status",
+    "payload",
+    "workflow",
+    "step",
+    "requested_by",
+    "decision_by",
+    "decision_on",
+    "result",
+    "decisions"
+  ],
+  "fields": [
+    {
+      "fieldname": "kind",
+      "label": "Kind",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "entity",
+      "label": "Entity",
+      "fieldtype": "Link",
+      "options": "IA Maturity Entity"
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Pending\nApproved\nRejected\nCancelled"
+    },
+    {
+      "fieldname": "payload",
+      "label": "Payload",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "workflow",
+      "label": "Workflow",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "step",
+      "label": "Step",
+      "fieldtype": "Int"
+    },
+    {
+      "fieldname": "requested_by",
+      "label": "Requested By",
+      "fieldtype": "Link",
+      "options": "User"
+    },
+    {
+      "fieldname": "decision_by",
+      "label": "Decision By",
+      "fieldtype": "Link",
+      "options": "User"
+    },
+    {
+      "fieldname": "decision_on",
+      "label": "Decision On",
+      "fieldtype": "Datetime"
+    },
+    {
+      "fieldname": "result",
+      "label": "Result",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "decisions",
+      "label": "Decisions",
+      "fieldtype": "Long Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1
+    }
+  ]
+}

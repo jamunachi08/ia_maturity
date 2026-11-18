@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint and type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ruff (Python)
+        run: |
+          pip install ruff
+          ruff check ia_maturity
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: grc/package-lock.json
+
+      - name: Frontend checks
+        working-directory: grc
+        run: |
+          npm ci
+          npx prettier --check "src/**/*.{ts,tsx}"
+          npm run lint
+          npm run build
+
+  tests:
+    name: Frappe ${{ matrix.frappe }} tests
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - frappe: version-15
+            python: "3.12"
+            node: "20"
+          - frappe: version-16
+            python: "3.14"
+            node: "24"
+
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: root
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=10
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: app
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: System packages (PDF rendering)
+        run: sudo apt-get update && sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0 mariadb-client
+
+      - name: Bench
+        run: |
+          pip install frappe-bench
+          bench init --frappe-branch ${{ matrix.frappe }} --python "$(which python)" \
+            --skip-assets --skip-redis-config-generation --no-backups frappe-bench
+          cd frappe-bench
+          bench set-config -g redis_cache redis://localhost:6379
+          bench set-config -g redis_queue redis://localhost:6379
+          bench set-config -g redis_socketio redis://localhost:6379
+          bench get-app ia_maturity "$GITHUB_WORKSPACE/app" --skip-assets
+
+      - name: Site with GRC enabled
+        working-directory: frappe-bench
+        run: |
+          bench new-site test.local --db-root-username root --db-root-password root \
+            --mariadb-user-host-login-scope='%' --db-host 127.0.0.1 --admin-password admin
+          # grc_enabled must be set before the app installs: GRC setup hooks are gated on it.
+          bench --site test.local set-config -p grc_enabled 1
+          bench --site test.local set-config -p allow_tests 1
+          bench --site test.local set-config -p mute_emails 1
+          bench --site test.local install-app ia_maturity
+          bench --site test.local execute ia_maturity.grc.health.check
+
+      - name: Run tests
+        working-directory: frappe-bench
+        run: bench --site test.local run-tests --app ia_maturity

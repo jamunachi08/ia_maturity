@@ -1,0 +1,133 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Screen Layout",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "field:layout_name",
+ "fields": [
+  {
+   "fieldname": "layout_name",
+   "label": "Layout Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "screen",
+   "label": "Screen",
+   "fieldtype": "Select",
+   "options": "Company profile",
+   "default": "Company profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "is_default",
+   "label": "Default for this screen",
+   "fieldtype": "Check",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_system",
+   "label": "Built-in",
+   "fieldtype": "Check",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "look_section",
+   "label": "Look",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "style",
+   "label": "Style",
+   "fieldtype": "Select",
+   "options": "Standard\nCompact",
+   "default": "Standard",
+   "reqd": 1
+  },
+  {
+   "fieldname": "columns",
+   "label": "Field columns",
+   "fieldtype": "Select",
+   "options": "2\n1",
+   "default": "2"
+  },
+  {
+   "fieldname": "yes_no_display",
+   "label": "Yes/No answers",
+   "fieldtype": "Select",
+   "options": "Use global setting\nDropdown\nButtons",
+   "default": "Use global setting"
+  },
+  {
+   "fieldname": "look_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "show_intro",
+   "label": "Show introduction notes",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "show_report_lookup",
+   "label": "Show report lookup by ID",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "show_saved_assessments",
+   "label": "Show saved assessments",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "continue_label",
+   "label": "Continue button label",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "continue_label_ar",
+   "label": "Continue button label (Arabic)",
+   "fieldtype": "Data"
+  }
+ ],
+ "field_order": [
+  "layout_name",
+  "screen",
+  "description",
+  "is_default",
+  "is_system",
+  "look_section",
+  "style",
+  "columns",
+  "yes_no_display",
+  "look_column",
+  "show_intro",
+  "show_report_lookup",
+  "show_saved_assessments",
+  "continue_label",
+  "continue_label_ar"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

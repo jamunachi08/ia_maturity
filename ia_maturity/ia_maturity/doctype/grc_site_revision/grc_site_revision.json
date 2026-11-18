@@ -1,0 +1,87 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Site Revision",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 0,
+  "field_order": [
+    "status",
+    "content",
+    "base_revision",
+    "workflow",
+    "step",
+    "submitted_by",
+    "submitted_on",
+    "published_by",
+    "published_on",
+    "allow_submitter_approval"
+  ],
+  "fields": [
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Draft\nPending\nPublished\nRejected\nDiscarded",
+      "reqd": 1
+    },
+    {
+      "fieldname": "content",
+      "label": "Content",
+      "fieldtype": "Long Text",
+      "reqd": 1
+    },
+    {
+      "fieldname": "base_revision",
+      "label": "Based on",
+      "fieldtype": "Link",
+      "options": "GRC Site Revision"
+    },
+    {
+      "fieldname": "workflow",
+      "label": "Approval workflow snapshot",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "step",
+      "label": "Current step",
+      "fieldtype": "Int",
+      "default": "0"
+    },
+    {
+      "fieldname": "submitted_by",
+      "label": "Submitted by",
+      "fieldtype": "Link",
+      "options": "User"
+    },
+    {
+      "fieldname": "submitted_on",
+      "label": "Submitted on",
+      "fieldtype": "Datetime"
+    },
+    {
+      "fieldname": "published_by",
+      "label": "Published by",
+      "fieldtype": "Link",
+      "options": "User"
+    },
+    {
+      "fieldname": "published_on",
+      "label": "Published on",
+      "fieldtype": "Datetime"
+    },
+    {
+      "fieldname": "allow_submitter_approval",
+      "label": "Allow submitter approval",
+      "fieldtype": "Check",
+      "default": "0"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1
+    }
+  ]
+}

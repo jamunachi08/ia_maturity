@@ -1,0 +1,25 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Operations Policy",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 1,
+  "field_order": [
+    "policies"
+  ],
+  "fields": [
+    {
+      "fieldname": "policies",
+      "label": "Policies",
+      "fieldtype": "Long Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1
+    }
+  ]
+}

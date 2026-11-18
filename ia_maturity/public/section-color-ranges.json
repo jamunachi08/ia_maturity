@@ -1,0 +1,18 @@
+[
+  {
+    "min_score": 0,
+    "color": "#B42318"
+  },
+  {
+    "min_score": 50,
+    "color": "#BF530B"
+  },
+  {
+    "min_score": 75,
+    "color": "#2D7A33"
+  },
+  {
+    "min_score": 100,
+    "color": "#1C5CA3"
+  }
+]

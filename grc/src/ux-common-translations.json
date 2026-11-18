@@ -1,0 +1,12 @@
+{
+  "Available customers": "العملاء المتاحون",
+  "This configuration is optional. Existing published defaults can be used without changes. Select a questionnaire version to manage choices for future assessments, or return to your workspace.": "هذه التهيئة اختيارية. يمكنك استخدام الإعدادات المنشورة الحالية دون تغيير. اختر نسخة الاستبيان لضبط خيارات التقييمات المستقبلية، أو عد إلى مساحة عملك.",
+  "Return to workspace": "العودة إلى مساحة العمل",
+  "No questionnaire versions available": "لا توجد نسخ استبيان متاحة",
+  "Ask an app administrator to prepare a questionnaire. You do not need to select an empty value.": "اطلب من مسؤول التطبيق إعداد استبيان. لا يلزم اختيار قيمة فارغة.",
+  "This questionnaire is no longer available. Choose another version or return to your workspace.": "لم يعد هذا الاستبيان متاحاً. اختر نسخة أخرى أو عد إلى مساحة عملك.",
+  "For GRC, keep Awareness mandatory and the other sections optional. Customers must include at least one of Risk, Compliance or Governance.": "في GRC أبقِ الوعي إلزامياً والأقسام الأخرى اختيارية. يجب أن يختار العميل المخاطر أو الالتزام أو الحوكمة على الأقل.",
+  "Staff two-factor authentication is off for this account. Sign in with your password. Your administrator manages role and username requirements.": "المصادقة الثنائية للموظف غير مفعلة لهذا الحساب. ادخل بكلمة المرور. يدير المسؤول متطلبات الدور واسم المستخدم.",
+  "You can add an authenticator to your staff password sign-in when allowed by your administrator.": "يمكنك إضافة تطبيق مصادقة إلى دخول الموظف بكلمة المرور عند سماح المسؤول.",
+  "After activation, sign in with your staff password and authenticator code. You can cancel setup before activation without changing your sign-in requirements.": "بعد التفعيل ادخل بكلمة مرور الموظف ورمز التطبيق. يمكنك إلغاء الإعداد قبل التفعيل دون تغيير متطلبات الدخول."
+}

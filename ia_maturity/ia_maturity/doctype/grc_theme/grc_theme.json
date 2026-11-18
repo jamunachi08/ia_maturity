@@ -1,0 +1,125 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Theme",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "field:theme_name",
+ "fields": [
+  {
+   "fieldname": "theme_name",
+   "label": "Theme Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "is_default",
+   "label": "Default theme",
+   "fieldtype": "Check",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_system",
+   "label": "Built-in",
+   "fieldtype": "Check",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "colours_section",
+   "label": "Colours",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "primary",
+   "label": "Primary",
+   "fieldtype": "Color",
+   "reqd": 1,
+   "description": "Buttons, links, highlights and the login banner."
+  },
+  {
+   "fieldname": "primary_dark",
+   "label": "Primary dark",
+   "fieldtype": "Color",
+   "reqd": 1,
+   "description": "Hover states and the login gradient start."
+  },
+  {
+   "fieldname": "accent",
+   "label": "Accent",
+   "fieldtype": "Color",
+   "reqd": 1,
+   "description": "Secondary highlights such as completed states and badges."
+  },
+  {
+   "fieldname": "colours_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ink",
+   "label": "Text",
+   "fieldtype": "Color",
+   "reqd": 1
+  },
+  {
+   "fieldname": "muted",
+   "label": "Muted text",
+   "fieldtype": "Color",
+   "reqd": 1
+  },
+  {
+   "fieldname": "background",
+   "label": "Page background",
+   "fieldtype": "Color",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surface",
+   "label": "Panels and cards",
+   "fieldtype": "Color",
+   "reqd": 1
+  },
+  {
+   "fieldname": "border",
+   "label": "Borders",
+   "fieldtype": "Color",
+   "reqd": 1
+  }
+ ],
+ "field_order": [
+  "theme_name",
+  "description",
+  "is_default",
+  "is_system",
+  "colours_section",
+  "primary",
+  "primary_dark",
+  "accent",
+  "colours_column",
+  "ink",
+  "muted",
+  "background",
+  "surface",
+  "border"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

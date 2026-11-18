@@ -1,0 +1,122 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Department",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "field:department_name",
+ "fields": [
+  {
+   "fieldname": "department_name",
+   "label": "Department Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "report_prefix",
+   "label": "Report Prefix",
+   "fieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "active",
+   "label": "Active",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "type_section",
+   "label": "Assessment type",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "label",
+   "label": "Label",
+   "fieldtype": "Data",
+   "description": "Shown to customers and staff. Defaults to the name."
+  },
+  {
+   "fieldname": "label_ar",
+   "label": "Label (Arabic)",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "description_ar",
+   "label": "Description (Arabic)",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "type_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "behaviour",
+   "label": "Base behaviour",
+   "fieldtype": "Select",
+   "options": "Internal Audit\nGRC",
+   "default": "Internal Audit",
+   "description": "Internal Audit: starts directly, issue-register answers. GRC: section choice and self-reported answers."
+  },
+  {
+   "fieldname": "requires_company_profile",
+   "label": "Requires company profile",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "icon",
+   "label": "Icon",
+   "fieldtype": "Select",
+   "options": "clipboard\nshield\nscale\nbuilding\nchart\nbriefcase\nleaf\nlock",
+   "default": "clipboard"
+  },
+  {
+   "fieldname": "sort_order",
+   "label": "Display order",
+   "fieldtype": "Int",
+   "default": "10"
+  },
+  {
+   "fieldname": "is_system",
+   "label": "Built-in",
+   "fieldtype": "Check",
+   "default": "0",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "department_name",
+  "report_prefix",
+  "active",
+  "type_section",
+  "label",
+  "label_ar",
+  "description",
+  "description_ar",
+  "type_column",
+  "behaviour",
+  "requires_company_profile",
+  "icon",
+  "sort_order",
+  "is_system"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

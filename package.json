@@ -1,0 +1,12 @@
+{
+  "name": "ia_maturity",
+  "private": true,
+  "version": "3.2.0",
+  "description": "AlphaX GRC portal and internal audit maturity assessment",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "npm --prefix grc ci",
+    "build": "npm --prefix grc run build",
+    "dev": "npm --prefix grc run dev"
+  }
+}

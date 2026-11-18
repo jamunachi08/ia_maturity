@@ -1,0 +1,772 @@
+{
+  "sad5e430b": {
+    "en": "Stronger governance.",
+    "ar": "حوكمة راسخة.",
+    "section": "Shared"
+  },
+  "s5e31eb6a": {
+    "en": "Measurable maturity.",
+    "ar": "نضج قابل للقياس.",
+    "section": "Shared"
+  },
+  "s138fe7c2": {
+    "en": "Sign in",
+    "ar": "تسجيل الدخول",
+    "section": "Shared"
+  },
+  "se988de06": {
+    "en": "Start assessment",
+    "ar": "ابدأ التقييم",
+    "section": "Shared"
+  },
+  "s34a7b5c9": {
+    "en": "Full name",
+    "ar": "الاسم الكامل",
+    "section": "Shared"
+  },
+  "sc7a11721": {
+    "en": "Work email",
+    "ar": "البريد الإلكتروني للعمل",
+    "section": "Shared"
+  },
+  "se8a4e710": {
+    "en": "Organization",
+    "ar": "المنظمة",
+    "section": "Shared"
+  },
+  "se7a9a7fe": {
+    "en": "Service",
+    "ar": "الخدمة",
+    "section": "Shared"
+  },
+  "s1d22782b": {
+    "en": "Message",
+    "ar": "الرسالة",
+    "section": "Shared"
+  },
+  "s0c1ec4f2": {
+    "en": "I accept the privacy notice and terms of use.",
+    "ar": "أوافق على إشعار الخصوصية وشروط الاستخدام.",
+    "section": "Shared"
+  },
+  "s7101cf0f": {
+    "en": "Privacy notice",
+    "ar": "إشعار الخصوصية",
+    "section": "Shared"
+  },
+  "s6db2885a": {
+    "en": "Terms of use",
+    "ar": "شروط الاستخدام",
+    "section": "Shared"
+  },
+  "s95fd2162": {
+    "en": "Contact",
+    "ar": "تواصل معنا",
+    "section": "Footer"
+  },
+  "s64cc98b5": {
+    "en": "Page",
+    "ar": "الصفحة",
+    "section": "Shared"
+  },
+  "s7f83a6aa": {
+    "en": "IRSAA Business Solutions",
+    "ar": "إرساء لحلول الأعمال",
+    "section": "Shared"
+  },
+  "sfd5e5f07": {
+    "en": "20",
+    "ar": "20",
+    "section": "Shared"
+  },
+  "s8a251927": {
+    "en": "6",
+    "ar": "6",
+    "section": "Shared"
+  },
+  "sc1c044c7": {
+    "en": "2",
+    "ar": "2",
+    "section": "Shared"
+  },
+  "s137d1aeb": {
+    "en": "Register & verify",
+    "ar": "التسجيل والتحقق",
+    "section": "Journey"
+  },
+  "sdb33c975": {
+    "en": "Verify your work email with a single-use code.",
+    "ar": "تحقق من بريد العمل باستخدام رمز لمرة واحدة.",
+    "section": "Journey"
+  },
+  "s5597e879": {
+    "en": "Set up your organization",
+    "ar": "إعداد المنظمة",
+    "section": "Journey"
+  },
+  "sf3934a5e": {
+    "en": "Add your organization, sector and assessment owner.",
+    "ar": "أضف المنظمة والقطاع ومسؤول التقييم.",
+    "section": "Journey"
+  },
+  "s9674355d": {
+    "en": "Answer 20 questions",
+    "ar": "الإجابة عن 20 سؤالاً",
+    "section": "Journey"
+  },
+  "sb557eec3": {
+    "en": "Assess current practice across six sections.",
+    "ar": "قيّم الممارسات الحالية عبر ستة محاور.",
+    "section": "Journey"
+  },
+  "s56d4240b": {
+    "en": "Save & resume",
+    "ar": "الحفظ والمتابعة",
+    "section": "Journey"
+  },
+  "s24cedbf0": {
+    "en": "Save your progress and return when you are ready.",
+    "ar": "احفظ تقدمك وعد لاستكماله عندما تكون مستعداً.",
+    "section": "Journey"
+  },
+  "s9bc104be": {
+    "en": "Submit for review",
+    "ar": "الإرسال للمراجعة",
+    "section": "Journey"
+  },
+  "s1d7519a6": {
+    "en": "Check your answers and supporting evidence.",
+    "ar": "راجع إجاباتك والأدلة الداعمة قبل الإرسال.",
+    "section": "Journey"
+  },
+  "sf18aab72": {
+    "en": "Assigned team review",
+    "ar": "مراجعة الفريق المسند",
+    "section": "Journey"
+  },
+  "sfc6da7df": {
+    "en": "Your assigned team reviews and requests clarification.",
+    "ar": "يراجع الفريق المسند التقييم ويطلب التوضيحات اللازمة.",
+    "section": "Journey"
+  },
+  "s7e88e230": {
+    "en": "Receive your report",
+    "ar": "استلام التقرير",
+    "section": "Journey"
+  },
+  "scfc8c96d": {
+    "en": "Access the approved scorecard and released PDF.",
+    "ar": "اطلع على بطاقة النتائج المعتمدة والتقرير الصادر.",
+    "section": "Journey"
+  },
+  "sf2c5ff89": {
+    "en": "CLEAR METHODS. CONFIDENT DECISIONS.",
+    "ar": "منهجية واضحة. قرارات بثقة.",
+    "section": "Landing"
+  },
+  "saec0463e": {
+    "en": "From the first question to an approved report: a complete internal audit maturity journey that connects your team, evidence and assigned reviewers.",
+    "ar": "من أول سؤال إلى تقرير معتمد: رحلة متكاملة لتقييم نضج التدقيق الداخلي، تجمع فريقك والأدلة والمراجعين في مساحة واحدة.",
+    "section": "Landing"
+  },
+  "sc6d3caa9": {
+    "en": "Start your assessment",
+    "ar": "ابدأ تقييم منظمتك",
+    "section": "Landing"
+  },
+  "scba0d1b5": {
+    "en": "Explore the assessment",
+    "ar": "استكشف التقييم",
+    "section": "Landing"
+  },
+  "s3d10f113": {
+    "en": "Already started?",
+    "ar": "بدأت التقييم بالفعل؟",
+    "section": "Landing"
+  },
+  "s0b2da01d": {
+    "en": "Sign in to continue",
+    "ar": "سجّل الدخول للمتابعة",
+    "section": "Landing"
+  },
+  "sff3f032c": {
+    "en": "Arabic & English",
+    "ar": "العربية والإنجليزية",
+    "section": "Landing"
+  },
+  "sc5d8b963": {
+    "en": "Save your progress",
+    "ar": "حفظ التقدم",
+    "section": "Landing"
+  },
+  "s233d2ccd": {
+    "en": "Access by responsibility",
+    "ar": "وصول حسب المسؤولية",
+    "section": "Landing"
+  },
+  "s653005ee": {
+    "en": "Illustrative scorecard example",
+    "ar": "مثال توضيحي لبطاقة النتائج",
+    "section": "Landing"
+  },
+  "s6fd6d167": {
+    "en": "ILLUSTRATIVE SAMPLE",
+    "ar": "مثال توضيحي",
+    "section": "Landing"
+  },
+  "s5b14b707": {
+    "en": "INTERNAL AUDIT MATURITY",
+    "ar": "نضج التدقيق الداخلي",
+    "section": "Landing"
+  },
+  "sb30d5788": {
+    "en": "A clearer picture. A focused next step.",
+    "ar": "صورة أوضح. أولويات أدق.",
+    "section": "Landing"
+  },
+  "sed886afa": {
+    "en": "Sample score",
+    "ar": "نتيجة نموذجية",
+    "section": "Landing"
+  },
+  "s13a72ba7": {
+    "en": "Governance & independence",
+    "ar": "الحوكمة والاستقلالية",
+    "section": "Landing"
+  },
+  "s405c30fd": {
+    "en": "Audit execution",
+    "ar": "تنفيذ التدقيق",
+    "section": "Landing"
+  },
+  "s8515e978": {
+    "en": "Quality & performance",
+    "ar": "الجودة والأداء",
+    "section": "Landing"
+  },
+  "s09e3e5ea": {
+    "en": "Final results follow review and release",
+    "ar": "النتائج النهائية بعد المراجعة والإصدار",
+    "section": "Landing"
+  },
+  "sa6666883": {
+    "en": "Scorecard + PDF report",
+    "ar": "بطاقة نتائج + تقرير PDF",
+    "section": "Landing"
+  },
+  "s510b542a": {
+    "en": "About the assessment",
+    "ar": "عن التقييم",
+    "section": "Landing"
+  },
+  "se0306d1e": {
+    "en": "guided questions",
+    "ar": "سؤالاً إرشادياً",
+    "section": "Landing"
+  },
+  "s2634e086": {
+    "en": "assessment sections",
+    "ar": "محاور للتقييم",
+    "section": "Landing"
+  },
+  "se08217f4": {
+    "en": "working languages",
+    "ar": "لغتان للعمل",
+    "section": "Landing"
+  },
+  "s55dcf522": {
+    "en": "One journey",
+    "ar": "مسار واحد",
+    "section": "Landing"
+  },
+  "sa4c77bd2": {
+    "en": "from assessment to report",
+    "ar": "من التقييم إلى التقرير",
+    "section": "Landing"
+  },
+  "s69e629d8": {
+    "en": "YOUR JOURNEY, STEP BY STEP",
+    "ar": "رحلتك خطوة بخطوة",
+    "section": "Landing"
+  },
+  "s4819100f": {
+    "en": "Know where to start. See what comes next.",
+    "ar": "ابدأ بوضوح. وتقدم بثقة.",
+    "section": "Landing"
+  },
+  "sf8a64a14": {
+    "en": "Each stage has a clear purpose and owner. Save and return to your work while keeping a traceable review and revision history.",
+    "ar": "لكل مرحلة هدف ومسؤول واضح. يمكنك حفظ العمل ومتابعته، مع الاحتفاظ بسجل المراجعة والإصدارات.",
+    "section": "Landing"
+  },
+  "s7c0572ee": {
+    "en": "DESIGNED FOR ACCOUNTABLE WORK",
+    "ar": "مصمم للعمل المسؤول",
+    "section": "Landing"
+  },
+  "sddc168f3": {
+    "en": "Evidence in place. Responsibilities made clear.",
+    "ar": "الأدلة في مكانها. والمسؤوليات واضحة.",
+    "section": "Landing"
+  },
+  "sa7f2aac0": {
+    "en": "Auditors see only their assigned customers. Evidence stays private, and results are reviewed before the final report is released.",
+    "ar": "يرى المدققون العملاء المسندين إليهم فقط، وتبقى ملفات الأدلة خاصة. تُراجع النتائج قبل إصدار التقرير النهائي.",
+    "section": "Landing"
+  },
+  "s94042d54": {
+    "en": "Discover the platform",
+    "ar": "تعرّف على المنصة",
+    "section": "Landing"
+  },
+  "s1b287856": {
+    "en": "Clear organization permissions",
+    "ar": "صلاحيات واضحة لكل منظمة",
+    "section": "Landing"
+  },
+  "sb281742d": {
+    "en": "Traceable review decisions",
+    "ar": "مراجعة قابلة للتتبع",
+    "section": "Landing"
+  },
+  "sd0622ff9": {
+    "en": "Preserved versions and approved reports",
+    "ar": "إصدارات محفوظة وتقارير معتمدة",
+    "section": "Landing"
+  },
+  "s597e7795": {
+    "en": "BEFORE YOU BEGIN",
+    "ar": "قبل أن تبدأ",
+    "section": "Landing"
+  },
+  "s62625924": {
+    "en": "Bring your team and your supporting evidence.",
+    "ar": "اجمع فريقك وأدلتك الأساسية.",
+    "section": "Landing"
+  },
+  "s5367846f": {
+    "en": "Have your work email, organization details, relevant policies and supporting documents ready. Answer for current practice, not future plans.",
+    "ar": "جهّز بريد العمل وبيانات المنظمة والسياسات والمستندات ذات الصلة. أجب وفق الممارسات الحالية، وليس الخطط المستقبلية.",
+    "section": "Landing"
+  },
+  "s357f9862": {
+    "en": "Create an account",
+    "ar": "إنشاء حساب والبدء",
+    "section": "Landing"
+  },
+  "se769c008": {
+    "en": "Read the preparation guide",
+    "ar": "دليل الاستعداد للتقييم",
+    "section": "Landing"
+  },
+  "s8a6df074": {
+    "en": "Services built around accountable assurance",
+    "ar": "خدمات تدعم ضماناً مسؤولاً",
+    "section": "services"
+  },
+  "sfd834e0e": {
+    "en": "Understand your current position, organize evidence, and move improvements forward with a dedicated review team.",
+    "ar": "افهم وضعك الحالي ونظم الأدلة وادفع التحسينات إلى الأمام مع فريق مراجعة متخصص.",
+    "section": "services"
+  },
+  "s2ce5a282": {
+    "en": "Maturity assessment",
+    "ar": "تقييم النضج",
+    "section": "services"
+  },
+  "saaf8df96": {
+    "en": "A structured questionnaire covering internal audit capability, governance, and performance.",
+    "ar": "استبيان منظم يغطي قدرات التدقيق الداخلي والحوكمة والأداء.",
+    "section": "services"
+  },
+  "sc0687d93": {
+    "en": "Evidence-led review",
+    "ar": "مراجعة تستند إلى الأدلة",
+    "section": "services"
+  },
+  "s4c2dfeec": {
+    "en": "Assigned consultants and reviewers examine submissions, request clarification, and approve results.",
+    "ar": "يفحص المستشارون والمراجعون المسندون الإجابات ويطلبون التوضيح ويعتمدون النتائج.",
+    "section": "services"
+  },
+  "s5da533fd": {
+    "en": "Improvement planning",
+    "ar": "تخطيط التحسين",
+    "section": "services"
+  },
+  "sffe7cef5": {
+    "en": "Turn findings into actions with owners, deadlines, evidence, and verified closure.",
+    "ar": "حوّل النتائج إلى إجراءات لها مسؤولون ومواعيد وأدلة وإغلاق معتمد.",
+    "section": "services"
+  },
+  "sf3aa8ea8": {
+    "en": "Assessment catalogue",
+    "ar": "دليل التقييمات",
+    "section": "catalogue"
+  },
+  "s235dc153": {
+    "en": "Start with the internal audit maturity assessment. Published questionnaire versions keep the scoring basis consistent.",
+    "ar": "ابدأ بتقييم نضج التدقيق الداخلي. تحافظ إصدارات الاستبيانات المنشورة على اتساق أسس احتساب النتائج.",
+    "section": "catalogue"
+  },
+  "s2d51dcc2": {
+    "en": "Internal audit maturity · 20 questions",
+    "ar": "نضج التدقيق الداخلي · 20 سؤالاً",
+    "section": "catalogue"
+  },
+  "s8ec0d58d": {
+    "en": "A bilingual guided assessment with evidence, review, a maturity scorecard, and an approved report.",
+    "ar": "تقييم إرشادي ثنائي اللغة مع أدلة ومراجعة وبطاقة نتائج النضج وتقرير معتمد.",
+    "section": "catalogue"
+  },
+  "sdd5ca992": {
+    "en": "Framework and sector context",
+    "ar": "الأطر والسياق القطاعي",
+    "section": "frameworks"
+  },
+  "scd11e35e": {
+    "en": "The reference questionnaire is based on internal audit maturity concepts and the IIA Global Internal Audit Standards. Framework mappings and bilingual content require owner review before production use.",
+    "ar": "يستند الاستبيان المرجعي إلى مفاهيم نضج التدقيق الداخلي والمعايير العالمية للتدقيق الداخلي. تتطلب مواءمات الأطر والمحتوى ثنائي اللغة مراجعة المسؤول قبل الاستخدام الإنتاجي.",
+    "section": "frameworks"
+  },
+  "se616d29d": {
+    "en": "Use the right context",
+    "ar": "استخدم السياق المناسب",
+    "section": "frameworks"
+  },
+  "s53764a58": {
+    "en": "Record your sector and regulators in your organization profile so reviewers understand the operating environment.",
+    "ar": "سجل القطاع والجهات التنظيمية في ملف المنظمة ليتمكن المراجعون من فهم بيئة العمل.",
+    "section": "frameworks"
+  },
+  "sa7665c49": {
+    "en": "Maturity, not certification",
+    "ar": "النضج وليس الاعتماد",
+    "section": "frameworks"
+  },
+  "sbfa078a6": {
+    "en": "Results describe maturity. They do not establish regulatory compliance or provide certification.",
+    "ar": "تصف النتائج مستوى النضج ولا تثبت الامتثال التنظيمي ولا تمنح اعتماداً.",
+    "section": "frameworks"
+  },
+  "s1b5b9410": {
+    "en": "Clarity for every stage of assurance",
+    "ar": "وضوح في كل مرحلة من مراحل الضمان",
+    "section": "about"
+  },
+  "s928aedfa": {
+    "en": "AlphaX GRC by IRSAA Business Solutions brings customers and assigned auditors into one structured assessment process, from verified onboarding to controlled report release.",
+    "ar": "تجمع منصة ألفا إكس من إرساء لحلول الأعمال العملاء والمدققين المسندين ضمن عملية تقييم منظمة، من التحقق عند الانضمام إلى إصدار التقرير بصورة محكومة.",
+    "section": "about"
+  },
+  "se8eb2fec": {
+    "en": "Resources for a prepared assessment",
+    "ar": "موارد للاستعداد للتقييم",
+    "section": "resources"
+  },
+  "scd74a468": {
+    "en": "Bring the right people and evidence together before you begin.",
+    "ar": "اجمع الأشخاص المناسبين والأدلة اللازمة قبل البدء.",
+    "section": "resources"
+  },
+  "s9635d5e6": {
+    "en": "Before you start",
+    "ar": "قبل البدء",
+    "section": "resources"
+  },
+  "s3b49b497": {
+    "en": "Confirm your organization details, nominate an assessment owner, and collect relevant policies and evidence.",
+    "ar": "تحقق من بيانات المنظمة وحدد مسؤول التقييم واجمع السياسات والأدلة ذات الصلة.",
+    "section": "resources"
+  },
+  "s30bfa114": {
+    "en": "During assessment",
+    "ar": "أثناء التقييم",
+    "section": "resources"
+  },
+  "s10ee6366": {
+    "en": "Use the question guidance, save supporting evidence, and answer according to your current practice.",
+    "ar": "استخدم إرشادات الأسئلة وأرفق الأدلة وأجب وفق الممارسات الحالية.",
+    "section": "resources"
+  },
+  "s6986c652": {
+    "en": "After submission",
+    "ar": "بعد الإرسال",
+    "section": "resources"
+  },
+  "s04ce64ef": {
+    "en": "Follow the review timeline, respond to clarification requests, and track agreed improvement actions.",
+    "ar": "تابع مراحل المراجعة واستجب لطلبات التوضيح وتابع إجراءات التحسين المتفق عليها.",
+    "section": "resources"
+  },
+  "s9eba5091": {
+    "en": "Frequently asked questions",
+    "ar": "الأسئلة الشائعة",
+    "section": "faq"
+  },
+  "s83d0eb7f": {
+    "en": "A clear path from your first sign-in to your released report.",
+    "ar": "مسار واضح من تسجيل الدخول الأول إلى إصدار تقريرك.",
+    "section": "faq"
+  },
+  "s5fe11efb": {
+    "en": "Who can see my organization?",
+    "ar": "من يمكنه رؤية منظمتي؟",
+    "section": "faq"
+  },
+  "sec954018": {
+    "en": "Active organization members, explicitly assigned auditors, and GRC administrators, according to their responsibilities.",
+    "ar": "الأعضاء النشطون في المنظمة والمدققون المسندون صراحة ومديرو المنصة، وفق مسؤولياتهم.",
+    "section": "faq"
+  },
+  "s0f468ed2": {
+    "en": "When are results available?",
+    "ar": "متى تتوفر النتائج؟",
+    "section": "faq"
+  },
+  "sa64aa1d0": {
+    "en": "Depending on the administrator setting, preliminary scores appear after submission or remain hidden until release. Final PDFs are available only after release.",
+    "ar": "وفق إعداد المدير تظهر النتائج الأولية بعد الإرسال أو تبقى مخفية حتى الإصدار. يتوفر ملف التقرير النهائي بعد الإصدار فقط.",
+    "section": "faq"
+  },
+  "s32448f63": {
+    "en": "Can I change a submitted assessment?",
+    "ar": "هل يمكنني تعديل تقييم مرسل؟",
+    "section": "faq"
+  },
+  "s6d9e11fd": {
+    "en": "Your reviewer can request clarification. The correction creates a new revision and preserves earlier submissions.",
+    "ar": "يمكن للمراجع طلب توضيح. ينشئ التصحيح إصداراً جديداً ويحافظ على الإرسالات السابقة.",
+    "section": "faq"
+  },
+  "s125ccc2d": {
+    "en": "Can GRC users access ERP?",
+    "ar": "هل يستطيع مستخدمو المنصة الوصول إلى تخطيط الموارد؟",
+    "section": "faq"
+  },
+  "s0699f03d": {
+    "en": "GRC customer and staff accounts are restricted to the GRC workspace. Separate accounts are required for ERP access.",
+    "ar": "تقتصر حسابات العملاء والفريق على مساحة المنصة. يلزم حساب مستقل للوصول إلى نظام تخطيط الموارد.",
+    "section": "faq"
+  },
+  "s009c90f0": {
+    "en": "Home",
+    "ar": "الرئيسية",
+    "section": "Shared"
+  },
+  "s646886af": {
+    "en": "Services",
+    "ar": "الخدمات",
+    "section": "Footer"
+  },
+  "s62b623cb": {
+    "en": "Assessments",
+    "ar": "التقييمات",
+    "section": "Footer"
+  },
+  "s8a64f36d": {
+    "en": "About",
+    "ar": "عن المنصة",
+    "section": "Footer"
+  },
+  "scebbf741": {
+    "en": "Resources",
+    "ar": "الموارد",
+    "section": "Footer"
+  },
+  "se46ee88e": {
+    "en": "AlphaX | Governance, Risk & Compliance",
+    "ar": "ألفا إكس | الحوكمة والمخاطر والامتثال",
+    "section": "Shared"
+  },
+  "s66c28103": {
+    "en": "Skip to content",
+    "ar": "انتقل إلى المحتوى",
+    "section": "Shared"
+  },
+  "s82f10dc4": {
+    "en": "AlphaX by IRSAA Business Solutions",
+    "ar": "ألفا إكس من إرساء لحلول الأعمال",
+    "section": "Shared"
+  },
+  "se840bcb1": {
+    "en": "Help & FAQs",
+    "ar": "الأسئلة الشائعة",
+    "section": "Shared"
+  },
+  "s30a9fc05": {
+    "en": "AlphaX home",
+    "ar": "ألفا إكس - الرئيسية",
+    "section": "Shared"
+  },
+  "sb0f08e74": {
+    "en": "Main navigation",
+    "ar": "التنقل الرئيسي",
+    "section": "Shared"
+  },
+  "s4c87ce97": {
+    "en": "Sign up",
+    "ar": "إنشاء حساب",
+    "section": "Shared"
+  },
+  "sbfbb097a": {
+    "en": "My workspace",
+    "ar": "مساحة العمل",
+    "section": "Shared"
+  },
+  "sb72ff6af": {
+    "en": "LET’S TALK",
+    "ar": "نحن هنا لمساعدتك",
+    "section": "Shared"
+  },
+  "s8b18a76d": {
+    "en": "Your next step starts with a conversation.",
+    "ar": "خطوتك التالية تبدأ بمحادثة.",
+    "section": "Shared"
+  },
+  "s83554937": {
+    "en": "Ask about the assessment or request a consultation with the IRSAA team.",
+    "ar": "أرسل استفسارك حول التقييم أو اطلب استشارة من فريق إرساء.",
+    "section": "Shared"
+  },
+  "s07cbf795": {
+    "en": "Your request has been received",
+    "ar": "تم استلام طلبك",
+    "section": "Shared"
+  },
+  "sdb5d7ba6": {
+    "en": "Our team will follow up using the contact details you provided.",
+    "ar": "سيتابع فريقنا طلبك باستخدام بيانات التواصل التي قدمتها.",
+    "section": "Shared"
+  },
+  "sa54f732d": {
+    "en": "Return home",
+    "ar": "العودة للرئيسية",
+    "section": "Shared"
+  },
+  "s7f189cce": {
+    "en": "Internal audit maturity assessment",
+    "ar": "تقييم نضج التدقيق الداخلي",
+    "section": "Shared"
+  },
+  "s98c57e8a": {
+    "en": "GRC consultation",
+    "ar": "استشارة الحوكمة والمخاطر والامتثال",
+    "section": "Shared"
+  },
+  "s90ec1a00": {
+    "en": "Submit request",
+    "ar": "إرسال الطلب",
+    "section": "Shared"
+  },
+  "s7cf0fd46": {
+    "en": "Approved text has not been published. Contact the GRC administrator before production use.",
+    "ar": "لم يتم نشر النص المعتمد بعد. يرجى التواصل مع مدير المنصة قبل الاستخدام الإنتاجي.",
+    "section": "Shared"
+  },
+  "s047566c8": {
+    "en": "Contact the team",
+    "ar": "تواصل مع الفريق",
+    "section": "Shared"
+  },
+  "saed54762": {
+    "en": "Page not found",
+    "ar": "الصفحة غير موجودة",
+    "section": "Shared"
+  },
+  "s7bf05d2f": {
+    "en": "Clarity in assessment. Confidence in decisions.",
+    "ar": "وضوح في التقييم. ثقة في القرار.",
+    "section": "Shared"
+  },
+  "s1c36909b": {
+    "en": "Explore",
+    "ar": "اكتشف",
+    "section": "Shared"
+  },
+  "sf2448fa4": {
+    "en": "Frameworks & sectors",
+    "ar": "الأطر والقطاعات",
+    "section": "Footer"
+  },
+  "s135fdd68": {
+    "en": "FAQs",
+    "ar": "الأسئلة الشائعة",
+    "section": "Footer"
+  },
+  "s6dc61ecf": {
+    "en": "Support & contact",
+    "ar": "الدعم والتواصل",
+    "section": "Shared"
+  },
+  "s9d49cf40": {
+    "en": "Contact us",
+    "ar": "تواصل معنا",
+    "section": "Shared"
+  },
+  "sb115f79d": {
+    "en": "Customer demo",
+    "ar": "عرض تجريبي للعميل",
+    "section": "Shared"
+  },
+  "s9459d5d1": {
+    "en": "Auditor demo",
+    "ar": "عرض تجريبي للمدقق",
+    "section": "Shared"
+  },
+  "s989bb793": {
+    "en": "Maturity results do not establish regulatory compliance or certification.",
+    "ar": "تقيس النتائج النضج ولا تمنح شهادة امتثال أو اعتماداً تنظيمياً.",
+    "section": "Shared"
+  },
+  "s952739bf": {
+    "en": "ALPHAX",
+    "ar": "ALPHAX",
+    "section": "Shared"
+  },
+  "sad4c44bf": {
+    "en": "GRC",
+    "ar": "GRC",
+    "section": "Shared"
+  },
+  "s6d9a3e97": {
+    "en": "ALPHAX GRC",
+    "ar": "ALPHAX GRC",
+    "section": "Shared"
+  },
+  "s0c73f59d": {
+    "en": "IRSAA · AlphaX",
+    "ar": "IRSAA · AlphaX",
+    "section": "Shared"
+  },
+  "sd2dd1f3a": {
+    "en": "Menu",
+    "ar": "القائمة",
+    "section": "Shared"
+  },
+  "sample.overall": {
+    "en": "75",
+    "ar": "75",
+    "section": "Landing sample"
+  },
+  "sample.governance": {
+    "en": "80",
+    "ar": "80",
+    "section": "Landing sample"
+  },
+  "sample.execution": {
+    "en": "70",
+    "ar": "70",
+    "section": "Landing sample"
+  },
+  "sample.quality": {
+    "en": "75",
+    "ar": "75",
+    "section": "Landing sample"
+  },
+  "s0c9992ff": {
+    "en": "AlphaX",
+    "ar": "AlphaX",
+    "section": "Shared"
+  }
+}

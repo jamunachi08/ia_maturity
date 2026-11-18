@@ -1,6 +1,8 @@
 # Copyright (c) 2026, IRSAA Business Solutions (AlphaX)
 # License: MIT
 
+from unittest.mock import patch
+
 import frappe
 try:  # Frappe v16+
 	from frappe.tests import IntegrationTestCase as BaseTestCase
@@ -10,6 +12,29 @@ except ImportError:  # Frappe v15
 from ia_maturity.install import SEED_TEMPLATE, after_install
 
 ENTITY = "_Test IA Entity"
+
+
+class LegacyModeMixin:
+	"""Run these tests as a site without GRC.
+
+	They cover the original Internal Audit flows (landing self-signup, Desk publishing,
+	benchmarks), which the app keeps for sites where grc_enabled is off. On a GRC site
+	those paths are deliberately blocked (OTP-only signup, template publishing through GRC
+	administration), so the same suite runs on one test site in both modes.
+	"""
+
+	@classmethod
+	def setUpClass(cls):
+		cls._legacy_mode = patch.dict(frappe.local.conf, {"grc_enabled": 0})
+		cls._legacy_mode.start()
+		super().setUpClass()
+
+	@classmethod
+	def tearDownClass(cls):
+		try:
+			super().tearDownClass()
+		finally:
+			cls._legacy_mode.stop()
 
 
 def make_assessment(answers, submit=False, **kw):
@@ -35,7 +60,7 @@ def make_assessment(answers, submit=False, **kw):
 	return doc
 
 
-class TestIAMaturityAssessment(BaseTestCase):
+class TestIAMaturityAssessment(LegacyModeMixin, BaseTestCase):
 	@classmethod
 	def setUpClass(cls):
 		super().setUpClass()
@@ -58,6 +83,38 @@ class TestIAMaturityAssessment(BaseTestCase):
 		self.assertEqual(doc.overall_points, 1500)
 		self.assertEqual(doc.max_points, 2000)
 
+	def test_suggested_band_boundaries(self):
+		"""Suggested mapping: 0–29 Critical, 30–49 Low, 50–69 Medium, 70–84 High, 85–100 Leading."""
+		from ia_maturity.patches.v2_1.suggested_scoring_bands import execute
+		from ia_maturity.report_data import get_report_context
+		from ia_maturity.scoring import band_for, get_config
+
+		execute()
+		bands = get_config().bands
+		self.assertEqual([b["min_score"] for b in bands], [0, 30, 50, 70, 85])
+		cases = (
+			(0, "Critical"),
+			(29, "Critical"),
+			(29.9, "Critical"),
+			(30, "Low"),
+			(49.9, "Low"),
+			(50, "Medium"),
+			(69.9, "Medium"),
+			(70, "High"),
+			(73.8, "High"),
+			(84.9, "High"),
+			(85, "Leading"),
+			(100, "Leading"),
+		)
+		for pct, level in cases:
+			self.assertEqual(band_for(pct, bands)["level_name"], level, pct)
+		self.assertIn("Audit Committee/Board", band_for(25, bands)["interpretation"])
+		doc = make_assessment("C" * 20)
+		ctx = get_report_context(doc, "en", audience="internal")
+		self.assertIn("Critical 0–29%", ctx["scoring_text"])
+		self.assertIn("Leading 85–100%", ctx["scoring_text"])
+		self.assertEqual(ctx["level"], "High")
+
 	def test_all_a_is_25_critical(self):
 		doc = make_assessment("A" * 20)
 		self.assertEqual(doc.overall_score, 25.0)
@@ -75,6 +132,68 @@ class TestIAMaturityAssessment(BaseTestCase):
 		s1 = next(s for s in doc.section_scores if s.section_code == "S1")
 		self.assertEqual(s1.points, 50 + 25 + 75)
 		self.assertAlmostEqual(s1.score_pct, 50.0)
+
+	def test_seed_questions_default_single_select(self):
+		t = frappe.get_doc("IA Maturity Template", SEED_TEMPLATE)
+		modes = {(q.selection_mode or "Single") for q in t.questions}
+		self.assertEqual(modes, {"Single"})
+
+	def test_multi_select_scoring_methods(self):
+		"""Docs have no multi-select; provision uses Highest / Average / Sum (capped)."""
+		from ia_maturity.scoring import answer_points, compute
+
+		points = {"A": 25.0, "B": 50.0, "C": 75.0, "D": 100.0}
+		base = {
+			"section_code": "S1",
+			"question_code": "QX",
+			"selection_mode": "Multi",
+			"selected_option": "A,C",
+		}
+		self.assertEqual(answer_points({**base, "multi_score_method": "Highest"}, points, 100), 75.0)
+		self.assertEqual(answer_points({**base, "multi_score_method": "Average"}, points, 100), 50.0)
+		self.assertEqual(answer_points({**base, "multi_score_method": "Sum (capped)"}, points, 100), 100.0)
+		self.assertEqual(
+			answer_points({**base, "selected_option": "A,B", "multi_score_method": "Sum (capped)"}, points, 100),
+			75.0,
+		)
+
+		# One multi question among otherwise all-C: Highest(A,C)=75 keeps overall 75.
+		doc = make_assessment("C" * 20)
+		row = next(a for a in doc.answers if a.question_code == "Q2")
+		row.selection_mode = "Multi"
+		row.multi_score_method = "Highest"
+		row.selected_option = "A,C"
+		doc.calculate()
+		self.assertEqual(row.points, 75.0)
+		self.assertEqual(doc.overall_score, 75.0)
+
+		# Sum (capped) A+B = 75 on Q2 among all-C elsewhere still 75 overall.
+		row.multi_score_method = "Sum (capped)"
+		row.selected_option = "A,B"
+		doc.calculate()
+		self.assertEqual(row.points, 75.0)
+		self.assertEqual(doc.overall_score, 75.0)
+
+		# Average A+C = 50 drops overall: (19*75 + 50) / 2000 = 73.75
+		row.multi_score_method = "Average"
+		row.selected_option = "A,C"
+		doc.calculate()
+		self.assertEqual(row.points, 50.0)
+		self.assertEqual(doc.overall_score, 73.8)
+
+		# Multi rejects on Single mode via normalize path in validate.
+		row.selection_mode = "Single"
+		row.selected_option = "A,C"
+		with self.assertRaises(frappe.ValidationError):
+			doc.validate_answers()
+
+		# Pure compute: unanswered multi still in denominator.
+		result = compute(
+			[{"section_code": "S1", "selected_option": "", "selection_mode": "Multi"}],
+			[{"section_code": "S1", "section_title": "S1", "weight": 1}],
+		)
+		self.assertEqual(result.max_points, 100)
+		self.assertEqual(result.overall_score, 0.0)
 
 	def test_gating_caps_level(self):
 		answers = "A" + "D" * 19  # (25 + 1900) / 2000 = 96.25% -> Leading by score
@@ -385,7 +504,7 @@ class TestIAMaturityAssessment(BaseTestCase):
 			frappe.set_user("Administrator")
 
 
-class TestIAMaturityRegistration(BaseTestCase):
+class TestIAMaturityRegistration(LegacyModeMixin, BaseTestCase):
 	"""Landing page sign-up: details -> code -> signed in with a pre-filled draft."""
 
 	@classmethod

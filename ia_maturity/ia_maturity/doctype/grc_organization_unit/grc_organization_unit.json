@@ -1,0 +1,71 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Organization Unit",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "field_order": [
+    "entity",
+    "unit_name",
+    "unit_type",
+    "responsibilities"
+  ],
+  "fields": [
+    {
+      "fieldname": "entity",
+      "label": "Organization",
+      "fieldtype": "Link",
+      "options": "IA Maturity Entity",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "unit_name",
+      "label": "Name",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "unit_type",
+      "label": "Type",
+      "fieldtype": "Select",
+      "options": "Department\nBranch",
+      "reqd": 1
+    },
+    {
+      "fieldname": "responsibilities",
+      "label": "Responsibilities",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "GRC Customer",
+      "read": 1
+    },
+    {
+      "role": "GRC Organization Admin",
+      "read": 1
+    },
+    {
+      "role": "GRC Auditor",
+      "read": 1
+    },
+    {
+      "role": "GRC Reviewer",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

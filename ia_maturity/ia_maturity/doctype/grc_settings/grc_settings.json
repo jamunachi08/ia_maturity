@@ -1,0 +1,327 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Settings",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 1,
+  "field_order": [
+    "results_visibility",
+    "sb_report_delivery",
+    "allow_report_download",
+    "allow_report_email",
+    "report_access_timing",
+    "reminders_enabled",
+    "reminder_days",
+    "default_due_days",
+    "scoring_owner_approved",
+    "content_approved",
+    "production_hostname",
+    "framework_version",
+    "privacy_en",
+    "privacy_ar",
+    "terms_en",
+    "terms_ar",
+    "profile_editable_fields",
+    "signup_email_policy",
+    "signup_allowed_domains",
+    "mfa_role_policies",
+    "mfa_policy",
+    "mfa_method",
+    "mfa_revision",
+    "mfa_preserve_platform",
+    "question_extras_enabled",
+    "overall_maturity_visibility",
+    "expand_maturity",
+    "expand_report",
+    "customer_score_timing",
+    "customer_sections_visibility",
+    "section_color_ranges",
+    "onboarding_auto_lock",
+    "onboarding_attention_hours",
+    "verification_email_limit_enabled",
+    "verification_ip_limit_enabled",
+    "organization_yes_no_display",
+    "new_user_page_tour_default",
+    "new_user_help_default",
+    "report_access_section",
+    "report_access_roles",
+    "report_access_assigned_staff"
+  ],
+  "fields": [
+    {
+      "fieldname": "results_visibility",
+      "label": "Customer results before report release",
+      "fieldtype": "Select",
+      "options": "Preliminary scorecard\nStatus only",
+      "default": "Preliminary scorecard",
+      "description": "Preliminary scorecard shows self-assessment scores after submission. Status only hides scores until release. The final PDF always requires report release."
+    },
+    {
+      "fieldname": "sb_report_delivery",
+      "label": "Report download and email",
+      "fieldtype": "Section Break",
+      "description": "Controls customer PDF download and report email. Enforced in the API as well as the portal UI."
+    },
+    {
+      "fieldname": "allow_report_download",
+      "label": "Allow report PDF download",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "allow_report_email",
+      "label": "Allow report email",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "report_access_timing",
+      "label": "Report access timing",
+      "fieldtype": "Select",
+      "options": "After Audit\nBefore Audit",
+      "default": "After Audit",
+      "description": "After Audit = only once the report is released (Report Released). Before Audit = from customer submission onward; download serves a preliminary PDF until release."
+    },
+    {
+      "fieldname": "reminders_enabled",
+      "label": "Enable reminders",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "reminder_days",
+      "label": "Reminder interval in days",
+      "fieldtype": "Int",
+      "default": "7"
+    },
+    {
+      "fieldname": "default_due_days",
+      "label": "Default assessment deadline in days",
+      "fieldtype": "Int",
+      "default": "14"
+    },
+    {
+      "fieldname": "scoring_owner_approved",
+      "label": "Assessment owner approved scoring",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "content_approved",
+      "label": "Bilingual content approved",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "production_hostname",
+      "label": "Production hostname",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "framework_version",
+      "label": "Framework content version",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "privacy_en",
+      "label": "Approved privacy notice (English)",
+      "fieldtype": "Text"
+    },
+    {
+      "fieldname": "privacy_ar",
+      "label": "Approved privacy notice (Arabic)",
+      "fieldtype": "Text"
+    },
+    {
+      "fieldname": "terms_en",
+      "label": "Approved terms (English)",
+      "fieldtype": "Text"
+    },
+    {
+      "fieldname": "terms_ar",
+      "label": "Approved terms (Arabic)",
+      "fieldtype": "Text"
+    },
+    {
+      "fieldname": "profile_editable_fields",
+      "label": "Editable profile fields",
+      "fieldtype": "Small Text",
+      "default": "[\"first_name\", \"middle_name\", \"last_name\", \"mobile_no\", \"phone\", \"language\", \"time_zone\"]",
+      "description": "JSON list of approved self-service fields. Email, roles, memberships and account classification cannot be enabled."
+    },
+    {
+      "fieldname": "signup_email_policy",
+      "label": "Signup email policy",
+      "fieldtype": "Select",
+      "options": "All valid emails\nAllowed domains only",
+      "default": "All valid emails",
+      "description": "All valid personal and organizational email addresses are accepted by default. Restrictions apply to new accounts only."
+    },
+    {
+      "fieldname": "signup_allowed_domains",
+      "label": "Allowed signup email domains",
+      "fieldtype": "Small Text",
+      "description": "Exact domains, one per line. No wildcard or automatic subdomain access."
+    },
+    {
+      "fieldname": "mfa_role_policies",
+      "label": "GRC MFA role policies",
+      "fieldtype": "Long Text",
+      "hidden": 1,
+      "description": "Managed through Account security; individual policy overrides role policy."
+    },
+    {
+      "fieldname": "mfa_policy",
+      "label": "Mfa Policy",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "options": "\nEnabled\nDisabled\nEnforced",
+      "default": "Disabled"
+    },
+    {
+      "fieldname": "mfa_method",
+      "label": "Mfa Method",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "options": "OTP App\nEmail"
+    },
+    {
+      "fieldname": "mfa_revision",
+      "label": "Mfa Revision",
+      "fieldtype": "Data",
+      "hidden": 1
+    },
+    {
+      "fieldname": "mfa_preserve_platform",
+      "label": "Mfa Preserve Platform",
+      "fieldtype": "Check",
+      "hidden": 1
+    },
+    {
+      "fieldname": "question_extras_enabled",
+      "label": "Enable question comments and evidence",
+      "fieldtype": "Check",
+      "default": "0"
+    },
+    {
+      "fieldname": "expand_maturity",
+      "label": "Expand overall maturity by default",
+      "fieldtype": "Check",
+      "default": "0",
+      "hidden": 1,
+      "description": "Legacy expansion preference; superseded by Overall Maturity panel visibility."
+    },
+    {
+      "fieldname": "expand_report",
+      "label": "Expand report by default",
+      "fieldtype": "Check",
+      "default": "0"
+    },
+    {
+      "fieldname": "customer_score_timing",
+      "label": "Customer scoring visibility",
+      "fieldtype": "Select",
+      "options": "After all answers\nDuring assessment\nAfter submission",
+      "default": "After all answers"
+    },
+    {
+      "fieldname": "customer_sections_visibility",
+      "label": "Customer section overview",
+      "fieldtype": "Select",
+      "options": "Collapsed until complete\nAlways collapsed\nAlways expanded\nHidden",
+      "default": "Always expanded"
+    },
+    {
+      "fieldname": "section_color_ranges",
+      "fieldtype": "Long Text",
+      "label": "Section color ranges",
+      "hidden": 1
+    },
+    {
+      "fieldname": "overall_maturity_visibility",
+      "fieldtype": "Select",
+      "label": "Overall Maturity panel",
+      "options": "Hidden\nAfter assessment completion\nCompleted sections only",
+      "default": "Hidden",
+      "description": "Hidden removes the panel entirely for customers and staff. Completed sections only never displays an overall score. Existing result access rules still apply."
+    },
+    {
+      "fieldname": "onboarding_auto_lock",
+      "label": "Onboarding Auto Lock",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "onboarding_attention_hours",
+      "label": "Onboarding Attention Hours",
+      "fieldtype": "Int",
+      "default": "48"
+    },
+    {
+      "fieldname": "verification_email_limit_enabled",
+      "label": "Verification email limit enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "hidden": 1
+    },
+    {
+      "fieldname": "verification_ip_limit_enabled",
+      "label": "Verification IP limit enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "hidden": 1
+    },
+    {
+      "fieldname": "organization_yes_no_display",
+      "label": "Organization yes/no display",
+      "fieldtype": "Select",
+      "options": "Dropdown\nButtons",
+      "default": "Dropdown"
+    },
+    {
+      "fieldname": "new_user_page_tour_default",
+      "label": "Page tours for new users",
+      "fieldtype": "Select",
+      "options": "Enabled\nDisabled",
+      "default": "Enabled"
+    },
+    {
+      "fieldname": "new_user_help_default",
+      "label": "Help and guides for new users",
+      "fieldtype": "Select",
+      "options": "Enabled\nDisabled",
+      "default": "Enabled"
+    },
+    {
+      "fieldname": "report_access_section",
+      "label": "Report access",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "report_access_roles",
+      "label": "Report access by role",
+      "fieldtype": "Long Text",
+      "read_only": 1,
+      "description": "Managed in the portal: Report access. JSON of role → view/download/email."
+    },
+    {
+      "fieldname": "report_access_assigned_staff",
+      "label": "Assigned consultant and reviewer can always see the report",
+      "fieldtype": "Check",
+      "default": "1"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

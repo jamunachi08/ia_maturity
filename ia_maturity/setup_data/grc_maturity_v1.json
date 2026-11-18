@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "source": {
+    "filename": "GRC_Maturity_Questionnaire V1.0.xlsx",
+    "sha256": "0b3da727eab7fd9042f5cadcc26dc43c30d3a8f774ffac759f4b24fd03867ab8",
+    "sheets": {
+      "Instructions": {
+        "nonempty_cells": 18,
+        "formula_count": 0
+      },
+      "Questionnaire": {
+        "nonempty_cells": 521,
+        "formula_count": 93
+      },
+      "Profile": {
+        "nonempty_cells": 39,
+        "formula_count": 40
+      },
+      "Results": {
+        "nonempty_cells": 147,
+        "formula_count": 95
+      },
+      "Lists": {
+        "nonempty_cells": 305,
+        "formula_count": 0
+      },
+      "Regulators": {
+        "nonempty_cells": 82,
+        "formula_count": 0
+      },
+      "SectorRegulators": {
+        "nonempty_cells": 415,
+        "formula_count": 0
+      },
+      "Config": {
+        "nonempty_cells": 153,
+        "formula_count": 0
+      },
+      "IT_Spec": {
+        "nonempty_cells": 27,
+        "formula_count": 0
+      }
+    }
+  },
+  "title": "GRC Maturity Assessment",
+  "version": "1.0",
+  "questions": [
+    {
+      "question_code": "Q1",
+      "section_code": "Awareness",
+      "topic_code": "",
+      "topic_title": "",
+      "question_text": "How confident is the organization in its understanding of its overall GRC maturity?",
+      "source_ref": "Questionnaire!A4:H4",
+      "option_a": "A. Minimal / Ad-hoc | Confidence rests on experience and informal understanding.",
+      "option_b": "B. Foundational / Basic | Internal reviews support confidence, but no structured assessment exists.",
+      "option_c": "C. Established / Systematic | Documented internal evaluations cover governance, risk, and compliance.",
+      "option_d": "D. Leading / Best-In-Class | A recent independent or externally validated assessment supports confidence."
+    },
+    {
+      "question_code": "Q2",
+      "section_code": "Awareness",
+      "topic_code": "",
+      "topic_title": "",
+      "question_text": "To what extent does the organization rely on objective evidence to judge the effectiveness of its GRC practices?",
+      "source_ref": "Questionnaire!A5:H5",
+      "option_a": "A. Minimal / Ad-hoc | Evaluations are perception-based and undocumented.",
+      "option_b": "B. Foundational / Basic | Some documentation exists, but coverage is inconsistent.",
+      "option_c": "C. Established / Systematic | Evidence is kept internally and reviewed periodically.",
+      "option_d": "D. Leading / Best-In-Class | Evidence is validated through independent reviews or advisory assessments."
+    },
+    {
+      "question_code": "Q3",
+      "section_code": "Governance",
+      "topic_code": "T1",
+      "topic_title": "Structure and authority",
+      "question_text": "How clearly are governance roles and authorities defined and enforced?",
+      "source_ref": "Questionnaire!A6:H6",
+      "option_a": "A. Minimal / Ad-hoc | Roles are informal and depend on individual experience.",
+      "option_b": "B. Foundational / Basic | Roles are documented but applied inconsistently across departments.",
+      "option_c": "C. Established / Systematic | Roles are formally approved, communicated, and reviewed periodically.",
+      "option_d": "D. Leading / Best-In-Class | Roles are benchmarked against recognized standards or regulator expectations and independently validated."
+    },
+    {
+      "question_code": "Q4",
+      "section_code": "Governance",
+      "topic_code": "T1",
+      "topic_title": "Structure and authority",
+      "question_text": "How are the Board and its committees structured and operated?",
+      "source_ref": "Questionnaire!A7:H7",
+      "option_a": "A. Minimal / Ad-hoc | No charters or defined committee responsibilities exist.",
+      "option_b": "B. Foundational / Basic | Charters exist but are rarely applied.",
+      "option_c": "C. Established / Systematic | Charters are applied, meetings are minuted, and member independence is considered.",
+      "option_d": "D. Leading / Best-In-Class | Structure and effectiveness are assessed independently."
+    },
+    {
+      "question_code": "Q5",
+      "section_code": "Governance",
+      "topic_code": "T1",
+      "topic_title": "Structure and authority",
+      "question_text": "How is delegation of authority defined and controlled?",
+      "source_ref": "Questionnaire!A8:H8",
+      "option_a": "A. Minimal / Ad-hoc | Authority limits are informal.",
+      "option_b": "B. Foundational / Basic | A delegation document exists, but it is outdated or inconsistently followed.",
+      "option_c": "C. Established / Systematic | An approved matrix sets limits, is reviewed periodically, and breaches are reported.",
+      "option_d": "D. Leading / Best-In-Class | The matrix and its application are independently tested."
+    },
+    {
+      "question_code": "Q6",
+      "section_code": "Governance",
+      "topic_code": "T1",
+      "topic_title": "Structure and authority",
+      "question_text": "How are Board performance and succession managed?",
+      "source_ref": "Questionnaire!A9:H9",
+      "option_a": "A. Minimal / Ad-hoc | No evaluation or succession planning exists.",
+      "option_b": "B. Foundational / Basic | Feedback is informal, and succession is discussed only when a vacancy arises.",
+      "option_c": "C. Established / Systematic | An annual internal evaluation and a documented succession plan exist.",
+      "option_d": "D. Leading / Best-In-Class | An independent party facilitates the evaluation and the Board acts on the results."
+    },
+    {
+      "question_code": "Q7",
+      "section_code": "Governance",
+      "topic_code": "T2",
+      "topic_title": "Strategy and oversight",
+      "question_text": "How effective is the Board’s oversight of risk and compliance?",
+      "source_ref": "Questionnaire!A10:H10",
+      "option_a": "A. Minimal / Ad-hoc | Oversight is limited to high-level reporting with little challenge.",
+      "option_b": "B. Foundational / Basic | Risk and compliance are reviewed periodically, mainly after incidents.",
+      "option_c": "C. Established / Systematic | The Board reviews risk and compliance reports with management and records its challenge.",
+      "option_d": "D. Leading / Best-In-Class | The Board uses independent assurance and external assessments to inform decisions, and tracks follow-up."
+    },
+    {
+      "question_code": "Q8",
+      "section_code": "Governance",
+      "topic_code": "T2",
+      "topic_title": "Strategy and oversight",
+      "question_text": "How effectively does governance adapt to regulatory and strategic changes?",
+      "source_ref": "Questionnaire!A11:H11",
+      "option_a": "A. Minimal / Ad-hoc | Changes happen only after major issues or regulatory pressure.",
+      "option_b": "B. Foundational / Basic | Regulatory and strategic changes are discussed but implemented inconsistently.",
+      "option_c": "C. Established / Systematic | Governance framework changes are reviewed on a set schedule by internal stakeholders.",
+      "option_d": "D. Leading / Best-In-Class | Governance framework changes are reviewed on a set schedule by independent experts, and the organization acts on the results."
+    },
+    {
+      "question_code": "Q9",
+      "section_code": "Governance",
+      "topic_code": "T2",
+      "topic_title": "Strategy and oversight",
+      "question_text": "How are organizational strategy and objectives set and monitored?",
+      "source_ref": "Questionnaire!A12:H12",
+      "option_a": "A. Minimal / Ad-hoc | Objectives are informal and not written down.",
+      "option_b": "B. Foundational / Basic | Objectives are documented, but progress is not tracked.",
+      "option_c": "C. Established / Systematic | The Board approves a strategy with measurable objectives, and progress is reported regularly.",
+      "option_d": "D. Leading / Best-In-Class | Strategy and performance are independently reviewed or benchmarked."
+    },
+    {
+      "question_code": "Q10",
+      "section_code": "Governance",
+      "topic_code": "T2",
+      "topic_title": "Strategy and oversight",
+      "question_text": "How does the organization account to its stakeholders (members, beneficiaries, donors, owners, or the public, as applicable)?",
+      "source_ref": "Questionnaire!A13:H13",
+      "option_a": "A. Minimal / Ad-hoc | Reporting to stakeholders is ad hoc.",
+      "option_b": "B. Foundational / Basic | Reports are issued, but content and timing are inconsistent.",
+      "option_c": "C. Established / Systematic | A reporting calendar with approved content exists, and stakeholder feedback is handled.",
+      "option_d": "D. Leading / Best-In-Class | Stakeholder reporting is independently assured."
+    },
+    {
+      "question_code": "Q11",
+      "section_code": "Governance",
+      "topic_code": "T3",
+      "topic_title": "Ethics and integrity",
+      "question_text": "How are related-party transactions and conflicts of interest governed and disclosed?",
+      "source_ref": "Questionnaire!A14:H14",
+      "option_a": "A. Minimal / Ad-hoc | They are identified ad hoc when issues arise.",
+      "option_b": "B. Foundational / Basic | They are tracked internally and reviewed only by management.",
+      "option_c": "C. Established / Systematic | A register exists, declarations are collected, and an independent body such as the Audit Committee reviews them.",
+      "option_d": "D. Leading / Best-In-Class | Reviews are independently assessed and benchmarked against recognized disclosure expectations."
+    },
+    {
+      "question_code": "Q12",
+      "section_code": "Governance",
+      "topic_code": "T3",
+      "topic_title": "Ethics and integrity",
+      "question_text": "How is ethical conduct enforced at leadership level?",
+      "source_ref": "Questionnaire!A15:H15",
+      "option_a": "A. Minimal / Ad-hoc | Ethics are assumed, not formally governed.",
+      "option_b": "B. Foundational / Basic | A Code of Conduct exists, but enforcement is inconsistent.",
+      "option_c": "C. Established / Systematic | Compliance with the Code is monitored and breaches are reported internally.",
+      "option_d": "D. Leading / Best-In-Class | Ethical culture is assessed periodically by independent third parties."
+    },
+    {
+      "question_code": "Q13",
+      "section_code": "Governance",
+      "topic_code": "T3",
+      "topic_title": "Ethics and integrity",
+      "question_text": "How effective are whistleblowing and reporting channels?",
+      "source_ref": "Questionnaire!A16:H16",
+      "option_a": "A. Minimal / Ad-hoc | No channel exists.",
+      "option_b": "B. Foundational / Basic | A channel exists, but awareness is low and handling is inconsistent.",
+      "option_c": "C. Established / Systematic | A confidential channel with anti-retaliation protection exists, and cases are tracked and reported.",
+      "option_d": "D. Leading / Best-In-Class | The channel is operated or tested by an independent party, and results are trended."
+    },
+    {
+      "question_code": "Q14",
+      "section_code": "Governance",
+      "topic_code": "T4",
+      "topic_title": "Policies, controls, and assurance",
+      "question_text": "How are policies approved and reviewed?",
+      "source_ref": "Questionnaire!A17:H17",
+      "option_a": "A. Minimal / Ad-hoc | No approved policies exist.",
+      "option_b": "B. Foundational / Basic | Policies exist, but there is no review cycle.",
+      "option_c": "C. Established / Systematic | Policies are approved by the right authority and reviewed on a defined schedule.",
+      "option_d": "D. Leading / Best-In-Class | The policy framework and review process are validated externally."
+    },
+    {
+      "question_code": "Q15",
+      "section_code": "Governance",
+      "topic_code": "T4",
+      "topic_title": "Policies, controls, and assurance",
+      "question_text": "How is the internal control framework defined and maintained?",
+      "source_ref": "Questionnaire!A18:H18",
+      "option_a": "A. Minimal / Ad-hoc | Controls are informal and undocumented.",
+      "option_b": "B. Foundational / Basic | Key controls are documented, but ownership and testing are inconsistent.",
+      "option_c": "C. Established / Systematic | A control framework with named owners is tested internally on a schedule.",
+      "option_d": "D. Leading / Best-In-Class | Control effectiveness is independently tested and reported to the Board."
+    },
+    {
+      "question_code": "Q16",
+      "section_code": "Governance",
+      "topic_code": "T4",
+      "topic_title": "Policies, controls, and assurance",
+      "question_text": "How established is the internal audit function?",
+      "source_ref": "Questionnaire!A19:H19",
+      "option_a": "A. Minimal / Ad-hoc | No internal audit function exists.",
+      "option_b": "B. Foundational / Basic | Reviews are performed ad hoc.",
+      "option_c": "C. Established / Systematic | A risk-based annual plan exists and the function reports to the Board or a committee.",
+      "option_d": "D. Leading / Best-In-Class | An external party has assessed the function’s quality."
+    },
+    {
+      "question_code": "Q17",
+      "section_code": "Risk",
+      "topic_code": "T5",
+      "topic_title": "Risk framework and culture",
+      "question_text": "How does the organization identify and assess risks?",
+      "source_ref": "Questionnaire!A20:H20",
+      "option_a": "A. Minimal / Ad-hoc | No defined method exists.",
+      "option_b": "B. Foundational / Basic | A risk list exists without owners or scoring.",
+      "option_c": "C. Established / Systematic | A risk register with owners, scoring, and a review cycle is maintained.",
+      "option_d": "D. Leading / Best-In-Class | The method is validated independently and improved from the findings."
+    },
+    {
+      "question_code": "Q18",
+      "section_code": "Risk",
+      "topic_code": "T5",
+      "topic_title": "Risk framework and culture",
+      "question_text": "To what extent is risk tolerance defined and used?",
+      "source_ref": "Questionnaire!A21:H21",
+      "option_a": "A. Minimal / Ad-hoc | No official definition of risk tolerance exists.",
+      "option_b": "B. Foundational / Basic | A tolerance is defined but not used in decisions.",
+      "option_c": "C. Established / Systematic | The Board approves the tolerance and it informs major decisions.",
+      "option_d": "D. Leading / Best-In-Class | The tolerance is stress tested and independently evaluated."
+    },
+    {
+      "question_code": "Q19",
+      "section_code": "Risk",
+      "topic_code": "T5",
+      "topic_title": "Risk framework and culture",
+      "question_text": "How is risk reported to the Board?",
+      "source_ref": "Questionnaire!A22:H22",
+      "option_a": "A. Minimal / Ad-hoc | No risk reporting exists.",
+      "option_b": "B. Foundational / Basic | Reporting happens only after incidents.",
+      "option_c": "C. Established / Systematic | Regular structured reports are provided.",
+      "option_d": "D. Leading / Best-In-Class | Reports are supported by independent assurance."
+    },
+    {
+      "question_code": "Q20",
+      "section_code": "Risk",
+      "topic_code": "T5",
+      "topic_title": "Risk framework and culture",
+      "question_text": "How embedded is risk awareness in daily decisions and behavior?",
+      "source_ref": "Questionnaire!A23:H23",
+      "option_a": "A. Minimal / Ad-hoc | Risk is seen as a specialist concern.",
+      "option_b": "B. Foundational / Basic | Awareness exists in some departments, but expectations are not set.",
+      "option_c": "C. Established / Systematic | Risk expectations are defined, communicated, included in objectives, and supported by training.",
+      "option_d": "D. Leading / Best-In-Class | Risk culture is assessed independently and the results drive improvement."
+    },
+    {
+      "question_code": "Q21",
+      "section_code": "Risk",
+      "topic_code": "T5",
+      "topic_title": "Risk framework and culture",
+      "question_text": "How are risk responsibilities divided across the three lines (management, risk and compliance, internal audit)?",
+      "source_ref": "Questionnaire!A24:H24",
+      "option_a": "A. Minimal / Ad-hoc | Responsibilities are not defined.",
+      "option_b": "B. Foundational / Basic | Roles are documented, but gaps and overlaps remain.",
+      "option_c": "C. Established / Systematic | Roles for each line are clear and reviewed periodically.",
+      "option_d": "D. Leading / Best-In-Class | The model is assessed independently and coordination between lines is evidenced."
+    },
+    {
+      "question_code": "Q22",
+      "section_code": "Risk",
+      "topic_code": "T6",
+      "topic_title": "Strategic and emerging risk",
+      "question_text": "How effectively are strategic and regulatory risks addressed?",
+      "source_ref": "Questionnaire!A25:H25",
+      "option_a": "A. Minimal / Ad-hoc | They are considered only after changes have already taken place.",
+      "option_b": "B. Foundational / Basic | They are managed manually and case by case.",
+      "option_c": "C. Established / Systematic | They are part of enterprise risk assessments.",
+      "option_d": "D. Leading / Best-In-Class | Exposure is independently evaluated and benchmarked."
+    },
+    {
+      "question_code": "Q23",
+      "section_code": "Risk",
+      "topic_code": "T6",
+      "topic_title": "Strategic and emerging risk",
+      "question_text": "How reliably are emerging risks identified and escalated?",
+      "source_ref": "Questionnaire!A26:H26",
+      "option_a": "A. Minimal / Ad-hoc | They are recognized only after material impact.",
+      "option_b": "B. Foundational / Basic | Senior management discusses them informally.",
+      "option_c": "C. Established / Systematic | They are included in formal risk assessments.",
+      "option_d": "D. Leading / Best-In-Class | External horizon scanning and stress testing support identification."
+    },
+    {
+      "question_code": "Q24",
+      "section_code": "Risk",
+      "topic_code": "T6",
+      "topic_title": "Strategic and emerging risk",
+      "question_text": "How are non-financial risks (reputational, ESG, conduct) managed?",
+      "source_ref": "Questionnaire!A27:H27",
+      "option_a": "A. Minimal / Ad-hoc | They are not considered.",
+      "option_b": "B. Foundational / Basic | They are discussed informally.",
+      "option_c": "C. Established / Systematic | They are included in the risk register and reporting.",
+      "option_d": "D. Leading / Best-In-Class | External specialists assess them."
+    },
+    {
+      "question_code": "Q25",
+      "section_code": "Risk",
+      "topic_code": "T7",
+      "topic_title": "Operational and resilience",
+      "question_text": "How are third-party and outsourcing risks managed?",
+      "source_ref": "Questionnaire!A28:H28",
+      "option_a": "A. Minimal / Ad-hoc | No assessment is performed.",
+      "option_b": "B. Foundational / Basic | Contracts are reviewed, with no risk assessment.",
+      "option_c": "C. Established / Systematic | Due diligence and ongoing monitoring cover third parties.",
+      "option_d": "D. Leading / Best-In-Class | Independent assurance covers critical vendors."
+    },
+    {
+      "question_code": "Q26",
+      "section_code": "Risk",
+      "topic_code": "T7",
+      "topic_title": "Operational and resilience",
+      "question_text": "How prepared is the organization for business disruption?",
+      "source_ref": "Questionnaire!A29:H29",
+      "option_a": "A. Minimal / Ad-hoc | No continuity plan exists.",
+      "option_b": "B. Foundational / Basic | A plan exists but has not been tested.",
+      "option_c": "C. Established / Systematic | The plan is tested at least yearly and updated.",
+      "option_d": "D. Leading / Best-In-Class | Tests are independently reviewed."
+    },
+    {
+      "question_code": "Q27",
+      "section_code": "Risk",
+      "topic_code": "T7",
+      "topic_title": "Operational and resilience",
+      "question_text": "How are risks managed in projects and major change initiatives?",
+      "source_ref": "Questionnaire!A30:H30",
+      "option_a": "A. Minimal / Ad-hoc | Project risks are not assessed.",
+      "option_b": "B. Foundational / Basic | Risks are assessed at the start only.",
+      "option_c": "C. Established / Systematic | Risks are tracked through the project lifecycle and reported to a steering body.",
+      "option_d": "D. Leading / Best-In-Class | Independent assurance reviews cover major projects."
+    },
+    {
+      "question_code": "Q28",
+      "section_code": "Risk",
+      "topic_code": "T7",
+      "topic_title": "Operational and resilience",
+      "question_text": "How is insurance coverage determined and reviewed?",
+      "source_ref": "Questionnaire!A31:H31",
+      "option_a": "A. Minimal / Ad-hoc | Coverage is not linked to risk assessment.",
+      "option_b": "B. Foundational / Basic | Policies exist and are reviewed only at renewal.",
+      "option_c": "C. Established / Systematic | Coverage is matched to the risk register and reviewed yearly.",
+      "option_d": "D. Leading / Best-In-Class | An independent adviser reviews the adequacy of coverage."
+    },
+    {
+      "question_code": "Q29",
+      "section_code": "Risk",
+      "topic_code": "T8",
+      "topic_title": "Technology and data",
+      "question_text": "How is cybersecurity governed?",
+      "source_ref": "Questionnaire!A32:H32",
+      "option_a": "A. Minimal / Ad-hoc | IT handles cybersecurity without senior management visibility.",
+      "option_b": "B. Foundational / Basic | Cyber risks are known, but no framework guides the response.",
+      "option_c": "C. Established / Systematic | A framework is in place, reviewed internally, and reported to senior management and the Board.",
+      "option_d": "D. Leading / Best-In-Class | Cyber resilience and controls are independently tested."
+    },
+    {
+      "question_code": "Q30",
+      "section_code": "Risk",
+      "topic_code": "T8",
+      "topic_title": "Technology and data",
+      "question_text": "How are information and data governed (ownership, quality, classification)?",
+      "source_ref": "Questionnaire!A33:H33",
+      "option_a": "A. Minimal / Ad-hoc | No data ownership exists.",
+      "option_b": "B. Foundational / Basic | Policies exist, but owners are unclear and classification is partial.",
+      "option_c": "C. Established / Systematic | Owners are assigned, data is classified, and quality is monitored.",
+      "option_d": "D. Leading / Best-In-Class | Data governance is independently assessed."
+    },
+    {
+      "question_code": "Q31",
+      "section_code": "Risk",
+      "topic_code": "T8",
+      "topic_title": "Technology and data",
+      "question_text": "How are AI and emerging technologies governed?",
+      "source_ref": "Questionnaire!A34:H34",
+      "option_a": "A. Minimal / Ad-hoc | They are used without rules.",
+      "option_b": "B. Foundational / Basic | Basic usage guidance exists, with no risk assessment or ownership.",
+      "option_c": "C. Established / Systematic | An approved policy, a usage inventory, pre-adoption risk assessment, and named owners are in place.",
+      "option_d": "D. Leading / Best-In-Class | Use is independently reviewed, with monitoring of outputs and data risks."
+    },
+    {
+      "question_code": "Q32",
+      "section_code": "Risk",
+      "topic_code": "T9",
+      "topic_title": "Financial and fraud",
+      "question_text": "How is fraud risk managed?",
+      "source_ref": "Questionnaire!A35:H35",
+      "option_a": "A. Minimal / Ad-hoc | No fraud risk process exists.",
+      "option_b": "B. Foundational / Basic | Some controls exist, with no fraud risk assessment.",
+      "option_c": "C. Established / Systematic | A fraud risk assessment is performed and monitored.",
+      "option_d": "D. Leading / Best-In-Class | An independent fraud risk review is performed."
+    },
+    {
+      "question_code": "Q33",
+      "section_code": "Risk",
+      "topic_code": "T9",
+      "topic_title": "Financial and fraud",
+      "question_text": "How are financial and liquidity risks managed?",
+      "source_ref": "Questionnaire!A36:H36",
+      "option_a": "A. Minimal / Ad-hoc | They are monitored informally.",
+      "option_b": "B. Foundational / Basic | Cash and budget are tracked, with no defined limits.",
+      "option_c": "C. Established / Systematic | Limits and forecasts are defined, and results are reported regularly to management and the Board.",
+      "option_d": "D. Leading / Best-In-Class | Positions are stress tested and independently reviewed."
+    },
+    {
+      "question_code": "Q34",
+      "section_code": "Compliance",
+      "topic_code": "T10",
+      "topic_title": "Regulatory framework",
+      "question_text": "How comprehensive is the regulatory mapping?",
+      "source_ref": "Questionnaire!A37:H37",
+      "option_a": "A. Minimal / Ad-hoc | Regulations are addressed reactively.",
+      "option_b": "B. Foundational / Basic | Key regulations are documented in isolation.",
+      "option_c": "C. Established / Systematic | A central compliance register is maintained internally.",
+      "option_d": "D. Leading / Best-In-Class | External compliance specialists validate the mapping."
+    },
+    {
+      "question_code": "Q35",
+      "section_code": "Compliance",
+      "topic_code": "T10",
+      "topic_title": "Regulatory framework",
+      "question_text": "How effective is regulatory change management?",
+      "source_ref": "Questionnaire!A38:H38",
+      "option_a": "A. Minimal / Ad-hoc | Changes are addressed only after enforcement action.",
+      "option_b": "B. Foundational / Basic | Updates are tracked manually and applied inconsistently.",
+      "option_c": "C. Established / Systematic | Changes are monitored, assessed, and implemented internally.",
+      "option_d": "D. Leading / Best-In-Class | External specialists validate impact assessments."
+    },
+    {
+      "question_code": "Q36",
+      "section_code": "Compliance",
+      "topic_code": "T10",
+      "topic_title": "Regulatory framework",
+      "question_text": "How are policies linked to controls and obligations?",
+      "source_ref": "Questionnaire!A39:H39",
+      "option_a": "A. Minimal / Ad-hoc | Policies are kept separate from controls.",
+      "option_b": "B. Foundational / Basic | Some policies reference controls, but the mapping is incomplete.",
+      "option_c": "C. Established / Systematic | Each policy is mapped to obligations and controls with owners, and reviewed on a schedule.",
+      "option_d": "D. Leading / Best-In-Class | External specialists validate the mapping."
+    },
+    {
+      "question_code": "Q37",
+      "section_code": "Compliance",
+      "topic_code": "T11",
+      "topic_title": "Monitoring and assurance",
+      "question_text": "How effective are compliance monitoring and issue management?",
+      "source_ref": "Questionnaire!A40:H40",
+      "option_a": "A. Minimal / Ad-hoc | Management handles issues informally.",
+      "option_b": "B. Foundational / Basic | Issues are logged, but remediation is inconsistent.",
+      "option_c": "C. Established / Systematic | Issues are tracked, escalated, and closed internally.",
+      "option_d": "D. Leading / Best-In-Class | Compliance effectiveness is independently tested and assured."
+    },
+    {
+      "question_code": "Q38",
+      "section_code": "Compliance",
+      "topic_code": "T11",
+      "topic_title": "Monitoring and assurance",
+      "question_text": "How does the organization prepare for and respond to regulatory inspections?",
+      "source_ref": "Questionnaire!A41:H41",
+      "option_a": "A. Minimal / Ad-hoc | Inspections are handled when they occur.",
+      "option_b": "B. Foundational / Basic | A contact person exists, with no defined process.",
+      "option_c": "C. Established / Systematic | A defined process sets roles, document readiness, and tracked follow-up on findings.",
+      "option_d": "D. Leading / Best-In-Class | Readiness is tested through independent mock inspections."
+    },
+    {
+      "question_code": "Q39",
+      "section_code": "Compliance",
+      "topic_code": "T11",
+      "topic_title": "Monitoring and assurance",
+      "question_text": "How is compliance with obligations tested?",
+      "source_ref": "Questionnaire!A42:H42",
+      "option_a": "A. Minimal / Ad-hoc | Compliance is not tested.",
+      "option_b": "B. Foundational / Basic | Testing happens occasionally, after issues arise.",
+      "option_c": "C. Established / Systematic | A risk-based annual testing plan exists and results are reported.",
+      "option_d": "D. Leading / Best-In-Class | An independent party tests compliance and results are trended."
+    },
+    {
+      "question_code": "Q40",
+      "section_code": "Compliance",
+      "topic_code": "T12",
+      "topic_title": "Key compliance areas",
+      "question_text": "How mature is data privacy governance?",
+      "source_ref": "Questionnaire!A43:H43",
+      "option_a": "A. Minimal / Ad-hoc | Data privacy is not formally governed.",
+      "option_b": "B. Foundational / Basic | Privacy policies exist, but controls are unclear.",
+      "option_c": "C. Established / Systematic | Privacy requirements are implemented and monitored internally.",
+      "option_d": "D. Leading / Best-In-Class | Privacy controls are externally audited and tested."
+    },
+    {
+      "question_code": "Q41",
+      "section_code": "Compliance",
+      "topic_code": "T12",
+      "topic_title": "Key compliance areas",
+      "question_text": "How is workforce and employment compliance managed?",
+      "source_ref": "Questionnaire!A44:H44",
+      "option_a": "A. Minimal / Ad-hoc | It is managed reactively.",
+      "option_b": "B. Foundational / Basic | HR tracks it operationally, with no wider reporting.",
+      "option_c": "C. Established / Systematic | It is part of compliance reporting.",
+      "option_d": "D. Leading / Best-In-Class | It is independently reviewed."
+    },
+    {
+      "question_code": "Q42",
+      "section_code": "Compliance",
+      "topic_code": "T12",
+      "topic_title": "Key compliance areas",
+      "question_text": "How are records retained and disposed of?",
+      "source_ref": "Questionnaire!A45:H45",
+      "option_a": "A. Minimal / Ad-hoc | No retention rules exist.",
+      "option_b": "B. Foundational / Basic | Rules exist for some record types and are applied inconsistently.",
+      "option_c": "C. Established / Systematic | An approved retention schedule is applied and disposal is documented.",
+      "option_d": "D. Leading / Best-In-Class | Retention and disposal are independently audited."
+    },
+    {
+      "question_code": "Q43",
+      "section_code": "Compliance",
+      "topic_code": "T12",
+      "topic_title": "Key compliance areas",
+      "question_text": "How are sanctions screening requirements managed?",
+      "source_ref": "Questionnaire!A46:H46",
+      "option_a": "A. Minimal / Ad-hoc | Screening is not performed.",
+      "option_b": "B. Foundational / Basic | Screening is occasional or manual, with no records kept.",
+      "option_c": "C. Established / Systematic | Customers, vendors, and counterparties are screened at defined points with documented results.",
+      "option_d": "D. Leading / Best-In-Class | The screening process is independently tested."
+    },
+    {
+      "question_code": "Q44",
+      "section_code": "Compliance",
+      "topic_code": "T12",
+      "topic_title": "Key compliance areas",
+      "question_text": "How are ESG-related legal and reporting requirements managed?",
+      "source_ref": "Questionnaire!A47:H47",
+      "option_a": "A. Minimal / Ad-hoc | Requirements have not been identified.",
+      "option_b": "B. Foundational / Basic | Requirements are identified for some topics, with no owner.",
+      "option_c": "C. Established / Systematic | Requirements are mapped, owners are assigned, and data is collected and reviewed.",
+      "option_d": "D. Leading / Best-In-Class | ESG reporting is independently assured."
+    },
+    {
+      "question_code": "Q45",
+      "section_code": "Compliance",
+      "topic_code": "T13",
+      "topic_title": "Function and culture",
+      "question_text": "How independent and well resourced is the compliance function?",
+      "source_ref": "Questionnaire!A48:H48",
+      "option_a": "A. Minimal / Ad-hoc | No compliance function exists.",
+      "option_b": "B. Foundational / Basic | A function exists and reports only to management.",
+      "option_c": "C. Established / Systematic | It has an independent reporting line and adequate resources.",
+      "option_d": "D. Leading / Best-In-Class | An external party has assessed the function."
+    },
+    {
+      "question_code": "Q46",
+      "section_code": "Compliance",
+      "topic_code": "T13",
+      "topic_title": "Function and culture",
+      "question_text": "How effective is compliance training and awareness?",
+      "source_ref": "Questionnaire!A49:H49",
+      "option_a": "A. Minimal / Ad-hoc | No training exists.",
+      "option_b": "B. Foundational / Basic | Training is occasional.",
+      "option_c": "C. Established / Systematic | Training is scheduled, tracked, and role-based.",
+      "option_d": "D. Leading / Best-In-Class | Effectiveness is tested and independently reviewed."
+    }
+  ],
+  "sections": [
+    {
+      "section_code": "Awareness",
+      "section_title": "GRC General Maturity Awareness",
+      "scope_requirement": "Mandatory",
+      "weight": 1
+    },
+    {
+      "section_code": "Governance",
+      "section_title": "Governance",
+      "scope_requirement": "Optional",
+      "weight": 1
+    },
+    {
+      "section_code": "Risk",
+      "section_title": "Risk",
+      "scope_requirement": "Optional",
+      "weight": 1
+    },
+    {
+      "section_code": "Compliance",
+      "section_title": "Compliance",
+      "scope_requirement": "Optional",
+      "weight": 1
+    }
+  ],
+  "bands": [
+    {
+      "level_name": "Critical",
+      "min_score": 0.0,
+      "max_score": 34.99,
+      "interpretation": "Significant gaps exist. Immediate attention required."
+    },
+    {
+      "level_name": "Low",
+      "min_score": 35.0,
+      "max_score": 54.99,
+      "interpretation": "Foundational practices exist but are inconsistently applied."
+    },
+    {
+      "level_name": "Medium",
+      "min_score": 55.0,
+      "max_score": 74.99,
+      "interpretation": "Core practices are in place. Enhancements needed for best-in-class."
+    },
+    {
+      "level_name": "High",
+      "min_score": 75.0,
+      "max_score": 89.99,
+      "interpretation": "Robust practices aligned with international best practice."
+    },
+    {
+      "level_name": "Leading",
+      "min_score": 90.0,
+      "max_score": 100.0,
+      "interpretation": "Benchmark for excellence with advanced practices."
+    }
+  ],
+  "instructions": {
+    "B3": "This survey is a standard tool for an initial Governance, Risk, and Compliance (GRC) assessment. It helps your organization see its strengths and weaknesses across governance, risk, and compliance, and shows where advisory support may help if gaps appear. Answer all 46 questions across 4 sections to generate a detailed maturity report.",
+    "B4": "1. Complete the Profile sheet. 2. On the Questionnaire sheet, enter A, B, C, D, or N/A in the yellow Answer column, one choice per question. 3. Read the result on the Results sheet.",
+    "B5": "A (Minimal / Ad-hoc) = 25, B (Foundational / Basic) = 50, C (Established / Systematic) = 75, D (Leading / Best-In-Class) = 100. Each question is worth 100 points at most.",
+    "B6": "N/A means not applicable. The question is left out of the score and the possible points fall by 100. A question left blank scores zero.",
+    "B7": "Critical (under 35%), Low (35 to 54%), Medium (55 to 74%), High (75 to 89%), Leading (90% and above).",
+    "B8": "All 46 questions must be answered. Governance, risk, and compliance overlap, so the assessment is not split by section. N/A counts as an answer.",
+    "B9": "The regulator list on the Profile sheet follows the industry type and the sector (see the Regulators and SectorRegulators sheets). MISA appears when the company nationality is foreign. Yes/No answers are recorded and do not change the questions. The Lists and Regulators sheets hold the industries, sectors, and regulators, and can be edited."
+  },
+  "arabic_content_approved": false
+}

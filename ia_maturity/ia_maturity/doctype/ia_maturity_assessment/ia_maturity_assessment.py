@@ -8,11 +8,28 @@ from frappe.utils import add_days, getdate, now_datetime, today
 
 from ia_maturity.compat import in_test
 from ia_maturity.issues import apply_auto_answers
-from ia_maturity.scoring import LETTERS, LEVEL_NAMES, NA, PRIORITY, compute, get_config
+from ia_maturity.grc import scope
+from ia_maturity.scoring import (
+	LETTERS,
+	LEVEL_NAMES,
+	NA,
+	PRIORITY,
+	answer_points,
+	compute,
+	get_config,
+	normalize_selected,
+	parse_selected,
+	selected_statements,
+	worst_letter,
+)
 
 OPTION_FIELDS = {"A": "option_a", "B": "option_b", "C": "option_c", "D": "option_d"}
 SNAPSHOT_FIELDS = (
 	"question_code",
+	"topic_code",
+	"topic_title",
+	"topic_title_ar",
+	"source_ref",
 	"section_code",
 	"short_label",
 	"question_text",
@@ -22,6 +39,8 @@ SNAPSHOT_FIELDS = (
 	"option_c",
 	"option_d",
 	"allow_na",
+	"selection_mode",
+	"multi_score_method",
 	"is_gating",
 	"gate_trigger",
 	"gate_cap_level",
@@ -34,6 +53,7 @@ SNAPSHOT_FIELDS = (
 	"option_c_ar",
 	"option_d_ar",
 )
+# allow_comment / allow_attachment are resolved (not copied raw) in load_questions.
 
 
 class IAMaturityAssessment(Document):
@@ -52,12 +72,19 @@ class IAMaturityAssessment(Document):
 			self.load_questions()
 		if self.language not in ("en", "ar"):
 			self.language = "en"
-		apply_auto_answers(self)
+		# GRC is a self-reported instrument. IA issue-register rules never answer it.
+		kind = self.get("grc_assessment_type") or frappe.db.get_value("IA Maturity Template", self.template, "assessment_type")
+		from ia_maturity.grc.assessment_types import behaves_like_grc
+		if not behaves_like_grc(kind):
+			apply_auto_answers(self)
 		self.validate_answers()
 		self.calculate()
 
 	def before_submit(self):
-		missing = [a.question_code for a in self.answers if not a.selected_option]
+		from ia_maturity.grc.organization_profile import prepare_submission
+		prepare_submission(self)
+		scope.require_ready(self)
+		missing = [a.question_code for a in scope.answers(self) if not a.selected_option]
 		if missing:
 			frappe.throw(
 				_("Answer every question before submitting. Unanswered: {0}").format(", ".join(missing)),
@@ -68,6 +95,9 @@ class IAMaturityAssessment(Document):
 
 	def on_submit(self):
 		self.create_actions()
+		from ia_maturity.grc.security import enabled
+		if enabled():
+			return
 		frappe.enqueue(
 			"ia_maturity.notifications.send_submission_email",
 			assessment=self.name,
@@ -78,7 +108,7 @@ class IAMaturityAssessment(Document):
 	def on_cancel(self):
 		for name in frappe.get_all(
 			"IA Maturity Action",
-			filters={"assessment": self.name, "status": ["in", ["Open", "In Progress"]]},
+			filters={"assessment": self.name, "status": ["in", ["Open", "In Progress", "Pending Verification"]]},
 			pluck="name",
 		):
 			frappe.db.set_value("IA Maturity Action", name, "status", "Cancelled")
@@ -108,6 +138,7 @@ class IAMaturityAssessment(Document):
 		"""(Re)build the answer rows from the template, keeping any answers already given."""
 		if not self.template:
 			frappe.throw(_("Select a questionnaire template first."))
+		from ia_maturity.grc.response_policy import resolve_for_question
 		template = frappe.get_doc("IA Maturity Template", self.template)
 		titles = {s.section_code: s.section_title for s in template.sections}
 		titles_ar = {s.section_code: s.section_title_ar for s in template.sections}
@@ -115,8 +146,12 @@ class IAMaturityAssessment(Document):
 		self.set("answers", [])
 		for q in template.questions:
 			row = {f: q.get(f) for f in SNAPSHOT_FIELDS}
+			row["selection_mode"] = (row.get("selection_mode") or "Single").strip() or "Single"
+			row["multi_score_method"] = (row.get("multi_score_method") or "Highest").strip() or "Highest"
 			row["section_title"] = titles.get(q.section_code, q.section_code)
 			row["section_title_ar"] = titles_ar.get(q.section_code) or ""
+			# Snapshot resolved flags (question → section → questionnaire).
+			row.update(resolve_for_question(template, q))
 			old = previous.get(q.question_code)
 			if old:
 				row.update(
@@ -129,29 +164,43 @@ class IAMaturityAssessment(Document):
 		return self.answers
 
 	def template_sections(self):
+		if self.get("grc_sections_snapshot"):
+			policy = get_config(self)
+			return frappe._dict(weighting_method=policy.weighting_method), frappe.parse_json(self.grc_sections_snapshot)
 		template = frappe.get_cached_doc("IA Maturity Template", self.template)
 		return template, [s.as_dict() for s in template.sections]
 
 	def validate_answers(self):
-		for a in self.answers:
-			opt = (a.selected_option or "").strip()
-			if opt == NA and not a.allow_na:
+		for a in scope.answers(self):
+			multi = (a.selection_mode or "Single") == "Multi"
+			normalized = normalize_selected(a.selected_option, multi=multi)
+			if normalized is None:
+				frappe.throw(_("Row {0}: invalid answer {1}.").format(a.idx, a.selected_option))
+			a.selected_option = normalized
+			if normalized == NA and not a.allow_na:
 				frappe.throw(
 					_("Row {0}: 'Not applicable' is not allowed for question {1}.").format(a.idx, a.question_code)
 				)
-			if opt and opt not in LETTERS and opt != NA:
-				frappe.throw(_("Row {0}: invalid answer {1}.").format(a.idx, opt))
 
 	def validate_evidence(self):
-		rule = frappe.db.get_single_value("IA Maturity Settings", "evidence_required_from") or ""
+		from ia_maturity.grc.response_policy import flags_for_answer
+		rule = get_config(self).evidence_required_from or ""
 		if not rule:
 			return
 		needs = {"C", "D"} if rule.startswith("C") else {"D"}
-		missing = [
-			a.question_code
-			for a in self.answers
-			if a.selected_option in needs and not (a.evidence or (a.comment or "").strip())
-		]
+		missing = []
+		for a in scope.answers(self):
+			kind, letters = parse_selected(a.selected_option)
+			# Evidence when any selected letter meets the threshold (multi) or the single letter does.
+			if kind != "letters" or not (set(letters) & needs):
+				continue
+			flags = flags_for_answer(a)
+			if not flags["allow_comment"] and not flags["allow_attachment"]:
+				continue
+			has_file = flags["allow_attachment"] and a.evidence
+			has_comment = flags["allow_comment"] and (a.comment or "").strip()
+			if not (has_file or has_comment):
+				missing.append(a.question_code)
 		if missing:
 			frappe.throw(
 				_("Evidence (a file or a comment) is required for answers at level {0}. Missing for: {1}").format(
@@ -161,13 +210,12 @@ class IAMaturityAssessment(Document):
 			)
 
 	def calculate(self):
-		config = get_config()
-		for a in self.answers:
-			opt = a.selected_option or ""
-			a.points = config.points.get(opt, 0) if opt in LETTERS else 0
-			a.selected_description = a.get(OPTION_FIELDS[opt]) if opt in LETTERS else ("Not applicable" if opt == NA else "")
+		config = get_config(self)
+		for a in scope.answers(self):
+			a.points = answer_points(a, config.points, config.max_points)
+			a.selected_description = selected_statements(a)
 		template, sections = self.template_sections()
-		result = compute([a.as_dict() for a in self.answers], sections, template.weighting_method, config)
+		result = compute([a.as_dict() for a in scope.answers(self)], scope.sections(self, sections), template.weighting_method, config)
 		self.set(
 			"section_scores",
 			[
@@ -210,13 +258,13 @@ class IAMaturityAssessment(Document):
 		return result
 
 	def create_actions(self):
-		config = get_config()
+		config = get_config(self)
 		letters = {"A", "B", "C"} if config.create_actions_for == "A, B and C" else {"A", "B"}
 		template = frappe.get_cached_doc("IA Maturity Template", self.template)
 		owners = {s.section_code: s.owner_role for s in template.sections}
 		base = getdate(self.assessment_date or today())
-		for a in self.answers:
-			opt = a.selected_option
+		for a in scope.answers(self):
+			opt = worst_letter(a)
 			if opt not in letters:
 				continue
 			if frappe.db.exists("IA Maturity Action", {"assessment": self.name, "question_code": a.question_code}):

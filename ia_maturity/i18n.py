@@ -200,3 +200,33 @@ def norm_lang(lang):
 
 def strings(lang):
 	return STRINGS[norm_lang(lang)]
+
+
+def report_strings(lang, assessment_type="Internal Audit", framework=None):
+	"""Return a private copy so GRC labels never mutate IA report translations."""
+	lang = norm_lang(lang)
+	result = dict(strings(lang))
+	builtin = assessment_type in ("Internal Audit", "GRC")
+	grc_like = assessment_type == "GRC"
+	if not builtin and assessment_type:
+		from ia_maturity.grc.assessment_types import behaves_like_grc
+		grc_like = behaves_like_grc(assessment_type)
+	if grc_like:
+		result.update({
+			"title": "تقييم نضج الحوكمة والمخاطر والامتثال" if lang == "ar" else "Governance, Risk and Compliance Maturity Assessment",
+			"framework_value": "استبيان نضج الحوكمة والمخاطر والامتثال" if lang == "ar" else "GRC maturity questionnaire",
+			"scoring_text": (
+				"تُمنح الإجابات النقاط التالية: أ = {a}، ب = {b}، ج = {c}، د = {d}. تشمل النتيجة الأقسام المختارة فقط. "
+				"تُستبعد الإجابات غير المنطبقة من البسط والمقام. نتيجة القسم = النقاط ÷ الحد الأقصى للنقاط المنطبقة. نطاقات النضج: {bands}."
+				if lang == "ar" else
+				"Answers score A = {a}, B = {b}, C = {c}, D = {d} points. Results cover only the selected sections. "
+				"N/A answers are excluded from both earned and maximum points. Section score = points ÷ applicable maximum points. Maturity bands: {bands}."
+			),
+		})
+	if not builtin and assessment_type:
+		from ia_maturity.grc.assessment_types import label
+		name = label(assessment_type, lang)
+		result["title"] = ("تقييم نضج " + name) if lang == "ar" else (name + " Maturity Assessment")
+	if framework:
+		result["framework_value"] = framework
+	return result

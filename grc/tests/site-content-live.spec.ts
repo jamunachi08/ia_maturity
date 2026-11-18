@@ -1,0 +1,12 @@
+import {test,expect} from '@playwright/test';
+import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';
+const credentials=JSON.parse(readFileSync('../../../sites/grc.local/private/grc-local-credentials.json','utf8'));
+test('real administrator can open content editor and workflow settings',async({page})=>{
+ page.on('pageerror',error=>{throw error});const user='admin@grc.example.test';await page.addInitScript(user=>{localStorage.setItem('grc-page-tour:v1:'+encodeURIComponent(user)+':skip-auto','1');localStorage.setItem('grc-language','en')},user);
+ await page.goto('/login');await page.getByLabel('Email or username').fill(user);await page.getByLabel('Password',{exact:true}).fill(credentials[user]);await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByLabel('Authenticator code')).toBeVisible();const otp=execFileSync('../../../env/bin/python',['../scripts/local_test_otp.py',user],{encoding:'utf8'}).trim();await page.getByLabel('Authenticator code').fill(otp);await page.getByRole('button',{name:'Verify and continue'}).click();await expect(page).toHaveURL(/\/grc\/auditor$/);
+ await page.getByRole('link',{name:'Website content'}).click();await page.locator('.site-workflow-settings > summary').click();await expect(page.getByRole('heading',{name:'Access and approval workflow'})).toBeVisible();await expect(page.getByRole('heading',{name:'Bilingual draft'})).toBeVisible();await page.locator('.site-advanced > summary').click();await page.getByLabel('Search content').fill('Stronger governance.');await expect(page.locator('.site-field').filter({hasText:'Stronger governance.'}).getByLabel('العربية')).toBeVisible();await page.screenshot({path:'test-results/site-content-admin.png',fullPage:false});
+ await page.goto('/grc/auditor/oversight');await expect(page.getByRole('heading',{name:'Customer and auditor overview'})).toBeVisible();
+ await page.getByRole('button',{name:'Global workflow'}).click();await expect(page.getByRole('dialog',{name:'Operations workflow'})).toBeVisible();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();
+ const open=page.getByRole('button',{name:'View overview'}).first();if(await open.count()){await open.click();await expect(page.getByRole('dialog').locator('.oversight-profile')).toBeVisible();await page.getByRole('dialog').getByRole('button',{name:/Activity/}).click();await expect(page.getByRole('dialog').getByRole('button',{name:'Export CSV'})).toBeVisible();}
+
+});

@@ -1,0 +1,498 @@
+{
+  "customer": {
+    "en": {
+      "title": "Customer guide",
+      "intro": "Use the customer workspace to assess your organization and follow improvements.",
+      "sections": [
+        {
+          "title": "Sign in with your email code",
+          "body": "Customers use an emailed verification code every time, without a password. During signup enter your name, company and email, then verify the code. Invitation email and company are locked. Self-signup offers your first audit choice; an invitation fixes its audit type.",
+          "path": ""
+        },
+        {
+          "title": "Start or resume your assessment",
+          "body": "Open Your assessments. Choose an authorized audit type and Start assessment, or Continue an existing draft. Internal Audit goes directly to its questionnaire after company selection.",
+          "path": "/assessments"
+        },
+        {
+          "title": "GRC company profile and sections",
+          "body": "For GRC, complete the valid reusable company profile first. Awareness is mandatory; choose at least one of Risk, Compliance or Governance. You may add sections to an invitation but cannot remove its included sections. Scope locks after the first saved answer.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Answer, save and leave safely",
+          "body": "Answer every shown question; choose N/A where offered. Comments and evidence are optional unless the question says otherwise. Wait for Saved before leaving. If saving fails, retry before closing so your latest changes are not lost.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Submit and follow review",
+          "body": "Submit once all required answers are complete. Submission locks the answers; the assigned reviewer acts next. If clarification is requested, read the review comments, update the answers and resubmit.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Results and the assessment PDF",
+          "body": "Open the submitted assessment for its level, percentage, section scores and covered sections. Preliminary results are available after submission in the demo workflow. Download and email actions follow report permissions; email sends the PDF to your registered email. An official released report is identified separately.",
+          "path": "/scorecards"
+        },
+        {
+          "title": "Request another audit type",
+          "body": "Use Audit access to request the second audit type. Your current department manager approves first, then the receiving department manager accepts. Access remains unchanged until both steps finish.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "Optional help and preferences",
+          "body": "Tours and Getting started can be closed or skipped. Help can be reopened at any time when enabled. Optional email preferences do not disable verification, invitations or required security messages. Personal details and company profile are separate screens.",
+          "path": "/profile"
+        }
+      ]
+    },
+    "ar": {
+      "title": "دليل العميل",
+      "intro": "استخدم مساحة العميل لتقييم منظمتك ومتابعة التحسينات.",
+      "sections": [
+        {
+          "title": "الدخول برمز البريد الإلكتروني",
+          "body": "يستخدم العميل رمز تحقق بالبريد في كل مرة دون كلمة مرور. أدخل الاسم والمنشأة والبريد ثم تحقق من الرمز. تقفل الدعوة البريد والمنشأة ونوع التقييم؛ يختار العميل نوعه الأول عند التسجيل الذاتي.",
+          "path": ""
+        },
+        {
+          "title": "بدء التقييم أو متابعته",
+          "body": "افتح تقييماتك واختر نوعاً مصرحاً وابدأ التقييم، أو تابع المسودة الحالية. ينتقل التدقيق الداخلي إلى أسئلته مباشرة بعد تحديد المنشأة.",
+          "path": "/assessments"
+        },
+        {
+          "title": "ملف المنشأة وأقسام GRC",
+          "body": "في GRC أكمل ملف المنشأة الصحيح المحفوظ لإعادة الاستخدام. الوعي إلزامي مع المخاطر أو الالتزام أو الحوكمة على الأقل. يمكنك إضافة أقسام للدعوة دون إزالة أقسامها. يقفل النطاق بعد حفظ أول إجابة.",
+          "path": "/assessments"
+        },
+        {
+          "title": "الإجابة والحفظ والخروج",
+          "body": "أجب عن كل سؤال ظاهر واختر غير منطبق عند إتاحته. التعليقات والأدلة اختيارية إلا إذا نص السؤال على غير ذلك. انتظر ظهور تم الحفظ قبل الخروج، وأعد المحاولة عند فشل الحفظ.",
+          "path": "/assessments"
+        },
+        {
+          "title": "الإرسال ومتابعة المراجعة",
+          "body": "أرسل بعد إكمال الإجابات المطلوبة. يقفل الإرسال الإجابات وينتقل العمل للمراجع المسند. عند طلب إيضاح اقرأ التعليقات وحدّث الإجابات وأعد الإرسال.",
+          "path": "/assessments"
+        },
+        {
+          "title": "النتائج وتقرير التقييم",
+          "body": "افتح التقييم المرسل لعرض المستوى والنسبة ودرجات الأقسام المشمولة. تظهر النتائج الأولية بعد الإرسال في مسار العرض. يتبع التنزيل والبريد صلاحيات التقرير ويرسل ملف PDF إلى بريدك المسجل. يميز التقرير الرسمي الصادر بشكل مستقل.",
+          "path": "/scorecards"
+        },
+        {
+          "title": "طلب نوع تقييم إضافي",
+          "body": "اطلب النوع الثاني من صلاحية التقييم. يوافق مدير القسم الحالي أولاً ثم مدير القسم المستقبِل. لا تتغير الصلاحيات قبل اكتمال الخطوتين.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "المساعدة والتفضيلات الاختيارية",
+          "body": "يمكن إغلاق الجولات وإرشادات البدء أو تخطيها وإعادة فتح المساعدة عند تفعيلها. لا تعطل تفضيلات البريد الاختيارية رسائل التحقق والدعوات والأمان المطلوبة. تختلف البيانات الشخصية عن ملف المنشأة.",
+          "path": "/profile"
+        }
+      ]
+    }
+  },
+  "auditor": {
+    "en": {
+      "title": "Auditor guide",
+      "intro": "Review assigned customers and move assessments through review to report release.",
+      "sections": [
+        {
+          "title": "Sign in to your staff workspace",
+          "body": "Use Staff sign in with your email or username and password. Staff 2FA is off by default; enter a second factor only when your administrator requires it. You land in the custom workspace, not ERP Desk.",
+          "path": ""
+        },
+        {
+          "title": "Understand an empty workspace",
+          "body": "No customers can be normal for a new staff account. Consultants and other permitted department staff can invite through Customer onboarding. For existing work, ask the department manager for the customer and assessment assignment. Getting started and filters are optional.",
+          "path": ""
+        },
+        {
+          "title": "Invite and track a customer",
+          "body": "In Customer onboarding choose Invite customer. Enter company and recipient, confirm your department audit type, and choose invitation sections for GRC. The customer verifies their email and completes the assessment. Track the invitation status and displayed next action; close the form to leave without sending.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "Consultant: prepare and monitor assigned work",
+          "body": "Open Assigned customers or Assessments to follow customers you are allowed to access. Start assessment is available only for a company where your assignment permits preparation. A consultant assignment alone does not authorize reviewer approval or report release.",
+          "path": "/customers"
+        },
+        {
+          "title": "Reviewer: begin review or request clarification",
+          "body": "For a submitted assessment assigned to you, choose Begin review. Read the submitted answers and score. Request clarification with a clear reason if the customer must revise; the customer acts next. Read-only or historical assessments explain why you cannot edit them.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Reviewer: approve and release",
+          "body": "After review, approve the assessment if permitted. Approval and report release are separate actions: choose Release report to freeze the official PDF. Do not promise a released report while the assessment is merely approved. Use only actions shown for your current assignment.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Follow-ups, actions and department boundaries",
+          "body": "Open Follow-ups and Actions for permitted assigned work; empty lists explain what creates those records. Managers handle assignment or access requests. Staff see only their department customers, assessments and reports. Contact your manager if work is missing instead of choosing another department.",
+          "path": "/followups"
+        },
+        {
+          "title": "Account security and optional help",
+          "body": "Profile separates personal details, staff security and help preferences. An administrator controls required role or username 2FA. Optional enrollment is offered only when allowed. Close tours and unsent forms without changing the assessment.",
+          "path": "/profile"
+        }
+      ]
+    },
+    "ar": {
+      "title": "دليل المدقق",
+      "intro": "راجع العملاء المسندين وانقل التقييمات عبر المراجعة حتى إصدار التقرير.",
+      "sections": [
+        {
+          "title": "الدخول لمساحة الموظف",
+          "body": "استخدم دخول الموظفين بالبريد أو اسم المستخدم وكلمة المرور. المصادقة الثنائية غير مطلوبة افتراضياً وتستخدم عند إلزام المدير بها. تفتح مساحة التطبيق المخصصة لا مكتب ERP.",
+          "path": ""
+        },
+        {
+          "title": "فهم مساحة العمل الفارغة",
+          "body": "قد لا توجد عملاء للحساب الجديد. يستطيع المستشار والموظف المصرح دعوة عميل من تهيئة العملاء. اطلب من مدير القسم إسناد العميل والتقييم للعمل الحالي. الإرشادات والمرشحات اختيارية.",
+          "path": ""
+        },
+        {
+          "title": "دعوة العميل ومتابعته",
+          "body": "اختر دعوة عميل من تهيئة العملاء وأدخل المنشأة والمستلم وأكد نوع قسمك وأقسام الدعوة في GRC. يتحقق العميل من بريده ويكمل التقييم. تابع الحالة والخطوة التالية المعروضة، وأغلق النموذج للخروج دون إرسال.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "المستشار: تجهيز العمل المسند ومتابعته",
+          "body": "افتح العملاء المسندين أو التقييمات لمتابعة العمل المصرح. يتاح بدء تقييم لمنشأة يسمح إسنادك بتجهيز تقييم لها. لا يمنح إسناد المستشار وحده صلاحية اعتماد المراجع أو إصدار التقرير.",
+          "path": "/customers"
+        },
+        {
+          "title": "المراجع: بدء المراجعة أو طلب الإيضاح",
+          "body": "اختر بدء المراجعة لتقييم مرسل ومسند إليك واقرأ الإجابات والنتيجة. اطلب إيضاحاً مع سبب واضح عند الحاجة للتعديل؛ يتولى العميل الخطوة التالية. توضح التقييمات التاريخية أو المقروءة فقط سبب منع التعديل.",
+          "path": "/assessments"
+        },
+        {
+          "title": "المراجع: الاعتماد والإصدار",
+          "body": "اعتمد التقييم بعد المراجعة عند التصريح. الاعتماد وإصدار التقرير عمليتان منفصلتان؛ اختر إصدار التقرير لتثبيت ملف PDF الرسمي. لا تعتبر التقرير صادراً لمجرد الاعتماد. استخدم الإجراءات المعروضة لإسنادك الحالي فقط.",
+          "path": "/assessments"
+        },
+        {
+          "title": "المتابعات والإجراءات وحدود القسم",
+          "body": "افتح المتابعات والإجراءات للعمل المسند والمصرح. توضح القوائم الفارغة كيفية إنشائها. يعالج المدير طلبات الإسناد والصلاحية. يرى الموظف عملاء قسمه وتقييماته وتقاريره فقط؛ تواصل مع المدير إذا غاب العمل.",
+          "path": "/followups"
+        },
+        {
+          "title": "أمان الحساب والمساعدة الاختيارية",
+          "body": "يفصل الملف الشخصي البيانات وأمان الموظف وتفضيلات المساعدة. يدير المسؤول إلزام المصادقة للدور أو المستخدم. يتاح التسجيل الاختياري عند السماح فقط. إغلاق الجولة أو النموذج غير المرسل لا يغير التقييم.",
+          "path": "/profile"
+        }
+      ]
+    }
+  },
+  "admin": {
+    "en": {
+      "title": "Administrator guide",
+      "intro": "Set up the GRC site and administer staff, access, questionnaires and policies. The platform operator and GRC app administrator have different responsibilities.",
+      "sections": [
+        {
+          "title": "Install and enable the site",
+          "body": "A trusted bench operator prepares a designated Frappe 15 site, Redis and bench services. From the bench root install the app and frontend dependencies, enable grc_enabled, migrate and build assets; restart production services. Configure the site hostname, outgoing email and the GRC PDF dependencies. See the deployment commands in the PDF and release notes.",
+          "path": ""
+        },
+        {
+          "title": "Create the first administrator",
+          "body": "A trusted platform operator creates the separate GRC App Admin account. The new administrator sets a password through password recovery. Staff 2FA is off by default and enrollment is needed only when the configured policy requires it. Test outgoing email; never share the built-in platform Administrator account.",
+          "path": ""
+        },
+        {
+          "title": "Enter administration",
+          "body": "Sign in as the GRC app administrator. Administration appears in the auditor workspace sidebar. Use Staff to create or disable staff accounts; users set passwords through recovery and complete MFA when required.",
+          "path": "/admin/staff"
+        },
+        {
+          "title": "Onboard organizations and assign work",
+          "body": "Customers can register and verify email or join an existing organization by invitation. In Customer assignments choose an organization and assign an active consultant, reviewer or manager. Open an assessment to allocate its team and review due date; customer assignment and assessment allocation are separate.",
+          "path": "/admin/assignments"
+        },
+        {
+          "title": "Configure questionnaires",
+          "body": "Open Questionnaire templates to create or edit a draft, add sections and questions in both languages, configure options and scoring, and preview. Publish when approved. Published versions are immutable; create a new version for changes. Existing assessments retain their pinned version and scoring.",
+          "path": "/admin/templates"
+        },
+        {
+          "title": "Set policies and security",
+          "body": "Configure result/report policies and signup settings. Account security separately manages staff 2FA defaults and role/username overrides; staff default is off. Customers always use email OTP without a password option.",
+          "path": "/admin/settings"
+        },
+        {
+          "title": "Operate and support",
+          "body": "Use Consultation requests for incoming requests, the reassignment queue for unallocated work, and Activity for the audit trail. Test a customer and reviewer journey and a released report. Maintain backups and use the operations guide for upgrades and recovery.",
+          "path": "/admin/consultations"
+        },
+        {
+          "title": "Website content and approvals",
+          "body": "Open Website content to choose which existing roles can edit and configure approval roles in order. Optionally allow a submitter with the required role to approve. Pending submissions retain their original workflow. Every save, decision and publication is recorded; privacy and terms are managed here as well. Click text in the website canvas to open English and Arabic fields together. Add or remove cards and sections, then save the draft and submit for approval.",
+          "path": "/site-content"
+        },
+        {
+          "title": "Customer oversight and operations approvals",
+          "body": "Open Customer and auditor overview for records within the authorized management scope. Department managers can manage their department scope; ordinary staff still need the appropriate assignments. Review each pending request stage. A change applies only after final approval; self-approval and cancellation follow the displayed permissions.",
+          "path": "/oversight"
+        },
+        {
+          "title": "Choose the questionnaire version",
+          "body": "Open Audit packages and select a published questionnaire version. Package configuration is separate from question text and scoring policy. Managers and administrators can configure and publish packages; ordinary auditors cannot.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "Set required sections and optional packages",
+          "body": "For GRC, keep Awareness mandatory and Risk, Compliance and Governance optional; customers include at least one optional section. Use packages only to group the offered choices. Preview the configuration before saving and publishing it for future assessments.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "Preview, save and publish",
+          "body": "Preview and save a draft before publishing choices for future assessments. For GRC, Awareness is always included and customers must select at least one other section. Existing assessment snapshots remain unchanged.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "Understand scope and scores",
+          "body": "GRC scores only chosen sections: A=25, B=50, C=75 and D=100; N/A is excluded. IA retains its own versioned scoring rules. Scope, submission snapshots and released reports preserve historical context; changing future configuration does not rewrite them.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "Invite a customer",
+          "body": "Open Customer onboarding and choose Invite customer. Set the recipient, company, department audit type and language; for GRC include Awareness and any minimum optional sections. The customer cannot change locked invitation identity or remove included sections. Follow approval or customer verification as shown by the tracker.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "Follow milestones and identify the next action",
+          "body": "The tracker shows invitation status, mail-system status, last activity, next action and blockers. Open a row to see invitation issued, customer started, email verified, organization details submitted and onboarding completed. Awaiting approval means the administrator acts next. Queued or Sent by mail system does not prove email delivery or reading. Unfinished profile values and verification secrets are not shown.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "Help a customer resume",
+          "body": "Filter Needs attention to find failures or customer steps with no progress for the configured period, initially 48 hours. Ask the customer to sign in and open Customer onboarding to resume on any browser. Use Send reminder or Resend invitation when needed; each issues a replacement link, preserves completed steps and retains your original attribution. Wait at least 60 seconds between sends. Revoke requires a reason and makes the link unusable.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "Understand ownership after completion",
+          "body": "The inviting consultant retains attribution. Locked ownership may require an app-administrator exception for other staff. Department manager visibility and assessment team permissions remain separate; customer access alone does not allocate a reviewer task. Resolve an inactive owner through the supported ownership controls.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "Correct a draft assessment scope",
+          "body": "Open an unsubmitted assessment and select Correct assessment scope. Choose the revised packages and enter a reason. Existing answers and evidence remain stored; removed sections stop contributing to progress and scoring. The customer must acknowledge the correction before answering again. Submitted assessments and clarification revisions keep their scope; use a new assessment for different coverage.",
+          "path": "/assessments"
+        },
+        {
+          "title": "Set onboarding defaults",
+          "body": "Open Onboarding controls to enable or disable automatic ownership locking for new invitations and change the Needs attention threshold. Explain the change in Reason. Automatic locking is enabled initially. Each invitation saves its policy, so changing the default does not unlock an existing customer or alter an invitation already issued.",
+          "path": "/onboarding-controls"
+        },
+        {
+          "title": "Transfer ownership and grant named access",
+          "body": "Open a customer record and find Auditor ownership and access. Select an active owning auditor, set the visibility lock, and add only the required named staff exceptions with Consultant, Reviewer or Manager responsibility. Enter a reason and save. Transferring removes the former owner unless explicitly retained as an exception, moves current consultant allocations and flags affected work for reassignment. Historical reports remain unchanged.",
+          "path": "/customers"
+        },
+        {
+          "title": "Resolve onboarding problems",
+          "body": "For failed mail, check the configured outgoing Email Account before resending. For an expired link, resend it. For an existing organization or competing invitation, verify the intended customer; never claim an organization by matching its name. Revoke conflicting requests with a reason and issue a new invitation from the intended auditor. An inactive inviter cannot activate a customer. Check Approvals for pending requests; the approving administrator never becomes the inviting auditor.",
+          "path": "/onboarding"
+        }
+      ]
+    },
+    "ar": {
+      "title": "دليل المدير",
+      "intro": "أعد موقع GRC وأدر الفريق والوصول والاستبيانات والسياسات. تختلف مسؤوليات مشغل المنصة عن مدير تطبيق GRC.",
+      "sections": [
+        {
+          "title": "تثبيت الموقع وتفعيله",
+          "body": "يجهز مشغل موثوق موقع Frappe 15 مخصصاً وخدمات Redis وbench. من جذر bench ثبّت التطبيق واعتماديات الواجهة وفعّل grc_enabled ثم نفّذ الترحيل وبناء الأصول وأعد تشغيل خدمات الإنتاج. اضبط اسم الموقع والبريد الصادر واعتماديات PDF. راجع أوامر النشر في PDF وملاحظات الإصدار.",
+          "path": ""
+        },
+        {
+          "title": "إنشاء المدير الأول",
+          "body": "ينشئ المشغل الموثوق حساب GRC App Admin مستقلاً. يضبط المسؤول الجديد كلمة المرور عبر الاستعادة. المصادقة الثنائية غير مطلوبة افتراضياً ولا يلزم إعدادها إلا عند إلزام السياسة بها. اختبر البريد ولا تشارك حساب Administrator الأساسي.",
+          "path": ""
+        },
+        {
+          "title": "الدخول إلى الإدارة",
+          "body": "سجّل الدخول كمدير تطبيق GRC. يظهر قسم الإدارة في قائمة مساحة المدقق. استخدم الفريق لإنشاء حسابات الموظفين أو تعطيلها؛ يحدد المستخدمون كلمات المرور بالاستعادة ويكملون المصادقة الثنائية عند اشتراطها.",
+          "path": "/admin/staff"
+        },
+        {
+          "title": "تهيئة المنظمات وإسناد العمل",
+          "body": "يمكن للعملاء التسجيل وتأكيد البريد أو الانضمام لمنظمة موجودة بالدعوة. في إسناد العملاء اختر المنظمة وأسند مستشاراً أو مراجعاً أو مديراً نشطاً. افتح التقييم لتحديد فريقه وموعد المراجعة؛ إسناد العميل وتخصيص التقييم خطوتان منفصلتان.",
+          "path": "/admin/assignments"
+        },
+        {
+          "title": "إعداد الاستبيانات",
+          "body": "افتح قوالب الاستبيانات لإنشاء مسودة أو تعديلها وإضافة الأقسام والأسئلة باللغتين وضبط الخيارات والاحتساب والمعاينة. انشر بعد الاعتماد. الإصدارات المنشورة ثابتة؛ أنشئ إصداراً جديداً للتعديل. تحتفظ التقييمات الحالية بإصدارها وسياسة احتسابها.",
+          "path": "/admin/templates"
+        },
+        {
+          "title": "السياسات والأمان",
+          "body": "اضبط سياسات النتائج والتقارير والتسجيل. تدير صفحة أمان الحساب مصادقة الموظفين حسب الدور والمستخدم؛ الافتراضي غير مفعل. يستخدم العميل رمز البريد دائماً دون خيار كلمة مرور.",
+          "path": "/admin/settings"
+        },
+        {
+          "title": "التشغيل والدعم",
+          "body": "استخدم طلبات الاستشارة للطلبات الواردة وقائمة إعادة الإسناد للعمل غير المخصص والنشاط لسجل التدقيق. اختبر رحلة عميل ومراجع وتقريراً صادراً. احتفظ بالنسخ الاحتياطية واتبع دليل التشغيل للترقية والاستعادة.",
+          "path": "/admin/consultations"
+        },
+        {
+          "title": "محتوى الموقع والاعتمادات",
+          "body": "افتح محتوى الموقع لتحديد الأدوار الحالية المسموح لها بالتعديل وترتيب أدوار الاعتماد. يمكن السماح لمقدم الطلب بالاعتماد إذا حمل الدور المطلوب. تحتفظ الطلبات المرسلة بمسارها الأصلي. يُسجل كل حفظ وقرار ونشر، وتُدار الخصوصية والشروط هنا أيضاً. انقر النص في معاينة الموقع لفتح حقلي الإنجليزية والعربية معاً. أضف البطاقات والأقسام أو أزلها، ثم احفظ المسودة وأرسلها للاعتماد.",
+          "path": "/site-content"
+        },
+        {
+          "title": "نظرة عامة واعتماد التسجيل والإسناد",
+          "body": "افتح نظرة عامة على العملاء والمدققين للسجلات ضمن نطاق الإدارة المصرح. يدير مدير القسم نطاق قسمه ويحتاج الموظف العادي إلى الإسناد المناسب. راجع مرحلة كل طلب معلق. لا يطبق التغيير قبل الاعتماد النهائي؛ تتبع الموافقة الذاتية والإلغاء الصلاحيات المعروضة.",
+          "path": "/oversight"
+        },
+        {
+          "title": "اختيار إصدار الاستبيان",
+          "body": "افتح حزم التقييم واختر إصداراً منشوراً من الاستبيان. إعداد الحزم مستقل عن نص الأسئلة وسياسة الاحتساب. يستطيع مدير GRC ومسؤول التطبيق إعداد الحزم ونشرها؛ ولا يملك المدقق العادي هذه الصلاحية.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "الأقسام الإلزامية والحزم الاختيارية",
+          "body": "في GRC أبقِ الوعي إلزامياً والمخاطر والالتزام والحوكمة اختيارية؛ يختار العميل قسماً اختيارياً على الأقل. تستخدم الحزم لتجميع الخيارات فقط. عاين التهيئة قبل حفظها ونشرها للتقييمات المستقبلية.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "المعاينة والحفظ والنشر",
+          "body": "عاين المسودة واحفظها قبل نشر الخيارات للتقييمات المستقبلية. الوعي مشمول دائماً في GRC ويلزم قسم آخر على الأقل. لا تتغير لقطات التقييمات الحالية.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "فهم النطاق والنتائج",
+          "body": "يحسب GRC الأقسام المختارة فقط: A=25 وB=50 وC=75 وD=100، ويستبعد غير منطبق. يحتفظ التدقيق الداخلي بقواعد نسخته. تحفظ لقطات النطاق والإرسال والتقارير الصادرة سياقها التاريخي ولا يعيد تغيير التهيئة المستقبلية كتابتها.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "دعوة عميل",
+          "body": "افتح تهيئة العملاء واختر دعوة عميل وحدد المستلم والمنشأة ونوع قسمك واللغة، وفي GRC الوعي والأقسام الاختيارية الدنيا. لا يغير العميل بيانات الدعوة المقفلة ولا يزيل أقسامها المشمولة. تابع الموافقة أو تحقق العميل وفق حالة المتابعة.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "متابعة المراحل وتحديد الخطوة التالية",
+          "body": "يعرض المتتبع حالة الدعوة وحالة نظام البريد وآخر نشاط والخطوة التالية والعوائق. افتح الصف لعرض إصدار الدعوة وبدء العميل وتأكيد البريد وإرسال بيانات المنظمة واكتمال التهيئة. انتظار الاعتماد يعني أن الخطوة التالية للمسؤول. الإدراج للإرسال أو الإرسال من نظام البريد لا يثبت التسليم أو القراءة. لا تظهر بيانات الملف غير المكتملة ولا أسرار التحقق.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "مساعدة العميل على المتابعة",
+          "body": "رشّح يحتاج متابعة للعثور على الأخطاء أو خطوات العميل التي لم تتقدم خلال المدة المحددة، وهي 48 ساعة افتراضياً. اطلب من العميل تسجيل الدخول وفتح تهيئة العملاء للمتابعة من أي متصفح. استخدم إرسال تذكير أو إعادة إرسال الدعوة عند الحاجة؛ يُصدر كلاهما رابطاً بديلاً مع الحفاظ على الخطوات المكتملة وإسنادك الأصلي. انتظر 60 ثانية على الأقل بين الإرسالات. يتطلب الإلغاء سبباً ويعطّل الرابط.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "فهم الملكية بعد الاكتمال",
+          "body": "يحتفظ المستشار الداعي بنسبة الدعوة إليه. قد تتطلب الملكية المقفلة استثناء من مسؤول التطبيق للموظفين الآخرين. تختلف رؤية مدير القسم عن صلاحيات فريق التقييم؛ لا تسند صلاحية العميل مهمة المراجعة وحدها. عالج المالك غير النشط بأدوات الملكية المدعومة.",
+          "path": "/onboarding"
+        },
+        {
+          "title": "تصحيح نطاق تقييم مسودة",
+          "body": "افتح تقييماً غير مرسل واختر تصحيح نطاق التقييم. حدد الحزم المعدلة وأدخل السبب. تبقى الإجابات والأدلة محفوظة، وتتوقف الأقسام المستبعدة عن التأثير في التقدم والنتائج. يجب أن يقر العميل بالتصحيح قبل مواصلة الإجابة. تحافظ التقييمات المرسلة ومراجعات التوضيح على نطاقها؛ أنشئ تقييماً جديداً لتغطية مختلفة.",
+          "path": "/assessments"
+        },
+        {
+          "title": "إعداد افتراضيات التهيئة",
+          "body": "افتح ضوابط التهيئة لتفعيل أو تعطيل قفل الملكية التلقائي للدعوات الجديدة وتغيير مهلة يحتاج متابعة. اشرح التغيير في السبب. القفل التلقائي مفعّل مبدئياً. تحفظ كل دعوة سياستها، لذلك لا يفتح تغيير الافتراض عميلًا موجوداً ولا يغيّر دعوة صدرت سابقاً.",
+          "path": "/onboarding-controls"
+        },
+        {
+          "title": "نقل الملكية ومنح وصول مسمى",
+          "body": "افتح سجل العميل ثم ملكية المدقق والوصول. اختر مدققاً مالكاً نشطاً واضبط قفل الظهور وأضف الاستثناءات المسماة المطلوبة فقط بمسؤولية مستشار أو مراجع أو مدير. أدخل السبب واحفظ. يزيل النقل وصول المالك السابق ما لم يُحتفظ به صراحة باستثناء، وينقل إسنادات المستشار الحالية ويعلّم العمل المتأثر لإعادة الإسناد. لا تتغير التقارير التاريخية.",
+          "path": "/customers"
+        },
+        {
+          "title": "معالجة مشكلات التهيئة",
+          "body": "عند فشل البريد تحقق من حساب البريد الصادر قبل إعادة الإرسال. أعد إرسال الرابط المنتهي. عند وجود منظمة أو دعوة متعارضة، تحقق من العميل المقصود ولا تستحوذ على منظمة بمجرد تطابق الاسم. ألغ الطلب المتعارض مع السبب وأصدر دعوة جديدة من المدقق المقصود. لا يمكن للداعي غير النشط تفعيل عميل. راجع الاعتمادات للطلبات المعلقة؛ لا يصبح المسؤول المعتمد المدقق الداعي.",
+          "path": "/onboarding"
+        }
+      ]
+    }
+  },
+  "manager": {
+    "en": {
+      "title": "Manager guide",
+      "intro": "Follow customer assignments, department access approvals and assessment progress within your management scope.",
+      "sections": [
+        {
+          "title": "Sign in to your staff workspace",
+          "body": "Use Staff sign in with your email or username and password. Staff 2FA is off by default; enter a second factor only when your administrator requires it. You land in the custom workspace, not ERP Desk.",
+          "path": ""
+        },
+        {
+          "title": "Find the work your department manages",
+          "body": "Open Customer and auditor overview for customers within your management scope. An empty list means no managed assignments yet; use permitted Customer onboarding or ask an app administrator to configure the missing management assignment. Filters are optional.",
+          "path": "/oversight"
+        },
+        {
+          "title": "Assign staff and follow approval",
+          "body": "Choose an accessible customer and Assign customer when enabled. Select an active staff member in your permitted scope and the responsibility. If approval is configured, access changes only after final approval; follow the request stage instead of submitting duplicates. Assessment team allocation and customer access are separate.",
+          "path": "/oversight"
+        },
+        {
+          "title": "Decide a second-audit request in order",
+          "body": "Open Audit access. Pending Source Approval needs the current department manager; Pending Target Approval needs the receiving manager. Give a reason when deciding. Only the authorized stage shows decision actions, and the second audit stays unavailable until both approvals finish.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "Manage department staff",
+          "body": "In Audit access, use Department staff for departments you manage. Activate, deactivate or assign the permitted staff roles. A department membership does not automatically assign every customer or make a consultant a reviewer of every assessment.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "Configure future questionnaires only when needed",
+          "body": "Audit packages is optional administration, not a prerequisite for starting the seeded demo assessment. Select a questionnaire version to edit future choices. GRC always includes Awareness and at least one other section at assessment time. Publishing does not change assessments already started.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "Monitor review and released reports",
+          "body": "Customers submit; assigned reviewers begin review, request clarification, approve and release the official report. Manager status alone does not replace the assessment assignment required for an action. Open the assessment status to see who acts next.",
+          "path": "/assessments"
+        }
+      ]
+    },
+    "ar": {
+      "title": "دليل المدير",
+      "intro": "تابع إسناد العملاء وموافقات الأقسام وتقدم التقييم ضمن نطاق إدارتك.",
+      "sections": [
+        {
+          "title": "الدخول لمساحة الموظف",
+          "body": "استخدم دخول الموظفين بالبريد أو اسم المستخدم وكلمة المرور. المصادقة الثنائية غير مطلوبة افتراضياً وتستخدم عند إلزام المدير بها. تفتح مساحة التطبيق المخصصة لا مكتب ERP.",
+          "path": ""
+        },
+        {
+          "title": "العثور على العمل الذي يديره القسم",
+          "body": "افتح نظرة عامة على العملاء والمدققين للعملاء ضمن إدارتك. تعني القائمة الفارغة عدم وجود إسناد إداري بعد؛ استخدم التهيئة المصرحة أو اطلب من مسؤول التطبيق ضبط الإسناد. المرشحات اختيارية.",
+          "path": "/oversight"
+        },
+        {
+          "title": "إسناد الموظفين ومتابعة الموافقة",
+          "body": "اختر عميلاً مصرحاً وإسناد عميل عند إتاحته وحدد موظفاً نشطاً والمسؤولية. عند اشتراط الموافقة لا تتغير الصلاحيات قبل الاعتماد النهائي؛ تابع المرحلة بدلاً من تكرار الطلب. يختلف فريق التقييم عن صلاحية العميل.",
+          "path": "/oversight"
+        },
+        {
+          "title": "اتخاذ قرار النوع الثاني بالترتيب",
+          "body": "افتح صلاحية التقييم. تنتظر موافقة المصدر مدير القسم الحالي، وتنتظر موافقة المستقبِل مدير القسم الآخر. اذكر سبب القرار. تظهر الإجراءات للمرحلة المصرحة فقط ولا يتاح النوع الثاني قبل اكتمال الموافقتين.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "إدارة موظفي القسم",
+          "body": "استخدم موظفي القسم في صلاحية التقييم للأقسام التي تديرها. فعّل أو عطّل الموظف وأسنِد الأدوار المسموحة. لا تسند عضوية القسم جميع العملاء تلقائياً ولا تجعل المستشار مراجعاً لكل تقييم.",
+          "path": "/audit-access"
+        },
+        {
+          "title": "تهيئة الاستبيانات المستقبلية عند الحاجة",
+          "body": "حزم التدقيق إعداد اختياري وليست شرطاً لبدء تقييم العرض الجاهز. اختر نسخة الاستبيان لضبط الخيارات المستقبلية. يتضمن GRC الوعي وقسماً آخر على الأقل عند التقييم. لا يغير النشر التقييمات التي بدأت.",
+          "path": "/audit-packages"
+        },
+        {
+          "title": "متابعة المراجعة والتقارير الصادرة",
+          "body": "يرسل العميل ثم يبدأ المراجع المسند المراجعة ويطلب الإيضاح ويعتمد ويصدر التقرير. لا يغني دور المدير عن إسناد التقييم المطلوب للإجراء. افتح حالة التقييم لمعرفة من يتولى الخطوة التالية.",
+          "path": "/assessments"
+        }
+      ]
+    }
+  }
+}

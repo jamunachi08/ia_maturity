@@ -1,0 +1,51 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Site Content",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 1,
+  "field_order": [
+    "published_content",
+    "editor_roles",
+    "approval_roles",
+    "published_revision",
+    "allow_submitter_approval"
+  ],
+  "fields": [
+    {
+      "fieldname": "published_content",
+      "label": "Published content",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "editor_roles",
+      "label": "Editor roles",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "approval_roles",
+      "label": "Approval roles",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "published_revision",
+      "label": "Published revision",
+      "fieldtype": "Link",
+      "options": "GRC Site Revision"
+    },
+    {
+      "fieldname": "allow_submitter_approval",
+      "label": "Allow submitter approval",
+      "fieldtype": "Check",
+      "default": "0"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1
+    }
+  ]
+}

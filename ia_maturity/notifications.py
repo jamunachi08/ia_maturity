@@ -24,7 +24,8 @@ def _attach(doc, print_format, language, as_admin=False):
 		frappe.form_dict["language"] = language
 		if as_admin:
 			frappe.set_user("Administrator")
-		return frappe.attach_print(doc.doctype, doc.name, print_format=print_format, doc=doc)
+		from ia_maturity.printing import render_pdf
+		return {"fname": doc.name.replace("/", "-") + ".pdf", "fcontent": render_pdf(doc, print_format, language)}
 	except Exception:
 		frappe.log_error(title=f"IA Maturity: PDF attachment failed ({print_format})")
 		return None

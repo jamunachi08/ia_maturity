@@ -4,6 +4,198 @@
 
 Built on Frappe / ERPNext (app name `ia_maturity`).
 
+**Current version:** 3.2.0 · [Changelog](docs/CHANGELOG.md) · [v3.2.0 release notes](docs/RELEASE_v3.2.0.md) · [v3.0.0 release notes](docs/RELEASE_v3.0.0.md)
+
+**DevOps: setting up or moving a GRC site?** Follow [GRC site setup and server migration](#grc-site-setup-and-server-migration), including the required site-specific `grc_enabled` setting.
+
+Local performance validation passes for the documented 50-client read workload
+using production-built, compressed assets. Public/login startup and portal routes
+load separately; dashboards use bounded, authorized database reads and reuse
+calculations only within a read operation. See the [local results](docs/PERFORMANCE_RESULTS.md),
+[performance operations and DevOps commands](docs/PERFORMANCE_OPERATIONS.md) and
+[architecture reference](docs/introduction.md#performance-with-workflow-preservation).
+Synthetic local evidence does not certify the moved server or real-user timings.
+
+New in 3.2.0: colour themes (IRSAA default), configurable assessment types, admin screen layouts (Standard and Compact company profile), role-based report access with a Reports page for managers, and a direct start after choosing the assessment type. See the [release notes](docs/RELEASE_v3.2.0.md).
+
+Fixed in 3.1.2: customer email-code sign-in and staff 2FA sign-in work on current Frappe v15/v16, fresh installs get a default Internal Audit template, approved onboarding requests complete, and the A4 report fits one page. All 309 tests pass on v15 and v16. See the [release notes](docs/RELEASE_v3.1.2.md).
+
+Fixed in 3.1.1: verification-limit switches now save, staff administration shows its validation messages, and the app installs and renders PDFs on current Frappe v15/v16 (WeasyPrint 70). See the [release notes](docs/RELEASE_v3.1.1.md).
+
+New in 3.1.0: GRC admins manage customer verification rate limits, organization yes/no presentation and defaults for new users' guides and tours. Assessments show and link missing questions, and the initial audit type is selected once. See [admin controls and assessment guidance](docs/introduction.md#admin-controls-and-assessment-guidance-v310).
+
+New in 3.0.1: a Frappe user with no GRC role goes directly to Desk at `/app/home`. See [Normal ERP Desk access](docs/introduction.md#normal-erp-desk-access-v301).
+
+New in 3.0.0: the IA/GRC journey includes OTP-only customer access, department-bound invitations and permissions, the exact GRC46 instrument, mandatory GRC profile and selected scope, immediate preliminary results/PDF, registered-customer PDF attachments, and manager-approved additional audit access. Staff have a direct custom workspace, optional next-step guidance and default-off 2FA with admin role/username overrides. See the [workflow architecture](docs/introduction.md#iagrc-customer-and-staff-journey-v300), [demo runbook](docs/DEMO_JOURNEY.md), [eight-role UX validation](docs/UX_ROLE_REVIEW_2026-11-12.md) and [task progress](docs/PLAN_PROGRESS.md). This is a breaking customer-authentication and staff-entitlement upgrade; follow the release notes before rollout. Local validation is complete for the requested demo flow; business UAT and production deployment remain separate. Real inbox delivery is deferred until live deployment at the user's request.
+
+Customer/staff release: [2026-10-26 requirements, completed tasks, validation and skipped work](docs/REQUIREMENTS_2026-10-26.md).
+
+## GRC portal implementation
+
+The GRC extension adds one React login, customer and auditor dashboards, app administration, customer-to-auditor assignments, tenant/ERP isolation and a controlled review/report-release workflow. It is enabled only on the designated site with `grc_enabled`.
+
+Features include immutable questionnaire/scoring versions, private evidence and report release, bilingual RTL workflows, consistent dropdowns, dashboard cards that open related records, and profile self-service with admin-controlled fields. Customers use email OTP; staff retain password/MFA controls. The GRC frontend is built with React + TypeScript + Vite + Tailwind and lives entirely in this app.
+
+### GRC site setup and server migration
+
+**Installing the app or restoring its database does not enable GRC.** Every intended GRC site must have `"grc_enabled": 1` in its site configuration. This applies to new sites, sandbox copies and sites moved to another server. Enable it only on the designated GRC site, without a bench-wide `--global` setting.
+
+Run commands as the bench owner from the bench directory. Replace `YOUR_GRC_SITE` with the actual site directory name under `sites/` and `https://your-grc-domain.example` with its public HTTPS URL.
+
+1. **Prepare the bench and site.** Install the chosen app revision and its Python/native PDF dependencies using the [current release procedure](docs/RELEASE_v3.0.0.md#deployment-procedure). Use Node 24 for the frontend. On a new Frappe site, install the app once:
+
+   ```bash
+   bench --site YOUR_GRC_SITE install-app ia_maturity
+   ```
+
+   For a restored site, ensure the matching app code is present on the new bench and confirm installation with `bench --site YOUR_GRC_SITE list-apps`. Follow the restore/upgrade procedure for that revision.
+
+2. **Activate GRC before migration, then build and clear caches.** The app's GRC setup/migration hooks are gated by this setting; installing the app alone is insufficient.
+
+   ```bash
+   bench --site YOUR_GRC_SITE set-config grc_enabled 1
+   bench --site YOUR_GRC_SITE set-config host_name https://your-grc-domain.example
+   bench --site YOUR_GRC_SITE migrate
+   npm --prefix apps/ia_maturity/grc ci
+   npm --prefix apps/ia_maturity/grc run build
+   bench build --app ia_maturity
+   bench --site YOUR_GRC_SITE clear-cache
+   ```
+
+   Restart web and worker processes through the deployment's normal service manager or hosting platform. Use `bench restart` where the bench's process manager supports it. Generated frontend assets are not committed and must be built on the destination bench.
+
+3. **Preserve site configuration when moving servers.** Back up and restore the database, public/private files and the original encryption key through the [operations restore procedure](docs/GRC_OPERATIONS.md#backups-and-restoration). A database-only restore does not carry `sites/YOUR_GRC_SITE/site_config.json`. Explicitly restore or reapply `grc_enabled`, update `host_name`, and retain the original encryption key so existing encrypted credentials, including Email Account passwords, remain readable. Adapt database connection settings to the new server; keep configuration and secrets outside Git. Confirm DNS/reverse-proxy routing serves the intended site.
+
+4. **Configure mail and access.** Configure the normal default outgoing Frappe **Email Account** and verify actual OTP inbox delivery before customer testing. Customers require an email code on every sign-in; invitation/report jobs also need the normal workers and scheduler. Review site email muting/suspension for the destination environment; keep local test sites muted. Provision a separate **GRC App Admin**, configure staff department memberships and assignments, and review Account security. Staff 2FA defaults to Disabled; preserve explicit policies and normal ERP MFA requirements. See [operations](docs/GRC_OPERATIONS.md#production-activation) and [MFA administration](docs/GRC_MFA_ADMINISTRATION.md).
+
+5. **Verify the destination site.** Run the read-only configuration check:
+
+   ```bash
+   bench --site YOUR_GRC_SITE execute ia_maturity.grc.health.check
+   ```
+
+   Confirm `checks.grc_enabled` is `true` and review each remaining check; the report also includes business/content approval and security settings. Open `/grc-site`, customer login at `/login`, and staff/ERP password login at `/login?staff=1`. Verify GRC staff reach `/grc/auditor`, customers reach their customer workspace after email verification, and users without GRC roles retain normal ERP access. Test a PDF and real email delivery separately; a working landing page does not prove those services work.
+
+#### Troubleshooting: “GRC is not enabled on this site.”
+
+If the landing page raises `frappe.exceptions.DoesNotExistError: GRC is not enabled on this site.` from `ia_maturity/www/grc.py`, the active site's `grc_enabled` setting is missing or false. A restored database may still point the website home page to `grc-site` while the new server lacks that site setting. The same guard applies to the GRC page and public landing page.
+
+Apply the setting to the site actually serving the hostname, rerun the gated migration and clear its cache:
+
+```bash
+bench --site YOUR_GRC_SITE set-config grc_enabled 1
+bench --site YOUR_GRC_SITE migrate
+bench --site YOUR_GRC_SITE clear-cache
+```
+
+Restart the web processes, then reload the landing page. If the error remains, check the hostname-to-site mapping and confirm the running processes use the bench/site you updated. This error indicates site activation, independently of SMTP delivery or user roles. Keep the activation guard in place.
+
+New in 2.17.0: reusable Company profile with industry/sector, nationality/CR, licenses and regulators, bilingual validation, GRC assessment readiness checks, and immutable submitted profile snapshots. Internal Audit bypasses this profile gate. See [setup and upgrade notes](docs/RELEASE_v2.17.0.md); restricted department sharing remains future work.
+
+Fixed in 2.16.2: all sections can be optional, with individual choices automatically offered outside custom packages. Mandatory sections are gray and locked in customer choices; per-section question counts and totals count overlaps once. See the [setup guide](docs/AUDIT_PACKAGE_OPTIONAL_SECTIONS.md).
+
+Fixed in 2.16.1: consistent mobile workspace headers, readable scrolling tables, Help-page wrapping, and spaced settings/onboarding controls. Customers see only assessment start and finish dates; detailed activity remains stored and visible to authorized staff. See the [layout review](docs/GRC_LAYOUT_REVIEW.md).
+
+New in 2.16.0: admins and GRC managers can disable templates (including defaults) and choose separate defaults for Internal Audit and GRC. Assessment choices show only active published templates with Default labels. Template and audit-package controls have grouped options, spaced actions and mobile/RTL layouts. See the [configuration guide](docs/GRC_ASSESSMENT_TYPES.md) and [developer introduction](docs/introduction.md#template-availability-and-defaults-v2160).
+
+Fixed in 2.15.1: customer verification codes send immediately through the configured outgoing email account, without waiting for the scheduler or a background worker. Failed or suspended sends return an error and invalidate the failed attempt. See [delivery and upgrade notes](docs/RELEASE_v2.15.1.md).
+
+New in 2.15.0: customers choose Internal Audit or Governance, Risk and Compliance before selecting a questionnaire. Administrators and GRC managers classify published templates in Audit packages; the dropdown and creation API enforce the chosen type. See the [assessment type guide](docs/GRC_ASSESSMENT_TYPES.md).
+
+Fixed in 2.14.1: normal customer signup validates fields before reserving email allowance, and premature retries no longer exhaust the hourly allowance. A server-provided countdown explains when signup or email-code requests may resume. The five-per-email/hour and 30-per-IP/hour limits remain enforced. See [signup recovery and upgrade notes](docs/RELEASE_v2.14.1.md).
+
+New in 2.14.0:
+
+- Versioned audit packages with bilingual customer choices, required sections, confirmed scope and consistent scoring/report coverage.
+- Auditor-owned customer invitations, private onboarding progress, manual reminders and admin-controlled ownership locks and exceptions.
+- Dedicated manager guidance, contextual Help/tours and four bilingual PDF guides.
+- Customer/auditor oversight and configurable operational approvals, plus a bilingual website editor with approved publication and audit history.
+
+See the [audit packages and onboarding guide](docs/GRC_AUDIT_PACKAGES_ONBOARDING.md), [customer oversight guide](docs/GRC_CUSTOMER_OVERSIGHT.md) and [release/upgrade notes](docs/RELEASE_v2.14.0.md). Existing assessments and released reports keep their scope; existing customers are not retroactively locked.
+
+Staff password login accepts Frappe email addresses or usernames, including Administrator. Staff 2FA is disabled by default. GRC app admins use Account security to choose a global default (Enabled, Disabled or Enforced), a verification method (Authenticator app or Email code), and role or individual username overrides. Individual Required/Disabled overrides roles; Required wins among multiple roles; roles override the global default. Enabled permits optional enrollment; Enforced requires staff 2FA by default. Explicit existing settings and unrelated ERP MFA coverage are preserved. Customers always use email OTP, with no password option. The built-in Administrator retains normal Frappe authentication and ERP access.
+
+New in 2.6.0: per-user page-tour and Help visibility in My profile → Workspace preferences, reliable assessment notifications, and complete sign-out when MFA settings change. See the [release and upgrade notes](docs/RELEASE_v2.6.0.md).
+
+New in 2.5.0: central Enabled, Disabled or Enforced MFA, with Authenticator app or Email code, optional profile enrollment and preserved non-GRC coverage. See the [release and deployment notes](docs/RELEASE_v2.5.0.md).
+
+New in 2.4.0: MFA policies by GRC role or individual account, including app administrators. See the [MFA administration and recovery guide](docs/GRC_MFA_ADMINISTRATION.md).
+
+New in 2.3.0: bilingual role guides, illustrated PDF downloads and replayable page-specific tours. See the [release notes](docs/RELEASE_v2.3.0.md).
+
+New in 2.2.0:
+- Full-page template dashboard, editor and customer preview with live scoring (no modal editor).
+- Comment and attachment enablement per questionnaire, section and question; GRC Settings for report download/email and Before/After Audit timing.
+- Optional multi-select questions (Highest / Average / Sum capped) and a live customer score while answering.
+- Questionnaire UI aligned to the requirement layout (section stepper, progress, A–D cards).
+
+New in 2.1.0: default maturity bands are Critical 0–29%, Low 30–49%, Medium 50–69%, High 70–84% and Leading 85–100%, with matching English and Arabic conclusions in the executive summary. Points stay A=25, B=50, C=75, D=100. Migrate updates the previous default bands; released GRC reports and custom bands are left unchanged.
+
+New in 2.0.0:
+- Multiple organization memberships, a persistent organization switcher and read-only holding-company access to subsidiary assessments.
+- Separate customer/staff identity controls, direct custom staff workspace with optional getting-started guidance, and verification resend with cooldown and expiry.
+- Staff-created customer organizations and drafts, customer-admin invitations, audited answer entry and consultant transfers with mandatory reasons.
+- Organization/user optional-email preferences and separate customer/staff activity timelines.
+
+Review the [v2 upgrade requirements](docs/RELEASE_v2.0.0.md) for customer roles, transfer API callers and deployment steps.
+
+New in 1.10.0: a dedicated signup form without sign-in tabs, organization name and sector collection, and organization creation after email verification. Existing organizations still require an invitation. See the [signup upgrade guide](docs/RELEASE_v1.10.0.md).
+
+Fixed in 1.9.1: backend validation of single-use MFA challenges and session proof, recovery without automatic login, and password/name protection across profile, User records and live identity displays. See the [security upgrade guide](docs/RELEASE_v1.9.1.md).
+
+New in 1.9.0: explicit signup verification links and confirmation, protection against alternate unverified signup paths, and per-account MFA controls for GRC admins. See the [identity controls upgrade guide](docs/RELEASE_v1.9.0.md).
+
+New in 1.8.0: customer authenticator enrollment using Frappe native MFA, protected personal-name editing, admin-controlled signup domains (all valid emails by default), standard Frappe email diagnostics, and secure report-link email with visible PDF release controls. See the [upgrade and email setup guide](docs/RELEASE_v1.8.0.md).
+
+New in 1.7.0: a Saudi-inspired bilingual landing page with direct signup, fictional customer/auditor previews for ERP users, and self-contained Arabic-capable PDF downloads independent of website asset URLs. See the [production upgrade checklist](docs/RELEASE_v1.7.0.md).
+
+### Website content and approvals
+
+Authorized GRC users can edit English and Arabic public-site text in **Website content**. GRC administrators assign existing editor and approver roles and configure ordered approval steps; published content changes only after approval. See [website content and approvals](docs/GRC_SITE_CONTENT.md) for setup, preview, audit history and deployment.
+
+### User help and guided tour
+
+Signed-in users can open **Help & guides** in the workspace header for role-specific English and Arabic instructions, a guided tour, and a bilingual PDF download. Managers receive a dedicated manager guide and can also read auditor guidance; GRC app administrators can select all four role guides. The PDFs use demonstration illustrations; actual menus and available actions depend on access and settings.
+
+Each page also offers **Take page tour** in the header. The contextual tour opens on the first visit to a page for each signed-in account in that browser; users may skip the page, skip future automatic tours, or replay any page manually. Tour progress and the automatic-tour choice are stored in that browser only. Each user can separately hide or restore the tour and Help buttons under **My profile → Workspace preferences**; this visibility preference is saved on the account across browsers. Hiding the page tour also stops automatic tours. Page-specific bilingual text and examples live in `grc/src/pageTourContent.ts`.
+
+The shared guide text lives in `grc/src/guide-content.json`. After updating it, regenerate the four checked-in PDF assets with `cd grc && node scripts/build-guides.mjs` (Node 24, installed Playwright Chromium, and Arabic fonts are required), then rebuild the frontend with `npm run build`. The administrator guide includes site activation and first-admin setup; operators should also follow the current release and operations guides.
+
+### Documentation
+
+| Guide | Read this for |
+|---|---|
+| [Performance measurement and rollout](docs/PERFORMANCE_OPERATIONS.md) | Repeatable local baseline/load/browser checks, safe caching, destination diagnostics and rollback |
+| [v2.15.1 release notes](docs/RELEASE_v2.15.1.md) | Immediate verification delivery, failure handling and validation |
+| [Assessment types](docs/GRC_ASSESSMENT_TYPES.md) | Customer selection and admin/manager template classification |
+| [v2.15.0 release notes](docs/RELEASE_v2.15.0.md) | Classification defaults, migration and validation |
+| [v2.14.1 release notes](docs/RELEASE_v2.14.1.md) | Signup retry correction, remaining-wait countdown and preserved rate limits |
+| [v2.14.0 release notes](docs/RELEASE_v2.14.0.md) | Audit packages, auditor onboarding, ownership, approval workflows and upgrade defaults |
+| [Audit packages and onboarding](docs/GRC_AUDIT_PACKAGES_ONBOARDING.md) | Scope selection, scoring, invitation tracking, access controls and recovery |
+| [Customer and auditor oversight](docs/GRC_CUSTOMER_OVERSIGHT.md) | Scoped portfolio reports, operational approval policies and requests |
+| [v2.6.0 release notes](docs/RELEASE_v2.6.0.md) | Personal Help/tour controls, assessment notifications and MFA sign-out fixes |
+| [v2.5.0 release notes](docs/RELEASE_v2.5.0.md) | Central MFA, email/authenticator methods and live upgrade |
+| [v2.4.0 release notes](docs/RELEASE_v2.4.0.md) | MFA role policies, individual overrides and deployment |
+| [v2.3.0 release notes](docs/RELEASE_v2.3.0.md) | Bilingual guides, tours and deployment |
+| [Developer introduction](docs/introduction.md) | Architecture, DocType relationships, workflow diagrams and API/source map |
+| [Development and acceptance criteria](docs/DEVELOPMENT.md) | Extension rules, test coverage, remaining business and deployment criteria |
+| [Implementation notes](docs/GRC_IMPLEMENTATION.md) | Delivered behavior, dashboard/profile controls and local validation |
+| [Website content and approvals](docs/GRC_SITE_CONTENT.md) | Bilingual editing, role access, publication and audit |
+| [MFA administration and recovery](docs/GRC_MFA_ADMINISTRATION.md) | Central policy, email/authenticator methods, access recovery and deployment |
+| [Operations](docs/GRC_OPERATIONS.md) | Build, local preview, services, backups and restoration |
+| [v1.10.0 release notes](docs/RELEASE_v1.10.0.md) | Dedicated signup and verified organization onboarding |
+| [v1.9.1 release notes](docs/RELEASE_v1.9.1.md) | Backend MFA enforcement, password/name separation and deployment checks |
+| [v1.9.0 release notes](docs/RELEASE_v1.9.0.md) | Verified signup, admin MFA controls, migration and acceptance |
+| [v1.8.0 release notes](docs/RELEASE_v1.8.0.md) | Authenticator enrollment, profile correction, signup policy, email troubleshooting and report delivery |
+| [v1.7.0 release notes](docs/RELEASE_v1.7.0.md) | PDF fix, dependencies, designated-site activation and journey verification |
+| [v1.6.0 release notes](docs/RELEASE_v1.6.0.md) | Installation, first administrator, migration and rollback |
+| [Changelog](docs/CHANGELOG.md) | Version-by-version changes |
+
+For GRC installation, follow the release notes above before the legacy instructions below. Node 24 and a frontend build are required; generated assets are not committed. Local preview: http://localhost:8005/login. Production activation still requires the documented business, content and operational acceptance gates.
+
+**The sections below describe the imported legacy app.** In GRC mode, React workflows and the server-side access policy replace the legacy public portal, Desk review and automatic PDF-email behavior. The GRC implementation was validated on Frappe 15.118.0 / ERPNext 15.119.3; the legacy compatibility claims below do not certify GRC on Frappe 16.
+
+
 A Frappe app that turns the *IA Maturity Assessment (20 Questions / 6 Sections)* workbook into a working system:
 respondents fill it in on a web portal, the server scores it, a PDF report is produced, improvement actions are
 created automatically and reviewers approve the result in the desk.
@@ -21,7 +213,7 @@ created automatically and reviewers approve the result in the desk.
 |---|---|
 | **Public landing page** `/ia-assessment` (signed-out visitors) | Branded, bilingual (English / Arabic, RTL) page that explains the assessment and collects the respondent's details – work e-mail, name, job title, perspective, organisation, date, report language and privacy consent. A 6-digit code (and one-click link) is e-mailed; entering it creates the account, signs the person in and opens a pre-filled draft at Section 1. Returning users choose *Continue / view results*. No passwords. |
 | **Respondent portal** `/ia-assessment` (signed in) | Login-protected page. Respondents start an assessment, answer section by section (autosaved to the server), add comments and attach evidence files, submit, then see the full results report and download the PDF. |
-| **Scoring engine** (server side) | Same method as the workbook: A=25 · B=50 · C=75 · D=100; section % = points ÷ (applicable questions × 100); overall % = total points ÷ total possible; bands Critical / Low / Medium / High / Leading. Points and bands are configurable. Adds *Not applicable* answers and *gating questions*. |
+| **Scoring engine** (server side) | A=25 · B=50 · C=75 · D=100; section % = points ÷ (applicable questions × 100); overall % = total points ÷ total possible. Default bands: Critical 0–29%, Low 30–49%, Medium 50–69%, High 70–84%, Leading 85–100%. Points and bands are configurable. Adds *Not applicable* answers and *gating questions*. |
 | **Client and internal reports** | Two PDFs from one design. **IA Maturity Report** (client) contains only the sections enabled in *Settings > Client Report Content* — by default 01 Executive summary, 02 Results by section, 03 Peer benchmark. **IA Maturity Internal Report** (IRSAA) always contains everything and carries an *INTERNAL – not for distribution* banner; only IA Maturity staff can open it. The portal shows clients the client report only, and data of hidden sections is never sent to their browser. |
 | **PDF report contents** | Executive summary, maturity scale, section bar chart (server-rendered SVG), section table, key findings, improvement roadmap (next-level practice, owner, timeframe), detailed responses, review comments, scoring method. |
 | **Improvement actions** | On submission, one *IA Maturity Action* is created per A/B answer (optionally C too) with priority, due date (A: 90 days, B: 180, C: 365), owner role and the next-level practice as the recommended action. Track status, assignee and closure evidence. |
@@ -36,12 +228,14 @@ created automatically and reviewers approve the result in the desk.
 
 ## 2. Installation
 
+For the GRC portal, complete [GRC site setup and server migration](#grc-site-setup-and-server-migration) above as well. The legacy installation commands below do not activate GRC.
+
 ### On a bench you manage
 
 ```bash
 cd ~/frappe-bench
-# from a Git repository (push this folder to your Git host first):
-bench get-app https://github.com/<your-org>/ia_maturity.git
+# from the application repository:
+bench get-app https://github.com/AlphaX-SAAS/ia_maturity.git
 # …or from the zip: unzip into apps/ then
 #   ./env/bin/pip install -e apps/ia_maturity && echo ia_maturity >> sites/apps.txt
 
@@ -59,7 +253,7 @@ deploy, then install it on the site.
 
 1. **IA Maturity Settings** (desk → search "IA Maturity Settings")
    * *Notify on Submission*: the administrator mailbox (e.g. the CAE or practice-lead address).
-   * Check the points and maturity bands (defaults match the workbook).
+   * Check the points and maturity bands (defaults are the suggested 0–29 / 30–49 / 50–69 / 70–84 / 85–100 scale).
    * Optional: *Require Evidence For Answers At* = "C and D" to stop unsupported high scores.
    * Optional: *Allowed Email Domains* to limit who can respond.
 2. **Outgoing e-mail**: set up a default outgoing **Email Account** (Tools → Email Account). Without one,
@@ -302,3 +496,27 @@ clear "could not send the e-mail" message.
 * Arabic versions of the submission e-mail and of the desk labels (Frappe translation files).
 * Trend view: an entity's score history across years on one chart.
 * Benchmarks by respondent perspective (e.g. CAE versus Audit Committee across all entities).
+
+Customer and auditor oversight, scoped reports and onboarding/allocation approvals: [usage and deployment](docs/GRC_CUSTOMER_OVERSIGHT.md).
+
+- Assessment presentation: collapsed maturity/report panels, default-off question extras, and shared reference-based PDF preview. See [configuration and report guide](docs/GRC_ASSESSMENT_PRESENTATION.md).
+
+- Compact A4 reports use the GRC reference palette. Admins control customer scoring timing and section overview visibility, and can revise the default questionnaire for future assessments.
+
+- Screenshot-aligned questionnaire opening with visible section tabs and compact expand/collapse rows; shared percentage-based section colors and rounded report/progress bars.
+
+- Admins and GRC managers can configure any number of section color ranges, including ten or more, with matching frontend/PDF colors and frozen report snapshots.
+
+- Overall Maturity is hidden by default. Admins and GRC managers can choose completion-based or completed-section-only display from Desk or the portal.
+
+Customers automatically enter questionnaire focus mode, with Normal view and Full screen controls that preserve answers. See [assessment presentation](docs/GRC_ASSESSMENT_PRESENTATION.md#customer-assessment-focus-mode).
+
+Assessment creation lists only active, published templates, including for administrators.
+
+Fullscreen customers can independently hide section overview and progress. Long questions and answer options wrap and scroll in both fullscreen and normal view.
+
+Versioned audit packages, customer-confirmed scope, auditor-owned onboarding, private progress tracking, ownership controls, and bilingual role guides: [configuration, defaults and recovery](docs/GRC_AUDIT_PACKAGES_ONBOARDING.md).
+
+### Easy role guides
+
+[Download the five AlphaX role guides](docs/easy-guides/README.md) for Customers, Auditors, Managers, Admins and Consultants, with steps, menu locations and process flowcharts. [ZIP bundle](docs/easy-guides/AlphaX-GRC-Role-Guides.zip).

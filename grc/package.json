@@ -1,0 +1,39 @@
+{
+  "name": "grc",
+  "private": true,
+  "version": "3.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build --base=/assets/ia_maturity/grc/ && node scripts/copy-entry.mjs",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "copy-html-entry": "cp ../ia_maturity/public/grc/index.html ../ia_maturity/www/grc.html",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "^2.4.1",
+    "frappe-react-sdk": "^1.17.1",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "oxlint": "^1.88.0",
+    "postcss": "^8.5.31",
+    "prettier": "^3.10.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  },
+  "overrides": {
+    "ws": "^8.21.0"
+  }
+}

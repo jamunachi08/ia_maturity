@@ -11,6 +11,22 @@ no_cache = 1
 
 
 def get_context(context):
+	from ia_maturity.grc.security import enabled, home
+	if enabled():
+		from urllib.parse import urlencode, quote
+		if frappe.form_dict.get("verify"):
+			target = "/login?" + urlencode({"verify": frappe.form_dict.verify})
+		elif frappe.session.user == "Guest":
+			target = "/login"
+			if frappe.form_dict.get("name"):
+				target += "?" + urlencode({"assessment": frappe.form_dict.name})
+		else:
+			target = home()
+			if frappe.form_dict.get("name") and target.startswith("/grc/"):
+				target += "/assessments/" + quote(frappe.form_dict.name, safe="")
+		frappe.local.flags.redirect_location = target
+		raise frappe.Redirect
+
 	context.no_cache = 1
 	context.show_sidebar = False
 	context.title = _("IA Maturity Assessment")

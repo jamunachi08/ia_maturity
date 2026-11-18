@@ -1,0 +1,36 @@
+import {test,expect} from '@playwright/test';
+
+test('admin can change protection independently and reset a target with a reason', async ({page})=>{
+ let policy={email:true,ip:true}; let policyRequest:any, resetRequest:any;
+ await page.addInitScript(()=>localStorage.setItem('grc-language','en'));
+ await page.route('**/api/method/ia_maturity.grc.api.bootstrap**',r=>r.fulfill({json:{message:{enabled:true,kind:'Auditor',user:'admin@example.test',home:'/grc/auditor',is_admin:true,organizations:[],workspace_preferences:{show_page_tour:false,show_help:false}}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.settings**',r=>r.fulfill({json:{message:{scoring:{},profile_fields:[],profile_editable_fields:[],delivery:[]}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.email_diagnostics**',r=>r.fulfill({json:{message:{outgoing_accounts:1,default_outgoing_configured:true,emails_muted:false,queue_suspended:false,account_awaiting_password:false,scheduler_inactive:false,workers_present:true,queue_counts:{},verification_queue:[],recent_failures:[]}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.verification_limit_policy**',r=>r.fulfill({json:{message:policy}}));
+ await page.route('**/api/method/ia_maturity.grc.api.set_verification_limit_policy**',r=>{policyRequest=r.request().postDataJSON();policy={email:policyRequest.email_enabled==='1',ip:policyRequest.ip_enabled==='1'};return r.fulfill({json:{message:policy}})});
+ await page.route('**/api/method/ia_maturity.grc.api.verification_limit_status**',r=>r.fulfill({json:{message:{kind:'email',target:'support@example.test',limits:[{kind:'request-email',count:5,remaining_seconds:800,active:true},{kind:'request-cooldown',count:1,remaining_seconds:30,active:true}]}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.clear_verification_limits**',r=>{resetRequest=r.request().postDataJSON();return r.fulfill({json:{message:{cleared:['request-email','request-cooldown']}}})});
+ await page.goto('/grc/auditor/admin/settings');
+ const section=page.locator('section').filter({has:page.getByRole('heading',{name:'Verification attempt limits'})});
+ await expect(section).toBeVisible();
+ await section.getByRole('combobox',{name:'Email request limit'}).click();
+ await page.getByRole('option',{name:'Disabled',exact:true}).click();
+ await section.getByRole('button',{name:'Save verification protection'}).click();
+ expect(policyRequest).toBeUndefined();
+ await section.getByLabel('Reason',{exact:true}).fill('Investigate delivery');
+ await section.getByRole('button',{name:'Save verification protection'}).click();
+ await expect.poll(()=>policyRequest?.email_enabled).toBe('0');
+ expect(policyRequest.ip_enabled).toBe('1');expect(policyRequest.reason).toBe('Investigate delivery');
+ await expect(section.getByRole('status').filter({hasText:'Verification attempt protection is disabled'})).toBeVisible();
+ await section.getByLabel('Email address',{exact:true}).fill('support@example.test');
+ await section.getByRole('button',{name:'Check limits'}).click();
+ await expect(section).toContainText('request-email');
+ await section.getByRole('button',{name:'Reset limits'}).click();
+ const dialog=page.getByRole('dialog',{name:'Reset verification limits'});
+ await dialog.getByRole('button',{name:'Confirm reset'}).click();expect(resetRequest).toBeUndefined();
+ await dialog.getByLabel('Reason',{exact:true}).fill('Verified support request');
+ await dialog.getByRole('button',{name:'Confirm reset'}).click();
+ await expect.poll(()=>resetRequest?.reason).toBe('Verified support request');
+ expect(resetRequest.kind).toBe('email');expect(resetRequest.target).toBe('support@example.test');
+ await expect(section).toContainText('Verification limits reset.');
+});

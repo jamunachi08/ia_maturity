@@ -1,0 +1,154 @@
+/* Questionnaire matches the IA maturity assessment requirement layout.
+   Scoped so the rest of the GRC workspace keeps its own chrome. */
+.iam-questionnaire{
+  --iam-accent:var(--accent);--iam-accent-ink:#fff;--iam-soft:#E0EFED;--iam-ink:#13232F;
+  --iam-muted:#586976;--iam-line:#D7E0E5;--iam-bg:#F3F6F7;
+  color:var(--iam-ink);
+  font-family:"IBM Plex Sans","Segoe UI",sans-serif;
+  display:flex;flex-direction:column;gap:16px;
+}
+.iam-questionnaire h2{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.01em}
+.iam-stepper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.iam-step{
+  background:transparent;border:1px solid var(--iam-line);color:var(--iam-muted);border-radius:8px;
+  padding:8px;text-align:start;font-weight:500;font-size:12px;display:flex;flex-direction:column;gap:2px;min-width:0;
+}
+.iam-step .n{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:11px}
+.iam-step .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iam-step[aria-current=step]{border-color:var(--iam-accent);color:var(--iam-ink);background:var(--iam-soft)}
+.iam-step.done .n::after{content:" ✓";color:#2D7A33}
+.iam-step-group{min-width:0;border-radius:8px}
+.iam-step-group .iam-step{width:100%}
+.iam-step-group.has-missing .iam-step:not([aria-current=step]){border-color:#b67717;background:#fff8e9;color:#5b3900}
+.iam-missing-count{color:#744600;font-weight:700;font-size:11px}
+.iam-missing-links{display:flex;flex-wrap:nowrap;gap:4px;padding:5px 3px;overflow-x:auto;max-width:100%}
+.iam-missing-links button{flex:none;border:1px solid #b67717;border-radius:4px;background:#fff8e9;color:#5b3900;padding:2px 5px;font-size:11px;cursor:pointer}
+.iam-missing-links button:focus-visible{outline:3px solid var(--iam-accent);outline-offset:2px}
+.iam-missing-summary{border:1px solid #b67717;background:#fff8e9;color:#5b3900;border-radius:8px;padding:12px;font-size:13px}
+.iam-missing-summary>div{display:flex;align-items:center;flex-wrap:wrap;gap:5px 12px}
+.iam-progress-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--iam-muted)}
+.iam-questionnaire .assessment-progress{display:flex;justify-content:flex-start;gap:6px;margin:0;font-size:13px;color:var(--iam-muted);width:auto}
+.iam-questionnaire .assessment-progress strong{font-size:13px;font-weight:500;font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+.iam-count-ratio{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12px;margin-inline-start:8px}
+.iam-live-score{display:flex;align-items:baseline;gap:8px;margin:0;color:var(--iam-ink)}
+.iam-live-label{font-size:12px;color:var(--iam-muted)}
+.iam-live-pct{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:20px;font-weight:500;letter-spacing:-.02em}
+.iam-live-pct span{font-size:12px;color:var(--iam-muted);margin-inline-start:1px}
+.iam-live-band{font-size:12px;font-weight:600;letter-spacing:.02em}
+.iam-questionnaire .progress-track{height:6px;background:var(--iam-line);border-radius:3px}
+.iam-questionnaire .progress-track span{background:var(--iam-accent)}
+.iam-section{padding:22px;display:flex;flex-direction:column;gap:18px;margin-bottom:0}
+.iam-section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.iam-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--iam-accent);font-weight:600;margin:0 0 6px}
+.iam-section h2{font-size:22px;line-height:1.2;margin:0}
+.iam-ref{margin:8px 0 0;font-size:13px;color:var(--iam-muted)}
+.iam-questionnaire .question-card{
+  background:transparent;border:0;border-radius:0;box-shadow:none;margin:0;padding:18px 0 0;min-width:0;
+  border-top:1px solid var(--iam-line);overflow:visible;
+}
+.iam-questionnaire .question-card:first-of-type{border-top:0;padding-top:0}
+.iam-questionnaire .question-card.is-unanswered{border-inline-start:4px solid #b67717;background:#fffbf3;padding:14px;margin-inline:0;border-radius:5px}
+.iam-questionnaire .question-card.is-unanswered:first-of-type{padding:14px}
+.iam-questionnaire .question-unanswered{margin-inline-start:auto;color:#744600;background:#fff0cd;border-radius:4px;padding:3px 7px;font-size:12px;font-weight:700;white-space:nowrap}
+.iam-questionnaire .question-heading{flex-wrap:wrap}
+.iam-questionnaire .question-heading{display:flex;align-items:baseline;gap:12px;padding:0;width:100%}
+.iam-questionnaire .question-heading h3{font-family:"IBM Plex Sans","Segoe UI",sans-serif;font-size:16px;font-weight:600;line-height:1.4}
+.iam-questionnaire .question-code{
+  background:transparent;color:var(--iam-accent);font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  font-size:13px;font-weight:500;letter-spacing:0;padding:0;margin:0;
+}
+.iam-questionnaire .question-heading h3{font-size:16px;line-height:1.4;font-weight:600}
+.iam-questionnaire .question-guidance{color:var(--iam-muted);font-size:13px}
+.iam-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:12px}
+.iam-questionnaire .answer-option{
+  position:relative;display:flex;flex-direction:column;align-items:stretch;gap:4px;
+  border:1px solid var(--iam-line);border-radius:8px;padding:10px 12px;background:var(--iam-bg);
+  color:var(--iam-ink);font-size:13.5px;line-height:1.4;min-width:0;
+}
+.iam-questionnaire .answer-option input{position:absolute;inset:0;z-index:2;width:100%;height:100%;min-height:0;margin:0;opacity:0;cursor:pointer}
+.iam-opt-top{display:flex;justify-content:space-between;gap:8px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--iam-muted);font-weight:600}
+.iam-opt-top .pts{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;letter-spacing:0}
+.iam-questionnaire .answer-option.chosen{border-color:var(--iam-accent);background:var(--iam-soft);box-shadow:inset 0 0 0 1px var(--iam-accent)}
+.iam-questionnaire .answer-option.chosen .iam-opt-top{color:var(--iam-accent)}
+.iam-opt-text{font-size:13.5px;line-height:1.4;text-transform:none;letter-spacing:0;font-weight:400}
+.iam-comment{font-size:13px;color:var(--iam-muted)}
+.iam-comment summary{cursor:pointer}
+.iam-comment textarea{margin-top:6px}
+.iam-questionnaire .evidence-row{color:var(--iam-muted)}
+.iam-missing{font-size:13px;color:var(--iam-muted);margin:0}
+.iam-questionnaire .editor-footer{padding:0 0 8px}
+.iam-questionnaire .editor-footer .button.primary{background:var(--iam-accent);border-color:var(--iam-accent);color:var(--iam-accent-ink)}
+.iam-questionnaire .editor-footer .button.primary:hover{background:color-mix(in oklab,var(--accent) 86%,#000000)}
+.iam-questionnaire .editor-footer .button.secondary{background:transparent;border-color:var(--iam-line);color:var(--iam-ink)}
+.iam-questionnaire .save-state{color:#2D7A33;font-size:12px}
+@media(max-width:640px){
+  .iam-step .t{display:none}
+  .iam-section{padding:16px}
+  .iam-section h2{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.iam-questionnaire *{transition:none!important}}
+
+/* Compact disclosure rows and visible section navigation mirror the opening reference. */
+.assessment-disclosure{margin-bottom:8px;border-color:#D7E0E5;border-radius:9px;box-shadow:none}
+.assessment-disclosure>summary{list-style:none;display:flex;align-items:center;gap:16px;cursor:pointer;padding:13px 20px;color:#13232F;min-height:48px}
+.assessment-disclosure>summary::-webkit-details-marker{display:none}
+.disclosure-label{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;min-width:0;font-size:15px}
+.disclosure-note{font-size:13px;color:#586976;border-inline-start:1px solid #D7E0E5;padding-inline-start:12px;font-weight:400}
+.disclosure-action{margin-inline-start:auto;color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.disclosure-action .when-closed,.disclosure-action .when-open{align-items:center;gap:8px}
+.assessment-disclosure:not([open]) .when-closed{display:flex}
+.assessment-disclosure:not([open]) .when-open{display:none}
+.assessment-disclosure[open] .when-closed{display:none}
+.assessment-disclosure[open] .when-open{display:flex}
+.assessment-disclosure[open] .disclosure-chevron{transform:rotate(90deg)}
+.disclosure-content{padding:8px 20px 20px}
+.assessment-disclosure>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:9px}
+.iam-questionnaire{margin-top:20px}
+.iam-section-overview.tabs-only{margin:0;padding:0;border:0}
+.iam-section-overview.tabs-only>summary{display:none}
+.iam-stepper{gap:8px}
+.iam-step{padding:9px 14px;min-height:55px}
+.iam-step .n{font-family:inherit;font-size:12px;font-weight:600}
+.iam-questionnaire .progress-track,.maturity-disclosure .progress-track{height:10px;border-radius:999px;overflow:hidden;clip-path:none;background:#D7E0E5}
+.iam-questionnaire .progress-track span,.maturity-disclosure .progress-track span{height:100%;border-radius:inherit;clip-path:none;transform:none}
+@media(max-width:640px){.assessment-disclosure>summary{padding:12px;gap:8px}.disclosure-label{font-size:14px}.disclosure-note{border:0;padding:0;width:100%}.disclosure-content{padding:8px 12px 16px}.iam-stepper{grid-template-columns:repeat(3,minmax(0,1fr))}.iam-step{padding:8px}.iam-step .t{display:block;font-size:10px}.iam-count-ratio{display:none}}
+
+.assessment-disclosure>summary::after{content:none;display:none}
+
+.assessment-focus-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;background:#F3F6F7}
+.assessment-focus-toolbar>div:first-child{display:flex;flex-direction:column;gap:4px;min-width:0}
+.assessment-focus-toolbar strong{font-size:15px;color:#13232F}
+.assessment-focus-toolbar span{font-size:12px;color:#586976;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.assessment-focus-mode{overflow:hidden}
+body.assessment-focus-mode .sidebar,body.assessment-focus-mode .sidebar-scrim,body.assessment-focus-mode .topbar,body.assessment-focus-mode .workspace-footer{display:none!important}
+.assessment-editor.is-focus>:not(.iam-questionnaire){display:none!important}
+.iam-questionnaire.assessment-focus-active{position:fixed;inset:0;z-index:1000;margin:0!important;width:100%;height:100dvh;max-width:none;overflow:auto;overscroll-behavior:contain;background:#F3F6F7;padding:0 clamp(16px,4vw,56px) 24px;box-sizing:border-box;gap:16px}
+.iam-questionnaire:fullscreen{width:100vw;height:100dvh;max-width:none;background:#F3F6F7;overflow:auto}
+.assessment-focus-active .assessment-focus-toolbar{position:sticky;top:0;z-index:4;border-bottom:1px solid #D7E0E5;min-height:64px}
+.assessment-focus-active .editor-footer{position:sticky;bottom:0;background:#F3F6F7;padding:12px 0;border-top:1px solid #D7E0E5;z-index:3}
+@media(max-width:640px){.assessment-focus-toolbar{gap:8px}.assessment-focus-toolbar .button{white-space:nowrap;padding:10px;font-size:12px}.assessment-focus-toolbar>div:first-child{max-width:55%}.assessment-focus-active .editor-footer{flex-wrap:wrap;gap:8px}.assessment-focus-active .editor-footer>div{display:flex;gap:8px}.assessment-focus-active .editor-footer .button{font-size:12px;padding:10px}}
+
+/* Keep long questionnaires in document flow; the focus viewport owns its scroll. */
+.assessment-editor,.iam-questionnaire,.iam-section{min-width:0;max-width:100%}
+.iam-questionnaire>*{flex-shrink:0}
+.iam-questionnaire .question-heading h3,.iam-questionnaire .iam-opt-text,.iam-questionnaire .question-guidance{overflow-wrap:anywhere;white-space:normal}
+.iam-opts{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+.iam-assessment-progress{display:flex;flex-direction:column;gap:16px;min-width:0}
+.iam-assessment-progress[hidden]{display:none}
+.assessment-focus-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.iam-questionnaire.assessment-focus-active{overflow-y:auto;scrollbar-gutter:stable;scroll-padding-block:160px 110px}
+.assessment-focus-active .iam-section{height:auto;max-height:none;overflow:visible}
+.assessment-focus-active .answer-option{height:auto;max-height:none;overflow:visible}
+.iam-questionnaire .answer-option:focus-within{outline:2px solid var(--iam-accent);outline-offset:2px}
+@media(max-width:640px){.assessment-focus-toolbar{flex-wrap:wrap}.assessment-focus-actions{width:100%;justify-content:flex-start}.assessment-focus-active .assessment-focus-toolbar{min-height:0}.iam-questionnaire .question-heading{flex-wrap:wrap}.iam-questionnaire .editor-footer{flex-wrap:wrap;gap:8px}.iam-questionnaire .editor-footer>div{display:flex;flex-wrap:wrap;gap:8px}}
+
+.assessment-editor:not(.is-focus) .iam-section{scroll-margin-block-start:100px}
+
+/* A separate content scroller prevents controls from covering answer text. */
+.assessment-questionnaire-content{display:flex;flex-direction:column;gap:16px;min-width:0}
+.assessment-questionnaire-content>*{flex-shrink:0}
+.iam-questionnaire.assessment-focus-active{overflow:hidden;gap:0;padding-bottom:0}
+.assessment-focus-active .assessment-questionnaire-content{flex:1 1 auto;min-height:0;overflow-y:auto;scrollbar-gutter:stable;padding-block:16px;overscroll-behavior:contain;scroll-padding-block:16px}
+.assessment-focus-active .assessment-focus-toolbar,.assessment-focus-active .editor-footer{position:static}
+.assessment-focus-active .editor-footer{margin:0}
+.assessment-questionnaire-content:focus-visible{outline:2px solid var(--iam-accent);outline-offset:-2px}

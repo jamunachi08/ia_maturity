@@ -9,7 +9,7 @@ from frappe.utils import cint, escape_html, flt, formatdate
 
 from ia_maturity import i18n
 from ia_maturity.branding import get_brand
-from ia_maturity.scoring import LETTERS, NA, PRIORITY, get_config
+from ia_maturity.scoring import LETTERS, NA, PRIORITY, get_config, parse_selected, selected_statements, worst_letter
 
 OPTION_FIELDS = {"A": "option_a", "B": "option_b", "C": "option_c", "D": "option_d"}
 
@@ -70,6 +70,19 @@ def ia_report_guard(audience="client"):
 	return ""
 
 
+def _written_band_end(band, upper):
+	"""Inclusive top of the written range (0–29, 30–49, …), while the bar uses the next threshold."""
+	raw = band.get("max_score")
+	if raw in (None, ""):
+		return upper
+	value = flt(raw)
+	if value >= 99.5:
+		return 100
+	if abs(value - round(value)) < 0.02:
+		return int(round(value))
+	return int(value)
+
+
 def get_report_context(doc, lang=None, include_benchmark=True, audience="client"):
 	"""Everything the report needs, as plain dicts (JSON-serialisable), in the report language.
 
@@ -78,13 +91,31 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 	audience="internal" includes everything.
 	"""
 	doc = _doc(doc)
+	from ia_maturity.grc import security
+	if security.enabled():
+		# Customer reports contain only their organization; no cross-customer cohort data.
+		if audience == "client":
+			include_benchmark = False
+		security.require_assessment(doc)
+		from ia_maturity.grc.assessments import visible_results
+		if audience == "internal" and not (security.is_admin() or security.account_type() == "Auditor"):
+			security.deny()
+		if not visible_results(doc):
+			security.deny()
+		if audience == "client":
+			frozen = frappe.db.get_value("GRC Report Release", {"assessment": doc.name}, "report_context")
+			if frozen:
+				return frappe.parse_json(frozen)
 	audience = audience if audience in AUDIENCES else "client"
 	show = visible_sections(audience)
 	lang = report_language(doc, lang)
-	t = i18n.strings(lang)
+	from ia_maturity.grc.organization_profile import assessment_kind
+	assessment_type = assessment_kind(doc)
+	policy = frappe.parse_json(doc.get("grc_policy_snapshot") or "{}")
+	t = i18n.report_strings(lang, assessment_type, policy.get("framework"))
 	level_names = i18n.LEVEL_NAMES[lang]
 	letters = i18n.LETTERS[lang]
-	config = get_config()
+	config = get_config(doc)
 	bands = config.bands
 	color_of = {b["level_name"]: b["color"] for b in bands}
 	band_label = {b["level_name"]: (b.get("level_name_ar") if lang == "ar" else None) or b["level_name"] for b in bands}
@@ -118,18 +149,43 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 
 	findings, actions, answers = [], [], []
 	action_letters = {"A", "B", "C"} if config.create_actions_for == "A, B and C" else {"A", "B"}
-	for a in doc.answers:
-		opt = a.selected_option or ""
-		statement = _pick(a, OPTION_FIELDS[opt], lang) if opt in LETTERS else (level_names["N/A"] if opt == NA else "")
+	from ia_maturity.grc import scope
+	for a in scope.answers(doc):
+		kind, selected = parse_selected(a.selected_option)
+		opt = worst_letter(a) if kind == "letters" else (NA if kind == NA else "")
+		if kind == "letters" and len(selected) > 1:
+			statement = selected_statements(a)
+			answer_display = ",".join(selected)
+			answer_letter = "،".join(letters.get(x, x) for x in selected) if lang == "ar" else ",".join(
+				letters.get(x, x) for x in selected
+			)
+			answer_level = " / ".join(level_names.get(x, x) for x in selected)
+		elif opt in LETTERS:
+			statement = _pick(a, OPTION_FIELDS[opt], lang)
+			answer_display = opt
+			answer_letter = letters.get(opt, opt)
+			answer_level = level_names.get(opt, "")
+		elif kind == NA:
+			statement = level_names["N/A"]
+			answer_display = NA
+			answer_letter = letters.get(NA, NA)
+			answer_level = level_names.get(NA, "")
+		else:
+			statement = ""
+			answer_display = opt
+			answer_letter = letters.get(opt, opt)
+			answer_level = level_names.get(opt, "")
 		row = {
+			"topic_code": a.get("topic_code") or "",
+			"topic_title": _pick(a, "topic_title", lang),
 			"code": a.question_code,
 			"section": a.section_code,
 			"section_title": _pick(a, "section_title", lang),
 			"label": _pick(a, "short_label", lang) or a.question_code,
 			"question": _pick(a, "question_text", lang),
-			"answer": opt,
-			"answer_letter": letters.get(opt, opt),
-			"answer_level": level_names.get(opt, ""),
+			"answer": answer_display,
+			"answer_letter": answer_letter,
+			"answer_level": answer_level,
 			"statement": statement,
 			"points": flt(a.points),
 			"comment": i18n.bidi(a.comment or "", lang),
@@ -185,17 +241,33 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 				"label": level_label(b["level_name"]),
 				"from": b["min_score"],
 				"to": upper,
+				"written_to": _written_band_end(b, upper),
 				"width": max(0, upper - b["min_score"]),
 				"color": b["color"],
 			}
 		)
 	pts = config.points
+	topics = {}
+	for answer in answers:
+		if not answer["topic_code"]:
+			continue
+		key = (answer["section"], answer["topic_code"])
+		row = topics.setdefault(key, {"code": answer["topic_code"], "title": answer["topic_title"],
+			"section": answer["section_title"], "points": 0, "max_points": 0, "question_count": 0})
+		row["question_count"] += 1
+		if answer["answer"] != NA:
+			row["points"] += answer["points"]
+			row["max_points"] += max(pts.values())
+	for row in topics.values():
+		row["pct"] = round(row["points"] / row["max_points"] * 100, 1) if row["max_points"] else None
 	scoring_text = t["scoring_text"].format(
 		a=f"{pts['A']:g}",
 		b=f"{pts['B']:g}",
 		c=f"{pts['C']:g}",
 		d=f"{pts['D']:g}",
-		bands=("، " if lang == "ar" else ", ").join(f"{b['label']} {b['from']:g}–{b['to']:g}%" for b in scale),
+		bands=("، " if lang == "ar" else ", ").join(
+			f"{b['label']} {b['from']:g}–{b['written_to']:g}%" for b in scale
+		),
 	)
 
 	interpretation = (doc.get("interpretation_ar") if lang == "ar" else None) or doc.interpretation or ""
@@ -207,14 +279,21 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 		)
 		summary_bits.append({"label": t["weakest"], "title": ranked[-1]["title"], "pct": ranked[-1]["pct"]})
 
+	respondent_name = doc.respondent_name or doc.respondent or ""
+	from ia_maturity.grc.security import enabled
+	if enabled():
+		from ia_maturity.grc.identity import display_name
+		respondent_name = display_name(doc.respondent)
 	ctx = {
+		"assessment_type": assessment_type,
+		"organization_profile": (frappe.parse_json(doc.get("grc_profile_snapshot") or "{}").get("profile") or {}),
 		"lang": lang,
 		"dir": "rtl" if lang == "ar" else "ltr",
 		"t": t,
 		"name": doc.name,
 		"entity": i18n.bidi(doc.entity, lang),
 		"date": formatdate(doc.assessment_date) if doc.assessment_date else "",
-		"respondent": i18n.bidi(doc.respondent_name or doc.respondent or "", lang),
+		"respondent": i18n.bidi(respondent_name, lang),
 		"job_title": i18n.bidi(doc.job_title or "", lang),
 		"respondent_role": (
 			i18n.RESPONDENT_ROLES_AR.get(doc.respondent_role, doc.respondent_role) if lang == "ar" else doc.respondent_role
@@ -246,6 +325,8 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 		"actions": actions,
 		"tracked_actions": tracked,
 		"answers": answers,
+		"topics": list(topics.values()),
+		"audit_scope": scope.payload(doc),
 		"scale": scale,
 		"scoring_text": scoring_text,
 		"points_map": config.points,
@@ -271,6 +352,8 @@ def get_report_context(doc, lang=None, include_benchmark=True, audience="client"
 			ctx["actions"] = []
 		if not show["responses"]:
 			ctx["answers"] = []
+		if not show["sections"]:
+			ctx["topics"] = []
 		if not show["reviewer_comments"]:
 			ctx["reviewer_comments"] = ""
 		if not show["scoring_method"]:

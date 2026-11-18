@@ -1,0 +1,466 @@
+{
+  "updated": "2026-11-12",
+  "scope": "Combined Excel + Development Scope v1",
+  "epic": "https://app.notion.com/p/4155dea8d7ef812d828cce3ad2704d75",
+  "groups": {
+    "S00": "https://app.notion.com/p/4155dea8d7ef813fb9e5eb01adfb7f47",
+    "S01": "https://app.notion.com/p/4155dea8d7ef818587d9eee1222edc8a",
+    "S02": "https://app.notion.com/p/4155dea8d7ef815aad51d4930f2369b3",
+    "S03": "https://app.notion.com/p/4155dea8d7ef8151bea2e7575d19dad1",
+    "S04": "https://app.notion.com/p/4155dea8d7ef81538fffeb37a92bb8de",
+    "S05": "https://app.notion.com/p/4155dea8d7ef810ca3dee8ccb813e9c9",
+    "S06": "https://app.notion.com/p/4155dea8d7ef818bb18cfe659ce3147e",
+    "S07": "https://app.notion.com/p/4155dea8d7ef81a9bba5c98f01a69a15",
+    "S08": "https://app.notion.com/p/4155dea8d7ef81288ff6e4950ffb77a5",
+    "S09": "https://app.notion.com/p/4155dea8d7ef81929078c460e67f7d1e",
+    "S10": "https://app.notion.com/p/4155dea8d7ef816db477d64e7abace26",
+    "S11": "https://app.notion.com/p/4155dea8d7ef81d49a4afd5bc38838ea",
+    "S12": "https://app.notion.com/p/4155dea8d7ef815295d9c45b4115e027",
+    "S13": "https://app.notion.com/p/4155dea8d7ef8176a3d5c75c9b0c7b2e"
+  },
+  "completion_rule": "Count exact Done executable leaves only; local verification, UAT and production are distinct.",
+  "tasks": [
+    {
+      "id": "S00.01",
+      "title": "IA/GRC S00.01: Freeze shared interfaces and parallel integration contracts",
+      "objective": "Additional DOCX. Define the department/access, template/profile, invitation/onboarding, selected-scope, revision and report DTO contracts needed to extend the existing v2.15 implementation without competing edits to shared files.",
+      "url": "https://app.notion.com/p/4155dea8d7ef815abe0feb82205183cf",
+      "status": "Review"
+    },
+    {
+      "id": "S00.02",
+      "title": "IA/GRC S00.02: Resolve source discrepancies and external-owner prerequisites",
+      "objective": "Additional DOCX. Record product decisions for conflicting old/new requirements and confirm the document's assumed policies and supplied-content dependencies before dependent implementation.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8167889be6907afc4ea8",
+      "status": "Review"
+    },
+    {
+      "id": "S01.01",
+      "title": "IA/GRC S01.01: Build nine-sheet workbook parser with provenance",
+      "objective": "Baseline retained. Read workbook content and structured rules into a validated intermediate instrument without executing formulas.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81b3b617f9b681ffb8dc",
+      "status": "Review"
+    },
+    {
+      "id": "S01.02",
+      "title": "IA/GRC S01.02: Validate workbook and preview content changes",
+      "objective": "Baseline retained. Reject inconsistent imports before publication and show a reviewable content/rule difference.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8167b551f3e6676b8117",
+      "status": "Review"
+    },
+    {
+      "id": "S01.03",
+      "title": "IA/GRC S01.03: Publish immutable workbook versions and re-import safely",
+      "objective": "Baseline retained. Integrate import preview with existing draft/publish workflow and version provenance.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81bebbdfd1f374c9b820",
+      "status": "Not Started"
+    },
+    {
+      "id": "S02.01",
+      "title": "IA/GRC S02.01: Import and verify 46 questions and 184 statements",
+      "objective": "Baseline retained. Install the complete English GRC instrument without replacing IA20.",
+      "url": "https://app.notion.com/p/4155dea8d7ef812e92c8c22f19b942eb",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S02.02",
+      "title": "IA/GRC S02.02: Preserve topics, source order and option labels",
+      "objective": "Baseline retained. Carry topic identity and configured label/description separately through templates and answer snapshots.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81509dbfc7fe02c9f0eb",
+      "status": "Review"
+    },
+    {
+      "id": "S02.03",
+      "title": "IA/GRC S02.03: Configure workbook single-choice and N/A response policy",
+      "objective": "Baseline retained. Use existing response controls for the GRC instrument without inheriting unrelated IA behavior.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81d4b705fe8993cf31af",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S02.04",
+      "title": "IA/GRC S02.04: Obtain approved Arabic GRC content and verify bilingual parity",
+      "objective": "Additional DOCX. Track IRSAA content delivery as an explicit external dependency while other engineering proceeds.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8168b7a2dd982bddc940",
+      "status": "Not Started"
+    },
+    {
+      "id": "S03.01",
+      "title": "IA/GRC S03.01: Store reusable organization profile and frozen assessment snapshots",
+      "objective": "Baseline retained. Reconcile organization reuse with assessment/report history and restricted departmental sharing.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81d6822fe059f0a877f2",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S03.02",
+      "title": "IA/GRC S03.02: Implement dependent industry/sector and Other validation",
+      "objective": "Baseline retained. Provide exact workbook industry and sector catalogs and dependent selection.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8162a11df5e318a4ca29",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S03.03",
+      "title": "IA/GRC S03.03: Implement nationality-dependent CR and MISA rules",
+      "objective": "Baseline retained. Apply all four nationality choices and optional Saudi CR constraints.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81fbaf0dd5bd8d01e0b7",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S03.04",
+      "title": "IA/GRC S03.04: Implement license/N/A and repeating expiry validation",
+      "objective": "Baseline retained. Support mandatory license-type-or-N/A with optional well-formed license rows.",
+      "url": "https://app.notion.com/p/4155dea8d7ef814185cdfd4124b4aaf7",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S03.05",
+      "title": "IA/GRC S03.05: Resolve regulator catalogs and preserve optional responses",
+      "objective": "Baseline retained. Use workbook-driven general/sector/industry/MISA resolution and structured Yes/No data.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81adbb4ae90ef354594d",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S04.01",
+      "title": "IA/GRC S04.01: Load independent template-owned points, bands and interpretation",
+      "objective": "Baseline retained. Replace global policy dependence for new GRC publication while preserving IA history.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8197ac81f0025ade4bda",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S04.02",
+      "title": "IA/GRC S04.02: Calculate scope-aware overall, section and topic results",
+      "objective": "Baseline retained. Extend existing scope/scoring primitives to workbook topic outputs.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81caa1fdf15f0833c5c0",
+      "status": "Review"
+    },
+    {
+      "id": "S04.03",
+      "title": "IA/GRC S04.03: Fix answered counters and align frontend/server progress",
+      "objective": "Baseline retained. Keep completion counts distinct from scoring applicability.",
+      "url": "https://app.notion.com/p/4155dea8d7ef817f9026ef2e4d431310",
+      "status": "Review"
+    },
+    {
+      "id": "S05.01",
+      "title": "IA/GRC S05.01: Build workbook-driven welcome/profile/section journey",
+      "objective": "Baseline retained. Keep original profile-before-questions flow and apply DOCX selected-scope amendment.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81b8913fccbbc1a989cb",
+      "status": "Review"
+    },
+    {
+      "id": "S05.02",
+      "title": "IA/GRC S05.02: Add persistent overall, section and topic progress",
+      "objective": "Baseline retained. Implement workbook's always-visible progress in phone, desktop and focus modes.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81059794d9d4fc239a69",
+      "status": "Review"
+    },
+    {
+      "id": "S05.03",
+      "title": "IA/GRC S05.03: Complete partial-save and incomplete-submit guidance",
+      "objective": "Baseline retained. Reuse existing optimistic save/assignment locking and provide exact required validation.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8111b73bff9059f61b4e",
+      "status": "Review"
+    },
+    {
+      "id": "S05.04",
+      "title": "IA/GRC S05.04: Enforce invited minimum scope and first-answer lock",
+      "objective": "Additional DOCX. Correct current immediate-confirmation lock to the DOCX first-persisted-answer rule.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81879b49da976ade5f20",
+      "status": "Review"
+    },
+    {
+      "id": "S06.01",
+      "title": "IA/GRC S06.01: Allocate immutable department-prefixed report IDs",
+      "objective": "Baseline retained. Extend original GRC ID requirement to configured IA/GRC department prefixes.",
+      "url": "https://app.notion.com/p/4155dea8d7ef817db1cacb671c5c76c1",
+      "status": "Review"
+    },
+    {
+      "id": "S06.02",
+      "title": "IA/GRC S06.02: Add saved assessments and authorized report-ID lookup",
+      "objective": "Baseline retained. Persist and retrieve assessments from database, including logical revision grouping.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81a3924fdecea428766c",
+      "status": "Not Started"
+    },
+    {
+      "id": "S07.01",
+      "title": "IA/GRC S07.01: Extend report context for profile, topics and response details",
+      "objective": "Baseline retained. Build complete source-based result payload and frozen snapshots.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81b7be19ea05f403d006",
+      "status": "Review"
+    },
+    {
+      "id": "S07.02",
+      "title": "IA/GRC S07.02: Build matching result screen/PDF and Back to Questions",
+      "objective": "Baseline retained. Render all required source content with accessible bilingual layout.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81118110fbff55aa41d9",
+      "status": "Review"
+    },
+    {
+      "id": "S07.03",
+      "title": "IA/GRC S07.03: Enable immediate preliminary report for IA/GRC with official release",
+      "objective": "Baseline retained. Reuse Before Audit path without silently relying on global After Audit defaults.",
+      "url": "https://app.notion.com/p/4155dea8d7ef815295bbd0d6ad3a7e32",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S08.01",
+      "title": "IA/GRC S08.01: Build complete workbook/catalog and five-set scoring oracles",
+      "objective": "Baseline retained. Prepare independent fixtures before implementation lanes finish.",
+      "url": "https://app.notion.com/p/4155dea8d7ef815a9f59c631d9b50f8c",
+      "status": "Done",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    },
+    {
+      "id": "S08.02",
+      "title": "IA/GRC S08.02: Verify combined journeys, department security and IA regression",
+      "objective": "Baseline retained. Execute the complete workbook and DOCX acceptance suite on isolated test sites.",
+      "url": "https://app.notion.com/p/4155dea8d7ef813e86ddd49ccd9d839a",
+      "status": "Review"
+    },
+    {
+      "id": "S08.03",
+      "title": "IA/GRC S08.03: Prepare migration, maintenance, rollback and IRSAA UAT",
+      "objective": "Baseline retained. Package rollout steps with coverage and verification evidence, without claiming deployment.",
+      "url": "https://app.notion.com/p/4155dea8d7ef819aabddc004c7f66c03",
+      "status": "Not Started"
+    },
+    {
+      "id": "S09.01",
+      "title": "IA/GRC S09.01: Add department master, staff membership and role model",
+      "objective": "Additional DOCX. Introduce reusable IA/GRC departmental structure and per-department staff responsibilities while preserving existing identity and MFA behavior.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81d0bbdde3a46ed06a00",
+      "status": "Review"
+    },
+    {
+      "id": "S09.02",
+      "title": "IA/GRC S09.02: Migrate server-owned department stamps and organization access grants",
+      "objective": "Additional DOCX. Persist department provenance and explicit department/customer access records on every relevant record, without silently sharing historical tenant data.",
+      "url": "https://app.notion.com/p/4155dea8d7ef818aa316e3acd23f1ee6",
+      "status": "Review"
+    },
+    {
+      "id": "S09.03",
+      "title": "IA/GRC S09.03: Bind templates and client labels to departments",
+      "objective": "Additional DOCX. Extend template metadata to drive department-specific routing, policy and customer labels while retaining independent IA and GRC instruments.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81dfa26ce5539b970567",
+      "status": "Review"
+    },
+    {
+      "id": "S10.01",
+      "title": "IA/GRC S10.01: Enforce central department access across portal, Desk and API",
+      "objective": "Additional DOCX. Extend existing organization authorization with a department and assignment/grant boundary that every channel uses consistently.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8184b9e5cfc76527e241",
+      "status": "Review"
+    },
+    {
+      "id": "S10.02",
+      "title": "IA/GRC S10.02: Apply shared-scope restrictions to reports, files and activity",
+      "objective": "Additional DOCX. Carry the department grant's permitted data scope through payload construction, private artifacts, notifications and history rather than merely filtering customer rows.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81a5acaae87b78deb6ba",
+      "status": "Review"
+    },
+    {
+      "id": "S10.03",
+      "title": "IA/GRC S10.03: Add department queues, manager staff controls and assignment alerts",
+      "objective": "Additional DOCX. Route submitted self-service assessments to the selected department's unassigned queue and give department managers the specified staff/assignment controls.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81289f8dfa47738c9d75",
+      "status": "Review"
+    },
+    {
+      "id": "S11.01",
+      "title": "IA/GRC S11.01: Implement OTP-only customer signup and login with safe organization checks",
+      "objective": "Final journey amendment: email OTP only on every customer sign-in; full name/company/email signup, locked invitation identity, immediate OTP delivery; staff password authentication with optional admin-controlled 2FA (S11.05) and safe organization checks.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8133a347de4c20ec4d5c",
+      "status": "Review"
+    },
+    {
+      "id": "S11.05",
+      "title": "IA/GRC S11.05: Default staff 2FA off with admin role and username controls",
+      "objective": "User amendment 2026-11-12: disable staff 2FA by default, provide admin global/role/individual controls, validate precedence and native security; retain mandatory customer email OTP without password option.",
+      "url": "https://app.notion.com/p/4165dea8d7ef81b5a019e0098b2d1b96",
+      "status": "Done"
+    },
+    {
+      "id": "S11.06",
+      "title": "IA/GRC S11.06: Fix custom staff landing and explain first-login workflow",
+      "objective": "User screenshot amendment: staff sign-in and old Desk bookmarks open custom UI; explain empty assignments and next actions, with dismissible optional guidance and no empty required selectors. Preserve customer gates and department/ERP security.",
+      "url": "https://app.notion.com/p/4165dea8d7ef8150ba9fc81fb80ea9a8",
+      "status": "Done"
+    },
+    {
+      "id": "S11.02",
+      "title": "IA/GRC S11.02: Implement self-service IA/GRC welcome and department routing",
+      "objective": "Additional DOCX. Turn the existing assessment-type selection into the required self-signup journey and keep invited customers out of that choice.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81f1809bdd854d3338d3",
+      "status": "Review"
+    },
+    {
+      "id": "S11.03",
+      "title": "IA/GRC S11.03: Create department-bound assessment invitations",
+      "objective": "Additional DOCX. Extend existing seven-day onboarding invitations with the audit and assignment metadata needed to lock invited customers to a preconfigured assessment.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8143ada3defcc8cfd217",
+      "status": "Review"
+    },
+    {
+      "id": "S11.04",
+      "title": "IA/GRC S11.04: Complete recipient-bound invitation acceptance and safe reissue",
+      "objective": "Additional DOCX. Apply invitation locks through verification and assessment creation, including expired-link recovery within the inviting department.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81f1a8f6fb22e5c42b02",
+      "status": "Review"
+    },
+    {
+      "id": "S12.01",
+      "title": "IA/GRC S12.01: Add private audit add-on and cross-department invitation requests",
+      "objective": "Additional DOCX. Create pending department requests for customer-requested second audits and invitations targeting another department's customer without granting early access.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81ac89ecfae148ffe313",
+      "status": "Review"
+    },
+    {
+      "id": "S12.02",
+      "title": "IA/GRC S12.02: Implement two-manager share acceptance and restricted snapshots",
+      "objective": "Additional DOCX. Activate receiving-department access only after source approval and receiving-manager acceptance, applying exactly the selected sharing scope.",
+      "url": "https://app.notion.com/p/4155dea8d7ef811ba46bd0019dd29c74",
+      "status": "Not Started"
+    },
+    {
+      "id": "S12.03",
+      "title": "IA/GRC S12.03: Implement transfer, revocation and privileged department history",
+      "objective": "Additional DOCX. Extend the approved share workflow to transfer ownership/access safely and retain a complete but properly restricted historical record.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8168ba24ea21314ec97a",
+      "status": "Not Started"
+    },
+    {
+      "id": "S13.01",
+      "title": "IA/GRC S13.01: Add approved section-expansion amendments and logical assessment grouping",
+      "objective": "Additional DOCX. Allow a submitted GRC customer to request more sections and create one new revision only after assigned-consultant approval.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81d19465fdb043e2c91d",
+      "status": "Not Started"
+    },
+    {
+      "id": "S13.02",
+      "title": "IA/GRC S13.02: Protect inherited section answers and audit consultant unlocks",
+      "objective": "Additional DOCX. Make earlier answered sections read-only in expanded revisions while permitting explicit, authorized section unlocks with traceability.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81909c11db39da8193d0",
+      "status": "Not Started"
+    },
+    {
+      "id": "S13.03",
+      "title": "IA/GRC S13.03: Snapshot per-section versions and suppress incompatible overall scores",
+      "objective": "Additional DOCX. Support a revision containing older answered sections and newly added latest-version sections without mixing incompatible scoring policies.",
+      "url": "https://app.notion.com/p/4155dea8d7ef8195a7a0f06fca56a0f2",
+      "status": "Not Started"
+    },
+    {
+      "id": "S13.04",
+      "title": "IA/GRC S13.04: Add revision-aware question threads, History and re-review evidence",
+      "objective": "Additional DOCX. Provide authorized question conversations and a clear revision history while preserving old PDFs and requiring each expanded revision to earn its own release.",
+      "url": "https://app.notion.com/p/4155dea8d7ef81d3aa3bc7238af93003",
+      "status": "Not Started"
+    },
+    {
+      "id": "S07.04",
+      "title": "IA/GRC S07.04: Email assessment PDF attachment to registered customer",
+      "objective": "Final journey addition: authorized matching PDF attachment to registered customer, native mail transport and frontend validation.",
+      "url": "https://app.notion.com/p/4165dea8d7ef81ae8c1efd09b3d0d850",
+      "status": "Done",
+      "scope_addition": "2026-11-12; original46 baseline preserved",
+      "verification": "Locally accepted2026-11-12; relevant content/profile/backend + frontend/live demo/PDF evidence in diagnostics/demo-cycle-20261112. No production or external inbox claim."
+    }
+  ],
+  "progress": {
+    "done": 13,
+    "review": 26,
+    "not_started": 10,
+    "total": 49,
+    "in_progress": 0,
+    "original_baseline_done": 10,
+    "original_baseline_total": 46,
+    "additional_done": 3,
+    "meaning": "Exact complete executable leaves. Final requested demo flow locally accepted; broader original scope still incomplete. Not effort percent or production readiness."
+  },
+  "next_action": "Requested journey/authentication/eight-role UX work packaged in local commit/tag v3.0.0 at user request. See docs/RELEASE_v3.0.0.md and docs/UX_ROLE_REVIEW_2026-11-12.md:147 unique browser checks,137 backend tests and25 visually reviewed help PDF pages. Broader source criteria retain Review/Not Started. Staff default Disabled; manual6 password-only. Await broader scope, remote push or deployment instructions. Real inbox deferred until live deployment.",
+  "verification": {
+    "site": "grc.local",
+    "profile_integration": 8,
+    "scope_onboarding_regression": 20,
+    "mocked_ui": 13,
+    "unmocked_ui": 1,
+    "migration": "passed; repeated final idempotent migrate passed",
+    "build": "TypeScript/Vite passed",
+    "lint": "0 errors,3 pre-existing warnings",
+    "production_deployment": false,
+    "committed": true,
+    "demo_departments_backend": 26,
+    "demo_instrument_backend": 8,
+    "demo_identity_reports_backend": 12,
+    "immediate_email_backend": 6,
+    "demo_journey_ui": 15,
+    "profile_ui_regression": 13,
+    "unmocked_demo_cycles": 5,
+    "targeted_mobile_ui": 1,
+    "actual_mobile_rechecks": 2,
+    "pdfs_text_checked": 8,
+    "released_pdf_pages_visually_checked": 16,
+    "real_inbox_delivery": "Explicitly deferred by user until live deployment",
+    "retained_access_backend": 79,
+    "total_backend_tests": 185,
+    "retained_report_color_regression": "passed after final correction",
+    "working_tree": "v3.0.0 local commit/tag; no remote push or deployment",
+    "retained_scope_onboarding_backend": 20,
+    "retained_classification_backend": 5,
+    "retained_mfa_policy_backend": 21,
+    "retained_suite_skips": 0,
+    "demo_settings_and_auth_roles_restored": true,
+    "staff_mfa_amendment_backend_tests": 125,
+    "staff_mfa_amendment_mocked_browser_tests": 11,
+    "staff_mfa_amendment_live_browser_tests": 2,
+    "staff_mfa_default": "Disabled",
+    "manual_staff_password_only": 6,
+    "staff_landing_access_backend_tests": 79,
+    "staff_landing_browser_tests": 32,
+    "staff_landing_route": "/grc/auditor",
+    "legacy_staff_bookmark": "302 to custom workspace; no-store",
+    "staff_welcome": "Optional; dismiss/reload/reopen, permission-aware next steps, EN/AR/mobile checked",
+    "role_ux_review": {
+      "date": "2026-11-12",
+      "report": "docs/UX_ROLE_REVIEW_2026-11-12.md",
+      "evidence": "diagnostics/ux-role-cycle-20261112/",
+      "role_type_combinations": 8,
+      "mocked_retained_unique_browser_scenarios": 140,
+      "live_browser_scenarios": 7,
+      "total_unique_browser_scenarios": 147,
+      "backend_tests": 137,
+      "backend_breakdown": { "department": 30, "access": 79, "company_profile": 8, "scope_onboarding": 20 },
+      "help_pdf_pages_visually_reviewed": 25,
+      "final_suite_skips": 0,
+      "build_typescript": "passed",
+      "lint": "21 targeted files;0 errors/0 warnings",
+      "notion_updated_after_frontend_validation": true,
+      "duplicate_tasks_created": 0,
+      "accepted_live_fixture": "uxliveb20261112",
+      "broader_original_acceptance": "Still open on existing Review/Not Started tasks;13/49 Done unchanged",
+      "deployed": false,
+      "real_inbox_delivery": "Deferred by user until live deployment"
+    },
+    "source_packaging": {
+      "version": "3.0.0",
+      "previous_version": "2.17.0",
+      "reason": "Breaking customer OTP-only authentication and explicit staff department entitlements",
+      "local_commit_tag": true,
+      "remote_pushed": false,
+      "final_build_typescript": "passed; existing chunk-size advisory",
+      "git_formatting": "passed",
+      "independent_source_review": "No accidental private credentials or runtime files found"
+    }
+  },
+  "original_baseline_total": 46
+}

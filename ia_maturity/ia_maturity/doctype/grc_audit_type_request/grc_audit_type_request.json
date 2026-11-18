@@ -1,0 +1,87 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Audit Type Request",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "entity",
+   "label": "Entity",
+   "fieldtype": "Link",
+   "options": "IA Maturity Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "label": "Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_department",
+   "label": "Source Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "label": "Requested By",
+   "fieldtype": "Link",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Pending Source Approval\nPending Target Approval\nApproved\nRejected",
+   "default": "Pending Source Approval"
+  },
+  {
+   "fieldname": "source_approved_by",
+   "label": "Source Approved By",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_by",
+   "label": "Approved By",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "reason",
+   "label": "Reason",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "decided_on",
+   "label": "Decided On",
+   "fieldtype": "Datetime"
+  }
+ ],
+ "field_order": [
+  "entity",
+  "department",
+  "source_department",
+  "requested_by",
+  "status",
+  "source_approved_by",
+  "approved_by",
+  "reason",
+  "decided_on"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

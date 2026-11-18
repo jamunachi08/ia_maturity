@@ -17,6 +17,8 @@
   "respondent_role",
   "cb1",
   "entity_name",
+  "grc_organization_sector",
+  "grc_organization_signup",
   "assessment_date",
   "language",
   "purpose",
@@ -33,7 +35,8 @@
   "expires_on",
   "attempts",
   "cb3",
-  "ip_address"
+  "ip_address",
+  "grc_onboarding_invitation"
  ],
  "fields": [
   {
@@ -177,6 +180,27 @@
    "fieldname": "ip_address",
    "fieldtype": "Data",
    "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_organization_sector",
+   "fieldtype": "Select",
+   "label": "Signup Organization Sector",
+   "options": "\nBanking & Financial Services\nInsurance\nCapital Markets\nGovernment / Semi-Government\nEnergy & Utilities\nHealthcare\nRetail & Consumer\nReal Estate & Construction\nTelecom & Technology\nManufacturing\nNon-Profit\nOther",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_organization_signup",
+   "fieldtype": "Check",
+   "label": "Organization Provided at Signup",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_onboarding_invitation",
+   "label": "Grc Onboarding Invitation",
+   "fieldtype": "Link",
+   "options": "GRC Onboarding Invitation",
    "read_only": 1
   }
  ],

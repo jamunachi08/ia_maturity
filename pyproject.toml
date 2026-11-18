@@ -7,7 +7,8 @@ description = "AlphaX IA Maturity – Internal Audit Function Maturity Assessmen
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
-dependencies = []
+# Frappe v15/v16 pin WeasyPrint==70.0; a narrower range here forces a conflicting downgrade.
+dependencies = ["weasyprint>=67,<71"]
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]
@@ -19,3 +20,14 @@ frappe = ">=15.0.0,<17.0.0"
 [tool.ruff]
 line-length = 110
 target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E9", "F", "B006", "B008"]
+ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+# grc/api.py re-exports whitelisted methods from feature modules; the portal
+# calls them as ia_maturity.grc.api.<method>. Removing these imports breaks it.
+"ia_maturity/grc/api.py" = ["F401"]
+# Tests import names to assert they exist and build closures per subTest.
+"**/test_*.py" = ["F401", "B023"]

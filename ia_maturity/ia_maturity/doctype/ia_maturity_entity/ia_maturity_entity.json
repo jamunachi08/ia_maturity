@@ -19,7 +19,25 @@
   "is_active",
   "sb2",
   "regulators",
-  "notes"
+  "notes",
+  "parent_organization",
+  "grc_optional_reminders",
+  "grc_optional_status_updates",
+  "grc_auditor_owner",
+  "grc_ownership_locked",
+  "grc_onboarding_invitation",
+  "grc_company_profile",
+  "grc_profile_organization",
+  "grc_profile_industry_type",
+  "grc_profile_industry_sector",
+  "grc_profile_other_sector",
+  "grc_profile_company_nationality",
+  "grc_profile_cr_number",
+  "grc_profile_ksa_license_type",
+  "grc_profile_ksa_license_na",
+  "grc_profile_other_regulator",
+  "grc_license_rows",
+  "grc_regulator_answers"
  ],
  "fields": [
   {
@@ -74,6 +92,106 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "parent_organization",
+   "label": "Parent organization",
+   "fieldtype": "Link",
+   "options": "IA Maturity Entity"
+  },
+  {
+   "fieldname": "grc_optional_reminders",
+   "label": "Optional email reminders",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "grc_optional_status_updates",
+   "label": "Optional email status updates",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "grc_auditor_owner",
+   "label": "Grc Auditor Owner",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_ownership_locked",
+   "label": "Grc Ownership Locked",
+   "fieldtype": "Check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_onboarding_invitation",
+   "label": "Grc Onboarding Invitation",
+   "fieldtype": "Link",
+   "options": "GRC Onboarding Invitation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_company_profile",
+   "fieldtype": "Section Break",
+   "label": "GRC Company Profile"
+  },
+  {
+   "fieldname": "grc_profile_organization",
+   "fieldtype": "Data",
+   "label": "Organization name"
+  },
+  {
+   "fieldname": "grc_profile_industry_type",
+   "fieldtype": "Data",
+   "label": "Industry type"
+  },
+  {
+   "fieldname": "grc_profile_industry_sector",
+   "fieldtype": "Data",
+   "label": "Industry sector"
+  },
+  {
+   "fieldname": "grc_profile_other_sector",
+   "fieldtype": "Data",
+   "label": "Other sector"
+  },
+  {
+   "fieldname": "grc_profile_company_nationality",
+   "fieldtype": "Data",
+   "label": "Company nationality"
+  },
+  {
+   "fieldname": "grc_profile_cr_number",
+   "fieldtype": "Data",
+   "label": "Saudi CR number"
+  },
+  {
+   "fieldname": "grc_profile_ksa_license_type",
+   "fieldtype": "Small Text",
+   "label": "KSA license types"
+  },
+  {
+   "fieldname": "grc_profile_ksa_license_na",
+   "fieldtype": "Check",
+   "label": "No KSA license (N/A)"
+  },
+  {
+   "fieldname": "grc_profile_other_regulator",
+   "fieldtype": "Small Text",
+   "label": "Other regulator"
+  },
+  {
+   "fieldname": "grc_license_rows",
+   "fieldtype": "Table",
+   "label": "KSA license details",
+   "options": "GRC Profile License"
+  },
+  {
+   "fieldname": "grc_regulator_answers",
+   "fieldtype": "Table",
+   "label": "Regulator answers",
+   "options": "GRC Profile Regulator"
   }
  ],
  "permissions": [

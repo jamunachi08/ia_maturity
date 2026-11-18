@@ -99,7 +99,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Open\nIn Progress\nCompleted\nCancelled",
+   "options": "Open\nIn Progress\nCompleted\nCancelled\nPending Verification",
    "default": "Open",
    "in_list_view": 1,
    "in_standard_filter": 1

@@ -1,0 +1,108 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Report Release",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "field_order": [
+    "entity",
+    "assessment",
+    "report_context",
+    "pdf_file",
+    "pdf_sha256",
+    "released_by",
+    "released_on",
+    "language",
+    "grc_department"
+  ],
+  "fields": [
+    {
+      "fieldname": "entity",
+      "label": "Organization",
+      "fieldtype": "Link",
+      "options": "IA Maturity Entity",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "assessment",
+      "label": "Assessment",
+      "fieldtype": "Link",
+      "options": "IA Maturity Assessment",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "report_context",
+      "label": "Frozen report content",
+      "fieldtype": "Code",
+      "options": "JSON"
+    },
+    {
+      "fieldname": "pdf_file",
+      "label": "Private PDF",
+      "fieldtype": "Link",
+      "options": "File"
+    },
+    {
+      "fieldname": "pdf_sha256",
+      "label": "PDF SHA256",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "released_by",
+      "label": "Released by",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "released_on",
+      "label": "Released on",
+      "fieldtype": "Datetime"
+    },
+    {
+      "fieldname": "language",
+      "label": "Language",
+      "fieldtype": "Select",
+      "options": "en\nar"
+    },
+    {
+      "fieldname": "grc_department",
+      "label": "Grc Department",
+      "fieldtype": "Link",
+      "options": "GRC Department",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "GRC Customer",
+      "read": 1
+    },
+    {
+      "role": "GRC Organization Admin",
+      "read": 1
+    },
+    {
+      "role": "GRC Auditor",
+      "read": 1
+    },
+    {
+      "role": "GRC Reviewer",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

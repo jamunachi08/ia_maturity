@@ -12,6 +12,7 @@
  "sort_order": "DESC",
  "field_order": [
   "template_name",
+  "assessment_type",
   "version",
   "is_active",
   "cb_head",
@@ -22,10 +23,20 @@
   "answer_rule",
   "introduction_ar",
   "answer_rule_ar",
+  "sb_response_policy",
+  "default_allow_comment",
+  "cb_response_policy",
+  "default_allow_attachment",
   "sb_sections",
   "sections",
   "sb_questions",
-  "questions"
+  "questions",
+  "grc_published",
+  "grc_policy",
+  "grc_default_revision",
+  "grc_is_default",
+  "grc_source_sha256",
+  "grc_source_manifest"
  ],
  "fields": [
   {
@@ -93,6 +104,28 @@
    "label": "Answering Rule (Arabic)"
   },
   {
+   "fieldname": "sb_response_policy",
+   "fieldtype": "Section Break",
+   "label": "Comments and Attachments",
+   "description": "Questionnaire defaults. Sections and questions can override; empty/Inherit at a lower level uses the parent. Resolution: question → section → questionnaire (most specific wins)."
+  },
+  {
+   "fieldname": "default_allow_comment",
+   "fieldtype": "Check",
+   "label": "Allow comments by default",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_response_policy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_allow_attachment",
+   "fieldtype": "Check",
+   "label": "Allow attachments by default",
+   "default": "0"
+  },
+  {
    "fieldname": "sb_sections",
    "fieldtype": "Section Break",
    "label": "Sections"
@@ -115,6 +148,55 @@
    "label": "Questions",
    "options": "IA Maturity Template Question",
    "reqd": 1
+  },
+  {
+   "fieldname": "grc_published",
+   "label": "Published GRC version",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "grc_policy",
+   "label": "Published scoring policy",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_default_revision",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "default": "0",
+   "label": "Revision of default template"
+  },
+  {
+   "fieldname": "assessment_type",
+   "label": "Assessment type",
+   "fieldtype": "Data",
+   "default": "Internal Audit",
+   "description": "Assessment type (a GRC Department). Validated by the app; built-in types: Internal Audit, GRC."
+  },
+  {
+   "fieldname": "grc_is_default",
+   "fieldtype": "Check",
+   "label": "Default for assessment type",
+   "default": "0",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "grc_source_sha256",
+   "label": "Workbook source SHA-256",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_source_manifest",
+   "label": "Workbook source manifest",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
   }
  ],
  "permissions": [

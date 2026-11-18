@@ -1,0 +1,67 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Consultation Request",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "field_order": [
+    "full_name",
+    "email",
+    "organization",
+    "service",
+    "message",
+    "status"
+  ],
+  "fields": [
+    {
+      "fieldname": "full_name",
+      "label": "Name",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "email",
+      "label": "Work email",
+      "fieldtype": "Data",
+      "options": "Email",
+      "reqd": 1
+    },
+    {
+      "fieldname": "organization",
+      "label": "Organization",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "service",
+      "label": "Service",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "message",
+      "label": "Message",
+      "fieldtype": "Small Text",
+      "reqd": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "New\nContacted\nClosed",
+      "default": "New"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

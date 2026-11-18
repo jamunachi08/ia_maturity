@@ -1,0 +1,931 @@
+{
+  "industries": [
+    {
+      "name": "Financial Services",
+      "sectors": [
+        "Banking",
+        "Financing",
+        "Payments",
+        "Fintech",
+        "Money services",
+        "Capital markets",
+        "Investment management",
+        "Insurance",
+        "Credit services",
+        "Accounting and bookkeeping",
+        "Financial advisory",
+        "Tax services",
+        "Actuarial services",
+        "Financial outsourcing",
+        "Other"
+      ]
+    },
+    {
+      "name": "Human Resources (HR)",
+      "sectors": [
+        "Recruitment and executive search",
+        "Staffing and manpower supply",
+        "Temporary and permanent workforce solutions",
+        "HR consulting and advisory",
+        "Payroll processing and administration",
+        "Employee benefits administration",
+        "HR outsourcing and shared services",
+        "Talent acquisition and management",
+        "Learning and development",
+        "Professional training and certification",
+        "Employee engagement and assessment",
+        "Workforce management and planning",
+        "Other"
+      ]
+    },
+    {
+      "name": "Information Technology (IT)",
+      "sectors": [
+        "IT consulting and advisory",
+        "Software development and engineering",
+        "Enterprise software and ERP solutions",
+        "SaaS and application services",
+        "Cloud computing and hosting",
+        "Data centers and infrastructure",
+        "IT hardware and equipment",
+        "IT infrastructure management",
+        "Managed IT services",
+        "Database management",
+        "Systems integration",
+        "IT outsourcing and technical support",
+        "Business intelligence and data analytics",
+        "Other"
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "sectors": [
+        "Security Operations Centers (SOC)",
+        "Managed Security Service Providers (MSSP)",
+        "Cybersecurity consulting and advisory",
+        "Penetration testing and vulnerability assessments",
+        "Security architecture and engineering",
+        "Identity and Access Management (IAM)",
+        "GRC security solutions",
+        "SIEM",
+        "Endpoint Detection and Response (EDR)",
+        "Threat intelligence",
+        "Digital forensics and incident response",
+        "Data protection and information security",
+        "Security awareness and training",
+        "Application and cloud security",
+        "Other"
+      ]
+    },
+    {
+      "name": "Artificial Intelligence (AI)",
+      "sectors": [
+        "AI development and engineering",
+        "Generative AI solutions",
+        "Machine learning and deep learning",
+        "AI consulting and advisory",
+        "AI automation and intelligent process automation",
+        "AI agents and autonomous systems",
+        "Natural Language Processing (NLP)",
+        "Computer vision",
+        "Robotics and intelligent automation",
+        "AI infrastructure and platforms",
+        "AI data services and model training",
+        "AI governance, risk, and ethics",
+        "AI testing, validation, and assurance",
+        "Predictive analytics",
+        "Other"
+      ]
+    },
+    {
+      "name": "Governance, Risk, and Compliance (GRC)",
+      "sectors": [
+        "Corporate governance consulting",
+        "Enterprise Risk Management (ERM)",
+        "Operational risk management",
+        "Regulatory compliance advisory",
+        "Compliance management solutions",
+        "Risk assessment and management",
+        "Internal controls advisory",
+        "Business continuity management",
+        "Crisis management and resilience",
+        "Policy and procedure development",
+        "Regulatory reporting",
+        "Third-party risk management",
+        "Anti-Money Laundering (AML) advisory",
+        "Know Your Customer (KYC) solutions",
+        "Ethics and anti-fraud advisory",
+        "Other"
+      ]
+    },
+    {
+      "name": "Audit and Assurance Services",
+      "sectors": [
+        "Internal audit",
+        "External audit",
+        "Financial audit",
+        "IT audit",
+        "Cybersecurity audit",
+        "Compliance audit",
+        "Risk assurance",
+        "Forensic audit",
+        "Specialized assurance",
+        "Other"
+      ]
+    },
+    {
+      "name": "Logistics and Transportation (including supply chain)",
+      "sectors": [
+        "Freight forwarding",
+        "Shipping and maritime transportation",
+        "Air cargo and freight",
+        "Road transportation and trucking",
+        "Warehousing and storage",
+        "Supply chain management",
+        "Courier and express delivery",
+        "Last-mile delivery",
+        "Customs clearance and brokerage",
+        "Fleet management",
+        "Cold chain logistics",
+        "Port and cargo handling",
+        "Distribution and fulfillment",
+        "Third-party and fourth-party logistics (3PL/4PL)",
+        "Other"
+      ]
+    },
+    {
+      "name": "Entertainment and Media",
+      "sectors": [
+        "Television and broadcasting",
+        "Film and cinema production",
+        "Music and audio production",
+        "Gaming and game development",
+        "Digital entertainment",
+        "Event management",
+        "Concerts and live entertainment",
+        "Advertising and marketing",
+        "Media production",
+        "Publishing and content creation",
+        "Streaming platforms",
+        "Amusement parks and recreational entertainment",
+        "Sports and entertainment management",
+        "Other"
+      ]
+    },
+    {
+      "name": "Hospitality and Hotels",
+      "sectors": [
+        "Hotels and resorts",
+        "Serviced apartments",
+        "Accommodation providers",
+        "Hospitality management",
+        "Restaurants and cafes",
+        "Catering services",
+        "Food and beverage operations",
+        "Tourism operators",
+        "Travel agencies",
+        "Hotel booking platforms",
+        "Event and conference venues",
+        "Facilities and hospitality services",
+        "Other"
+      ]
+    },
+    {
+      "name": "Healthcare and Medical Services",
+      "sectors": [
+        "Hospitals and medical centers",
+        "Clinics and specialized healthcare facilities",
+        "Dental services",
+        "Pharmaceutical companies",
+        "Pharmacies and drug distribution",
+        "Medical laboratories",
+        "Diagnostic imaging centers",
+        "Medical equipment suppliers",
+        "Medical devices and technology",
+        "Healthcare IT and digital health",
+        "Home healthcare",
+        "Rehabilitation and physiotherapy",
+        "Healthcare consulting and administration",
+        "Medical waste management",
+        "Social care",
+        "Catering and food services",
+        "Other"
+      ]
+    },
+    {
+      "name": "E-commerce and Retail",
+      "sectors": [
+        "Online marketplaces",
+        "E-commerce platforms",
+        "Online retail stores",
+        "Grocery and food delivery platforms",
+        "Digital commerce solutions",
+        "Retail chains and department stores",
+        "Wholesale distribution",
+        "Consumer goods retail",
+        "Fashion and apparel retail",
+        "Electronics retail",
+        "E-commerce fulfillment",
+        "Retail payment and checkout solutions",
+        "Subscription commerce",
+        "Direct-to-consumer businesses",
+        "Other"
+      ]
+    },
+    {
+      "name": "Professional and Consulting Services",
+      "sectors": [
+        "Management consulting",
+        "Business strategy consulting",
+        "Legal services and law firms",
+        "Corporate advisory",
+        "Business process outsourcing (BPO)",
+        "Administrative outsourcing",
+        "Corporate secretarial services",
+        "Document management",
+        "Translation and interpretation",
+        "Research and professional advisory",
+        "Other"
+      ]
+    },
+    {
+      "name": "Construction, Engineering and Real Estate",
+      "sectors": [
+        "General construction contractors",
+        "Civil engineering",
+        "Mechanical and electrical engineering",
+        "Architecture and design",
+        "Project management",
+        "Real estate development",
+        "Property management",
+        "Real estate brokerage",
+        "Facilities management",
+        "Building maintenance",
+        "Infrastructure development",
+        "Quantity surveying",
+        "Other"
+      ]
+    },
+    {
+      "name": "Telecommunications",
+      "sectors": [
+        "Telecommunications operators",
+        "Mobile network operators",
+        "Internet service providers (ISPs)",
+        "Data transmission services",
+        "Network infrastructure providers",
+        "Fiber optic services",
+        "Satellite communications",
+        "Unified communications",
+        "Telecommunications equipment providers",
+        "Other"
+      ]
+    },
+    {
+      "name": "Education and Training",
+      "sectors": [
+        "Schools and educational institutions",
+        "Universities and colleges",
+        "Vocational training centers",
+        "Professional certification providers",
+        "E-learning platforms",
+        "Corporate training",
+        "Educational technology (EdTech)",
+        "Research and academic institutions",
+        "Catering and food services",
+        "Other"
+      ]
+    },
+    {
+      "name": "Manufacturing and Industrial",
+      "sectors": [
+        "Industrial manufacturing",
+        "Consumer goods manufacturing",
+        "Food and beverage manufacturing",
+        "Electronics manufacturing",
+        "Automotive manufacturing",
+        "Machinery and equipment",
+        "Chemical and industrial products",
+        "Packaging and printing",
+        "Industrial maintenance",
+        "Industrial automation",
+        "Other"
+      ]
+    },
+    {
+      "name": "Energy and Utilities",
+      "sectors": [
+        "Oil and gas",
+        "Mining",
+        "Electricity generation and distribution",
+        "Water utilities",
+        "Renewable energy",
+        "Solar and wind energy",
+        "Energy consulting",
+        "Utilities management",
+        "Waste management and recycling",
+        "Environmental services",
+        "Other"
+      ]
+    },
+    {
+      "name": "Government and Public Sector",
+      "sectors": [
+        "Government ministries",
+        "Government authorities",
+        "Public sector agencies",
+        "Municipal services",
+        "Public administration",
+        "Government-owned companies",
+        "Public service operators",
+        "Regulatory and supervisory authorities",
+        "Defense",
+        "Other"
+      ]
+    },
+    {
+      "name": "Facilities Management and Physical Security",
+      "sectors": [
+        "Integrated facilities management",
+        "Cleaning and janitorial services",
+        "Building operations and maintenance",
+        "Physical security services",
+        "Guarding and surveillance",
+        "Access control services",
+        "Landscaping",
+        "Pest control",
+        "Waste collection and disposal",
+        "Catering and food services",
+        "Other"
+      ]
+    },
+    {
+      "name": "Agriculture and Food Production",
+      "sectors": [
+        "Agriculture and farming",
+        "Food production and processing",
+        "Livestock and fisheries",
+        "Agricultural technology",
+        "Food distribution",
+        "Food safety and inspection",
+        "Agricultural equipment and supplies",
+        "Other"
+      ]
+    },
+    {
+      "name": "Procurement",
+      "sectors": [
+        "Purchasing and sourcing",
+        "E-procurement and tendering platforms",
+        "Procurement consulting",
+        "Contract and vendor management",
+        "Other"
+      ]
+    },
+    {
+      "name": "Membership and Non-profit Organizations",
+      "sectors": [
+        "Associations and societies",
+        "Charitable and endowment bodies",
+        "Charitable aid",
+        "Food aid",
+        "Professional bodies",
+        "Other"
+      ]
+    }
+  ],
+  "nationalities": [
+    {
+      "name": "100% Saudi with Saudi Commercial Registration",
+      "ask_cr": true,
+      "add_misa": false
+    },
+    {
+      "name": "Not full local ownership, but it has a Saudi CR",
+      "ask_cr": true,
+      "add_misa": true
+    },
+    {
+      "name": "Branch of a foreign entity with a Saudi CR and an investment license",
+      "ask_cr": true,
+      "add_misa": true
+    },
+    {
+      "name": "100% foreign working with a Saudi company as a partner",
+      "ask_cr": false,
+      "add_misa": true
+    }
+  ],
+  "general_regulators": [
+    "Ministry of Commerce",
+    "ZATCA (Zakat, Tax and Customs Authority)",
+    "SDAIA (Saudi Data and AI Authority)",
+    "NCA (National Cybersecurity Authority)",
+    "HRSD (Ministry of Human Resources and Social Development)"
+  ],
+  "industry_regulators": {
+    "Financial Services": [
+      "SAMA (Saudi Central Bank)",
+      "CMA (Capital Market Authority)",
+      "Insurance Authority",
+      "SOCPA (Saudi Organization for Chartered and Professional Accountants)"
+    ],
+    "Human Resources (HR)": [
+      "GOSI (General Organization for Social Insurance)"
+    ],
+    "Information Technology (IT)": [
+      "MCIT (Ministry of Communications and Information Technology)",
+      "CST (Communications, Space and Technology Commission)",
+      "DGA (Digital Government Authority)"
+    ],
+    "Cybersecurity": [],
+    "Artificial Intelligence (AI)": [
+      "CST (Communications, Space and Technology Commission)"
+    ],
+    "Governance, Risk, and Compliance (GRC)": [],
+    "Audit and Assurance Services": [
+      "SOCPA (Saudi Organization for Chartered and Professional Accountants)"
+    ],
+    "Logistics and Transportation (including supply chain)": [
+      "Transport General Authority",
+      "GACA (General Authority of Civil Aviation)",
+      "Mawani (Saudi Ports Authority)"
+    ],
+    "Entertainment and Media": [
+      "GAMR (General Authority of Media Regulation)",
+      "General Entertainment Authority",
+      "Ministry of Culture"
+    ],
+    "Hospitality and Hotels": [
+      "Ministry of Tourism",
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Healthcare and Medical Services": [
+      "Ministry of Health",
+      "SFDA (Saudi Food and Drug Authority)",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Public Health Authority (Weqaya)",
+      "Insurance Authority"
+    ],
+    "E-commerce and Retail": [
+      "SASO (Saudi Standards, Metrology and Quality Org.)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Professional and Consulting Services": [
+      "Ministry of Justice",
+      "Saudi Council of Engineers",
+      "SOCPA (Saudi Organization for Chartered and Professional Accountants)"
+    ],
+    "Construction, Engineering and Real Estate": [
+      "Ministry of Municipalities and Housing",
+      "REGA (Real Estate General Authority)",
+      "Saudi Contractors Authority",
+      "Saudi Council of Engineers"
+    ],
+    "Telecommunications": [
+      "CST (Communications, Space and Technology Commission)"
+    ],
+    "Education and Training": [
+      "Ministry of Education",
+      "ETEC (Education and Training Evaluation Commission)",
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Manufacturing and Industrial": [
+      "Ministry of Industry and Mineral Resources",
+      "SASO (Saudi Standards, Metrology and Quality Org.)",
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Energy and Utilities": [
+      "Ministry of Energy",
+      "SERA (Saudi Electricity Regulatory Authority)",
+      "Ministry of Environment, Water and Agriculture",
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Government and Public Sector": [
+      "Nazaha (Oversight and Anti-Corruption Authority)"
+    ],
+    "Facilities Management and Physical Security": [
+      "Ministry of Interior",
+      "HCIS (High Commission for Industrial Security)"
+    ],
+    "Agriculture and Food Production": [
+      "Ministry of Environment, Water and Agriculture",
+      "SFDA (Saudi Food and Drug Authority)",
+      "NCEC (National Center for Environmental Compliance)",
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Procurement": [
+      "Ministry of Finance",
+      "LCGPA (Local Content and Government Procurement Authority)",
+      "Nazaha (Oversight and Anti-Corruption Authority)",
+      "Centre for Expenditure Efficiency"
+    ],
+    "Membership and Non-profit Organizations": [
+      "NCNP (National Center for Non-Profit Sector)"
+    ]
+  },
+  "sector_regulators": {
+    "Financial Services|Banking": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Financing": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Payments": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Fintech": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Money services": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Credit services": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Financial outsourcing": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Financial Services|Capital markets": [
+      "CMA (Capital Market Authority)"
+    ],
+    "Financial Services|Investment management": [
+      "CMA (Capital Market Authority)"
+    ],
+    "Financial Services|Insurance": [
+      "Insurance Authority"
+    ],
+    "Financial Services|Actuarial services": [
+      "Insurance Authority"
+    ],
+    "Financial Services|Accounting and bookkeeping": [
+      "SOCPA (Saudi Organization for Chartered and Professional Accountants)"
+    ],
+    "Financial Services|Tax services": [
+      "SOCPA (Saudi Organization for Chartered and Professional Accountants)"
+    ],
+    "Human Resources (HR)|Learning and development": [
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Human Resources (HR)|Professional training and certification": [
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Information Technology (IT)|Cloud computing and hosting": [
+      "CST (Communications, Space and Technology Commission)"
+    ],
+    "Information Technology (IT)|Data centers and infrastructure": [
+      "CST (Communications, Space and Technology Commission)"
+    ],
+    "Logistics and Transportation (including supply chain)|Road transportation and trucking": [
+      "Transport General Authority"
+    ],
+    "Logistics and Transportation (including supply chain)|Fleet management": [
+      "Transport General Authority"
+    ],
+    "Logistics and Transportation (including supply chain)|Shipping and maritime transportation": [
+      "Mawani (Saudi Ports Authority)"
+    ],
+    "Logistics and Transportation (including supply chain)|Port and cargo handling": [
+      "Mawani (Saudi Ports Authority)"
+    ],
+    "Logistics and Transportation (including supply chain)|Air cargo and freight": [
+      "GACA (General Authority of Civil Aviation)"
+    ],
+    "Entertainment and Media|Television and broadcasting": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Film and cinema production": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Media production": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Publishing and content creation": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Streaming platforms": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Advertising and marketing": [
+      "GAMR (General Authority of Media Regulation)"
+    ],
+    "Entertainment and Media|Concerts and live entertainment": [
+      "General Entertainment Authority"
+    ],
+    "Entertainment and Media|Amusement parks and recreational entertainment": [
+      "General Entertainment Authority"
+    ],
+    "Entertainment and Media|Event management": [
+      "General Entertainment Authority",
+      "Saudi Conventions and Exhibitions General Authority"
+    ],
+    "Hospitality and Hotels|Hotels and resorts": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Serviced apartments": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Accommodation providers": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Tourism operators": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Travel agencies": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Hotel booking platforms": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Hospitality management": [
+      "Ministry of Tourism"
+    ],
+    "Hospitality and Hotels|Restaurants and cafes": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Hospitality and Hotels|Catering services": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Hospitality and Hotels|Food and beverage operations": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Hospitality and Hotels|Event and conference venues": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "Civil Defense"
+    ],
+    "Healthcare and Medical Services|Hospitals and medical centers": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Insurance Authority"
+    ],
+    "Healthcare and Medical Services|Clinics and specialized healthcare facilities": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Insurance Authority"
+    ],
+    "Healthcare and Medical Services|Dental services": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Insurance Authority"
+    ],
+    "Healthcare and Medical Services|Home healthcare": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Insurance Authority"
+    ],
+    "Healthcare and Medical Services|Rehabilitation and physiotherapy": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)",
+      "Insurance Authority"
+    ],
+    "Healthcare and Medical Services|Pharmaceutical companies": [
+      "SFDA (Saudi Food and Drug Authority)",
+      "Ministry of Health"
+    ],
+    "Healthcare and Medical Services|Pharmacies and drug distribution": [
+      "SFDA (Saudi Food and Drug Authority)",
+      "Ministry of Health"
+    ],
+    "Healthcare and Medical Services|Medical equipment suppliers": [
+      "SFDA (Saudi Food and Drug Authority)",
+      "Ministry of Health"
+    ],
+    "Healthcare and Medical Services|Medical devices and technology": [
+      "SFDA (Saudi Food and Drug Authority)",
+      "Ministry of Health"
+    ],
+    "Healthcare and Medical Services|Medical laboratories": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)"
+    ],
+    "Healthcare and Medical Services|Diagnostic imaging centers": [
+      "Ministry of Health",
+      "SCFHS (Saudi Commission for Health Specialties)",
+      "CBAHI (Central Board for Accreditation of Healthcare Institutions)"
+    ],
+    "Healthcare and Medical Services|Healthcare IT and digital health": [
+      "Ministry of Health"
+    ],
+    "Healthcare and Medical Services|Social care": [],
+    "Healthcare and Medical Services|Catering and food services": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "E-commerce and Retail|Grocery and food delivery platforms": [
+      "SFDA (Saudi Food and Drug Authority)"
+    ],
+    "E-commerce and Retail|Electronics retail": [
+      "SASO (Saudi Standards, Metrology and Quality Org.)"
+    ],
+    "E-commerce and Retail|Retail payment and checkout solutions": [
+      "SAMA (Saudi Central Bank)"
+    ],
+    "Professional and Consulting Services|Management consulting": [],
+    "Professional and Consulting Services|Business strategy consulting": [],
+    "Professional and Consulting Services|Corporate advisory": [],
+    "Professional and Consulting Services|Business process outsourcing (BPO)": [],
+    "Professional and Consulting Services|Administrative outsourcing": [],
+    "Professional and Consulting Services|Corporate secretarial services": [],
+    "Professional and Consulting Services|Document management": [],
+    "Professional and Consulting Services|Translation and interpretation": [],
+    "Professional and Consulting Services|Research and professional advisory": [],
+    "Professional and Consulting Services|Legal services and law firms": [
+      "Ministry of Justice"
+    ],
+    "Construction, Engineering and Real Estate|General construction contractors": [
+      "Saudi Contractors Authority",
+      "Ministry of Municipalities and Housing"
+    ],
+    "Construction, Engineering and Real Estate|Infrastructure development": [
+      "Saudi Contractors Authority",
+      "Ministry of Municipalities and Housing"
+    ],
+    "Construction, Engineering and Real Estate|Civil engineering": [
+      "Saudi Council of Engineers"
+    ],
+    "Construction, Engineering and Real Estate|Mechanical and electrical engineering": [
+      "Saudi Council of Engineers"
+    ],
+    "Construction, Engineering and Real Estate|Architecture and design": [
+      "Saudi Council of Engineers"
+    ],
+    "Construction, Engineering and Real Estate|Quantity surveying": [
+      "Saudi Council of Engineers"
+    ],
+    "Construction, Engineering and Real Estate|Real estate development": [
+      "REGA (Real Estate General Authority)"
+    ],
+    "Construction, Engineering and Real Estate|Property management": [
+      "REGA (Real Estate General Authority)"
+    ],
+    "Construction, Engineering and Real Estate|Real estate brokerage": [
+      "REGA (Real Estate General Authority)"
+    ],
+    "Construction, Engineering and Real Estate|Facilities management": [
+      "Ministry of Municipalities and Housing"
+    ],
+    "Construction, Engineering and Real Estate|Building maintenance": [
+      "Ministry of Municipalities and Housing"
+    ],
+    "Education and Training|Schools and educational institutions": [
+      "Ministry of Education",
+      "ETEC (Education and Training Evaluation Commission)"
+    ],
+    "Education and Training|Universities and colleges": [
+      "Ministry of Education",
+      "ETEC (Education and Training Evaluation Commission)"
+    ],
+    "Education and Training|Research and academic institutions": [
+      "Ministry of Education",
+      "ETEC (Education and Training Evaluation Commission)"
+    ],
+    "Education and Training|Vocational training centers": [
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Education and Training|Professional certification providers": [
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Education and Training|Corporate training": [
+      "TVTC (Technical and Vocational Training Corporation)"
+    ],
+    "Education and Training|E-learning platforms": [
+      "Ministry of Education"
+    ],
+    "Education and Training|Educational technology (EdTech)": [
+      "Ministry of Education"
+    ],
+    "Education and Training|Catering and food services": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Manufacturing and Industrial|Food and beverage manufacturing": [
+      "Ministry of Industry and Mineral Resources",
+      "SASO (Saudi Standards, Metrology and Quality Org.)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Energy and Utilities|Oil and gas": [
+      "Ministry of Energy"
+    ],
+    "Energy and Utilities|Mining": [
+      "Ministry of Industry and Mineral Resources"
+    ],
+    "Energy and Utilities|Electricity generation and distribution": [
+      "SERA (Saudi Electricity Regulatory Authority)",
+      "Ministry of Energy"
+    ],
+    "Energy and Utilities|Renewable energy": [
+      "SERA (Saudi Electricity Regulatory Authority)",
+      "Ministry of Energy"
+    ],
+    "Energy and Utilities|Solar and wind energy": [
+      "SERA (Saudi Electricity Regulatory Authority)",
+      "Ministry of Energy"
+    ],
+    "Energy and Utilities|Water utilities": [
+      "Ministry of Environment, Water and Agriculture"
+    ],
+    "Energy and Utilities|Waste management and recycling": [
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Energy and Utilities|Environmental services": [
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Facilities Management and Physical Security|Physical security services": [
+      "Ministry of Interior",
+      "HCIS (High Commission for Industrial Security)"
+    ],
+    "Facilities Management and Physical Security|Guarding and surveillance": [
+      "Ministry of Interior",
+      "HCIS (High Commission for Industrial Security)"
+    ],
+    "Facilities Management and Physical Security|Access control services": [
+      "Ministry of Interior",
+      "HCIS (High Commission for Industrial Security)"
+    ],
+    "Facilities Management and Physical Security|Integrated facilities management": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Cleaning and janitorial services": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Building operations and maintenance": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Landscaping": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Pest control": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Waste collection and disposal": [
+      "Ministry of Municipalities and Housing (Balady)"
+    ],
+    "Facilities Management and Physical Security|Catering and food services": [
+      "Ministry of Municipalities and Housing (Balady)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Civil Defense"
+    ],
+    "Agriculture and Food Production|Agriculture and farming": [
+      "Ministry of Environment, Water and Agriculture"
+    ],
+    "Agriculture and Food Production|Livestock and fisheries": [
+      "Ministry of Environment, Water and Agriculture"
+    ],
+    "Agriculture and Food Production|Agricultural technology": [
+      "Ministry of Environment, Water and Agriculture"
+    ],
+    "Agriculture and Food Production|Agricultural equipment and supplies": [
+      "Ministry of Environment, Water and Agriculture"
+    ],
+    "Agriculture and Food Production|Food production and processing": [
+      "Ministry of Environment, Water and Agriculture",
+      "SFDA (Saudi Food and Drug Authority)",
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Agriculture and Food Production|Food distribution": [
+      "Ministry of Environment, Water and Agriculture",
+      "SFDA (Saudi Food and Drug Authority)",
+      "NCEC (National Center for Environmental Compliance)"
+    ],
+    "Agriculture and Food Production|Food safety and inspection": [
+      "SFDA (Saudi Food and Drug Authority)"
+    ],
+    "Membership and Non-profit Organizations|Associations and societies": [
+      "NCNP (National Center for Non-Profit Sector)"
+    ],
+    "Membership and Non-profit Organizations|Charitable and endowment bodies": [
+      "NCNP (National Center for Non-Profit Sector)"
+    ],
+    "Membership and Non-profit Organizations|Charitable aid": [
+      "NCNP (National Center for Non-Profit Sector)"
+    ],
+    "Membership and Non-profit Organizations|Professional bodies": [
+      "NCNP (National Center for Non-Profit Sector)"
+    ],
+    "Membership and Non-profit Organizations|Food aid": [
+      "NCNP (National Center for Non-Profit Sector)",
+      "SFDA (Saudi Food and Drug Authority)",
+      "Ministry of Municipalities and Housing (Balady)"
+    ]
+  },
+  "source_sha256": "0b3da727eab7fd9042f5cadcc26dc43c30d3a8f774ffac759f4b24fd03867ab8"
+}

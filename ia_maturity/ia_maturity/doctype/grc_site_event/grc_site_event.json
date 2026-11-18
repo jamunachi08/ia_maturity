@@ -1,0 +1,47 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Site Event",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "issingle": 0,
+  "field_order": [
+    "revision",
+    "actor",
+    "action",
+    "details"
+  ],
+  "fields": [
+    {
+      "fieldname": "revision",
+      "label": "Revision",
+      "fieldtype": "Link",
+      "options": "GRC Site Revision"
+    },
+    {
+      "fieldname": "actor",
+      "label": "Actor",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "action",
+      "label": "Action",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "details",
+      "label": "Details",
+      "fieldtype": "Long Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1
+    }
+  ]
+}

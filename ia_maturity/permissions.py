@@ -8,6 +8,9 @@ STAFF_ROLES = {"IA Maturity Manager", "IA Maturity Reviewer", "System Manager", 
 
 def is_staff(user=None):
 	user = user or frappe.session.user
+	from ia_maturity.grc import security
+	if security.enabled():
+		return security.is_admin(user) or security.account_type(user) == "Auditor"
 	if user == "Administrator":
 		return True
 	return bool(STAFF_ROLES & set(frappe.get_roles(user)))

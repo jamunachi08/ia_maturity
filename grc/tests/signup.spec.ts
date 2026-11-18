@@ -1,0 +1,82 @@
+import {test,expect} from '@playwright/test';
+
+test('signup has company fields without password or sector in English and Arabic',async({page})=>{
+ await page.goto('/signup');
+ await expect(page.getByRole('heading',{name:'Create an account',exact:true})).toBeVisible();
+ await expect(page.locator('.segmented')).toHaveCount(0);
+ await expect(page.getByLabel('Password',{exact:true})).toHaveCount(0);
+ await page.getByLabel('Email',{exact:true}).fill('grc-signup-validation-'+Date.now()+'@example.test');
+ await page.getByLabel('Full name').fill('New Customer');
+ await page.getByRole('checkbox').check();
+ const invalid=page.waitForResponse(r=>r.url().includes('ia_maturity.grc.auth.request_code')&&r.request().method()==='POST');
+ await page.getByRole('button',{name:'Send verification email',exact:true}).click();
+ expect((await invalid).status()).toBe(417);
+ await expect(page.getByRole('alert')).toContainText('Enter an organization name');
+ await page.reload();
+ await page.screenshot({path:'test-results/signup-organization-en.png',fullPage:true});
+ await page.getByRole('button',{name:'العربية',exact:true}).click();
+ await page.setViewportSize({width:390,height:844});
+ await expect(page.locator('html')).toHaveAttribute('dir','rtl');
+ await expect(page.locator('.segmented')).toHaveCount(0);
+ await expect(page.getByLabel('المنشأة',{exact:true})).toBeVisible();
+ await expect(page.getByRole('combobox',{name:'القطاع',exact:true})).toHaveCount(0);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:'test-results/signup-organization-ar-mobile.png',fullPage:true});
+ await page.getByRole('button',{name:'English',exact:true}).click();
+ await page.getByRole('link',{name:'Already registered? Sign in',exact:true}).click();
+ await expect(page.getByLabel('Password',{exact:true})).toHaveCount(0);
+ await expect(page.locator('.segmented')).toHaveCount(0);
+ await expect(page.getByLabel('Email',{exact:true})).toBeVisible();
+ await expect(page.getByLabel('Company')).toHaveCount(0);
+ await page.goto('/login?signup=1');
+ await expect(page.locator('.segmented')).toHaveCount(0);
+ await expect(page.getByLabel('Company')).toBeVisible();
+});
+
+test('normal signup shows the server wait and blocks retries until it expires',async({page})=>{
+ await page.clock.install();
+ let attempts=0;
+ await page.route('**/api/method/ia_maturity.grc.auth.request_code',async route=>{
+  attempts++;
+  if(attempts===1)return route.fulfill({status:429,json:{exc_type:'RateLimitExceededError',message:'Too many attempts. Please try again later.',retry_after_seconds:65}});
+  return route.fulfill({json:{message:{resend_after_seconds:60,expires_in_seconds:900}}});
+ });
+ await page.goto('/signup');
+ await page.getByLabel('Email',{exact:true}).fill('signup-throttle@example.test');
+ await page.getByLabel('Full name').fill('New Customer');
+ await page.getByLabel('Company').fill('Demonstration Organization');
+ await page.getByRole('checkbox').check();
+ const submit=page.getByRole('button',{name:'Send verification email',exact:true});
+ await submit.click();
+ await expect(page.getByRole('timer')).toHaveText('1:05');
+ await expect(submit).toBeDisabled();
+ await page.getByLabel('Full name').press('Enter');
+ expect(attempts).toBe(1);
+ await page.clock.fastForward(65000);
+ await expect(submit).toBeEnabled();
+ await submit.click();
+ await expect(page.getByRole('heading',{name:'Check your email',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:/Resend code/})).toBeDisabled();
+ expect(attempts).toBe(2);
+});
+
+test('signup wait is scoped to the email and stays visible in Arabic on mobile',async({page})=>{
+ await page.clock.install();
+ await page.setViewportSize({width:390,height:844});
+ await page.route('**/api/method/ia_maturity.grc.auth.request_code',route=>route.fulfill({status:429,json:{message:'Too many attempts. Please try again later.',retry_after_seconds:2800}}));
+ await page.goto('/signup');
+ await page.getByLabel('Email',{exact:true}).fill('signup-wait@example.test');
+ const submit=page.getByRole('button',{name:'Send verification email',exact:true});
+ await submit.click();
+ await expect(submit).toBeDisabled();
+ await page.getByLabel('Email',{exact:true}).fill('another-signup@example.test');
+ await expect(submit).toBeEnabled();
+ await page.getByLabel('Email',{exact:true}).fill('SIGNUP-WAIT@example.test');
+ await expect(submit).toBeDisabled();
+ await page.getByRole('button',{name:'العربية',exact:true}).click();
+ await expect(page.locator('html')).toHaveAttribute('dir','rtl');
+ await expect(page.getByRole('timer')).toHaveAttribute('dir','ltr');
+ await expect(page.getByText('يمكنك طلب رسالة تحقق أخرى بعد')).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:'test-results/signup-rate-limit-ar.png',fullPage:true});
+});

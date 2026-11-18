@@ -29,6 +29,10 @@
   "option_c",
   "option_d",
   "allow_na",
+  "selection_mode",
+  "multi_score_method",
+  "allow_comment",
+  "allow_attachment",
   "is_gating",
   "gate_trigger",
   "gate_cap_level",
@@ -47,7 +51,11 @@
   "option_b_ar",
   "cb_snapshot_ar",
   "option_c_ar",
-  "option_d_ar"
+  "option_d_ar",
+  "topic_code",
+  "topic_title",
+  "topic_title_ar",
+  "source_ref"
  ],
  "fields": [
   {
@@ -76,11 +84,11 @@
   },
   {
    "fieldname": "selected_option",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Answer",
-   "options": "\nA\nB\nC\nD\nN/A",
    "in_list_view": 1,
-   "columns": 1
+   "columns": 1,
+   "description": "Single: A, B, C, D, or N/A. Multi: comma-separated letters, e.g. A,C."
   },
   {
    "fieldname": "points",
@@ -165,6 +173,38 @@
    "fieldtype": "Check",
    "label": "Allow N/A",
    "read_only": 1
+  },
+  {
+   "fieldname": "selection_mode",
+   "fieldtype": "Select",
+   "label": "Selection Mode",
+   "options": "Single\nMulti",
+   "default": "Single",
+   "read_only": 1
+  },
+  {
+   "fieldname": "multi_score_method",
+   "fieldtype": "Select",
+   "label": "Multi-Select Scoring",
+   "options": "Highest\nAverage\nSum (capped)",
+   "default": "Highest",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allow_comment",
+   "fieldtype": "Check",
+   "label": "Allow Comment",
+   "read_only": 1,
+   "default": "1",
+   "description": "Resolved from questionnaire → section → question at load time."
+  },
+  {
+   "fieldname": "allow_attachment",
+   "fieldtype": "Check",
+   "label": "Allow Attachment",
+   "read_only": 1,
+   "default": "1",
+   "description": "Resolved from questionnaire → section → question at load time."
   },
   {
    "fieldname": "is_gating",
@@ -275,6 +315,30 @@
    "fieldname": "option_d_ar",
    "fieldtype": "Small Text",
    "label": "D (Arabic)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "topic_code",
+   "label": "Topic code",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "topic_title",
+   "label": "Topic",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "topic_title_ar",
+   "label": "Topic (Arabic)",
+   "fieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_ref",
+   "label": "Source cell range",
+   "fieldtype": "Data",
    "read_only": 1
   }
  ],

@@ -6,3 +6,9 @@
 ia_maturity.patches.v1_3.arabic_issues_benchmark
 ia_maturity.patches.v1_4.client_report_settings
 ia_maturity.patches.v1_5.landing_signup_settings
+ia_maturity.patches.v2_1.suggested_scoring_bands
+ia_maturity.patches.v2_2.grc_admin_response_and_report_policy
+ia_maturity.patches.v2_3.multi_select_questions
+
+ia_maturity.patches.v2_9.assessment_opening
+ia_maturity.patches.template_type_defaults

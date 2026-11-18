@@ -24,6 +24,20 @@ def after_install():
 	frappe.db.commit()
 
 
+def install_type_defaults():
+	"""Give a fresh GRC site the same per-type default template that upgraded sites got.
+
+	Frappe records every patch as complete on a new install without running it, so the
+	template_type_defaults patch never set the Internal Audit default there and invited IA
+	customers could not start an assessment. Runs only at install: admins may later clear a
+	default on purpose, and migrate must not undo that.
+	"""
+	from ia_maturity.patches.template_type_defaults import execute
+
+	execute()
+	frappe.db.commit()
+
+
 def after_migrate():
 	ensure_roles()
 	if not frappe.db.exists("IA Maturity Template", SEED_TEMPLATE) and not frappe.db.count("IA Maturity Template"):

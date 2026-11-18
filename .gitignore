@@ -3,3 +3,9 @@ __pycache__/
 *.egg-info
 node_modules/
 .DS_Store
+grc/test-results/
+grc/playwright-report/
+grc/.vite/
+ia_maturity/public/grc/
+ia_maturity/www/grc.html
+ia_maturity/www/grc-site.html

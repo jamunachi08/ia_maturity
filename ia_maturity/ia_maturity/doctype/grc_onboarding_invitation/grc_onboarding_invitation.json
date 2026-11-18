@@ -1,0 +1,204 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Onboarding Invitation",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "field_order": [
+  "email",
+  "invited_by",
+  "language",
+  "token_hash",
+  "expires_on",
+  "auto_lock",
+  "status",
+  "entity",
+  "customer",
+  "approval_request",
+  "email_queue",
+  "delivery_status",
+  "last_sent_on",
+  "last_activity_on",
+  "started_on",
+  "verified_on",
+  "profile_submitted_on",
+  "completed_on",
+  "blocker",
+  "events",
+  "unread_owner_event",
+  "pending_email",
+  "company",
+  "assessment_type",
+  "minimum_sections",
+  "assessment"
+ ],
+ "fields": [
+  {
+   "fieldname": "email",
+   "label": "Email",
+   "fieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "invited_by",
+   "label": "Invited By",
+   "fieldtype": "Link",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "language",
+   "label": "Language",
+   "fieldtype": "Select",
+   "options": "en\nar",
+   "default": "en"
+  },
+  {
+   "fieldname": "token_hash",
+   "label": "Token Hash",
+   "fieldtype": "Data",
+   "hidden": 1
+  },
+  {
+   "fieldname": "expires_on",
+   "label": "Expires On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "auto_lock",
+   "label": "Auto Lock",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Pending Invitation Approval\nInvited\nStarted\nEmail Verified\nAwaiting Approval\nCompleted\nRevoked",
+   "default": "Invited"
+  },
+  {
+   "fieldname": "entity",
+   "label": "Entity",
+   "fieldtype": "Link",
+   "options": "IA Maturity Entity"
+  },
+  {
+   "fieldname": "customer",
+   "label": "Customer",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "approval_request",
+   "label": "Approval Request",
+   "fieldtype": "Link",
+   "options": "GRC Operations Request"
+  },
+  {
+   "fieldname": "email_queue",
+   "label": "Email Queue",
+   "fieldtype": "Link",
+   "options": "Email Queue"
+  },
+  {
+   "fieldname": "delivery_status",
+   "label": "Delivery Status",
+   "fieldtype": "Select",
+   "options": "Not Sent\nQueued\nSent by mail system\nFailed",
+   "default": "Not Sent"
+  },
+  {
+   "fieldname": "last_sent_on",
+   "label": "Last Sent On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "last_activity_on",
+   "label": "Last Activity On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "started_on",
+   "label": "Started On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "verified_on",
+   "label": "Verified On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "profile_submitted_on",
+   "label": "Profile Submitted On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "completed_on",
+   "label": "Completed On",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "blocker",
+   "label": "Blocker",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "events",
+   "label": "Events",
+   "fieldtype": "Code",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "unread_owner_event",
+   "label": "Unread Owner Event",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "pending_email",
+   "fieldtype": "Data",
+   "label": "Pending Recipient",
+   "unique": 1,
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Data",
+   "reqd": 0,
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment_type",
+   "label": "Assessment Type",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "description": "Assessment type (a GRC Department). Validated by the app; built-in types: Internal Audit, GRC."
+  },
+  {
+   "fieldname": "minimum_sections",
+   "label": "Minimum Sections",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment",
+   "label": "Assessment",
+   "fieldtype": "Link",
+   "options": "IA Maturity Assessment",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

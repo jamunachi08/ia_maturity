@@ -1,0 +1,100 @@
+{
+  "doctype": "DocType",
+  "name": "GRC Activity",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "field_order": [
+    "entity",
+    "assignment",
+    "assessment",
+    "actor",
+    "action",
+    "details",
+    "internal",
+    "grc_department"
+  ],
+  "fields": [
+    {
+      "fieldname": "entity",
+      "label": "Organization",
+      "fieldtype": "Link",
+      "options": "IA Maturity Entity",
+      "reqd": 0,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "assignment",
+      "label": "Assignment",
+      "fieldtype": "Link",
+      "options": "GRC Assessment Assignment"
+    },
+    {
+      "fieldname": "assessment",
+      "label": "Assessment",
+      "fieldtype": "Link",
+      "options": "IA Maturity Assessment"
+    },
+    {
+      "fieldname": "actor",
+      "label": "Actor",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "action",
+      "label": "Action",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "details",
+      "label": "Details",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "internal",
+      "label": "Internal only",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "grc_department",
+      "label": "Grc Department",
+      "fieldtype": "Link",
+      "options": "GRC Department",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "GRC Customer",
+      "read": 1
+    },
+    {
+      "role": "GRC Organization Admin",
+      "read": 1
+    },
+    {
+      "role": "GRC Auditor",
+      "read": 1
+    },
+    {
+      "role": "GRC Reviewer",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

@@ -1,0 +1,31 @@
+{
+  "doctype": "Page",
+  "name": "grc-staff",
+  "page_name": "grc-staff",
+  "module": "IA Maturity",
+  "standard": "Yes",
+  "title": "GRC Staff",
+  "roles": [
+    {
+      "role": "GRC Auditor"
+    },
+    {
+      "role": "GRC Consultant"
+    },
+    {
+      "role": "GRC Reviewer"
+    },
+    {
+      "role": "GRC Manager"
+    },
+    {
+      "role": "GRC App Admin"
+    },
+    {
+      "role": "IA Maturity Manager"
+    },
+    {
+      "role": "IA Maturity Reviewer"
+    }
+  ]
+}

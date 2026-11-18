@@ -1,0 +1,81 @@
+{
+  "doctype": "DocType",
+  "name": "Auditor Customer Assignment",
+  "module": "IA Maturity",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "track_changes": 1,
+  "field_order": [
+    "entity",
+    "auditor",
+    "responsibility",
+    "active",
+    "grc_lock_exception"
+  ],
+  "fields": [
+    {
+      "fieldname": "entity",
+      "label": "Organization",
+      "fieldtype": "Link",
+      "options": "IA Maturity Entity",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "auditor",
+      "label": "Auditor",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "responsibility",
+      "label": "Responsibility",
+      "fieldtype": "Select",
+      "options": "Manager\nConsultant\nReviewer",
+      "reqd": 1,
+      "default": "Consultant"
+    },
+    {
+      "fieldname": "active",
+      "label": "Active",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "grc_lock_exception",
+      "label": "Grc Lock Exception",
+      "fieldtype": "Check",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "GRC App Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "GRC Customer",
+      "read": 1
+    },
+    {
+      "role": "GRC Organization Admin",
+      "read": 1
+    },
+    {
+      "role": "GRC Auditor",
+      "read": 1
+    },
+    {
+      "role": "GRC Reviewer",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

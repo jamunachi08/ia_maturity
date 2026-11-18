@@ -1,0 +1,134 @@
+Account security,أمان الحساب
+Some saved name fields need correction. Enter your real name or ask your administrator to correct it.,تحتاج بعض حقول الاسم المحفوظة إلى تصحيح. أدخل اسمك الحقيقي أو اطلب من المسؤول تصحيحه.
+Authenticator app,تطبيق المصادقة
+Two-factor authentication is required for this account.,المصادقة الثنائية مطلوبة لهذا الحساب.
+Add an authenticator using Frappe two-factor authentication.,أضف تطبيق مصادقة باستخدام المصادقة الثنائية في فرابي.
+Your authenticator is enrolled. Contact your administrator if you lose access.,تم تسجيل تطبيق المصادقة. تواصل مع المسؤول إذا فقدت إمكانية الوصول.
+Complete your authenticator setup at sign-in. Contact your administrator if you need help.,أكمل إعداد تطبيق المصادقة عند تسجيل الدخول. تواصل مع المسؤول إذا احتجت إلى مساعدة.
+Ask your administrator to enable OTP App authentication in System Settings.,اطلب من المسؤول تفعيل تطبيق رموز المصادقة في إعدادات النظام.
+"After activation, sign in with your password and authenticator code. Email links alone will no longer sign you in. Set a password through password recovery first if you only use email codes.",بعد التفعيل، سجّل الدخول بكلمة المرور ورمز تطبيق المصادقة. لن تكفي روابط البريد الإلكتروني وحدها لتسجيل الدخول. إذا كنت تستخدم رموز البريد فقط، فعيّن كلمة مرور أولاً عبر استعادة كلمة المرور.
+Set up authenticator,إعداد تطبيق المصادقة
+Authenticator setup QR code,رمز الاستجابة السريعة لإعداد تطبيق المصادقة
+"Scan this QR code in your authenticator app, then enter its code.",امسح رمز الاستجابة السريعة بتطبيق المصادقة، ثم أدخل الرمز الذي يعرضه التطبيق.
+Setup expires after 10 minutes. Activation signs out all sessions.,تنتهي صلاحية الإعداد بعد 10 دقائق. يؤدي التفعيل إلى تسجيل الخروج من جميع الجلسات.
+Activate authenticator,تفعيل تطبيق المصادقة
+Sign in with your password and authenticator code.,سجّل الدخول بكلمة المرور ورمز تطبيق المصادقة.
+Outgoing email account,حساب البريد الصادر
+Default outgoing account,حساب البريد الصادر الافتراضي
+Email sending enabled,إرسال البريد الإلكتروني مفعّل
+Scheduler active,المجدول نشط
+Workers available,عمليات المعالجة متاحة
+Email delivery diagnostics,تشخيص تسليم البريد الإلكتروني
+"Read-only checks. Sent means handed to the mail server, not proof of inbox delivery.",فحوصات للقراءة فقط. تعني «تم الإرسال» تسليم الرسالة لخادم البريد، ولا تؤكد وصولها إلى صندوق الوارد.
+Unknown,غير معروف
+Ready,جاهز
+Needs attention,يحتاج إلى معالجة
+No queued emails,لا توجد رسائل في قائمة الانتظار
+Queue record,سجل قائمة الانتظار
+Diagnostic,التشخيص
+Platform operators can inspect Email Queue in Desk for the full error. These checks do not send or retry emails.,يمكن لمسؤولي المنصة مراجعة قائمة البريد في واجهة الإدارة للاطلاع على الخطأ الكامل. هذه الفحوصات لا ترسل الرسائل ولا تعيد إرسالها.
+SMTP authentication rejected,رفض خادم البريد بيانات المصادقة
+SMTP TLS or certificate error,خطأ في تشفير اتصال البريد أو الشهادة
+SMTP connectivity or DNS error,خطأ في اتصال خادم البريد أو تحليل اسم النطاق
+Provider quota or rate limit,تم بلوغ حصة المزود أو حد معدل الإرسال
+Recipient or relay rejected,رفض المستلم أو ترحيل البريد
+Review the Email Queue error in Desk,راجع خطأ قائمة البريد في واجهة الإدارة
+Signup email policy,سياسة البريد الإلكتروني للتسجيل
+Allow all valid personal and organizational emails by default. Domain restrictions apply only to new accounts; existing customers can still sign in.,تُقبل جميع عناوين البريد الشخصي والمؤسسي الصحيحة افتراضياً. تنطبق قيود النطاقات على الحسابات الجديدة فقط؛ ويمكن للعملاء الحاليين متابعة تسجيل الدخول.
+All valid emails,جميع عناوين البريد الصحيحة
+Allowed domains only,النطاقات المسموح بها فقط
+Allowed signup email domains,نطاقات البريد المسموح بها للتسجيل
+One exact domain per line. Subdomains must be listed separately. Required only when domain restrictions are enabled.,نطاق محدد واحد في كل سطر. يجب إدراج النطاقات الفرعية بشكل منفصل. يُطلب ذلك فقط عند تفعيل قيود النطاقات.
+Report,التقرير
+Download the released PDF or email yourself a secure report link.,نزّل ملف التقرير الصادر بصيغة PDF أو أرسل رابطاً آمناً إلى بريدك الإلكتروني.
+PDF download and report email become available after an authorized reviewer releases the report.,يتاح تنزيل ملف PDF وإرسال رابط التقرير بعد إصداره من مراجع مخوّل.
+Email report,إرسال التقرير بالبريد
+Report email queued. Delivery depends on the site's outgoing email service.,أُضيفت رسالة التقرير إلى قائمة الانتظار. يعتمد التسليم على خدمة البريد الصادر للموقع.
+Send a secure report link to your sign-in email. Sign-in and current access are required to view or download the PDF.,أرسل رابط تقرير آمناً إلى بريد تسجيل الدخول. يتطلب عرض ملف PDF أو تنزيله تسجيل الدخول وتوفر صلاحية الوصول الحالية.
+Send report link,إرسال رابط التقرير
+Enter a valid email address.,أدخل عنوان بريد إلكتروني صحيحاً.
+Signup is limited to the email domains approved by your GRC administrator.,يقتصر التسجيل على نطاقات البريد المعتمدة من مسؤول المنصة.
+"Enter valid email domains, one per line.",أدخل نطاقات بريد صحيحة، نطاقاً واحداً في كل سطر.
+Use at most 100 signup email domains.,استخدم 100 نطاق بريد للتسجيل كحد أقصى.
+Choose a valid signup email policy.,اختر سياسة بريد صحيحة للتسجيل.
+Add at least one allowed signup email domain.,أضف نطاق بريد واحداً مسموحاً به للتسجيل على الأقل.
+Authenticator enrollment requires OTP App MFA in System Settings.,يتطلب تسجيل تطبيق المصادقة تفعيل المصادقة الثنائية عبر التطبيق في إعدادات النظام.
+An authenticator is already required. Contact your administrator for recovery.,تطبيق المصادقة مطلوب بالفعل. تواصل مع المسؤول لاستعادة الوصول.
+Authenticator setup expired. Start again.,انتهت صلاحية إعداد تطبيق المصادقة. ابدأ من جديد.
+Enter the current six-digit authenticator code.,أدخل رمز تطبيق المصادقة الحالي المكوّن من ستة أرقام.
+This account must sign in using a password and authenticator code.,يجب تسجيل الدخول لهذا الحساب بكلمة مرور ورمز تطبيق المصادقة.
+The released PDF is unavailable. Contact your GRC administrator.,ملف PDF الصادر غير متاح. تواصل مع مسؤول المنصة.
+AlphaX GRC | Your released report,AlphaX GRC | تقريرك الصادر
+Your released GRC report is available.,تقرير الحوكمة والمخاطر والامتثال الصادر متاح.
+View report and download PDF,عرض التقرير وتنزيل ملف PDF
+Sign in to view the report. Access is checked when you open the link.,سجّل الدخول لعرض التقرير. يتم التحقق من الصلاحيات عند فتح الرابط.
+"Enter a personal name using letters, spaces, hyphens or apostrophes.",أدخل اسماً شخصياً باستخدام الحروف والمسافات والشرطات أو الفواصل العليا.
+A password cannot be used as a profile name.,لا يمكن استخدام كلمة المرور اسماً في الملف الشخصي.
+Choose a password that is different from your profile name.,اختر كلمة مرور مختلفة عن اسمك في الملف الشخصي.
+Verification email could not be queued. Contact your administrator.,تعذرت إضافة رسالة التحقق إلى قائمة الانتظار. تواصل مع المسؤول.
+Report email could not be queued. Contact your administrator.,تعذرت إضافة رسالة التقرير إلى قائمة الانتظار. تواصل مع المسؤول.
+Manage MFA for customer and auditor accounts. Policy changes are audited and end the affected account's sessions.,إدارة المصادقة الثنائية لحسابات العملاء والمدققين. تُسجّل تغييرات السياسة وتنهي جلسات الحساب المعني.
+Account type,نوع الحساب
+Email verified,تأكيد البريد الإلكتروني
+MFA policy,سياسة المصادقة الثنائية
+MFA required,المصادقة الثنائية مطلوبة
+Authenticator setup,إعداد تطبيق المصادقة
+Enrolled,تم التسجيل
+Not enrolled,لم يتم التسجيل
+Verified,تم التأكيد
+Not recorded,غير مسجّل
+Default,افتراضي
+Required,مطلوب
+Disabled,معطّل
+Customer,عميل
+Auditor,مدقق
+Edit security,تعديل الأمان
+Default requires MFA for staff and preserves enrolled customer authenticators. Other customers may enroll from their profile.,يتطلب الإعداد الافتراضي المصادقة الثنائية للموظفين ويحافظ على تطبيقات المصادقة المسجّلة للعملاء. ويمكن للعملاء الآخرين التسجيل من ملفهم الشخصي.
+Required uses Frappe OTP App at sign-in. Disabled removes the GRC MFA requirement and prevents customer self-enrollment. Other role or site MFA policies still apply.,يستخدم خيار «مطلوب» تطبيق رموز المصادقة في فرابي عند تسجيل الدخول. يلغي خيار «معطّل» متطلب المصادقة الثنائية للمنصة ويمنع التسجيل الذاتي للعملاء. وتظل سياسات الأدوار الأخرى أو الموقع سارية.
+MFA remains required for GRC app administrators.,تظل المصادقة الثنائية مطلوبة لمسؤولي تطبيق المنصة.
+Changing this policy signs the affected user out of all sessions.,يؤدي تغيير هذه السياسة إلى تسجيل خروج المستخدم المعني من جميع الجلسات.
+Your current password,كلمة المرور الحالية الخاصة بك
+Save security policy,حفظ سياسة الأمان
+Choose a valid MFA policy.,اختر سياسة مصادقة ثنائية صحيحة.
+Another role or site policy requires MFA. Ask the platform administrator to review it.,تتطلب سياسة الموقع أو دور آخر المصادقة الثنائية. اطلب من مسؤول المنصة مراجعتها.
+Enable OTP App authentication in System Settings before requiring MFA.,فعّل المصادقة عبر تطبيق الرموز في إعدادات النظام قبل اشتراط المصادقة الثنائية.
+Authenticator setup is disabled by your GRC administrator.,عطّل مسؤول المنصة إعداد تطبيق المصادقة لهذا الحساب.
+Verify your email through the GRC signup page before creating an account.,أكّد بريدك الإلكتروني عبر صفحة التسجيل في المنصة قبل إنشاء الحساب.
+Use the GRC signup page and verify your email to create an account.,استخدم صفحة التسجيل في المنصة وأكّد بريدك الإلكتروني لإنشاء حساب.
+Verify your email,تأكيد بريدك الإلكتروني
+Verify email and continue,تأكيد البريد الإلكتروني والمتابعة
+"Open the verification link in your email, or enter its six-digit code. Your account is created only after verification.",افتح رابط التحقق في بريدك الإلكتروني، أو أدخل الرمز المكوّن من ستة أرقام. لا يُنشأ حسابك إلا بعد التحقق.
+You are already signed in. Sign out before creating another account.,أنت مسجّل الدخول بالفعل. سجّل الخروج قبل إنشاء حساب آخر.
+Sign out to create an account,تسجيل الخروج لإنشاء حساب
+Confirm your email to continue. The verification link is single-use and expires after 15 minutes.,أكّد بريدك الإلكتروني للمتابعة. رابط التحقق صالح للاستخدام مرة واحدة وتنتهي صلاحيته بعد 15 دقيقة.
+Send verification email,إرسال رسالة التحقق
+Next,التالي
+Previous,السابق
+Open staff workspace,فتح مساحة عمل الموظفين
+Detailed assessment activity,نشاط التقييم التفصيلي
+All assessment activity,جميع أنشطة التقييم
+No activity yet.,لا يوجد نشاط بعد.
+GRC Staff,فريق الحوكمة والمخاطر والامتثال
+Your GRC role is inactive. Contact your administrator.,دورك في المنصة غير نشط. تواصل مع المسؤول.
+Enter a reason for the ownership transfer.,أدخل سبب نقل المسؤولية.
+Parent organizations cannot form a cycle.,لا يجوز أن تشكل المنظمات الأم علاقة دائرية.
+Verification email could not be queued. Please try again later or contact support.,تعذر وضع رسالة التحقق في قائمة الانتظار. حاول لاحقاً أو تواصل مع الدعم.
+Verification email could not be sent. Please try again later or contact support.,تعذر إرسال رسالة التحقق. حاول لاحقاً أو تواصل مع الدعم.
+Invite a customer administrator and assign a customer owner before submission.,ادعُ مدير العميل وحدد مسؤول العميل قبل الإرسال.
+"If eligible, you will receive a verification email. Already registered? Sign in or reset your password. Staff must use staff sign-in.",إذا كان الحساب مؤهلاً فستتلقى رسالة تحقق. مسجل بالفعل؟ سجّل الدخول أو أعد تعيين كلمة المرور. يجب على الموظفين استخدام تسجيل دخول الموظفين.
+Enter the organization name.,أدخل اسم المنشأة.
+Select the industry type.,اختر نوع النشاط.
+Select the industry sector.,اختر قطاع النشاط.
+Name the sector.,أدخل اسم القطاع.
+Select the company nationality.,اختر جنسية الشركة.
+"The CR number must be 10 digits, or leave it empty.",يجب أن يتكون رقم السجل التجاري من 10 أرقام، أو اتركه فارغًا.
+"Enter the KSA license type, or tick N/A.",أدخل نوع الترخيص في المملكة العربية السعودية، أو اختر لا ينطبق.
+"Complete each license row (name, valid, expiry date), or remove it.",أكمل كل صف ترخيص (الاسم، الصلاحية، تاريخ الانتهاء)، أو احذفه.
+A license with a past expiry date cannot be marked valid.,لا يمكن اعتبار الترخيص صالحًا إذا كان تاريخ انتهائه قد مضى.
+Invalid company profile value.,قيمة غير صالحة في ملف الشركة.
+Invalid company profile fields.,حقول غير صالحة في ملف الشركة.
+Invalid license rows.,بيانات صفوف التراخيص غير صالحة.
+Invalid regulator answers.,إجابات الجهات الرقابية غير صالحة.
+Company profile changed. Reload before saving.,تم تغيير ملف الشركة. أعد التحميل قبل الحفظ.
+Submitted company profile snapshots cannot be modified.,لا يمكن تعديل نسخ ملف الشركة الخاصة بالتقييمات المرسلة.
+Assessment type snapshots cannot be modified.,لا يمكن تعديل نوع التقييم المحفوظ.

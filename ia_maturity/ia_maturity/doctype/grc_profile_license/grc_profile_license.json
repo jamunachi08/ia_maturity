@@ -1,0 +1,35 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Profile License",
+ "module": "IA Maturity",
+ "custom": 0,
+ "istable": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "license_name",
+  "valid",
+  "expiry_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "license_name",
+   "fieldtype": "Data",
+   "label": "License name",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valid",
+   "fieldtype": "Select",
+   "label": "Still valid?",
+   "options": "\nYes\nNo",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry date",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

@@ -1,0 +1,27 @@
+import {test,expect} from '@playwright/test';
+test('customer chooses a type and sees only matching templates, including mobile',async({page})=>{
+ const user='type-demo@example.test';
+ await page.addInitScript(user=>{localStorage.setItem('grc-language','en');localStorage.setItem('grc-page-tour:v1:'+encodeURIComponent(user)+':skip-auto','1')},user);
+ await page.route('**/api/method/ia_maturity.grc.api.bootstrap**',r=>r.fulfill({json:{message:{enabled:true,kind:'Customer',user,full_name:'Demonstration Customer',home:'/grc/customer',organizations:[{name:'DEMO',entity_name:'Demonstration Organization'}],memberships:[{entity:'DEMO',membership_role:'Organization Admin'}],staff_roles:[],is_admin:false}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.dashboard**',r=>r.fulfill({json:{message:{counts:{},assessments:[],total:0,overdue:0,overdue_actions_count:0,recent_activity:[]}}}));
+ await page.route('**/api/method/ia_maturity.grc.api.templates**',r=>r.fulfill({json:{message:[{name:'IA',template_name:'Audit questionnaire',version:1,is_active:1,grc_published:1,assessment_type:'Internal Audit'},{name:'GRC',template_name:'Compliance questionnaire',version:1,is_default:true,is_active:1,grc_published:1,assessment_type:'GRC'},{name:'DISABLED',template_name:'Disabled questionnaire',version:1,is_active:0,grc_published:1,assessment_type:'GRC'}]}}));
+ await page.goto('/grc/customer');
+ await expect(page.getByRole('button',{name:'Continue',exact:true})).toBeDisabled();
+ await page.getByRole('radio',{name:/Governance, Risk and Compliance/}).check();
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
+ const dialog=page.getByRole('dialog');
+ await dialog.getByRole('combobox',{name:'Template',exact:true}).click();
+ await expect(page.getByRole('option',{name:/Compliance questionnaire.*Default/})).toBeVisible();
+ await expect(page.getByRole('option',{name:/Disabled questionnaire/})).toHaveCount(0);
+ await expect(page.getByRole('option',{name:/Audit questionnaire/})).toHaveCount(0);
+ await page.keyboard.press('Escape');
+ await dialog.getByRole('radio',{name:/Internal Audit/}).check();
+ await dialog.getByRole('combobox',{name:'Template',exact:true}).click();
+ await expect(page.getByRole('option',{name:/Audit questionnaire/})).toBeVisible();
+ await expect(page.getByRole('option',{name:/Compliance questionnaire/})).toHaveCount(0);
+ await page.keyboard.press('Escape');
+ await dialog.getByRole('button',{name:'Close',exact:true}).click();
+ await page.setViewportSize({width:390,height:844});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:'test-results/assessment-type-mobile.png',fullPage:true});
+});

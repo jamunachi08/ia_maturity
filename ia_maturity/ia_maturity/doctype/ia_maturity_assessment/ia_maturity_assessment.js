@@ -100,8 +100,17 @@ frappe.ui.form.on("IA Maturity Assessment Answer", {
 	selected_option(frm, cdt, cdn) {
 		const row = locals[cdt][cdn];
 		const map = { A: "option_a", B: "option_b", C: "option_c", D: "option_d" };
-		const txt = map[row.selected_option] ? row[map[row.selected_option]] : row.selected_option === "N/A" ? "Not applicable" : "";
-		frappe.model.set_value(cdt, cdn, "selected_description", txt);
+		const raw = (row.selected_option || "").trim().toUpperCase();
+		if (raw === "N/A" || raw === "NA") {
+			frappe.model.set_value(cdt, cdn, "selected_description", "Not applicable");
+			return;
+		}
+		const letters = raw.split(/[,;]/).map((x) => x.trim()).filter(Boolean);
+		const parts = letters.map((letter) => {
+			const text = map[letter] ? row[map[letter]] : "";
+			return text ? `${letter}: ${text}` : letter;
+		});
+		frappe.model.set_value(cdt, cdn, "selected_description", parts.join(" | "));
 	},
 });
 

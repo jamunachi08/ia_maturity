@@ -1,0 +1,28 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Profile Regulator",
+ "module": "IA Maturity",
+ "custom": 0,
+ "istable": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "regulator_name",
+  "answer"
+ ],
+ "fields": [
+  {
+   "fieldname": "regulator_name",
+   "fieldtype": "Data",
+   "label": "Regulator",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "answer",
+   "fieldtype": "Select",
+   "label": "Regulated?",
+   "options": "\nYes\nNo",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

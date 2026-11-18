@@ -16,10 +16,13 @@
   "weight",
   "owner_role",
   "reference",
+  "allow_comment",
+  "allow_attachment",
   "sb_ar",
   "section_title_ar",
   "owner_role_ar",
-  "reference_ar"
+  "reference_ar",
+  "scope_requirement"
  ],
  "fields": [
   {
@@ -62,6 +65,20 @@
    "columns": 3
   },
   {
+   "fieldname": "allow_comment",
+   "fieldtype": "Select",
+   "label": "Allow comments",
+   "options": "\nEnabled\nDisabled",
+   "description": "Empty = inherit questionnaire default."
+  },
+  {
+   "fieldname": "allow_attachment",
+   "fieldtype": "Select",
+   "label": "Allow attachments",
+   "options": "\nEnabled\nDisabled",
+   "description": "Empty = inherit questionnaire default."
+  },
+  {
    "fieldname": "sb_ar",
    "fieldtype": "Section Break",
    "label": "Arabic"
@@ -80,6 +97,13 @@
    "fieldname": "reference_ar",
    "fieldtype": "Small Text",
    "label": "Framework Reference (Arabic)"
+  },
+  {
+   "fieldname": "scope_requirement",
+   "label": "Section requirement",
+   "fieldtype": "Select",
+   "options": "Mandatory\nOptional",
+   "default": "Mandatory"
   }
  ],
  "permissions": [],

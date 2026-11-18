@@ -15,7 +15,7 @@ from ia_maturity import i18n
 from ia_maturity.issues import is_locked
 from ia_maturity.permissions import RESPONDENT, email_domain_allowed, is_staff
 from ia_maturity.report_data import get_report_context
-from ia_maturity.scoring import LETTERS, LEVEL_NAMES, NA, get_config
+from ia_maturity.scoring import LEVEL_NAMES, get_config
 
 DOCTYPE = "IA Maturity Assessment"
 PRINT_FORMAT = "IA Maturity Report"  # client report
@@ -284,10 +284,14 @@ def save_assessment(data):
 			if "selected" in ans and is_locked(row):
 				pass  # calculated from the issue register; respondents cannot override it
 			elif "selected" in ans:
+				from ia_maturity.scoring import normalize_selected
+
 				sel = (ans.get("selected") or "").strip()
-				if sel and sel not in LETTERS and sel != NA:
+				multi = (row.selection_mode or "Single") == "Multi"
+				normalized = normalize_selected(sel, multi=multi)
+				if sel and normalized is None:
 					frappe.throw(_("Invalid answer for {0}").format(code))
-				row.selected_option = sel
+				row.selected_option = normalized or ""
 			if "comment" in ans:
 				row.comment = (ans.get("comment") or "")[:5000]
 			if "evidence" in ans:

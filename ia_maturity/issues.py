@@ -50,9 +50,13 @@ def closure_stats(entity, as_of=None, settings=None):
 
 	as_of = getdate(as_of or today())
 	since = getdate(add_months(as_of, -cfg.lookback))
+	department_filter = {}
+	if frappe.conf.get("grc_enabled") and cfg.doctype == "IA Audit Issue" and meta.has_field("grc_department"):
+		department_filter["grc_department"] = "Internal Audit"
 	closed = frappe.get_all(
 		cfg.doctype,
 		filters={
+			**department_filter,
 			cfg.entity_field: entity,
 			cfg.closed_field: ["between", [since, as_of]],
 			cfg.opened_field: ["is", "set"],
@@ -64,6 +68,7 @@ def closure_stats(entity, as_of=None, settings=None):
 	open_over_12 = frappe.db.count(
 		cfg.doctype,
 		{
+			**department_filter,
 			cfg.entity_field: entity,
 			cfg.closed_field: ["is", "not set"],
 			cfg.opened_field: ["<=", add_months(as_of, -12)],
@@ -120,10 +125,12 @@ def describe(stats, letter=None):
 
 def apply_auto_answers(doc):
 	"""Fill auto-calculated answers on a draft assessment."""
-	rows = [a for a in doc.answers if a.auto_source == ISSUE_CLOSURE]
+	from ia_maturity.grc import scope
+	rows = [a for a in scope.answers(doc) if a.auto_source == ISSUE_CLOSURE] if scope.ready(doc) else []
 	if not rows or doc.docstatus != 0:
 		return
-	settings = _settings()
+	from ia_maturity.grc.assessments import issue_settings
+	settings = issue_settings(doc)
 	cfg = register_config(settings)
 	stats = closure_stats(doc.entity, doc.assessment_date, settings)
 	usable = stats is not None and stats.count >= stats.min_sample

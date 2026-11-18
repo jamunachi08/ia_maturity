@@ -1,0 +1,52 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Department Staff",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "department",
+   "label": "Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "label": "User",
+   "fieldtype": "Link",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "role",
+   "label": "Role",
+   "fieldtype": "Select",
+   "options": "Manager\nConsultant\nReviewer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "active",
+   "label": "Active",
+   "fieldtype": "Check",
+   "default": "1"
+  }
+ ],
+ "field_order": [
+  "department",
+  "user",
+  "role",
+  "active"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

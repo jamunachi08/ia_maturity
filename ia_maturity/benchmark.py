@@ -42,6 +42,10 @@ def latest_peer_assessments(template, exclude_entity=None, sector=None):
 		order_by="assessment_date desc, creation desc",
 		limit_page_length=0,
 	)
+	from ia_maturity.grc import security
+	if security.enabled():
+		allowed = set(security.entities())
+		rows = [r for r in rows if r.entity in allowed]
 	if sector:
 		in_sector = set(frappe.get_all("IA Maturity Entity", filters={"sector": sector}, pluck="name"))
 		rows = [r for r in rows if r.entity in in_sector]

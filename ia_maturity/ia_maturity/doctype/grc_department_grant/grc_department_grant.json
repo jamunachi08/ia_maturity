@@ -1,0 +1,57 @@
+{
+ "doctype": "DocType",
+ "name": "GRC Department Grant",
+ "module": "IA Maturity",
+ "custom": 0,
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "entity",
+   "label": "Entity",
+   "fieldtype": "Link",
+   "options": "IA Maturity Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "label": "Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "active",
+   "label": "Active",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "profile_access",
+   "label": "Profile Access",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "source",
+   "label": "Source",
+   "fieldtype": "Data"
+  }
+ ],
+ "field_order": [
+  "entity",
+  "department",
+  "active",
+  "profile_access",
+  "source"
+ ],
+ "permissions": [
+  {
+   "role": "GRC App Admin",
+   "read": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

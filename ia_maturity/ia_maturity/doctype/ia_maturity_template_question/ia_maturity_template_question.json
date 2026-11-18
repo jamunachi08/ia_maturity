@@ -23,6 +23,8 @@
   "option_c",
   "option_d",
   "sb_rules",
+  "selection_mode",
+  "multi_score_method",
   "allow_na",
   "source_ref",
   "cb_rules",
@@ -30,6 +32,8 @@
   "gate_trigger",
   "gate_cap_level",
   "auto_source",
+  "allow_comment",
+  "allow_attachment",
   "sb_ar",
   "short_label_ar",
   "question_text_ar",
@@ -38,7 +42,10 @@
   "option_b_ar",
   "cb_ar",
   "option_c_ar",
-  "option_d_ar"
+  "option_d_ar",
+  "topic_code",
+  "topic_title",
+  "topic_title_ar"
  ],
  "fields": [
   {
@@ -116,6 +123,25 @@
    "label": "Rules"
   },
   {
+   "fieldname": "selection_mode",
+   "fieldtype": "Select",
+   "label": "Selection Mode",
+   "options": "Single\nMulti",
+   "default": "Single",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Single: one of A–D (or N/A). Multi: select all that apply among A–D."
+  },
+  {
+   "fieldname": "multi_score_method",
+   "fieldtype": "Select",
+   "label": "Multi-Select Scoring",
+   "options": "Highest\nAverage\nSum (capped)",
+   "default": "Highest",
+   "depends_on": "eval:doc.selection_mode=='Multi'",
+   "description": "Highest = max option points (maturity-aligned default). Average = mean of selected. Sum (capped) = sum of selected points, capped at the question maximum."
+  },
+  {
    "fieldname": "allow_na",
    "fieldtype": "Check",
    "label": "Allow 'Not Applicable'",
@@ -163,6 +189,20 @@
    "description": "Issue Closure Time: the answer is calculated from the audit-issue register (see IA Maturity Settings)."
   },
   {
+   "fieldname": "allow_comment",
+   "fieldtype": "Select",
+   "label": "Allow comments",
+   "options": "\nEnabled\nDisabled",
+   "description": "Empty = inherit section, then questionnaire default."
+  },
+  {
+   "fieldname": "allow_attachment",
+   "fieldtype": "Select",
+   "label": "Allow attachments",
+   "options": "\nEnabled\nDisabled",
+   "description": "Empty = inherit section, then questionnaire default."
+  },
+  {
    "fieldname": "sb_ar",
    "fieldtype": "Section Break",
    "label": "Arabic",
@@ -206,6 +246,21 @@
    "fieldname": "option_d_ar",
    "fieldtype": "Small Text",
    "label": "D (Arabic)"
+  },
+  {
+   "fieldname": "topic_code",
+   "label": "Topic code",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "topic_title",
+   "label": "Topic",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "topic_title_ar",
+   "label": "Topic (Arabic)",
+   "fieldtype": "Data"
   }
  ],
  "permissions": [],

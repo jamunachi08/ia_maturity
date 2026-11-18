@@ -8,7 +8,9 @@ Default method mirrors the client's workbook:
     Section %  = points / (applicable questions x max points)
     Overall %  = total points / total max points   ("Points" weighting)
              or  sum(section % x weight) / sum(weight)   ("Section Weights")
-    Bands: Critical <35, Low <55, Medium <75, High <90, Leading >=90
+    Bands (suggested score-to-maturity mapping):
+        Critical 0–29, Low 30–49, Medium 50–69, High 70–84, Leading 85–100
+    The executive-summary narrative is the conclusion for that overall mark.
 Extensions over the workbook: N/A answers (excluded from the denominator) and
 gating questions (a weak answer caps the overall maturity level).
 """
@@ -24,56 +26,71 @@ NA = "N/A"
 
 DEFAULT_POINTS = {"A": 25.0, "B": 50.0, "C": 75.0, "D": 100.0}
 
+# Suggested score-to-maturity mapping. min_score is the inclusive lower bound.
+# max_score is the inclusive integer top of the written range (29, 49, 69, 84, 100).
+# A score belongs to the highest band whose min_score is less than or equal to it,
+# so 29.9 is Critical, 30 is Low, 84.9 is High and 85 is Leading.
 DEFAULT_BANDS = [
 	{
 		"level_name": "Critical",
 		"level_name_ar": "حرج",
-		"interpretation_ar": "توجد فجوات جوهرية في وظيفة التدقيق الداخلي، ويلزم اتخاذ إجراء فوري لإرساء الممارسات الأساسية.",
+		"interpretation_ar": "لدى وظيفة التدقيق الداخلي أوجه قصور جوهرية تؤثر مادياً في قدرتها على العمل بفاعلية. قد تكون الضوابط الرئيسية أو الاستقلالية أو المنهجية أو التغطية أو تأكيد الجودة غائبة أو غير فعّالة. ويلزم التصعيد الفوري إلى لجنة المراجعة أو مجلس الإدارة ووضع خارطة طريق رسمية للمعالجة.",
 		"min_score": 0,
-		"max_score": 34.99,
+		"max_score": 29,
 		"color": "#B42318",
-		"interpretation": "Significant gaps exist across the Internal Audit function. Immediate attention is "
-		"required to establish foundational practices.",
+		"interpretation": "The internal audit function has fundamental deficiencies that materially affect its ability "
+		"to operate effectively. Key controls, independence, methodology, coverage or quality assurance may be "
+		"absent or ineffective. Immediate escalation to the Audit Committee/Board and a formal remediation "
+		"roadmap are required.",
 	},
 	{
 		"level_name": "Low",
 		"level_name_ar": "منخفض",
-		"interpretation_ar": "توجد ممارسات أساسية لكنها تُطبَّق بشكل غير متسق، ويلزم تحسين كبير لضمان الفاعلية.",
-		"min_score": 35,
-		"max_score": 54.99,
+		"interpretation_ar": "لدى وظيفة التدقيق الداخلي فجوات نضج كبيرة. الممارسات في معظمها تفاعلية أو غير رسمية، وتوجد نقاط ضعف في الحوكمة أو التخطيط المبني على المخاطر أو المنهجية أو الموارد أو تأكيد الجودة أو المتابعة. وتحد هذه الفجوات من قدرة الوظيفة على تقديم تأكيد فعّال. ويلزم معالجة ذات أولوية واهتمام من الإدارة.",
+		"min_score": 30,
+		"max_score": 49,
 		"color": "#BF530B",
-		"interpretation": "Foundational practices exist but are inconsistently applied. Significant improvement "
-		"is needed to ensure effectiveness.",
+		"interpretation": "The internal audit function has significant maturity gaps. Practices are largely reactive "
+		"or informal, and there are weaknesses in governance, risk-based planning, methodology, resourcing, "
+		"quality assurance or follow-up. These gaps limit the function’s ability to provide effective assurance. "
+		"Priority remediation and management attention are required.",
 	},
 	{
 		"level_name": "Medium",
 		"level_name_ar": "متوسط",
-		"interpretation_ar": "الممارسات الجوهرية قائمة وفعّالة بشكل عام، ويلزم تعزيزها للوصول إلى أفضل الممارسات.",
-		"min_score": 55,
-		"max_score": 74.99,
+		"interpretation_ar": "تتمتع وظيفة التدقيق الداخلي بمستوى نضج كافٍ لكنه غير متساوٍ. تُنفَّذ أنشطة التدقيق الأساسية، لكن الممارسات لا تُطبَّق باتساق في جميع المجالات. توجد فجوات في التغطية المبنية على المخاطر أو منهجية التدقيق أو تأكيد الجودة أو المتابعة أو استخدام التقنية. ويلزم وضع خطة تحسين منظمة لرفع مستوى النضج وضمان تقديم تأكيد متسق.",
+		"min_score": 50,
+		"max_score": 69,
 		"color": "#9A6F00",
-		"interpretation": "Core practices are in place and generally effective. Enhancements are needed to "
-		"achieve best-in-class standards.",
+		"interpretation": "The internal audit function has an adequate but uneven maturity level. Core audit "
+		"activities are performed, but practices are not consistently applied across all areas. Gaps exist in "
+		"risk-based coverage, audit methodology, quality assurance, follow-up or use of technology. A structured "
+		"improvement plan is required to raise maturity and ensure consistent delivery of assurance.",
 	},
 	{
 		"level_name": "High",
 		"level_name_ar": "مرتفع",
-		"interpretation_ar": "وظيفة التدقيق الداخلي متينة ومتوافقة مع أفضل الممارسات الدولية، ويظل التحسين المستمر محور التركيز.",
-		"min_score": 75,
-		"max_score": 89.99,
+		"interpretation_ar": "تعمل وظيفة التدقيق الداخلي بمستوى نضج مرتفع وبممارسات متسقة في العموم. العناصر الأساسية لمنهجية التدقيق والتغطية المبنية على المخاطر وتأكيد الجودة قائمة. غير أن بعض المجالات تحتاج إلى تحسين موجّه للوصول إلى الممارسة الرائدة، ولا سيما تحليلات البيانات ومرونة الموارد وقياس الأداء أو المراقبة المستمرة.",
+		"min_score": 70,
+		"max_score": 84,
 		"color": "#2D7A33",
-		"interpretation": "The Internal Audit function is robust and aligned with international best practices. "
-		"Continuous improvement remains a focus.",
+		"interpretation": "The internal audit function operates at a high level of maturity with generally consistent "
+		"practices. Key elements of the audit methodology, risk-based coverage and quality assurance are in "
+		"place. However, some areas require targeted improvement to reach leading practice, particularly in "
+		"areas such as data analytics, resource flexibility, performance measurement or continuous monitoring.",
 	},
 	{
 		"level_name": "Leading",
 		"level_name_ar": "رائد",
-		"interpretation_ar": "تمثل الوظيفة نموذجاً يُحتذى به في التميز، مع ممارسات متقدمة وتحقق مستقل.",
-		"min_score": 90,
+		"interpretation_ar": "تُظهر وظيفة التدقيق الداخلي مستوى ناضجاً واستباقياً. الحوكمة، والتخطيط المبني على المخاطر، والمنهجية، وإعداد التقارير، وتأكيد الجودة، والمتابعة مطبّقة عموماً بقوة واتساق. والوظيفة في وضع جيد لتقديم التأكيد والرؤى لمجلس الإدارة والإدارة. وتقتصر الإجراءات المتبقية في الغالب على تحسينات تدريجية، مثل مزيد من الأتمتة والتحليلات المتقدمة والمرونة والتحسين المستمر.",
+		"min_score": 85,
 		"max_score": 100,
 		"color": "#1C5CA3",
-		"interpretation": "The function is a benchmark for excellence, with advanced practices and independent "
-		"validation.",
+		"interpretation": "The internal audit function demonstrates a mature and proactive level of maturity. "
+		"Governance, risk-based planning, methodology, reporting, quality assurance and follow-up are generally "
+		"strong and consistently applied. The function is well positioned to provide assurance and insight to "
+		"the board and management. Remaining actions are mainly incremental enhancements, such as further "
+		"automation, advanced analytics, agility and continuous improvement.",
 	},
 ]
 
@@ -83,9 +100,109 @@ PRIORITY = {
 	"C": ("Medium", "6–12 months", 365),
 }
 
+# Multi-select scoring (docs do not define multi-select; Excel/HTML are single A–D only).
+# Default Highest keeps ordinal maturity semantics if Multi is enabled on A–D levels.
+MULTI_SCORE_HIGHEST = "Highest"
+MULTI_SCORE_AVERAGE = "Average"
+MULTI_SCORE_SUM = "Sum (capped)"
+DEFAULT_MULTI_SCORE_METHOD = MULTI_SCORE_HIGHEST
 
-def get_config():
+
+def is_multi(answer):
+	return (answer.get("selection_mode") or "Single").strip() == "Multi"
+
+
+def parse_selected(raw):
+	"""Normalize a stored answer into (kind, letters).
+
+	kind: '' (unanswered), 'N/A', or 'letters'.
+	letters: ordered unique A–D (empty when kind is not 'letters').
+	"""
+	text = (raw or "").strip().upper().replace(" ", "")
+	if not text:
+		return "", []
+	if text in (NA, "NA", "N.A.", "N.A"):
+		return NA, []
+	parts = [p for p in text.replace(";", ",").split(",") if p]
+	letters = []
+	seen = set()
+	for part in parts:
+		if part not in LETTERS:
+			return "invalid", []
+		if part not in seen:
+			seen.add(part)
+			letters.append(part)
+	letters.sort(key=LETTERS.index)
+	return ("letters", letters) if letters else ("", [])
+
+
+def normalize_selected(raw, multi=False):
+	"""Canonical storage: '', 'N/A', 'A', or 'A,C' (sorted). Rejects invalid input."""
+	kind, letters = parse_selected(raw)
+	if kind == "invalid":
+		return None
+	if kind == NA:
+		return NA
+	if not letters:
+		return ""
+	if not multi and len(letters) > 1:
+		return None
+	return ",".join(letters) if multi else letters[0]
+
+
+def multi_score_method(answer):
+	method = (answer.get("multi_score_method") or DEFAULT_MULTI_SCORE_METHOD).strip()
+	if method not in (MULTI_SCORE_HIGHEST, MULTI_SCORE_AVERAGE, MULTI_SCORE_SUM):
+		return DEFAULT_MULTI_SCORE_METHOD
+	return method
+
+
+def answer_points(answer, points, max_points):
+	"""Points earned for one answer row (0 for unanswered / N/A)."""
+	kind, letters = parse_selected(answer.get("selected_option"))
+	if kind != "letters" or not letters:
+		return 0.0
+	values = [flt(points.get(letter, 0.0)) for letter in letters]
+	if not is_multi(answer) or len(values) == 1:
+		return values[0]
+	method = multi_score_method(answer)
+	if method == MULTI_SCORE_AVERAGE:
+		return round(sum(values) / len(values), 4)
+	if method == MULTI_SCORE_SUM:
+		return min(sum(values), flt(max_points))
+	return max(values)
+
+
+def worst_letter(answer):
+	"""Lowest maturity letter among selections (for gating / findings / actions)."""
+	kind, letters = parse_selected(answer.get("selected_option"))
+	if kind != "letters" or not letters:
+		return ""
+	return min(letters, key=LETTERS.index)
+
+
+def selected_statements(answer):
+	"""Human-readable statement(s) for the chosen option(s)."""
+	kind, letters = parse_selected(answer.get("selected_option"))
+	if kind == NA:
+		return "Not applicable"
+	if kind != "letters":
+		return ""
+	fields = {"A": "option_a", "B": "option_b", "C": "option_c", "D": "option_d"}
+	parts = []
+	for letter in letters:
+		text = (answer.get(fields[letter]) or "").strip()
+		parts.append(f"{letter}: {text}" if text else letter)
+	return " | ".join(parts)
+
+
+def get_config(doc=None):
 	"""Return scoring configuration from IA Maturity Settings (with safe defaults)."""
+	if doc and doc.get("grc_policy_snapshot"):
+		return frappe._dict(frappe.parse_json(doc.grc_policy_snapshot))
+	if doc and doc.get("grc_assessment_type") == "GRC":
+		from ia_maturity.grc.workbook import published_policy
+		return frappe._dict(published_policy())
 	settings = frappe.get_cached_doc("IA Maturity Settings")
 	points = {
 		"A": flt(settings.points_a) if settings.points_a is not None else DEFAULT_POINTS["A"],
@@ -142,7 +259,8 @@ def compute(answers, sections, weighting_method=None, config=None):
 	"""Score a set of answers.
 
 	answers:  iterable of dict-likes with section_code, question_code, selected_option and
-	          (optionally) is_gating, gate_trigger, gate_cap_level, short_label
+	          (optionally) selection_mode, multi_score_method, is_gating, gate_trigger,
+	          gate_cap_level, short_label
 	sections: ordered iterable of dict-likes with section_code, section_title, weight, reference
 	Returns a frappe._dict with section rows, overall figures and gating information.
 	"""
@@ -179,10 +297,10 @@ def compute(answers, sections, weighting_method=None, config=None):
 
 	for a in answers:
 		sec = by_code.get(a.get("section_code"))
-		opt = (a.get("selected_option") or "").strip()
+		kind, letters = parse_selected(a.get("selected_option"))
 		if sec is not None:
 			sec.question_count += 1
-		if not opt:
+		if not kind or kind == "invalid":
 			# unanswered still counts in the denominator (same as the workbook) until submission
 			if sec is not None:
 				sec.applicable += 1
@@ -191,25 +309,33 @@ def compute(answers, sections, weighting_method=None, config=None):
 			total_max += max_pt
 			continue
 		answered += 1
-		if opt == NA:
+		if sec is not None:
+			sec.answered += 1
+		if kind == NA:
 			na += 1
 			continue
-		p = pts.get(opt, 0.0)
+		p = answer_points(a, pts, max_pt)
 		applicable += 1
 		total_pts += p
 		total_max += max_pt
 		if sec is not None:
-			sec.answered += 1
 			sec.applicable += 1
 			sec.points += p
 			sec.max_points += max_pt
-		if opt in ("A", "B"):
+		worst = worst_letter(a)
+		if worst in ("A", "B"):
 			findings += 1
-		if opt == "A":
+		if worst == "A":
 			immediate += 1
-		if cint(a.get("is_gating")) and opt in gate_letters(a.get("gate_trigger")) and a.get("gate_cap_level"):
+		if (
+			config.get("gating_enabled", True)
+			and cint(a.get("is_gating"))
+			and worst
+			and worst in gate_letters(a.get("gate_trigger"))
+			and a.get("gate_cap_level")
+		):
 			gate_hits.append(
-				(a.get("question_code"), a.get("short_label") or "", opt, a.get("gate_cap_level"), a.get("short_label_ar") or "")
+				(a.get("question_code"), a.get("short_label") or "", worst, a.get("gate_cap_level"), a.get("short_label_ar") or "")
 			)
 
 	for sec in sec_rows:
@@ -251,8 +377,21 @@ def compute(answers, sections, weighting_method=None, config=None):
 				score_band.get("level_name_ar") or score_band["level_name"],
 			)
 
+	topics = []
+	for key in dict.fromkeys((a.get("section_code"), a.get("topic_code")) for a in answers if a.get("topic_code")):
+		rows = [a for a in answers if (a.get("section_code"), a.get("topic_code")) == key]
+		counted = [a for a in rows if parse_selected(a.get("selected_option"))[0] != NA]
+		possible = len(counted) * max_pt
+		earned = sum(answer_points(a, pts, max_pt) for a in counted)
+		percentage = round(earned / possible * 100, 1) if possible else 0.0
+		topics.append({"section_code": key[0], "topic_code": key[1], "topic_title": rows[0].get("topic_title") or "",
+			"topic_title_ar": rows[0].get("topic_title_ar") or "", "question_count": len(rows),
+			"answered": sum(parse_selected(a.get("selected_option"))[0] in ("letters", NA) for a in rows),
+			"applicable": len(counted), "points": earned, "max_points": possible, "score_pct": percentage,
+			"maturity_level": band_for(percentage, bands)["level_name"] if possible else "N/A"})
 	return frappe._dict(
 		sections=sec_rows,
+		topics=topics,
 		overall_score=overall,
 		overall_points=total_pts,
 		max_points=total_max,

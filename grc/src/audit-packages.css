@@ -1,0 +1,20 @@
+.scope-config-editor,.scope-confirmation{display:grid;gap:20px}.scope-config-fields{border:0;padding:0;margin:0;display:grid;gap:20px;min-width:0}.audit-package-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:16px;margin:18px 0}.audit-package-card{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--border,#d7e0e5);border-radius:12px;padding:20px;cursor:pointer;background:var(--surface,#fff)}.audit-package-card.selected{border-color:color-mix(in oklab,var(--brand) 72%,#151515);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--brand) 72%,#151515);background:#f3f8fb}.audit-package-card input{width:18px;height:18px;flex-shrink:0;margin-top:3px}.audit-package-card strong{display:block;font-size:17px}.package-description{display:block;white-space:pre-wrap;margin:9px 0;line-height:1.6}.audit-package-card small{display:block;color:color-mix(in oklab,var(--brand) 34%,#676767)}.scope-total{font-weight:600}.section-checks{display:flex;flex-wrap:wrap;gap:12px 24px;border:0;padding:12px 0}.section-checks label{display:flex;align-items:center;gap:8px}.section-checks input{width:17px;height:17px}.scope-actions{display:flex;gap:12px;flex-wrap:wrap}.package-editor{border-block-start:1px solid #d7e0e5;margin:18px 0;padding:20px 0;display:grid;gap:16px}.onboarding-timeline{display:grid;gap:12px;padding-inline-start:24px}.onboarding-milestone{padding:12px;border-inline-start:3px solid #cbd5e1}.onboarding-milestone.done{border-color:#218267}.onboarding-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}.onboarding-meta dt{color:color-mix(in oklab,var(--brand) 34%,#676767);font-size:13px}.onboarding-meta dd{margin:4px 0;overflow-wrap:anywhere}.onboarding-public{max-width:640px;margin:5vh auto;padding:24px}.onboarding-list{display:grid;gap:16px}.ownership-panel{display:grid;gap:20px}.ownership-exception{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.onboarding-note{white-space:normal;max-width:300px}.audit-package-card:focus-within{outline:2px solid color-mix(in oklab,var(--brand) 72%,#151515);outline-offset:3px}@media(max-width:640px){.onboarding-public{margin:0;padding:18px}.ownership-exception>*{width:100%}}
+
+[data-tour=onboarding-progress]{display:grid;gap:20px}
+[data-tour=onboarding-progress] .onboarding-meta,[data-tour=onboarding-progress] .onboarding-timeline{margin:0}
+.onboarding-milestone{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.onboarding-milestone>span{font-size:13px;color:var(--muted)}
+.onboarding-list>section{display:grid;gap:16px}
+.onboarding-list>section>.status{justify-self:start}
+
+[data-tour=onboarding-history] .onboarding-timeline li{display:grid;gap:6px}
+[data-tour=onboarding-history] .onboarding-timeline small{color:var(--muted);line-height:1.5}
+
+.audit-package-card.mandatory-section,.section-checks .mandatory-section{background:#f0f2f4;border-color:#d6dce1;color:#65717c;cursor:default}
+.section-checks .mandatory-section{padding:10px 12px;border:1px solid #d6dce1;border-radius:8px}
+.section-checks label small{display:block;margin-top:4px;line-height:1.5}
+.package-section-breakdown{display:grid;gap:6px}
+.scope-breakdown{border-top:1px solid var(--border);padding-top:18px}
+.scope-breakdown ul{list-style:none;padding:0;display:grid;gap:10px;margin:12px 0 18px}
+.scope-breakdown li{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;font-size:13px}
+.scope-breakdown li>span:last-child{white-space:nowrap}

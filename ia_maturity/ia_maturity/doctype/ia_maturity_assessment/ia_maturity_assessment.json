@@ -51,7 +51,23 @@
   "cb_review",
   "reviewed_on",
   "reviewer_comments",
-  "amended_from"
+  "amended_from",
+  "grc_assignment",
+  "grc_policy_snapshot",
+  "grc_sections_snapshot",
+  "grc_scope_snapshot",
+  "grc_selected_packages",
+  "grc_scope_sections",
+  "grc_scope_confirmed",
+  "grc_scope_acknowledgement",
+  "grc_scope_confirmed_by",
+  "grc_scope_confirmed_on",
+  "grc_profile_snapshot",
+  "grc_assessment_type",
+  "grc_department",
+  "grc_invited_sections",
+  "grc_invitation",
+  "grc_report_id"
  ],
  "fields": [
   {
@@ -318,6 +334,117 @@
    "read_only": 1,
    "no_copy": 1,
    "print_hide": 1
+  },
+  {
+   "fieldname": "grc_assignment",
+   "label": "GRC assignment",
+   "fieldtype": "Link",
+   "options": "GRC Assessment Assignment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_policy_snapshot",
+   "label": "Scoring policy snapshot",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_sections_snapshot",
+   "label": "Section snapshot",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_snapshot",
+   "label": "Grc Scope Snapshot",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_selected_packages",
+   "label": "Grc Selected Packages",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_sections",
+   "label": "Grc Scope Sections",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_confirmed",
+   "label": "Grc Scope Confirmed",
+   "fieldtype": "Check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_acknowledgement",
+   "label": "Grc Scope Acknowledgement",
+   "fieldtype": "Check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_confirmed_by",
+   "label": "Grc Scope Confirmed By",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_scope_confirmed_on",
+   "label": "Grc Scope Confirmed On",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_profile_snapshot",
+   "fieldtype": "Code",
+   "label": "Company profile snapshot",
+   "options": "JSON",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "grc_assessment_type",
+   "fieldtype": "Data",
+   "label": "Assessment type snapshot",
+   "read_only": 1,
+   "hidden": 1,
+   "description": "Assessment type (a GRC Department). Validated by the app; built-in types: Internal Audit, GRC."
+  },
+  {
+   "fieldname": "grc_department",
+   "label": "Grc Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_invited_sections",
+   "label": "Grc Invited Sections",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_invitation",
+   "label": "Grc Invitation",
+   "fieldtype": "Link",
+   "options": "GRC Onboarding Invitation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grc_report_id",
+   "label": "Grc Report Id",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "unique": 1
   }
  ],
  "permissions": [

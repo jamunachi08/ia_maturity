@@ -28,7 +28,8 @@
   "cb2",
   "issue_owner",
   "verified_by",
-  "verification_notes"
+  "verification_notes",
+  "grc_department"
  ],
  "fields": [
   {
@@ -139,6 +140,13 @@
    "fieldname": "verification_notes",
    "fieldtype": "Small Text",
    "label": "Verification Notes"
+  },
+  {
+   "fieldname": "grc_department",
+   "label": "Grc Department",
+   "fieldtype": "Link",
+   "options": "GRC Department",
+   "read_only": 1
   }
  ],
  "permissions": [
